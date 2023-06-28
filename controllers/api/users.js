@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 const bcrypt= require('bcrypt')
 const user = require('../../models/api/user')
 
-const SALT_ROUNDS = 6
-
 const create = async (req,res) => {
     try {
         const user = await User.create(req.body)

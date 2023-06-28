@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 const bcrypt = require('bcrypt')
 
-const SALT_ROUNDS = 6
+
 
 const userSchema = new Schema({
     name: {type: String, required: true, unique: true},
@@ -25,7 +25,7 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next()
-    this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
+    this.password = await bcrypt.hash(this.password,parseInt(process.env.SALT_ROUNDS))
     return next()
 })
 
