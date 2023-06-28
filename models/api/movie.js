@@ -19,3 +19,5 @@ const movieSchema = new Schema({
     nowShowing: {type: Boolean},
     comments: [commentSchema]
 })
+
+module.exports = model('Movie',movieSchema)

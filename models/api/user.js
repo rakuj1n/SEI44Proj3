@@ -4,19 +4,15 @@ const bcrypt = require('bcrypt')
 
 const SALT_ROUNDS = 6
 
-const followingSchema = new Schema({
-    id: {type: Schema.Type.ObjectId, ref: 'User'} //to check code later
-})
-
 const userSchema = new Schema({
     name: {type: String, required: true, unique: true},
-    email: {type: String, unique: true, trim: true, lowercase: true, required: true}, //
-    password: {type: String, trim: true, minLength: 3, required: true},
+    email: {type: String, unique: true, trim: true, lowercase: true, required: true},
+    password: {type: String, trim: true, minLength: 8, required: true},
     picture: {type:String},
-    following: [followingSchema],
-    moviesRecommended: {type: Schema.Type.ObjectId, ref: 'Movie'}, //make movieschmea in movie model
-    watchHistory: {type: Schema.Type.ObjectId, ref:'Movie'},
-    rentMovie: {type: Schema.Type.ObjectId, ref:'Movie'}
+    following: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    moviesRecommended: [{type: Schema.Types.ObjectId, ref: 'Movie'}], 
+    watchHistory: [{type: Schema.Types.ObjectId, ref:'Movie'}],
+    rentedMovies: [{type: Schema.Types.ObjectId, ref:'Movie'}]
 },{
     timestamps: true,
     toJSON: {
