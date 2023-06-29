@@ -1,4 +1,5 @@
 const User = require('../../models/api/user')
+const Movie = require('../../models/api/movie')
 const jwt = require('jsonwebtoken')
 const bcrypt= require('bcrypt')
 const Account = require('../../models/api/account')
@@ -42,7 +43,12 @@ async function getAccount(req,res) {
     try {
         const user = await User.findById(userId)
         if (!user) throw new Error()
-        const account = await Account.find({ user:user._id}).populate('user')
+        const account = await Account.find({ user:user._id})
+        .populate('user')
+        .populate('following')
+        .populate('rentedMovies')
+        .populate('moviesRecommended')
+        .populate('watchHistory')
         res.status(200).json(account)
     } catch (err) {
         res.status(400).json(err)
