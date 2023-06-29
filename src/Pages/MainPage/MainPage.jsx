@@ -26,10 +26,19 @@ const MainPage = () => {
             </div>
           )}
         </div>
-        <div className="movies-carousel">
-          {/* Carousel component to display movies */}
-          <Carousel>{/* Render movie images and details */}</Carousel>
-        </div>
+      </div>
+
+      <div className="movies-carousel">
+        {/* Carousel component to display movies */}
+        <Carousel>{/* Render movie images and details */}</Carousel>
+      </div>
+
+      <div className="kinolounge">
+        <Link to="/kinolounge" className="kinolounge-link">
+          Kinolounge
+        </Link>
+        <button className="movies-button">Movies</button>
+        <button className="promotions-button">Promotions</button>
       </div>
     </div>
   );
