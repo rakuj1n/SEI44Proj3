@@ -37,15 +37,21 @@ function checkToken(req,res) {
     res.json(req.exp)
 }
 
-async function getAll(req,res) {
+async function getAccount(req,res) {
     const userId = req.params.userId
-    const user = await User.findById(userId)
-    res.json(user)
+    try {
+        const user = await User.findById(userId)
+        if (!user) throw new Error()
+        const account = await Account.find({ user:user._id}).populate('user')
+        res.status(200).json(account)
+    } catch (err) {
+        res.status(400).json(err)
+    }
 }
 
 module.exports = {
     create,
     login,
     checkToken,
-    getAll
+    getAccount
 }

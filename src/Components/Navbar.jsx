@@ -13,6 +13,7 @@ export default function Navbar({ user, setUser }) {
             <p>Hello, {user.name}</p>
             <Link to='/orders'>Order History</Link>
             <Link to='/orders/new'>New Order</Link>
+            <Link to={`/users/${user._id}`}>My account</Link>
             <Link to='' onClick={handleLogOut}>Log Out</Link>
         </nav>
     )

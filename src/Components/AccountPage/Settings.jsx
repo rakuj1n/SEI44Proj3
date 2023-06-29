@@ -1,7 +1,11 @@
 import { useState } from "react"
+import { useOutletContext } from "react-router-dom"
 
 
 export default function Settings() {
+    const [account] = useOutletContext()
+
+
     const [picData,setPicData] = useState({
         url:''
     })
