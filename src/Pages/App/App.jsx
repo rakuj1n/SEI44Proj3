@@ -25,9 +25,9 @@ export default function App() {
           <Route path='/orders' element={<OrderHistoryPage />} />
           <Route path='/orders/new' element={<NewOrderPage />} />
           <Route path='/users/:userId/friends' element={<MyFriendsPage />} />
-          <Route path='/users/:userId' element={<AccountPage />}>
-            <Route path='/users/:userId/settings' element={<Settings />} />
-            <Route path='/users/:userId' element={<Profile />} />
+          <Route path='/users/:userId' element={<AccountPage user={user}/>}>
+            <Route path='/users/:userId/settings' element={<Settings user={user}/>} />
+            <Route path='/users/:userId' element={<Profile user={user}/>} />
           </Route>
         </Routes>
       </>

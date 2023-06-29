@@ -34,8 +34,15 @@ function checkToken(req,res) {
     res.json(req.exp)
 }
 
+async function getAll(req,res) {
+    const userId = req.params.userId
+    const user = await User.findById(userId)
+    res.json(user)
+}
+
 module.exports = {
     create,
     login,
-    checkToken
+    checkToken,
+    getAll
 }
