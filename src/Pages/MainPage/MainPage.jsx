@@ -26,6 +26,10 @@ const MainPage = () => {
             </div>
           )}
         </div>
+        <div className="movies-carousel">
+          {/* Carousel component to display movies */}
+          <Carousel>{/* Render movie images and details */}</Carousel>
+        </div>
       </div>
     </div>
   );
