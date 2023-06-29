@@ -11,4 +11,4 @@ const accountSchema = new Schema({
     timestamps: true,
 })
 
-module.exports = model('User',userSchema)
+module.exports = model('Account',accountSchema)

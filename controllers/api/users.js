@@ -1,11 +1,14 @@
 const User = require('../../models/api/user')
 const jwt = require('jsonwebtoken')
 const bcrypt= require('bcrypt')
-const user = require('../../models/api/user')
+const Account = require('../../models/api/account')
 
 const create = async (req,res) => {
     try {
-        const user = await User.create(req.body)
+        await User.create(req.body)
+        const user = await User.findOne({email: req.body.email})
+        console.log(user)
+        await Account.create({ user: user._id })
         const token = createJWT(user)
         res.status(201).json(token)
     } catch (err) {

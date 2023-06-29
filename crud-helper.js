@@ -3,7 +3,7 @@ require('./config/database')
 
 const User = require('./models/api/user')
 const Movie = require('./models/api/movie')
-const user = require('./models/api/user')
+const Account = require('./models/api/account')
 
 const userArr = [
     {
@@ -11,20 +11,12 @@ const userArr = [
         email: "userA@gmail.com",
         password: "$2b$06$xxE/AkQ.Q7L49wq7bxZrFOJLzz4HLrWCCHN9r5bKWJRB1/CMOPUDu", //userA1234
         picture: "https://picsum.photos/200",
-        following: [],
-        moviesRecommended: [],
-        watchHistory: [],
-        rentedMovies: []
     },
     {
         name: "userB",
         email: "userB@gmail.com",
         password: "$2b$06$5jEe2ShepEgPWLOTJgftj..Z0W9Rl9ELzCUCK5yvtvqDi1IqPSXD2", //userB1234
         picture: "https://picsum.photos/200",
-        following: [],
-        moviesRecommended: [],
-        watchHistory: [],
-        rentedMovies: []
     }
 ]
 
@@ -53,13 +45,18 @@ const movieArr = [
 
 async function initialSeed() {
     try {
+        await Account.deleteMany({})
         await User.deleteMany({})
         await Movie.deleteMany({})
+
         await User.insertMany(userArr)
         await Movie.insertMany(movieArr)
 
         const user1 = await User.findOne({name:"userA"})
         const user2 = await User.findOne({name:"userB"})
+        const acc1 = await Account.create({user: user1._id})
+        const acc2 = await Account.create({user: user2._id})
+
         const comment1 = {
             userId: user2._id,
             comment: 'Awesome movie!'
@@ -84,11 +81,11 @@ async function initialSeed() {
         movie2.comments.push(comment3)
         await movie2.save()
       
-        user1.following.push(user2._id)
-        user1.moviesRecommended.push(movie1._id)
-        user1.watchHistory.push(movie1._id)
-        user1.rentedMovies.push(movie1._id)
-        await user1.save()
+        acc1.following.push(user2._id)
+        acc1.moviesRecommended.push(movie1._id)
+        acc1.watchHistory.push(movie1._id)
+        acc1.rentedMovies.push(movie1._id)
+        await acc1.save()
 
     } catch (err) {
         console.log('error')
