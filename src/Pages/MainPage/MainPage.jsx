@@ -40,6 +40,16 @@ const MainPage = () => {
         <button className="movies-button">Movies</button>
         <button className="promotions-button">Promotions</button>
       </div>
+
+      <div className="now-showing-carousel">
+        {/* Carousel component to display now showing movies */}
+        <Carousel>{/* Render now showing movie images and details */}</Carousel>
+      </div>
+
+      <div className="promotion-section">
+        {/* Carousel component to display promotional items */}
+        <Carousel>{/* Render promotional item images */}</Carousel>
+      </div>
     </div>
   );
 };
