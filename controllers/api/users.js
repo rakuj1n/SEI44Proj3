@@ -55,9 +55,23 @@ async function getAccount(req,res) {
     }
 }
 
+async function update(req,res) {
+    const userId = req.params.userId
+    try {
+        const user = await User.findById(userId)
+        if (!user) throw new Error()
+        user.picture = req.body.url
+        await user.save()
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
 module.exports = {
     create,
     login,
     checkToken,
-    getAccount
+    getAccount,
+    update
 }

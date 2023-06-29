@@ -1,10 +1,12 @@
 import { useState } from "react"
-import { useOutletContext } from "react-router-dom"
+import { useOutletContext, useParams } from "react-router-dom"
+import sendRequest from "../../utilities/send-request"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Settings() {
-    const [account] = useOutletContext()
-
+    const {userId} = useParams()
+    const navigate = useNavigate()
 
     const [picData,setPicData] = useState({
         url:''
@@ -16,7 +18,12 @@ export default function Settings() {
     })
 
     function handleChangePic(e) {
-        setPicData(e.target.value)
+        setPicData((prev) => {
+            return {
+                ...prev,
+                [e.target.name]:e.target.value
+            }
+        }) 
     }
 
     function handleChangePass(e) {
@@ -31,6 +38,11 @@ export default function Settings() {
     function handleSubmitPicture(e) {
         e.preventDefault()
         console.log(picData)
+        async function getUserFromDb() {
+            await sendRequest(`/api/users/${userId}`,'PUT',picData)
+        }
+        getUserFromDb()
+        navigate(`/users/${userId}`)
     }
 
     function handleSubmitPassword(e) {

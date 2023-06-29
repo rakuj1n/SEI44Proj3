@@ -7,18 +7,10 @@ export default function AccountPage() {
     const {userId} = useParams()
     const [account, setAccount] = useState(null)
 
-    useEffect(() => {
-        async function getAccount() {
-            const account = await sendRequest(`/api/users/${userId}`,'GET')
-            setAccount(account[0])
-        }
-        getAccount()
-    },[])
-
     return (
         <main>
             <AccountSideBar userId={userId}/>  {/* protect this route, own user only */}
-            <Outlet context={[account]}/>
+            <Outlet context={[account,setAccount]}/>
         </main>
     )
 }
