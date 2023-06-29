@@ -6,6 +6,10 @@ import { Routes, Route } from 'react-router-dom';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import Navbar from '../../Components/Navbar';
 import { getUser } from '../../utilities/users-service';
+import MyFriendsPage from '../MyFriendsPage.jsx/MyFriendsPage';
+import AccountPage from '../AccountPage/AccountPage';
+import Settings from '../../Components/AccountPage/Settings';
+import Profile from '../../Components/AccountPage/Profile';
 
 export default function App() {
 
@@ -20,6 +24,11 @@ export default function App() {
         <Routes>
           <Route path='/orders' element={<OrderHistoryPage />} />
           <Route path='/orders/new' element={<NewOrderPage />} />
+          <Route path='/users/:userId/friends' element={<MyFriendsPage />} />
+          <Route path='/users/:userId' element={<AccountPage user={user}/>}>
+            <Route path='/users/:userId/settings' element={<Settings user={user}/>} />
+            <Route path='/users/:userId' element={<Profile user={user}/>} />
+          </Route>
         </Routes>
       </>
       :
