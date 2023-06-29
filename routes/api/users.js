@@ -9,6 +9,7 @@ router.post('/',usersCtrl.create)
 router.post('/login',usersCtrl.login)
 router.get('/check-token',ensureLoggedIn,usersCtrl.checkToken)
 router.get('/:userId',ensureLoggedIn,usersCtrl.getAccount)
-router.put('/:userId',ensureLoggedIn,usersCtrl.update)
+router.put('/:userId/pic',ensureLoggedIn,usersCtrl.updatePic)
+router.put('/:userId/password',ensureLoggedIn,usersCtrl.updatePass)
 
 module.exports = router

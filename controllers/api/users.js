@@ -43,7 +43,7 @@ async function getAccount(req,res) {
     try {
         const user = await User.findById(userId)
         if (!user) throw new Error()
-        const account = await Account.find({ user:user._id})
+        const account = await Account.findOne({ user:user._id})
         .populate('user')
         .populate('following')
         .populate('rentedMovies')
@@ -55,7 +55,7 @@ async function getAccount(req,res) {
     }
 }
 
-async function update(req,res) {
+async function updatePic(req,res) {
     const userId = req.params.userId
     try {
         const user = await User.findById(userId)
@@ -68,10 +68,28 @@ async function update(req,res) {
     }
 }
 
+async function updatePass(req,res) {
+    const userId = req.params.userId
+    try {
+        const user = await User.findOne({_id:userId})
+        if (!user) throw new Error()
+        const match = await bcrypt.compare(req.body.confirm,user.password)
+        if (!match) throw new Error()
+        user.password = req.body.password
+        await user.save()
+        console.log('saved')
+        res.status(200).json(user)
+    } catch (err) {
+        console.log('not matching')
+        res.status(400).json('Bad Credentials')
+    }
+}
+
 module.exports = {
     create,
     login,
     checkToken,
     getAccount,
-    update
+    updatePic,
+    updatePass
 }

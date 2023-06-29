@@ -17,15 +17,17 @@ export default function Profile() {
     useEffect(() => {
         async function getAccount() {
             const account = await sendRequest(`/api/users/${userId}`,'GET')
-            setAccount(account[0])
+            setAccount(account)
         }
         getAccount()
     },[userId])
 
+    const profilePic = account?.user.picture || 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png'
+
     return (
         <main>
             <h1>Profile</h1>
-            <img src={`${account?.user.picture}`}/>
+            <img alt='profile' width='15%' src={profilePic}/>
             <h3>{account?.user.name}</h3>
             <p>Following: {followingList}</p>
             <ViewHistory account={account}/>

@@ -17,7 +17,6 @@ export default function LoginForm({ setUser, handleAlreadyUser }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-        
       const user = await usersService.login(credentials);
       setUser(user);
     } catch {
@@ -30,9 +29,9 @@ export default function LoginForm({ setUser, handleAlreadyUser }) {
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
+          <input type="text" name="email" minlength="8" value={credentials.email} onChange={handleChange} required />
           <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+          <input type="password" name="password" minlength="8" value={credentials.password} onChange={handleChange} required />
           <button type="submit">LOG IN</button>
         </form>
       </div>
