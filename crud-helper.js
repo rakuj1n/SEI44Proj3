@@ -9,7 +9,7 @@ const userArr = [
     {
         name: "userA",
         email: "userA@gmail.com",
-        password: "userA1234",
+        password: "$2b$06$xxE/AkQ.Q7L49wq7bxZrFOJLzz4HLrWCCHN9r5bKWJRB1/CMOPUDu", //userA1234
         picture: "https://picsum.photos/200",
         following: [],
         moviesRecommended: [],
@@ -19,7 +19,7 @@ const userArr = [
     {
         name: "userB",
         email: "userB@gmail.com",
-        password: "userB1234",
+        password: "$2b$06$5jEe2ShepEgPWLOTJgftj..Z0W9Rl9ELzCUCK5yvtvqDi1IqPSXD2", //userB1234
         picture: "https://picsum.photos/200",
         following: [],
         moviesRecommended: [],

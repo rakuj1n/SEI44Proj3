@@ -8,6 +8,8 @@ import Navbar from '../../Components/Navbar';
 import { getUser } from '../../utilities/users-service';
 import MyFriendsPage from '../MyFriendsPage.jsx/MyFriendsPage';
 import AccountPage from '../AccountPage/AccountPage';
+import Settings from '../../Components/AccountPage/Settings';
+import Profile from '../../Components/AccountPage/Profile';
 
 export default function App() {
 
@@ -23,7 +25,10 @@ export default function App() {
           <Route path='/orders' element={<OrderHistoryPage />} />
           <Route path='/orders/new' element={<NewOrderPage />} />
           <Route path='/users/:userId/friends' element={<MyFriendsPage />} />
-          <Route path='/users/:userId' element={<AccountPage />} />
+          <Route path='/users/:userId' element={<AccountPage />}>
+            <Route path='/users/:userId/settings' element={<Settings />} />
+            <Route path='/users/:userId' element={<Profile />} />
+          </Route>
         </Routes>
       </>
       :
