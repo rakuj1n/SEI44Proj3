@@ -1,18 +1,14 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
-const actorSchema = new Schema({
-    actorName: {type: String}
-})
-
 const commentSchema = new Schema({
-    userId: {type: String},
+    userId: {type: Schema.Types.ObjectId, ref:'User'},
     comment: {type: String} 
 },{timestamps: true})
 
 const movieSchema = new Schema({
     title: {type: String},
-    actor: [actorSchema],
+    actor: [{type: String}],
     details: {type: String},
     poster: {type: String},
     director: {type: String},
