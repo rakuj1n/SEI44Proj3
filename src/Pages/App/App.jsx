@@ -11,6 +11,8 @@ import MyFriendsPage from "../MyFriendsPage.jsx/MyFriendsPage";
 import AccountPage from "../AccountPage/AccountPage";
 import Settings from "../../Components/AccountPage/Settings";
 import Profile from "../../Components/AccountPage/Profile";
+import LogInPage from "../LogInPage/LogInPage";
+import SignUpPage from "../SignUpPage/SignUpPage";
 import KinoloungePage from "../Kinolounge/KinoloungePage";
 import PlayMoviePage from "../PlayMoviePage/PlayMoviePage";
 import MoviesPage from "../../Components/MoviesPage/MoviesPage";
@@ -22,8 +24,7 @@ import ShawShowcasePage from "../Kinolounge/ShawShowcase";
 import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
 
 export default function App() {
-  // const [user, setUser] = useState(getUser());
-  const [user, setUser] = useState("Hi");
+  const [user, setUser] = useState(getUser());
 
   return (
     <main className="App">
@@ -70,7 +71,10 @@ export default function App() {
           </Routes>
         </>
       ) : (
-        <AuthPage setUser={setUser} />
+        <AuthPage setUser={setUser}>
+          <Route path="/" element={<LogInPage />} />
+          <Route path="/register" element={<SignUpPage />} />
+        </AuthPage>
       )}
     </main>
   );
