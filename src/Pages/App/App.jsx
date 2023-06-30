@@ -20,8 +20,8 @@ import ShawShowcasePage from "../Kinolounge/ShawShowcase";
 import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
 
 export default function App() {
-  // const [user, setUser] = useState(getUser());
-  const [user, setUser] = useState("Hi");
+  const [user, setUser] = useState(getUser());
+  // const [user, setUser] = useState("Hi");
 
   return (
     <main className="App">
