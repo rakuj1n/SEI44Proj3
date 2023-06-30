@@ -4,7 +4,8 @@ export default function MovieCard({ item }) {
 
     return (
         <div>
-            {item}
+            <p><strong>{item.title}</strong></p>
+            <img width='15%' src={item.poster}/>
         </div>
     )
 }

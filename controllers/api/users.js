@@ -1,4 +1,5 @@
 const User = require('../../models/api/user')
+const Movie = require('../../models/api/movie')
 const jwt = require('jsonwebtoken')
 const bcrypt= require('bcrypt')
 const Account = require('../../models/api/account')
@@ -37,15 +38,58 @@ function checkToken(req,res) {
     res.json(req.exp)
 }
 
-async function getAll(req,res) {
+async function getAccount(req,res) {
     const userId = req.params.userId
-    const user = await User.findById(userId)
-    res.json(user)
+    try {
+        const user = await User.findById(userId)
+        if (!user) throw new Error()
+        const account = await Account.findOne({ user:user._id})
+        .populate('user')
+        .populate('following')
+        .populate('rentedMovies')
+        .populate('moviesRecommended')
+        .populate('watchHistory')
+        res.status(200).json(account)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
+async function updatePic(req,res) {
+    const userId = req.params.userId
+    try {
+        const user = await User.findById(userId)
+        if (!user) throw new Error()
+        user.picture = req.body.url
+        await user.save()
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
+async function updatePass(req,res) {
+    const userId = req.params.userId
+    try {
+        const user = await User.findOne({_id:userId})
+        if (!user) throw new Error()
+        const match = await bcrypt.compare(req.body.confirm,user.password)
+        if (!match) throw new Error()
+        user.password = req.body.password
+        await user.save()
+        console.log('saved')
+        res.status(200).json(user)
+    } catch (err) {
+        console.log('not matching')
+        res.status(400).json('Bad Credentials')
+    }
 }
 
 module.exports = {
     create,
     login,
     checkToken,
-    getAll
+    getAccount,
+    updatePic,
+    updatePass
 }

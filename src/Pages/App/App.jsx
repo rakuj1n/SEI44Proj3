@@ -39,12 +39,12 @@ export default function App() {
               element={<MainPage user={user} />}
             />
             <Route path="/users/:userId/friends" element={<MyFriendsPage />} />
-            <Route path="/users/:userId" element={<AccountPage user={user} />}>
+            <Route path="/users/:userId" element={<AccountPage  />}>
               <Route
                 path="/users/:userId/settings"
-                element={<Settings user={user} />}
+                element={<Settings  />}
               />
-              <Route path="/users/:userId" element={<Profile user={user} />} />
+              <Route path="/users/:userId" element={<Profile  />} />
             </Route>
             <Route path="/kinolounge" element={<KinoloungePage />} />
             {/* To add /:movieId */}
