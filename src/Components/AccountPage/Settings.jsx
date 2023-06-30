@@ -4,9 +4,10 @@ import sendRequest from "../../utilities/send-request"
 import { useNavigate } from "react-router-dom"
 
 
-export default function Settings() {
+export default function Settings({user}) {
     const {userId} = useParams()
     const navigate = useNavigate()
+    const isUser = user._id == userId
 
     const [picData,setPicData] = useState({
         url:''
@@ -65,6 +66,8 @@ export default function Settings() {
     },[disabled])
 
     return (
+        <>
+        {isUser ? 
         <main>
             <h3>Change My Profile Picture</h3>
             <form onSubmit={handleSubmitPicture}>
@@ -77,6 +80,10 @@ export default function Settings() {
                 <label>New Password:<input minLength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
                 <button disabled={disabled}>Submit</button>
             </form>
-        </main>
+        </main> 
+        : 
+        <p>Unauthorised.</p>
+        }
+        </>
     )
 }

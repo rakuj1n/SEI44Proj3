@@ -6,11 +6,12 @@ import sendRequest from "../../utilities/send-request"
 import { useEffect, useState } from "react"
 
 
-export default function MyFriendsPage() {
+export default function MyFriendsPage({user}) {
 
     const {userId} = useParams()
     const [account,setAccount] = useState(null)
     const [trigger,setTrigger] = useState(false)
+    const isUser = user._id == userId
     
     let friendsNo = account?.following.length
     
@@ -30,8 +31,8 @@ export default function MyFriendsPage() {
     const [currSelectedFollowing, setCurrSelectedFollowing] = useState(null)
     const [currSelectedFollowingAccount,setCurrSelectedFollowingAccount] = useState(null)
 
-    function handleClick(userId) {
-        setCurrSelectedFollowing(userId)
+    function handleClick(id) {
+        setCurrSelectedFollowing(id)
         console.log("this",currSelectedFollowing)
     }
 
@@ -49,11 +50,17 @@ export default function MyFriendsPage() {
     },[currSelectedFollowing])
 
     return (
+        <>
+        {isUser ? 
         <main>
             <h1>Following ({friendsNo})</h1>
             <FriendList account={account} handleClick={handleClick}/>
             <AddFriends account={account} setTrigger={setTrigger}/>
             <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
         </main>
+        :
+        <p>Unauthorised.</p>
+        }
+        </>
     )
 }

@@ -3,13 +3,14 @@ import AccountSideBar from '../../Components/AccountPage/AccountSideBar'
 import { useEffect, useState } from 'react'
 import sendRequest from "../../utilities/send-request"
 
-export default function AccountPage() {
+export default function AccountPage({user}) {
     const {userId} = useParams()
     const [account, setAccount] = useState(null)
+    const isUser = user._id == userId
 
     return (
         <main>
-            <AccountSideBar userId={userId}/>  {/* protect this route, own user only */}
+            {isUser && <AccountSideBar userId={userId}/>}
             <Outlet context={[account,setAccount]}/>
         </main>
     )
