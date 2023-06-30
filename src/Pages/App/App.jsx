@@ -13,6 +13,7 @@ import Settings from "../../Components/AccountPage/Settings";
 import Profile from "../../Components/AccountPage/Profile";
 import KinoloungePage from "../Kinolounge/KinoloungePage";
 import PlayMoviePage from "../PlayMoviePage/PlayMoviePage";
+import PaymentsPage from "../PaymentsPage/PaymentsPage";
 
 export default function App() {
   // const [user, setUser] = useState(getUser());
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/kinolounge" element={<KinoloungePage />} />
             {/* To add /:movieId */}
             <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
+            <Route path="/payments" element={<PaymentsPage />} />
           </Routes>
         </>
       ) : (

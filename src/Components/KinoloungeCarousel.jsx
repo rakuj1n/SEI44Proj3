@@ -52,7 +52,7 @@ export default function KinoCarousel() {
           <p className="pic2">pic2</p>
         </div>
         <div>
-          <h3 style={contentStyle}>3</h3>
+          <h3 style={contentStyle}>woof woof</h3>
         </div>
         <div>
           <h3 style={contentStyle}>4</h3>
