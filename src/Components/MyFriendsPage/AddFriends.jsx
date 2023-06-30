@@ -1,9 +1,15 @@
+import { PlusSquareOutlined } from "@ant-design/icons";
 
 
 export default function AddFriends() {
+
+    function handleClick() {
+        
+    }
+
     return (
         <>
-            addfriendbutton
+            <PlusSquareOutlined onClick={handleClick}/>
         </>
     )
 }

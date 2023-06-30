@@ -1,7 +1,6 @@
 import AddFriends from "../../Components/MyFriendsPage/AddFriends"
 import FriendList from "../../Components/MyFriendsPage/FriendList"
 import MovieRecoList from "../../Components/MyFriendsPage/MovieRecoList"
-import SearchFriends from "../../Components/MyFriendsPage/SearchFriends"
 import { useParams } from "react-router-dom"
 import sendRequest from "../../utilities/send-request"
 import { useEffect, useState } from "react"
@@ -49,9 +48,8 @@ export default function MyFriendsPage() {
     return (
         <main>
             <h1>Following ({friendsNo})</h1>
-            <SearchFriends />
-            <AddFriends />
             <FriendList account={account} handleClick={handleClick}/>
+            <AddFriends />
             <h2>Their Most Recent Recommendations</h2>
             <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
         </main>

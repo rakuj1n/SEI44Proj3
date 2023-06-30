@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import sendRequest from "../../utilities/send-request"
+import SearchFriends from "./SearchFriends"
 
 export default function FriendList({account, handleClick}) {
 
@@ -13,6 +14,7 @@ export default function FriendList({account, handleClick}) {
     return (
         <div>
             {friendList}
+            <SearchFriends />
         </div>
     )
 }
