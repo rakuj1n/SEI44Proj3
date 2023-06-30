@@ -6,6 +6,8 @@ const logger = require("morgan");
 require("dotenv").config();
 require("./config/database");
 
+const moviesRouter = require("./routes/api/moviesRoutes");
+
 const app = express();
 
 app.use(logger("dev"));
@@ -18,8 +20,7 @@ app.use(require("./config/checkToken"));
 
 //__routes
 app.use("/api/users", require("./routes/api/users"));
-app.use("/api/movies", require("./routes/api/movies"));
-
+app.use("/api/movies", moviesRouter);
 //__________
 
 //--catch all

@@ -15,6 +15,11 @@ import KinoloungePage from "../Kinolounge/KinoloungePage";
 import PlayMoviePage from "../PlayMoviePage/PlayMoviePage";
 import MoviesPage from "../../Components/MoviesPage/MoviesPage";
 import MoviesDetailPage from "../../Components/MoviesPage/MoviesDetailsPage";
+import PaymentsPage from "../PaymentsPage/PaymentsPage";
+import SFSPicksPage from "../Kinolounge/SFSPicksPage";
+import LeFrenchCinema from "../Kinolounge/LeFrenchCinemaPage";
+import ShawShowcasePage from "../Kinolounge/ShawShowcase";
+import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
 
 export default function App() {
   // const [user, setUser] = useState(getUser());
@@ -45,6 +50,23 @@ export default function App() {
             <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/movies/:title" element={<MoviesDetailPage />} />
+            <Route path="/payments" element={<PaymentsPage />} />
+            <Route>
+              <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
+              <Route path="kinolounge/page/sfs" element={<SFSPicksPage />} />
+              <Route
+                path="kinolounge/page/le-french-cinema"
+                element={<LeFrenchCinema />}
+              />
+              <Route
+                path="kinolounge/page/shaw-showcase"
+                element={<ShawShowcasePage />}
+              />
+              <Route
+                path="kinolounge/page/p-ramlee-classic"
+                element={<PRamleeClassicFilmsPage />}
+              />
+            </Route>
           </Routes>
         </>
       ) : (
