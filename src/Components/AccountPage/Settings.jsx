@@ -72,8 +72,8 @@ export default function Settings() {
             </form>
             <h3>Change My Password</h3>
             <form onSubmit={handleSubmitPassword}>
-                <label>Current Password:<input minlength="8" type='password' name='confirm' value={passData.confirm} onChange={handleChangePass} required></input></label><span>{error}</span>
-                <label>New Password:<input minlength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
+                <label>Current Password:<input minLength="8" type='password' name='confirm' value={passData.confirm} onChange={handleChangePass} required></input></label><span>{error}</span>
+                <label>New Password:<input minLength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
                 <button disabled={disabled}>Submit</button>
             </form>
         </main>

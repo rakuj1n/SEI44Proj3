@@ -29,9 +29,9 @@ export default function LoginForm({ setUser, handleAlreadyUser }) {
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Email</label>
-          <input type="text" name="email" minlength="8" value={credentials.email} onChange={handleChange} required />
+          <input type="text" name="email" minLength="8" value={credentials.email} onChange={handleChange} required />
           <label>Password</label>
-          <input type="password" name="password" minlength="8" value={credentials.password} onChange={handleChange} required />
+          <input type="password" name="password" minLength="8" value={credentials.password} onChange={handleChange} required />
           <button type="submit">LOG IN</button>
         </form>
       </div>

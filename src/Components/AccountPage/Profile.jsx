@@ -16,8 +16,12 @@ export default function Profile() {
 
     useEffect(() => {
         async function getAccount() {
-            const account = await sendRequest(`/api/users/${userId}`,'GET')
-            setAccount(account)
+            try {
+                const account = await sendRequest(`/api/users/${userId}`,'GET')
+                setAccount(account)
+            } catch (err) {
+                console.log(err)
+            }
         }
         getAccount()
     },[userId])
