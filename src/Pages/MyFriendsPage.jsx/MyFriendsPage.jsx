@@ -51,7 +51,6 @@ export default function MyFriendsPage() {
             <h1>Following ({friendsNo})</h1>
             <FriendList account={account} handleClick={handleClick}/>
             <AddFriends />
-            <h2>Their Most Recent Recommendations</h2>
             <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
         </main>
     )
