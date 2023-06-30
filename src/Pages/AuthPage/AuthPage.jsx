@@ -1,22 +1,19 @@
-import LoginForm from "../../Components/LoginForm";
-import SignUpForm from "../SignUpForm/SignUpForm";
-import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import LogInPage from "../LogInPage/LogInPage";
+import SignUpPage from "../SignUpPage/SignUpPage";
 
-export default function AuthPage({setUser}) {
+export default function AuthPage({ setUser }) {
+  const [alreadyUser, setAlreadyUser] = useState(true);
+  const location = useLocation();
 
-  const [alreadyUser,setAlreadyUser] = useState(true)
+  useEffect(() => {
+    if (location.pathname === "/register") {
+      setAlreadyUser(false);
+    } else {
+      setAlreadyUser(true);
+    }
+  }, [location]);
 
-  function handleAlreadyUser() {
-    setAlreadyUser((prev) => !prev)
-  }
-
-  return (
-    <main>
-      <h1>AuthPage</h1>
-      {alreadyUser ? 
-      <LoginForm handleAlreadyUser={handleAlreadyUser} setUser={setUser}/>
-      :
-      <SignUpForm handleAlreadyUser={handleAlreadyUser} setUser={setUser}/> }
-    </main>
-  );
+  return <main>{alreadyUser ? <LogInPage /> : <SignUpPage />}</main>;
 }
