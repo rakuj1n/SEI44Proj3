@@ -30,6 +30,7 @@ export default function MyFriendsPage() {
 
     function handleClick(userId) {
         setCurrSelectedFollowing(userId)
+        console.log("this",currSelectedFollowing)
     }
 
     useEffect(() => {

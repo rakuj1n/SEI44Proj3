@@ -17,6 +17,18 @@ const userArr = [
         email: "userB@gmail.com",
         password: "$2b$06$5jEe2ShepEgPWLOTJgftj..Z0W9Rl9ELzCUCK5yvtvqDi1IqPSXD2", //userB1234
         picture: "https://picsum.photos/200",
+    },
+    {
+        name: "hello",
+        email: "hello@gmail.com",
+        password: "$2b$06$5jEe2ShepEgPWLOTJgftj..Z0W9Rl9ELzCUCK5yvtvqDi1IqPSXD2", //userB1234 
+        picture: "https://picsum.photos/200",
+    },
+    {
+        name: "goodbye",
+        email: "goodbye@gmail.com",
+        password: "$2b$06$5jEe2ShepEgPWLOTJgftj..Z0W9Rl9ELzCUCK5yvtvqDi1IqPSXD2", //userB1234
+        picture: "https://picsum.photos/200",
     }
 ]
 
@@ -54,8 +66,12 @@ async function initialSeed() {
 
         const user1 = await User.findOne({name:"userA"})
         const user2 = await User.findOne({name:"userB"})
+        const user3 = await User.findOne({name:"hello"})
+        const user4 = await User.findOne({name:"goodbye"})
         const acc1 = await Account.create({user: user1._id})
         const acc2 = await Account.create({user: user2._id})
+        const acc3 = await Account.create({user: user3._id})
+        const acc4 = await Account.create({user: user4._id})
 
         const comment1 = {
             userId: user2._id,
@@ -82,6 +98,8 @@ async function initialSeed() {
         await movie2.save()
       
         acc1.following.push(user2._id)
+        acc1.following.push(user3._id)
+        acc1.following.push(user4._id)
         acc1.moviesRecommended.push(movie1._id)
         acc1.watchHistory.push(movie1._id)
         acc1.rentedMovies.push(movie1._id)
