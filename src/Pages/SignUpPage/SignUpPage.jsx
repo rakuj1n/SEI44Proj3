@@ -5,7 +5,7 @@ export default function SignUpPage({ setUser }) {
   return (
     <div>
       <h1>Sign Up</h1>
-      <SignUpForm />
+      <SignUpForm setUser={setUser} />
       <p>
         Already a Shaw Theatres member? <Link to="/">Sign in now.</Link>
       </p>
