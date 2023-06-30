@@ -1,13 +1,13 @@
 import {  Button, Drawer  } from 'antd'
 import { useState } from "react"
 import sendRequest from "../../utilities/send-request"
-import { useParams } from "react-router"
 
-export default function AddFriends({account,setTrigger}) {
+
+export default function AddFriends({account,setTrigger,user}) {
     const [input,setInput] = useState('')
     const [open, setOpen] = useState(false)
-    const {userId} = useParams()
     const [error,setError] = useState('')
+    console.log('addfriendsuser',user?._id)
 
     function showDrawer() {
         setOpen(true);
@@ -19,7 +19,7 @@ export default function AddFriends({account,setTrigger}) {
     async function handleAdd(e) {
         e.preventDefault()
         try {
-            await sendRequest(`/api/users/${userId}/friend`,'PUT',{username:input})
+            await sendRequest(`/api/users/${user?._id}/friend`,'PUT',{username:input})
             onClose()
             setTrigger(prev => !prev)
         } catch (err) {

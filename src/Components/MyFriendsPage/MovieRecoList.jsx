@@ -2,7 +2,7 @@
 
 export default function MovieRecoList({currSelectedFollowingAccount,currSelectedFollowing,account}) {
 
-    console.log("user",currSelectedFollowing)
+    console.log("currSelectedFollowing",currSelectedFollowing)
     
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (

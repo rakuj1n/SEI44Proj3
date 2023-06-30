@@ -18,7 +18,7 @@ export default function MyFriendsPage({user}) {
     useEffect(() => {
         async function getAccount() {
             try {
-                const account = await sendRequest(`/api/users/${userId}`,'GET')
+                const account = await sendRequest(`/api/users/${user._id}`,'GET')
                 setAccount(account)
                 console.log('account',account)
             } catch (err) {
@@ -26,7 +26,7 @@ export default function MyFriendsPage({user}) {
             }
         }
         getAccount()
-    },[userId,trigger])
+    },[trigger])
 
     const [currSelectedFollowing, setCurrSelectedFollowing] = useState(null)
     const [currSelectedFollowingAccount,setCurrSelectedFollowingAccount] = useState(null)
@@ -55,7 +55,7 @@ export default function MyFriendsPage({user}) {
         <main>
             <h1>Following ({friendsNo})</h1>
             <FriendList account={account} handleClick={handleClick}/>
-            <AddFriends account={account} setTrigger={setTrigger}/>
+            <AddFriends account={account} user={user} setTrigger={setTrigger}/>
             <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
         </main>
         :

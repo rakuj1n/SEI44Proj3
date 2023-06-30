@@ -39,8 +39,8 @@ export default function Settings({user}) {
     async function handleSubmitPicture(e) {
         e.preventDefault()
         try {
-            await sendRequest(`/api/users/${userId}/pic`,'PUT',picData)
-            navigate(`/users/${userId}`)
+            await sendRequest(`/api/users/${user._id}/pic`,'PUT',picData)
+            navigate(`/users/${user._id}`)
         } catch (err) {
             console.log(err)
         }       
@@ -51,8 +51,8 @@ export default function Settings({user}) {
     async function handleSubmitPassword(e) {
         e.preventDefault()
         try {
-            await sendRequest(`/api/users/${userId}/password`,'PUT',passData)
-            navigate(`/users/${userId}`)
+            await sendRequest(`/api/users/${user._id}/password`,'PUT',passData)
+            navigate(`/users/${user._id}`)
         } catch (err) {
             setError('Please re-enter current password.')
         }
