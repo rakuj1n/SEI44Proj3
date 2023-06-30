@@ -1,8 +1,9 @@
+import { useOutletContext } from "react-router-dom"
 import MovieCard from "../MovieCard"
 
-export default function ViewHistory({ user }) {
-
-    const watchedList = user.watchHistory.map((item) => {
+export default function ViewHistory({account}) {
+    console.log("viewhist", account)
+    const watchedList = account?.watchHistory.map((item) => {
         return (
             <MovieCard item={item}/>
         )
@@ -10,7 +11,7 @@ export default function ViewHistory({ user }) {
 
     return (
         <div>
-            <h1>user's view history here</h1>
+            <h2>Your Watch History</h2>
             <div>{watchedList}</div>
         </div>
     )

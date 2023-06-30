@@ -6,22 +6,25 @@ import { Routes, Route } from "react-router-dom";
 import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
 import Navbar from "../../Components/Navbar";
 import { getUser } from "../../utilities/users-service";
-import MainPage from "../MainPage/MainPage";
+import MainPage from "../../Components/MainPage/MainPage";
 import MyFriendsPage from "../MyFriendsPage.jsx/MyFriendsPage";
 import AccountPage from "../AccountPage/AccountPage";
 import Settings from "../../Components/AccountPage/Settings";
 import Profile from "../../Components/AccountPage/Profile";
+import LogInPage from "../LogInPage/LogInPage";
+import SignUpPage from "../SignUpPage/SignUpPage";
 import KinoloungePage from "../Kinolounge/KinoloungePage";
 import PlayMoviePage from "../PlayMoviePage/PlayMoviePage";
+import MoviesDetailPage from "../../Components/MoviesPage/MoviesDetailsPage";
 import PaymentsPage from "../PaymentsPage/PaymentsPage";
 import SFSPicksPage from "../Kinolounge/SFSPicksPage";
 import LeFrenchCinema from "../Kinolounge/LeFrenchCinemaPage";
 import ShawShowcasePage from "../Kinolounge/ShawShowcase";
 import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
+import MoviesPage from "../../Components/MoviesPage/MoviesPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  // const [user, setUser] = useState("Hi");
 
   return (
     <main className="App">
@@ -31,17 +34,20 @@ export default function App() {
           <Routes>
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route path="/mainpage" element={<MainPage />} />
+            <Route
+              path="/mainpage/:userId"
+              element={<MainPage user={user} />}
+            />
             <Route path="/users/:userId/friends" element={<MyFriendsPage />} />
-            <Route path="/users/:userId" element={<AccountPage user={user} />}>
-              <Route
-                path="/users/:userId/settings"
-                element={<Settings user={user} />}
-              />
-              <Route path="/users/:userId" element={<Profile user={user} />} />
+            <Route path="/users/:userId" element={<AccountPage />}>
+              <Route path="/users/:userId/settings" element={<Settings />} />
+              <Route path="/users/:userId" element={<Profile />} />
             </Route>
             <Route path="/kinolounge" element={<KinoloungePage />} />
             {/* To add /:movieId */}
+            <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/movies/:title" element={<MoviesDetailPage />} />
             <Route path="/payments" element={<PaymentsPage />} />
             <Route>
               <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
@@ -62,7 +68,10 @@ export default function App() {
           </Routes>
         </>
       ) : (
-        <AuthPage setUser={setUser} />
+        <AuthPage setUser={setUser}>
+          <Route path="/" element={<LogInPage />} />
+          <Route path="/register" element={<SignUpPage />} />
+        </AuthPage>
       )}
     </main>
   );

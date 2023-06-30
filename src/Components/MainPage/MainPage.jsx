@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 
-const MainPage = () => {
+const MainPage = ({ user }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -19,12 +19,14 @@ const MainPage = () => {
           <button className="user-nav-button" onClick={toggleDropdown}>
             User Options
           </button>
-          {isDropdownOpen && (
-            <div className="dropdown-content">
-              <Link to="/my-account">My Account</Link>
-              <Link to="/my-friends">My Friends</Link>
-            </div>
-          )}
+          {isDropdownOpen &&
+            user && ( // Ensure user is defined
+              <div className="dropdown-content">
+                <Link to={`/users/${user.id}`}>My Profile</Link>
+                <Link to={`/users/${user.id}/friends`}>My Friends</Link>
+                <Link to={`/users/${user.id}/settings`}>Settings</Link>
+              </div>
+            )}
         </div>
       </div>
 
@@ -37,8 +39,12 @@ const MainPage = () => {
         <Link to="/kinolounge" className="kinolounge-link">
           Kinolounge
         </Link>
-        <button className="movies-button">Movies</button>
-        <button className="promotions-button">Promotions</button>
+        <Link to="/movies" className="movies-button">
+          Movies
+        </Link>
+        <Link to="/promotions" className="promotions-button">
+          Promotions
+        </Link>
       </div>
 
       <div className="now-showing-carousel">

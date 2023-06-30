@@ -1,7 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useOutletContext, useParams } from "react-router-dom"
+import sendRequest from "../../utilities/send-request"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Settings() {
+    const {userId} = useParams()
+    const navigate = useNavigate()
+
     const [picData,setPicData] = useState({
         url:''
     })
@@ -12,7 +18,12 @@ export default function Settings() {
     })
 
     function handleChangePic(e) {
-        setPicData(e.target.value)
+        setPicData((prev) => {
+            return {
+                ...prev,
+                [e.target.name]:e.target.value
+            }
+        }) 
     }
 
     function handleChangePass(e) {
@@ -24,16 +35,34 @@ export default function Settings() {
         })
     }
 
-    function handleSubmitPicture(e) {
+    async function handleSubmitPicture(e) {
         e.preventDefault()
-        console.log(picData)
+        try {
+            await sendRequest(`/api/users/${userId}/pic`,'PUT',picData)
+            navigate(`/users/${userId}`)
+        } catch (err) {
+            console.log(err)
+        }       
     }
 
-    function handleSubmitPassword(e) {
+    const [error,setError] = useState('')
+
+    async function handleSubmitPassword(e) {
         e.preventDefault()
-        console.log(passData)
+        try {
+            await sendRequest(`/api/users/${userId}/password`,'PUT',passData)
+            navigate(`/users/${userId}`)
+        } catch (err) {
+            setError('Please re-enter current password.')
+        }
     }
 
+    const disabled = passData.confirm !== "" && (passData.confirm == passData.password)
+
+    useEffect(() => {
+        if (disabled) setError('Current Password and New Password cannot be the same.')
+        if (!disabled) setError('')
+    },[disabled])
 
     return (
         <main>
@@ -44,9 +73,9 @@ export default function Settings() {
             </form>
             <h3>Change My Password</h3>
             <form onSubmit={handleSubmitPassword}>
-                <label>Current Password:<input type='password' name='confirm' value={passData.confirm} onChange={handleChangePass} required></input></label>
-                <label>New Password:<input type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
-                <button>Submit</button>
+                <label>Current Password:<input minLength="8" type='password' name='confirm' value={passData.confirm} onChange={handleChangePass} required></input></label><span>{error}</span>
+                <label>New Password:<input minLength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
+                <button disabled={disabled}>Submit</button>
             </form>
         </main>
     )
