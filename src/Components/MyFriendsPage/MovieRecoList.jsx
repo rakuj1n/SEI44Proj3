@@ -1,7 +1,9 @@
 
 
 export default function MovieRecoList({currSelectedFollowingAccount,currSelectedFollowing,account}) {
+
     console.log("user",currSelectedFollowing)
+    
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (
             <div key={item._id}>
@@ -16,7 +18,8 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
 
     return (
         <div>
-            <h2>{(account?.following.find(item => item._id === currSelectedFollowing))?.name}'s Recommendations</h2> 
+            {currSelectedFollowing && <h2>{(account?.following.find(item => item._id === currSelectedFollowing))?.name}'s Recommendations</h2>} 
+            {!currSelectedFollowing && <h2>Your Following Recommendations</h2>}
             {movieRecoList}
         </div>
     )

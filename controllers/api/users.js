@@ -85,11 +85,29 @@ async function updatePass(req,res) {
     }
 }
 
+async function updateFriend(req,res) {
+    const userId = req.params.userId
+    try {
+        const userToAdd = await User.findOne({name:req.body.username})
+        if (!userToAdd) throw new Error("No such user.")
+        console.log(userToAdd._id.toString(),req.params.userId)
+        if (userToAdd._id.toString() === req.params.userId) throw new Error("Cannot add self.") 
+        const account = await Account.findOne({user:userId})
+        if (account.following.includes(userToAdd._id)) throw new Error("Already added.")
+        await Account.findOneAndUpdate({user:userId},{$addToSet:{following:userToAdd._id}})
+        console.log('saved')
+        res.status(200).json(account)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
 module.exports = {
     create,
     login,
     checkToken,
     getAccount,
     updatePic,
-    updatePass
+    updatePass,
+    updateFriend
 }

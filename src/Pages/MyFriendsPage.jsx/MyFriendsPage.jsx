@@ -8,22 +8,24 @@ import { useEffect, useState } from "react"
 
 export default function MyFriendsPage() {
 
-    let friendsNo = 1
     const {userId} = useParams()
     const [account,setAccount] = useState(null)
-
+    const [trigger,setTrigger] = useState(false)
+    
+    let friendsNo = account?.following.length
+    
     useEffect(() => {
         async function getAccount() {
             try {
                 const account = await sendRequest(`/api/users/${userId}`,'GET')
                 setAccount(account)
-                console.log(account)
+                console.log('account',account)
             } catch (err) {
                 console.log(err)
             }
         }
         getAccount()
-    },[userId])
+    },[userId,trigger])
 
     const [currSelectedFollowing, setCurrSelectedFollowing] = useState(null)
     const [currSelectedFollowingAccount,setCurrSelectedFollowingAccount] = useState(null)
@@ -38,7 +40,7 @@ export default function MyFriendsPage() {
             try {
                 const account = await sendRequest(`/api/users/${currSelectedFollowing}`,'GET')
                 setCurrSelectedFollowingAccount(account)
-                console.log("account",account)
+                console.log("following",account)
             } catch (err) {
                 console.log(err)
             }
@@ -50,7 +52,7 @@ export default function MyFriendsPage() {
         <main>
             <h1>Following ({friendsNo})</h1>
             <FriendList account={account} handleClick={handleClick}/>
-            <AddFriends />
+            <AddFriends account={account} setTrigger={setTrigger}/>
             <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
         </main>
     )

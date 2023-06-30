@@ -1,11 +1,14 @@
-import { PlusSquareOutlined } from "@ant-design/icons"
 import {  Button, Drawer  } from 'antd'
 import { useState } from "react"
 import sendRequest from "../../utilities/send-request"
+import { useParams } from "react-router"
 
-export default function AddFriends() {
+export default function AddFriends({account,setTrigger}) {
     const [input,setInput] = useState('')
     const [open, setOpen] = useState(false)
+    const {userId} = useParams()
+    const [error,setError] = useState('')
+
     function showDrawer() {
         setOpen(true);
     };
@@ -15,18 +18,13 @@ export default function AddFriends() {
 
     async function handleAdd(e) {
         e.preventDefault()
-        console.log(input)
-        // try {
-        //     await sendRequest(`/api/users/${userId}/pic`,'PUT',picData)
-        //     navigate(`/users/${userId}`)
-        // } catch (err) {
-        //     console.log(err)
-        // }    
-        // search database for inputted user
-        // check if following array of logined user already has the inputted user in following array
-        // if not, push it in
-        // clear input
-        // "user followed!"
+        try {
+            await sendRequest(`/api/users/${userId}/friend`,'PUT',{username:input})
+            onClose()
+            setTrigger(prev => !prev)
+        } catch (err) {
+            setError("Error: Please check username.")
+        }    
     }
 
     function handleChange(e) {
@@ -43,6 +41,7 @@ export default function AddFriends() {
             <form onSubmit={handleAdd}>
                 <label><input name='input' value={input} onChange={handleChange}/></label>
                 <button>Follow</button>
+                <p>{error}</p>
             </form>
             
         </Drawer>
