@@ -3,20 +3,30 @@ import { Link } from "react-router-dom";
 export default function KinoloungeNavBar() {
   return (
     <>
+      <Link to="/kinolounge">
+        <img
+          src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
+          alt="logo_homepage"
+        />
+      </Link>
       <header>
         <div>
           <ul>
             <li>
-              <Link to="/kinolounge">SFS Picks</Link>
+              <Link to="/kinolounge/page/sfs">SFS Picks</Link>
             </li>
             <li>
-              <Link to="/kinolounge">Le French Cinema</Link>
+              <Link to="/kinolounge/page/le-french-cinema">
+                Le French Cinema
+              </Link>
             </li>
             <li>
-              <Link to="/kinolounge">Shaw Showcase</Link>
+              <Link to="/kinolounge/page/shaw-showcase">Shaw Showcase</Link>
             </li>
             <li>
-              <Link to="/kinolounge">P Ramlee Classic Films</Link>
+              <Link to="/kinolounge/page/p-ramlee-classic">
+                P Ramlee Classic Films
+              </Link>
             </li>
             <li>
               <Link to="/kinolounge">Friend's recommendations</Link>
