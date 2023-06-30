@@ -15,13 +15,13 @@ import LogInPage from "../LogInPage/LogInPage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import KinoloungePage from "../Kinolounge/KinoloungePage";
 import PlayMoviePage from "../PlayMoviePage/PlayMoviePage";
-import MoviesPage from "../../Components/MoviesPage/MoviesPage";
 import MoviesDetailPage from "../../Components/MoviesPage/MoviesDetailsPage";
 import PaymentsPage from "../PaymentsPage/PaymentsPage";
 import SFSPicksPage from "../Kinolounge/SFSPicksPage";
 import LeFrenchCinema from "../Kinolounge/LeFrenchCinemaPage";
 import ShawShowcasePage from "../Kinolounge/ShawShowcase";
 import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
+import MoviesPage from "../../Components/MoviesPage/MoviesPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
