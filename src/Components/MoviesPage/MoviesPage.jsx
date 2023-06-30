@@ -1,31 +1,27 @@
-const express = require("express");
-const router = express.Router();
-const Movie = require("../../../models/api/movie");
+import React, { useState, useEffect } from "react";
 
-// GET /api/movies
-router.get("/", async (req, res) => {
-  try {
-    const movies = await Movie.find();
-    res.json(movies);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
-  }
-});
+const MoviesPage = () => {
+  const [movies, setMovies] = useState([]);
 
-// GET /api/movies/:title
-router.get("/:title", async (req, res) => {
-  const title = req.params.title;
-  try {
-    const movie = await Movie.findOne({ title });
-    if (!movie) {
-      return res.status(404).json({ message: "Movie not found" });
-    }
-    res.json(movie);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
-  }
-});
+  useEffect(() => {
+    // Fetch movie data from the backend
+    fetch("/api/movies")
+      .then((response) => response.json())
+      .then((data) => setMovies(data))
+      .catch((error) => console.error(error));
+  }, []);
 
-module.exports = router;
+  return (
+    <div>
+      <h2>Movies</h2>
+      {movies.map((movie) => (
+        <div key={movie.id}>
+          <h3>{movie.title}</h3>
+          <p>{movie.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default MoviesPage;
