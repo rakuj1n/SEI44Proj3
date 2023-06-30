@@ -1,31 +1,36 @@
-const express = require('express')
-const path = require('path')
-const favicon = require('serve-favicon')
-const logger = require('morgan')
+const express = require("express");
+const path = require("path");
+const favicon = require("serve-favicon");
+const logger = require("morgan");
 
-require('dotenv').config()
-require('./config/database')
+require("dotenv").config();
+require("./config/database");
 
-const app = express()
+const moviesRouter = require("./routes/api/moviesRoutes");
 
-app.use(logger('dev'))
-app.use(express.json())
+const app = express();
 
-app.use(favicon(path.join(__dirname,'build','favicon.ico')))
-app.use(express.static(path.join(__dirname,'build')))
+app.use(logger("dev"));
+app.use(express.json());
 
-app.use(require('./config/checkToken'))
+app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
+app.use(express.static(path.join(__dirname, "build")));
+
+app.use(require("./config/checkToken"));
 
 //__routes
-app.use('/api/users',require('./routes/api/users'))
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/movies", moviesRouter);
 //__________
 
 //--catch all
-app.get('/*', (req,res) => res.sendFile(path.join(__dirname,'build','index.html')))
+app.get("/*", (req, res) =>
+  res.sendFile(path.join(__dirname, "build", "index.html"))
+);
 //----------
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
-    console.log(`Express running on port ${port}`)
-})
+app.listen(port, function () {
+  console.log(`Express running on port ${port}`);
+});
