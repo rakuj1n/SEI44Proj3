@@ -35,13 +35,14 @@ export default function Settings() {
         })
     }
 
-    function handleSubmitPicture(e) {
+    async function handleSubmitPicture(e) {
         e.preventDefault()
-        async function changeProfilePic() {
+        try {
             await sendRequest(`/api/users/${userId}/pic`,'PUT',picData)
-        }
-        changeProfilePic()
-        navigate(`/users/${userId}`)
+            navigate(`/users/${userId}`)
+        } catch (err) {
+            console.log(err)
+        }       
     }
 
     const [error,setError] = useState('')
