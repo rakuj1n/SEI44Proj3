@@ -15,5 +15,13 @@ export default function AuthPage({ setUser }) {
     }
   }, [location]);
 
-  return <main>{alreadyUser ? <LogInPage /> : <SignUpPage />}</main>;
+  return (
+    <main>
+      {alreadyUser ? (
+        <LogInPage setUser={setUser} />
+      ) : (
+        <SignUpPage setUser={setUser} />
+      )}
+    </main>
+  );
 }

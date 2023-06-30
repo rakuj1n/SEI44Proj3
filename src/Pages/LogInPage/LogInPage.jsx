@@ -1,11 +1,11 @@
 import LogInForm from "../../Components/LogInPage/LogInForm";
 import { Link } from "react-router-dom";
 
-export default function LogInPage() {
+export default function LogInPage({ setUser }) {
   return (
     <div>
       <h1>Sign In</h1>
-      <LogInForm />
+      <LogInForm setUser={setUser} />
       <p>
         New to Shaw Theatres? <Link to="/register">Sign up now.</Link>
       </p>
