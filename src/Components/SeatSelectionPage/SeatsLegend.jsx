@@ -5,11 +5,11 @@ import Container from "@mui/material/Container";
 export default function SeatLegend() {
   return (
     <Container maxWidth="ml">
-      <div className="seatLegendContainer">
+      <div className="seatsLegendContainer">
         <div className="legendHeader">
           <h4>Legend</h4>
         </div>
-        <div className="seatLegend">
+        <div className="seatsLegend">
           <div>
             <div>
               <EventSeatIcon sx={{ color: "white" }} />

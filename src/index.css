@@ -186,3 +186,33 @@ button[type="submit"] {
   text-align: center;
   width: 80px;
 }
+
+.seatsLegendContainer {
+  background-color: rgb(48, 44, 45);
+  color: white;
+  padding: 0px 20px 0px 20px;
+  height: 150px;
+}
+
+.legendHeader {
+  display: flex;
+}
+
+.seatsLegend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* .seatsLegend {
+  background-color: rgb(48, 44, 45);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 150px;
+  align-items: center;
+} */
