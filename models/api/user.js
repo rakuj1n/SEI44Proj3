@@ -12,6 +12,7 @@ const userSchema = new Schema({
     toJSON: {
         transform: function(doc,ret) {
             delete ret.password
+            delete ret.email
             return ret
         }
     }
