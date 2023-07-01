@@ -48,6 +48,7 @@ export default function App() {
             <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/movies/:title" element={<MoviesDetailsPage />} />
+
             <Route path="/payments" element={<PaymentsPage />} />
             <Route>
               <Route path="/kinolounge/movie" element={<PlayMoviePage />} />

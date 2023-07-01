@@ -5,18 +5,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const MainPage = ({ user }) => {
-  // const carouselSettings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  //   autoplay: true,
-  //   autoplaySpeed: 5000,
-  // };
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [promotions, setPromotions] = useState([
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1687924767873?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/17-photo-1686025585705?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673924882580?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/19-photo-1681977760547?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673925224046?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1686022927461?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673925312075?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673937754657?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673937965216?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938041767?w=145&dpr=1.3",
+    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938708790?w=145&dpr=1.3",
+  ]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -96,7 +99,7 @@ const MainPage = ({ user }) => {
             {movies
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
-                <div key={movie._id} className="movie-item">
+                <div key={movie.title} className="movie-item">
                   <img
                     src={movie.poster}
                     alt={movie.title}
@@ -110,6 +113,31 @@ const MainPage = ({ user }) => {
 
       <div className="promotion-section">
         <h2>Promotions</h2>
+        {promotions.length > 4 ? (
+          <Slider slidesToShow={4} slidesToScroll={1}>
+            {promotions.map((promotion, index) => (
+              <div key={index}>
+                <img
+                  src={promotion}
+                  alt={`Promotion ${index + 1}`}
+                  style={{ maxWidth: "200px", maxHeight: "300px" }}
+                />
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <div className="movies-row">
+            {promotions.map((promotion, index) => (
+              <div className="movie-item" key={index}>
+                <img
+                  src={promotion}
+                  alt={`Promotion ${index + 1}`}
+                  style={{ maxWidth: "200px", maxHeight: "300px" }}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
