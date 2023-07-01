@@ -4,22 +4,37 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    // Fetch movie data from the backend
-    fetch("/api/movies")
-      .then((response) => response.json())
-      .then((data) => setMovies(data))
-      .catch((error) => console.error(error));
+    fetchMovies();
   }, []);
+
+  const fetchMovies = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/movies");
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.movies);
+        setMovies(data.movies);
+      } else {
+        console.error("Failed to fetch movies");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
       <h2>Movies</h2>
-      {movies.map((movie) => (
-        <div key={movie.id}>
-          <h3>{movie.title}</h3>
-          <p>{movie.description}</p>
-        </div>
-      ))}
+      <div className="movies-grid">
+        {movies.map((movie) => (
+          <div key={movie.id} className="movie-item">
+            <img src={movie.poster} alt={movie.title} />
+            <div className="movie-details">
+              <h2>{movie.title}</h2>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
