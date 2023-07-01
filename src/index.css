@@ -215,3 +215,23 @@ button[type="submit"] {
 .movie-details p {
   margin-bottom: 10px;
 }
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+}
+
+.now-showing-carousel .movies-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.now-showing-carousel .movie-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
