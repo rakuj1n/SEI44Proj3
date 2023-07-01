@@ -47,7 +47,7 @@ export default function App() {
             {/* To add /:movieId */}
             <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
             <Route path="/movies" element={<MoviesPage />} />
-            <Route path="/movies/:title" element={<MoviesDetailPage />} />
+            <Route path="/movies/:id" element={<MoviesDetailPage />} />
             <Route path="/payments" element={<PaymentsPage />} />
             <Route>
               <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
