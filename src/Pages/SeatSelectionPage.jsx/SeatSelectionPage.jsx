@@ -1,4 +1,4 @@
-import SeatLegend from "../../Components/SeatSelectionPage/SeatLegend";
+import SeatsLegend from "../../Components/SeatSelectionPage/SeatsLegend";
 import TicketsTable from "../../Components/SeatSelectionPage/TicketsTable";
 import Stack from "@mui/material/Stack";
 
@@ -7,7 +7,7 @@ export default function SeatSelectionPage() {
     <>
       <h1>SeatSelectionPage</h1>
       <Stack spacing={0}>
-        <SeatLegend />
+        <SeatsLegend />
         <TicketsTable />
       </Stack>
 
