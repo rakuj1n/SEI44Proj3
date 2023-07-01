@@ -2,7 +2,7 @@ import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 
-export default function SearchFriends({setFiltered,handleFilter}) {
+export default function SearchFriends({setFiltered,handleFilter,setCurrSelectedFollowing}) {
     const [search, setSearch] = useState(false)
     const [searchInput, setSearchInput] = useState('')
 
@@ -22,6 +22,7 @@ export default function SearchFriends({setFiltered,handleFilter}) {
         setSearchInput('')
         setSearch(false)
         setFiltered(false)
+        setCurrSelectedFollowing(null)
     }
 
     function handleSearch(e) {

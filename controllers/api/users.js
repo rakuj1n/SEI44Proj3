@@ -113,7 +113,7 @@ async function getAllRecommendedForAnAccount(req,res) {
             { $group: {_id:null,moviesRecommended:{$addToSet: "$moviesRecommended"}} }
         ])
         const array2 = await Movie.populate(array, { path: 'moviesRecommended'})
-        const getAllRecommendedForAnAccount = await User.populate(array2,{path:'moviesRecommended.comments.userId', select:'name'})
+        const getAllRecommendedForAnAccount = await User.populate(array2,{path:'moviesRecommended.comments.userId', select:'name picture'})
         res.status(200).json(getAllRecommendedForAnAccount)
     } catch (err) {
         res.status(400).json(err)

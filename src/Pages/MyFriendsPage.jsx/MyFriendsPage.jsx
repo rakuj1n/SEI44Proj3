@@ -13,6 +13,8 @@ export default function MyFriendsPage({user}) {
     const [trigger,setTrigger] = useState(false)
     const isUser = user._id == userId
     const [status, setStatus] = useState('idle')
+    const [statusFriendList, setStatusFriendList] = useState('idle')
+
     const [allFollowingMovieRecoList,setAllFollowingMovieRecoList] = useState(null)
     
     let friendsNo = account?.following.length
@@ -20,14 +22,14 @@ export default function MyFriendsPage({user}) {
     // this useEffect retrieves logged-in user's account and sets it to account state to access following array
     useEffect(() => {
         async function getAccount() {
-            setStatus('loading')
+            setStatusFriendList('loading')
             try {
                 const account = await sendRequest(`/api/users/${user._id}`,'GET')
                 setAccount(account)
             } catch (err) {
                 console.log(err)
             }
-            setStatus('success')
+            setStatusFriendList('success')
         }
         getAccount()
     },[trigger])
@@ -67,7 +69,7 @@ export default function MyFriendsPage({user}) {
             setStatus('success')
         }
         getAllFollowingMovieRecoList()
-    },[])
+    },[trigger])
 
 
     return (
@@ -75,7 +77,7 @@ export default function MyFriendsPage({user}) {
         {isUser ? 
         <main>
             <h1>Following ({friendsNo})</h1>
-            {status !== 'loading' ? <FriendList account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
+            {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
             <AddFriends account={account} user={user} setTrigger={setTrigger}/>
             {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
         </main>

@@ -6,10 +6,13 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (
-            <div key={item._id}>
-                <p>{item.title}</p>
-                <img alt='poster' width='15%' src={item.poster}/>
-                <p>{(account?.following.find(item => item._id === currSelectedFollowing)).name} says: {(item?.comments.find(item => item.userId == currSelectedFollowing))?.comment}</p>
+            <div key={item?._id}>
+                <p>{item?.title}</p>
+                <img alt='poster' width='15%' src={item?.poster}/>
+                <div>
+                    <img width='5%' src={`${account?.user.picture}`} />
+                    <p>{(account?.following.find(item => item?._id === currSelectedFollowing))?.name} says: {(item?.comments.find(item => item?.userId == currSelectedFollowing))?.comment}</p>
+                </div>
                 <p>Movie Details</p>
             </div>
         )
@@ -20,19 +23,22 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
             <div key={item._id}>
                 <p>{item.title}</p>
                 <img alt='poster' width='15%' src={item.poster}/>
-                <p>{account?.user.name} says: {(item?.comments.find(item => item.userId == currSelectedFollowing))?.comment}</p>
+                <div>
+                    <img width='5%' src={`${account?.user.picture}`} /> 
+                    <p>{account?.user.name} says: {(item?.comments.find(item => item.userId == currSelectedFollowing))?.comment}</p>
+                </div>
                 <p>Movie Details</p>
             </div>
         )
     })
     
     const followingsRecommendationsList = allFollowingMovieRecoList?.map((item) => {
-        console.log("hello",item.comments.map(item => ({"comment":item.comment,"name":item.userId.name})))
         return (
             <div key={item.id}>
                 <p>{item.title}</p>
                 <img alt='poster' width='15%' src={item.poster}/>
-                <p>{item.comments.map(item => ({"comment":item.comment,"name":item.userId.name})).map(item => <p>{item.name} says "{item.comment}"</p>)}</p>
+                <div>{item.comments.map(item => ({"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture})).map(item => <div><img width='5%' src={`${item.picture}`}/><p>{item.name} says "{item.comment}"</p></div>)}</div>
+                <p>Movie Details</p>
             </div>
         )
     })

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import SearchFriends from "./SearchFriends"
 
-export default function FriendList({account, handleClick}) {
+export default function FriendList({account, handleClick,setCurrSelectedFollowing}) {
     const [filtered,setFiltered] = useState(false)
     const [filteredList,setFilteredList] = useState(null)
 
@@ -26,7 +26,7 @@ export default function FriendList({account, handleClick}) {
     return (
         <div>
             {list}
-            <SearchFriends handleFilter={handleFilter} setFiltered={setFiltered}/>
+            <SearchFriends setCurrSelectedFollowing={setCurrSelectedFollowing} handleFilter={handleFilter} setFiltered={setFiltered}/>
         </div>
     )
 }
