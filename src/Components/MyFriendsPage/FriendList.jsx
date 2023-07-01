@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import SearchFriends from "./SearchFriends"
 
 export default function FriendList({account, handleClick}) {

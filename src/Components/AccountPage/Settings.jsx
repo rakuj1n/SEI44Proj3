@@ -8,6 +8,7 @@ export default function Settings({user}) {
     const {userId} = useParams()
     const navigate = useNavigate()
     const isUser = user._id == userId
+    const [status, setStatus] = useState('idle')
 
     const [picData,setPicData] = useState({
         url:''
@@ -38,24 +39,28 @@ export default function Settings({user}) {
 
     async function handleSubmitPicture(e) {
         e.preventDefault()
+        setStatus('loading')
         try {
             await sendRequest(`/api/users/${user._id}/pic`,'PUT',picData)
             navigate(`/users/${user._id}`)
         } catch (err) {
             console.log(err)
-        }       
+        } 
+        setStatus('success')      
     }
 
     const [error,setError] = useState('')
 
     async function handleSubmitPassword(e) {
         e.preventDefault()
+        setStatus('loading')
         try {
             await sendRequest(`/api/users/${user._id}/password`,'PUT',passData)
             navigate(`/users/${user._id}`)
         } catch (err) {
             setError('Please re-enter current password.')
         }
+        setStatus('success')      
     }
 
     const disabled = passData.confirm !== "" && (passData.confirm == passData.password)
@@ -64,6 +69,10 @@ export default function Settings({user}) {
         if (disabled) setError('Current Password and New Password cannot be the same.')
         if (!disabled) setError('')
     },[disabled])
+
+    if (status === 'loading') {
+        return (<p>loading</p>)
+    }
 
     return (
         <>

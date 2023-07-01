@@ -1,12 +1,12 @@
 import ViewHistory from "./ViewHistory";
 import { useOutletContext, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import sendRequest from "../../utilities/send-request"
 
 
 export default function Profile() {
     const [account,setAccount] = useOutletContext()
-    console.log(account)
+    const [status, setStatus] = useState('idle')
 
     const {userId} = useParams()
 
@@ -16,17 +16,23 @@ export default function Profile() {
 
     useEffect(() => {
         async function getAccount() {
+            setStatus('loading')
             try {
                 const account = await sendRequest(`/api/users/${userId}`,'GET')
                 setAccount(account)
             } catch (err) {
                 console.log(err)
             }
+            setStatus('success')
         }
         getAccount()
     },[userId])
 
     const profilePic = account?.user.picture || 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png'
+
+    if (status === 'loading') {
+        return (<p>loading</p>)
+    }
 
     return (
         <main>

@@ -12,18 +12,21 @@ export default function MyFriendsPage({user}) {
     const [account,setAccount] = useState(null)
     const [trigger,setTrigger] = useState(false)
     const isUser = user._id == userId
+    const [status, setStatus] = useState('idle')
     
     let friendsNo = account?.following.length
     
+    // this useEffect retrieves logged-in user's account and sets it to account state to access following array
     useEffect(() => {
         async function getAccount() {
+            setStatus('loading')
             try {
                 const account = await sendRequest(`/api/users/${user._id}`,'GET')
                 setAccount(account)
-                console.log('account',account)
             } catch (err) {
                 console.log(err)
             }
+            setStatus('success')
         }
         getAccount()
     },[trigger])
@@ -36,8 +39,10 @@ export default function MyFriendsPage({user}) {
         console.log("this",currSelectedFollowing)
     }
 
+    // this useEffect retrieves the account of one of the following users that the logged-in user clicks on
     useEffect(() => {
         async function getAccount() {
+            setStatus('loadingfollowing')
             try {
                 const account = await sendRequest(`/api/users/${currSelectedFollowing}`,'GET')
                 setCurrSelectedFollowingAccount(account)
@@ -45,18 +50,20 @@ export default function MyFriendsPage({user}) {
             } catch (err) {
                 console.log(err)
             }
+            setStatus('success')
         }
         getAccount()
     },[currSelectedFollowing])
+
 
     return (
         <>
         {isUser ? 
         <main>
             <h1>Following ({friendsNo})</h1>
-            <FriendList account={account} handleClick={handleClick}/>
+            {status !== 'loading' ? <FriendList account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
             <AddFriends account={account} user={user} setTrigger={setTrigger}/>
-            <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
+            {status !== 'loadingfollowing' ? <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
         </main>
         :
         <p>Unauthorised.</p>

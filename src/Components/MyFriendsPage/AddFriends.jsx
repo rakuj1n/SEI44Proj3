@@ -7,6 +7,7 @@ export default function AddFriends({account,setTrigger,user}) {
     const [input,setInput] = useState('')
     const [open, setOpen] = useState(false)
     const [error,setError] = useState('')
+    const [status, setStatus] = useState('idle')
     console.log('addfriendsuser',user?._id)
 
     function showDrawer() {
@@ -18,6 +19,7 @@ export default function AddFriends({account,setTrigger,user}) {
 
     async function handleAdd(e) {
         e.preventDefault()
+        setStatus('loading')
         try {
             await sendRequest(`/api/users/${user?._id}/friend`,'PUT',{username:input})
             onClose()
@@ -25,10 +27,15 @@ export default function AddFriends({account,setTrigger,user}) {
         } catch (err) {
             setError("Error: Please check username.")
         }    
+        setStatus('success')
     }
 
     function handleChange(e) {
         setInput(e.target.value)
+    }
+
+    if (status === 'loading') {
+        return (<p>loading</p>)
     }
 
     return (

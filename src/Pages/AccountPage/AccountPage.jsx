@@ -1,7 +1,7 @@
 import { Outlet, useParams } from 'react-router-dom'
 import AccountSideBar from '../../Components/AccountPage/AccountSideBar'
-import { useEffect, useState } from 'react'
-import sendRequest from "../../utilities/send-request"
+import { useState } from 'react'
+
 
 export default function AccountPage({user}) {
     const {userId} = useParams()
@@ -10,7 +10,7 @@ export default function AccountPage({user}) {
 
     return (
         <main>
-            {isUser && <AccountSideBar userId={userId}/>}
+            {isUser && <AccountSideBar user={user}/>}
             <Outlet context={[account,setAccount]}/>
         </main>
     )
