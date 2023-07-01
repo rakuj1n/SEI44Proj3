@@ -17,6 +17,14 @@ export default function PlayMoviePage() {
   const price = 4.99;
   const currency = "S$";
 
+  // to fill/replace in props
+  const poster = state.movieDetails.poster;
+  const movieTitle = state.movieDetails.title;
+  const CAST = state.movieDetails.actor.join(",");
+  const DIRECTOR = state.movieDetails.director;
+  const details = state.movieDetails.details;
+  //   const LANGUAGE = "language_props";
+
   const handleClick = () => {
     console.log("Return click");
     navigate("/kinolounge");
@@ -33,17 +41,12 @@ export default function PlayMoviePage() {
         state: {
           currency,
           price,
+          movieTitle,
+          poster,
         },
       });
     }
   };
-  // to fill/replace in props
-  const poster = state.movieDetails.poster;
-  const movieTitle = state.movieDetails.title;
-  const CAST = state.movieDetails.actor.join(",");
-  const DIRECTOR = state.movieDetails.director;
-  const details = state.movieDetails.details;
-  //   const LANGUAGE = "language_props";
 
   return (
     <>

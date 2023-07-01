@@ -11,13 +11,17 @@ export default function PaymentsPage() {
         <>error no payments</>
       ) : (
         <>
-          Payments page
+          Payment page
           <div>
-            {state.currency}
-            {state.price}
+            <img src={state.poster} alt={state.movieTitle} img width="10%" />
+            <div>
+              {state.movieTitle} at {state.currency}
+              {state.price}
+            </div>
           </div>
         </>
       )}
+      <button>Checkout</button>
     </main>
   );
 }
