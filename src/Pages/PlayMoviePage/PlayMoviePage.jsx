@@ -1,5 +1,5 @@
 import { useState } from "react";
-import KinoloungeNavBar from "../../Components/KinoloungeNavbar";
+import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function PlayMoviePage() {

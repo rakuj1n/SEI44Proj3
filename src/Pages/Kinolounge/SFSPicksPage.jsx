@@ -1,4 +1,4 @@
-import KinoloungeNavBar from "../../Components/KinoloungeNavbar";
+import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
 
 export default function SFSPicksPage() {
   return (
