@@ -35,6 +35,8 @@ export default function SeatSelectionPage() {
           <td>$20</td>
         </tfoot>
       </table>
+      <button>RESET</button>
+      <button>CONFIRM SEAT(S)</button>
     </>
   );
 }
