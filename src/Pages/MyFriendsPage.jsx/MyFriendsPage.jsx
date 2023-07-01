@@ -13,6 +13,7 @@ export default function MyFriendsPage({user}) {
     const [trigger,setTrigger] = useState(false)
     const isUser = user._id == userId
     const [status, setStatus] = useState('idle')
+    const [allFollowingMovieRecoList,setAllFollowingMovieRecoList] = useState(null)
     
     let friendsNo = account?.following.length
     
@@ -46,7 +47,6 @@ export default function MyFriendsPage({user}) {
             try {
                 const account = await sendRequest(`/api/users/${currSelectedFollowing}`,'GET')
                 setCurrSelectedFollowingAccount(account)
-                console.log("following",account)
             } catch (err) {
                 console.log(err)
             }
@@ -54,6 +54,20 @@ export default function MyFriendsPage({user}) {
         }
         getAccount()
     },[currSelectedFollowing])
+
+    useEffect(() => {
+        async function getAllFollowingMovieRecoList() {
+            setStatus('loadingfollowing')
+            try {
+                const res = await sendRequest(`/api/users/${user._id}/your-following-recommended`,'GET')
+                setAllFollowingMovieRecoList(res[0].moviesRecommended)
+            } catch (err) {
+                console.log(err)
+            }
+            setStatus('success')
+        }
+        getAllFollowingMovieRecoList()
+    },[])
 
 
     return (
@@ -63,7 +77,7 @@ export default function MyFriendsPage({user}) {
             <h1>Following ({friendsNo})</h1>
             {status !== 'loading' ? <FriendList account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
             <AddFriends account={account} user={user} setTrigger={setTrigger}/>
-            {status !== 'loadingfollowing' ? <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
+            {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
         </main>
         :
         <p>Unauthorised.</p>

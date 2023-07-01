@@ -102,6 +102,24 @@ async function updateFriend(req,res) {
     }
 }
 
+async function getAllRecommendedForAnAccount(req,res) {
+    const userId = req.params.userId
+    try {
+        const account = await Account.findOne({user:userId})
+        const array = await Account.aggregate([
+            { $match: {user: {$in:(account.following)}} },
+            { $project: {moviesRecommended: 1} },
+            { $unwind: {path:"$moviesRecommended"} },
+            { $group: {_id:null,moviesRecommended:{$addToSet: "$moviesRecommended"}} }
+        ])
+        const array2 = await Movie.populate(array, { path: 'moviesRecommended'})
+        const getAllRecommendedForAnAccount = await User.populate(array2,{path:'moviesRecommended.comments.userId', select:'name'})
+        res.status(200).json(getAllRecommendedForAnAccount)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
 module.exports = {
     create,
     login,
@@ -109,5 +127,6 @@ module.exports = {
     getAccount,
     updatePic,
     updatePass,
-    updateFriend
+    updateFriend,
+    getAllRecommendedForAnAccount
 }
