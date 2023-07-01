@@ -159,6 +159,7 @@ button[type="submit"] {
 .container {
   display: grid;
   grid-template-columns: 400px 7fr;
+  grid-template-rows: auto auto;
   text-align: start;
   margin: 0px 200px 0px 200px;
 }
@@ -170,4 +171,18 @@ button[type="submit"] {
   text-align: start;
   font-weight: bold;
   color: white;
+}
+
+.cell {
+  background: whitesmoke;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  height: 40px;
+  margin: 2px;
+  text-align: center;
+  width: 80px;
 }
