@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export default function MovieTheatresShowing() {
   const theatres = [
     "Shaw Theatres Lido",
@@ -13,18 +15,39 @@ export default function MovieTheatresShowing() {
     ["10:20 AM", "11:00 AM", "12:10 PM", "01:20 PM", "02:00 PM", "03:10 PM"],
   ];
 
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/movies/:movieId/seat-selection");
+  }
+
   return (
-    <>
-      <div className="container">
-        <p>Theatre</p>
-        <p>Timing</p>
-        <div>
-          {theatres.map((theatre) => (
-            <div className="theatre">{theatre}</div>
-          ))}
-        </div>
-        <div className="grid">Test</div>
+    <div className="container">
+      <p>Theatre</p>
+      <p>Timing</p>
+      <div>
+        {theatres.map((theatre) => (
+          <div className="theatre" key={theatre}>
+            {theatre}
+          </div>
+        ))}
       </div>
-    </>
+      <div>
+        {timings.map((timing) => (
+          <div>
+            {timing.map((time) => (
+              <div
+                className="cell"
+                key={time}
+                value={time}
+                onClick={handleClick}
+              >
+                {time}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
