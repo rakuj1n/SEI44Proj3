@@ -22,6 +22,7 @@ import LeFrenchCinema from "../Kinolounge/LeFrenchCinemaPage";
 import ShawShowcasePage from "../Kinolounge/ShawShowcase";
 import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
 import MoviesPage from "../../Components/MoviesPage/MoviesPage";
+import SeatSelectionPage from "../SeatSelectionPage.jsx/SeatSelectionPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -48,6 +49,10 @@ export default function App() {
             <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/movies/:title" element={<MoviesDetailPage />} />
+            <Route
+              path="/movies/:movieId/seat-selection"
+              element={<SeatSelectionPage />}
+            />
             <Route path="/payments" element={<PaymentsPage />} />
             <Route>
               <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
