@@ -15,13 +15,13 @@ import LogInPage from "../LogInPage/LogInPage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import KinoloungePage from "../Kinolounge/KinoloungePage";
 import PlayMoviePage from "../PlayMoviePage/PlayMoviePage";
-import MoviesDetailPage from "../../Components/MoviesPage/MoviesDetailsPage";
 import PaymentsPage from "../PaymentsPage/PaymentsPage";
 import SFSPicksPage from "../Kinolounge/SFSPicksPage";
 import LeFrenchCinema from "../Kinolounge/LeFrenchCinemaPage";
 import ShawShowcasePage from "../Kinolounge/ShawShowcase";
 import PRamleeClassicFilmsPage from "../Kinolounge/PRamleeClassicFilmsPage";
 import MoviesPage from "../../Components/MoviesPage/MoviesPage";
+import MoviesDetailsPage from "../../Components/MoviesPage/MoviesDetailsPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -34,10 +34,7 @@ export default function App() {
           <Routes>
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route
-              path="/mainpage/:userId"
-              element={<MainPage user={user} />}
-            />
+            <Route path="/mainpage/:userId" element={<MainPage />} />
             <Route path="/users/:userId/friends" element={<MyFriendsPage />} />
             <Route path="/users/:userId" element={<AccountPage />}>
               <Route path="/users/:userId/settings" element={<Settings />} />
@@ -47,7 +44,7 @@ export default function App() {
             {/* To add /:movieId */}
             <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
             <Route path="/movies" element={<MoviesPage />} />
-            <Route path="/movies/:id" element={<MoviesDetailPage />} />
+            <Route path="/movies/:title" element={<MoviesDetailsPage />} />
             <Route path="/payments" element={<PaymentsPage />} />
             <Route>
               <Route path="/kinolounge/movie" element={<PlayMoviePage />} />

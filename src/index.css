@@ -168,6 +168,16 @@ button[type="submit"] {
   text-align: center;
 }
 
+.movie-item:hover .movie-image {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover .movie-title {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
 .movie-item img {
   max-width: 200px;
 }
@@ -175,4 +185,33 @@ button[type="submit"] {
 .movie-details {
   flex-grow: 1;
   margin-left: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-description {
+  margin-bottom: 10px;
+  border: black;
+}
+
+.movie-director,
+.movie-actor,
+.comments-heading {
+  font-weight: bold;
+}
+
+.movie-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.movie-details img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.movie-details p {
+  margin-bottom: 10px;
 }

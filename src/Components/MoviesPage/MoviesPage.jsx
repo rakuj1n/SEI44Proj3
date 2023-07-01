@@ -28,13 +28,17 @@ const MoviesPage = () => {
       <h2>Movies</h2>
       <div className="movies-grid">
         {movies.map((movie) => (
-          <div key={movie._id.toString()} className="movie-item">
-            <Link to={`/movies/${movie._id.toString()}`}>
-              <img src={movie.poster} alt={movie.title} />
+          <div key={movie.title} className="movie-item">
+            <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+              <img
+                src={movie.poster}
+                alt={movie.title}
+                className="movie-image"
+              />
             </Link>
             <div className="movie-details">
-              <Link to={`/movies/${movie._id.toString()}`}>
-                <h2>{movie.title}</h2>
+              <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                <h2 className="movie-title">{movie.title}</h2>
               </Link>
             </div>
           </div>
