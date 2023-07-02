@@ -77,7 +77,7 @@ export default function MyFriendsPage({user}) {
         <main className="followingmaincontainer">
             <h1>Following ({friendsNo})</h1>
             <div className="followingmaininnercontainer">
-            {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
+            {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} currSelectedFollowing={currSelectedFollowing} account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
             <div className="addbuttoncontainer"><AddFriends className='addbutton' account={account} user={user} setTrigger={setTrigger}/></div>
             </div>
             {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
