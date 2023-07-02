@@ -1,6 +1,9 @@
+import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
+
 export default function LeFrenchCinema() {
   return (
     <>
+      <KinoloungeNavBar />
       <h1>Le French Cinema</h1>
       <div className="page-header-content">
         "Welcome to the Singapore Le French Cinema corner!"

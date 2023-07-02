@@ -6,14 +6,17 @@ export default function PlayMoviePage() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [ownsMovie, setOwnsMovie] = useState(false);
+
+  //To pull movie owns or not from db
   useEffect(() => {
-    if (state?.movieDetails?.title === "The Witcher") {
+    if (state?.movieDetails?.title === "The Witcher" || "Warrior") {
       console.log("owns");
       setOwnsMovie(true);
     }
   }, []);
 
-  //   const movieId=useParams();
+  const { movieId } = useParams();
+  console.log("movieId", movieId);
   const price = 4.99;
   const currency = "S$";
 
@@ -34,7 +37,12 @@ export default function PlayMoviePage() {
     console.log("ownsmovie", ownsMovie);
     if (ownsMovie) {
       console.log("play");
-      //   Then navigate to reviews
+      navigate(`/kinolounge/${movieId}/comments`, {
+        state: {
+          state,
+        },
+      });
+      //   Then navigate to reviews and commments
     } else {
       console.log("to rent");
       navigate("/payments", {

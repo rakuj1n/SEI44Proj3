@@ -1,6 +1,9 @@
+import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
+
 export default function ShawShowcasePage() {
   return (
     <>
+      <KinoloungeNavBar />
       <h1>Shaw Showcase</h1>
       <div className="page-header-content">
         <p />

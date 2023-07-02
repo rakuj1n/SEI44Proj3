@@ -1,6 +1,9 @@
+import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
+
 export default function PRamleeClassicFilmsPage() {
   return (
     <>
+      <KinoloungeNavBar />
       <h1>Memories With P Ramlee Classic Films</h1>
       <div className="page-content-header">
         <p />

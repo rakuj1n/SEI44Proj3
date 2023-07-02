@@ -4,7 +4,7 @@ export default function FriendsWatchedCard({ movieDetails }) {
   console.log("details", movieDetails);
   const navigate = useNavigate();
   const handleMovieNavigate = () => {
-    navigate("/kinolounge/movie/", {
+    navigate(`/kinolounge/${movieDetails._id}/`, {
       state: {
         movieDetails,
       },
@@ -12,8 +12,12 @@ export default function FriendsWatchedCard({ movieDetails }) {
   };
 
   return (
-    // to={"}"
     <>
+      {/* <Link to={`/kinolounge/${movieDetails._id}`}>
+        <span>
+          <img src={movieDetails.poster} alt={movieDetails.title} />
+        </span>
+      </Link> */}
       <button
         className="friend-watched-container"
         onClick={handleMovieNavigate}
