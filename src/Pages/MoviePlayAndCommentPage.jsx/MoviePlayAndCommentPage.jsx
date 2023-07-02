@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+// require("dotenv").config();
+// require("./config/database");
+
 export default function MoviePlayAndCommentPage({ user }) {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [comment, setComment] = useState("");
-  console.log("passing", state);
+  // console.log("passing", state);
   //To push user watched to db
 
   const movieTitle = state.state.movieDetails.title;
@@ -53,7 +56,9 @@ export default function MoviePlayAndCommentPage({ user }) {
             onChange={handleChange}
             placeholder="Would you recommend your friends to watch?"
           ></input>
-          <button>Submit</button>
+          <button>Thumb ^</button>
+          <button>Thumb v</button>
+          <button>Comment</button>
         </form>
       </fieldset>
     </>

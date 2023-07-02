@@ -9,7 +9,7 @@ export default function PlayMoviePage() {
 
   //To pull movie owns or not from db
   useEffect(() => {
-    if (state?.movieDetails?.title === "The Witcher" || "Warrior") {
+    if (state?.movieDetails?.title === "The Witcher") {
       console.log("owns");
       setOwnsMovie(true);
     }
