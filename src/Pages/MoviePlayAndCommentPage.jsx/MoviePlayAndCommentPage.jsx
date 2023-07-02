@@ -11,9 +11,9 @@ export default function MoviePlayAndCommentPage({ user }) {
   // console.log("passing", state);
   //To push user watched to db
 
-  const movieTitle = state.state.movieDetails.title;
-  const userProfilePic = user.picture;
-  const username = user.name;
+  const movieTitle = state.state?.movieDetails.title;
+  const userProfilePic = user?.picture;
+  const username = user?.name;
 
   const handleSubmit = (event) => {
     event.preventDefault();
