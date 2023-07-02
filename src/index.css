@@ -1,24 +1,26 @@
 /* CSS Custom Properties */
 :root {
-  --white: #FFFFFF;
-  --tan-1: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --orange: #F67F00;
+  --white: #ffffff;
+  --tan-1: #fbf9f6;
+  --tan-2: #e7e2dd;
+  --tan-3: #e2d9d1;
+  --tan-4: #d3c1ae;
+  --orange: #f67f00;
   --text-light: #968c84;
   --text-dark: #615954;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--tan-4);
@@ -27,7 +29,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -71,9 +73,9 @@ code {
   align-items: center;
   background-color: var(--tan-1);
   color: var(--text-dark);
-  border: .1vmin solid var(--tan-3);
+  border: 0.1vmin solid var(--tan-3);
   border-radius: 1vmin;
-  padding: .6vmin;
+  padding: 0.6vmin;
   text-align: center;
   font-size: 2vmin;
 }
@@ -81,7 +83,7 @@ code {
 .form-container {
   padding: 3vmin;
   background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
+  border: 0.1vmin solid var(--tan-3);
   border-radius: 1vmin;
 }
 
@@ -106,8 +108,8 @@ label {
 input {
   padding: 1vmin;
   font-size: 2vmin;
-  border: .1vmin solid var(--tan-3);
-  border-radius: .5vmin;
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 0.5vmin;
   color: var(--text-dark);
   background-image: none !important; /* prevent lastpass */
   outline: none;
@@ -117,7 +119,8 @@ input:focus {
   border-color: var(--orange);
 }
 
-button, a.button {
+button,
+a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
@@ -126,23 +129,24 @@ button, a.button {
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: .1vmin solid var(--tan-2);
-  border-radius: .5vmin;
+  border: 0.1vmin solid var(--tan-2);
+  border-radius: 0.5vmin;
   outline: none;
   cursor: pointer;
 }
 
 button.btn-sm {
   font-size: 1.5vmin;
-  padding: .6vmin .8vmin;
+  padding: 0.6vmin 0.8vmin;
 }
 
 button.btn-xs {
   font-size: 1vmin;
-  padding: .4vmin .5vmin;
+  padding: 0.4vmin 0.5vmin;
 }
 
-button:disabled, form:invalid button[type="submit"] {
+button:disabled,
+form:invalid button[type="submit"] {
   cursor: not-allowed;
   background-color: var(--tan-4);
 }
@@ -151,3 +155,205 @@ button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
 }
+
+/* Mindy CSS */
+
+.container {
+  display: grid;
+  grid-template-columns: 400px 7fr;
+  grid-template-rows: auto auto;
+  text-align: start;
+  margin: 0px 200px 0px 200px;
+}
+
+.theatre {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: start;
+  font-weight: bold;
+  color: white;
+}
+
+.cell {
+  background: whitesmoke;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  height: 40px;
+  margin: 2px;
+  text-align: center;
+  width: 80px;
+}
+
+.seatsLegendContainer {
+  background-color: rgb(48, 44, 45);
+  color: white;
+  padding: 0px 20px 0px 20px;
+  height: 150px;
+}
+
+.legendHeader {
+  display: flex;
+}
+
+.seatsLegend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.seatsSelector {
+  height: 350px;
+  background-color: black;
+  color: white;
+}
+
+.seatSelectionTitle {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 250px;
+  font-weight: bold;
+}
+
+.seatSelectionContainer {
+  height: 250px;
+  width: 600px;
+}
+
+.screen {
+  margin: 5px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(255, 197, 61) 0%,
+    rgb(255, 94, 7) 90%
+  );
+  height: 10px;
+}
+
+.screenText {
+  line-height: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* .seatsLegend {
+  background-color: rgb(48, 44, 45);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 150px;
+  align-items: center;
+} */
+
+/* End of Mindy CSS */
+
+/* Start Damien CSS */
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.movie-item {
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+.movie-item:hover .movie-image {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover .movie-title {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-item img {
+  max-width: 200px;
+}
+
+.movie-details {
+  flex-grow: 1;
+  margin-left: 20px;
+  border: 5px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-description,
+.movie-director,
+.movie-actor,
+.comments-heading,
+.movie-details p {
+  margin-bottom: 10px;
+}
+
+.movie-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.movie-details img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+}
+
+.now-showing-carousel .movies-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.now-showing-carousel .movie-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
+}
+
+.movie-item img:hover {
+  transform: scale(1.1);
+}
+
+.enlarged-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.enlarged-image {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+
+/* End Damien CSS */

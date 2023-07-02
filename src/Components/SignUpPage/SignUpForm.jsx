@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signUp } from "../../utilities/users-service";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm({ setUser }) {
   const [newUser, setNewUser] = useState({
@@ -9,6 +10,16 @@ export default function SignUpForm({ setUser }) {
     confirm: "",
     errorMessage: "",
   });
+  const [pwErrorMessage, setPwErrorMessage] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (newUser.password !== newUser.confirm) {
+      setPwErrorMessage("Password and Confirm Password do not match.");
+    } else {
+      setPwErrorMessage("");
+    }
+  }, [newUser.password, newUser.confirm]);
 
   const handleChange = (event) => {
     setNewUser({
@@ -27,6 +38,10 @@ export default function SignUpForm({ setUser }) {
       delete formData.confirm;
       const user = await signUp(formData);
       setUser(user);
+
+      if (user) {
+        navigate(`/mainpage/${user._id}`);
+      }
     } catch {
       setNewUser({ ...newUser, errorMessage: "Sign Up Failed. Try Again." });
     }
@@ -70,6 +85,7 @@ export default function SignUpForm({ setUser }) {
             onChange={handleChange}
             required
           />
+          <span>{pwErrorMessage}</span>
           <button type="submit" disabled={disable}>
             Sign Up
           </button>
