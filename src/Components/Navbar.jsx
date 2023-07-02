@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import * as userService from "../utilities/users-service";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Navbar({ user, setUser }) {
+  const pathname = useLocation().pathname;
   function handleLogOut() {
     userService.logOut();
     setUser(null);
   }
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    setIsDropdownOpen(false);
+  }, [pathname]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
