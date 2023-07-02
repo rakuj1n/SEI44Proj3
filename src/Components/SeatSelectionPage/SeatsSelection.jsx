@@ -26,7 +26,11 @@ export default function SeatsSelection() {
                   return (
                     <div className="seatsRow" key={index}>
                       {seating.map((seats) => {
-                        return <Seats key={seats} seats={seats} />;
+                        return (
+                          <div name={seats} key={seats}>
+                            <Seats key={seats} seats={seats} />
+                          </div>
+                        );
                       })}
                     </div>
                   );
@@ -35,7 +39,7 @@ export default function SeatsSelection() {
               <div className="rowLabels">
                 {rowLabels.map((label) => {
                   return (
-                    <div>
+                    <div key={label}>
                       <span>{label}</span>
                     </div>
                   );

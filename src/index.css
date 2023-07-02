@@ -209,7 +209,7 @@ button[type="submit"] {
 }
 
 .seatsSelector {
-  height: 350px;
+  height: 360px;
   background-color: black;
   color: white;
 }
@@ -223,7 +223,7 @@ button[type="submit"] {
 
 .seatSelectionContainer {
   height: 250px;
-  width: 600px;
+  width: 550px;
 }
 
 .screen {
@@ -252,10 +252,10 @@ button[type="submit"] {
 
 .seatsRow {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
-  padding: 8px;
-  gap: 5px;
+  padding: 5px;
+  gap: 2px;
 }
 
 .rowLabels {
