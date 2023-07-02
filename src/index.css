@@ -156,6 +156,8 @@ button[type="submit"] {
   margin: 1vmin 0 0;
 }
 
+/* Mindy CSS */
+
 .container {
   display: grid;
   grid-template-columns: 400px 7fr;
@@ -206,6 +208,40 @@ button[type="submit"] {
   align-items: center;
 }
 
+.seatsSelector {
+  height: 350px;
+  background-color: black;
+  color: white;
+}
+
+.seatSelectionTitle {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 250px;
+  font-weight: bold;
+}
+
+.seatSelectionContainer {
+  height: 250px;
+  width: 600px;
+}
+
+.screen {
+  margin: 5px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(255, 197, 61) 0%,
+    rgb(255, 94, 7) 90%
+  );
+  height: 10px;
+}
+
+.screenText {
+  line-height: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+
 /* .seatsLegend {
   background-color: rgb(48, 44, 45);
   color: white;
@@ -216,3 +252,5 @@ button[type="submit"] {
   height: 150px;
   align-items: center;
 } */
+
+/* End of Mindy CSS */
