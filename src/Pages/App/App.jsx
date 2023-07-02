@@ -45,10 +45,10 @@ export default function App() {
             <Route path="/kinolounge" element={<KinoloungePage />} />
             {/* To add /:movieId */}
             <Route
-              path="/kinolounge/:movieId"
-              element={<MoviePlayAndCommentPage />}
+              path="/kinolounge/:movieId/comments"
+              element={<MoviePlayAndCommentPage user={user} />}
             />
-            <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
+            <Route path="/kinolounge/:movieId" element={<PlayMoviePage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route
               path="/movies/:movieId/seat-selection"
