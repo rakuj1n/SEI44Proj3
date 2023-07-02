@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import FriendsWatchedCard from "./KinoloungePage/FriendsWatchedCard";
 
 export default function FriendsWatched({ moviesWatched }) {
-  console.log("Firneds", moviesWatched);
+  console.log("FirnedsWatched", moviesWatched);
   return (
     <>
       {/* To map according to movies watched */}

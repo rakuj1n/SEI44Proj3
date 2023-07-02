@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export default function FriendsWatchedCard({ movieDetails }) {
-  console.log("details", movieDetails);
+  // console.log("details", movieDetails);
   const navigate = useNavigate();
   const handleMovieNavigate = () => {
     navigate(`/kinolounge/${movieDetails._id}/`, {

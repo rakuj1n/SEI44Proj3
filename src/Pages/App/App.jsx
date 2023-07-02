@@ -48,7 +48,10 @@ export default function App() {
               />
               <Route path="/users/:userId" element={<Profile user={user} />} />
             </Route>
-            <Route path="/kinolounge" element={<KinoloungePage />} />
+            <Route
+              path="/kinolounge"
+              element={<KinoloungePage user={user} />}
+            />
             {/* To add /:movieId */}
             <Route
               path="/kinolounge/:movieId/comments"
