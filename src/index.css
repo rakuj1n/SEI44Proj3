@@ -254,3 +254,106 @@ button[type="submit"] {
 } */
 
 /* End of Mindy CSS */
+
+/* Start Damien CSS */
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.movie-item {
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+.movie-item:hover .movie-image {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover .movie-title {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-item img {
+  max-width: 200px;
+}
+
+.movie-details {
+  flex-grow: 1;
+  margin-left: 20px;
+  border: 5px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-description,
+.movie-director,
+.movie-actor,
+.comments-heading,
+.movie-details p {
+  margin-bottom: 10px;
+}
+
+.movie-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.movie-details img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+}
+
+.now-showing-carousel .movies-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.now-showing-carousel .movie-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
+}
+
+.movie-item img:hover {
+  transform: scale(1.1);
+}
+
+.enlarged-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.enlarged-image {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+
+/* End Damien CSS */
