@@ -239,16 +239,31 @@ button[type="submit"] {
 .screenText {
   line-height: 30px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   padding: 5px;
+}
+
+.seatRowContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 20px;
 }
 
 .seatsRow {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: center;
   padding: 8px;
   gap: 5px;
+}
+
+.rowLabels {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  text-align: right;
+  font-size: 14px;
 }
 
 /* .seatsLegend {

@@ -10,6 +10,8 @@ export default function SeatsSelection() {
     ["E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8"],
   ];
 
+  const rowLabels = ["A", "B", "C", "D", "E"];
+
   return (
     <Container maxWidth="ml">
       <div className="seatsSelector">
@@ -18,16 +20,27 @@ export default function SeatsSelection() {
           <div className="seatSelectionContainer">
             <div className="screen"></div>
             <div className="screenText">Screen</div>
-            <div>
-              {seatings.map((seating, index) => {
-                return (
-                  <div className="seatsRow" key={index}>
-                    {seating.map((seats) => {
-                      return <Seats key={seats} seats={seats} />;
-                    })}
-                  </div>
-                );
-              })}
+            <div className="seatRowContainer">
+              <div>
+                {seatings.map((seating, index) => {
+                  return (
+                    <div className="seatsRow" key={index}>
+                      {seating.map((seats) => {
+                        return <Seats key={seats} seats={seats} />;
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="rowLabels">
+                {rowLabels.map((label) => {
+                  return (
+                    <div>
+                      <span>{label}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
