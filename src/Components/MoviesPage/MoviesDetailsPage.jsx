@@ -25,7 +25,6 @@ const MoviesDetailsPage = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data.movies);
         const selectedMovie = data.movies.find(
           (movie) => movie.title === movieTitle
         );
@@ -46,10 +45,17 @@ const MoviesDetailsPage = () => {
     return <div>Loading...</div>;
   }
 
+  const buyOrRentButton = movie.nowShowing ? (
+    <button className="buy-now-button">Buy Now</button>
+  ) : (
+    <button className="rent-button">Rent</button>
+  );
+
   return (
     <div className="movie-details">
       <h2 className="movie-title">{movie.title}</h2>
       <img src={movie.poster} alt={movie.title} className="movie-poster" />
+      <div>{buyOrRentButton}</div>
       <p className="movie-description">{movie.details}</p>
       <p className="movie-actor">
         <strong>Actors:</strong> {movie.actor.join(", ")}

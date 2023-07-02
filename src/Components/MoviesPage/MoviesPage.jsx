@@ -9,7 +9,6 @@ const MoviesPage = () => {
       const response = await fetch("/api/movies");
       if (response.ok) {
         const data = await response.json();
-        console.log(data.movies);
         setMovies(data.movies);
       } else {
         console.error("Failed to fetch movies");

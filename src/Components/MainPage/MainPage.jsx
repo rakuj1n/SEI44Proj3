@@ -32,7 +32,6 @@ const MainPage = () => {
         throw new Error("Failed to fetch movies");
       }
       const data = await response.json();
-      console.log(data.movies);
       setMovies(data.movies);
     } catch (error) {
       console.error(error);
@@ -63,12 +62,14 @@ const MainPage = () => {
             {movies
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
-                <div key={movie._id}>
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    style={{ maxWidth: "200px", maxHeight: "300px" }}
-                  />
+                <div key={movie.title}>
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    />
+                  </Link>
                 </div>
               ))}
           </Slider>
@@ -78,11 +79,13 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title} className="movie-item">
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    style={{ maxWidth: "200px", maxHeight: "300px" }}
-                  />
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    />
+                  </Link>
                 </div>
               ))}
           </div>
