@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import EventSeatIcon from "@mui/icons-material/EventSeat";
+import Seats from "./Seats";
 
 export default function SeatsSelection() {
   const seatings = [
@@ -19,10 +19,14 @@ export default function SeatsSelection() {
             <div className="screen"></div>
             <div className="screenText">Screen</div>
             <div>
-              {seatings.map((seating) => {
-                return seating.map((seats) => {
-                  return <span>{seats}</span>;
-                });
+              {seatings.map((seating, index) => {
+                return (
+                  <div className="seatsRow" key={index}>
+                    {seating.map((seats) => {
+                      return <Seats key={seats} seats={seats} />;
+                    })}
+                  </div>
+                );
               })}
             </div>
           </div>

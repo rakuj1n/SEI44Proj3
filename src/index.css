@@ -240,6 +240,15 @@ button[type="submit"] {
   line-height: 30px;
   text-align: center;
   font-size: 15px;
+  padding: 5px;
+}
+
+.seatsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 8px;
+  gap: 5px;
 }
 
 /* .seatsLegend {
