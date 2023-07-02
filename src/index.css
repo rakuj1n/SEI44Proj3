@@ -156,6 +156,8 @@ button[type="submit"] {
   margin: 1vmin 0 0;
 }
 
+/* Start Damien CSS */
+
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -254,3 +256,5 @@ button[type="submit"] {
   height: 500px;
   object-fit: contain;
 }
+
+/* End Damien CSS */
