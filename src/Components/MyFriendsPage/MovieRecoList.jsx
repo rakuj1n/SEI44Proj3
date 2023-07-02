@@ -6,7 +6,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (
-            <div key={item?._id}>
+            <div width='5%' key={item?._id}>
                 <p>{item?.title}</p>
                 <img alt='poster' width='15%' src={item?.poster}/>
                 <div>
@@ -34,7 +34,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     const followingsRecommendationsList = allFollowingMovieRecoList?.map((item) => {
         return (
-            <div key={item.id}>
+            <div min-width='15%' key={item.id}>
                 <p>{item.title}</p>
                 <img alt='poster' width='15%' src={item.poster}/>
                 <div>{item.comments.map(item => ({"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture})).map(item => <div><img width='5%' src={`${item.picture}`}/><p>{item.name} says "{item.comment}"</p></div>)}</div>
@@ -48,8 +48,8 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
         <div>
             {currSelectedFollowing && <h2>{(account?.following.find(item => item._id === currSelectedFollowing))?.name}'s Recommendations</h2>} 
             {!currSelectedFollowing && <h2>Your Following's Recommendations</h2>}
-            {!currSelectedFollowing && followingsRecommendationsList}
-            {movieRecoList}
+            {!currSelectedFollowing && <div className="movielist">{followingsRecommendationsList}</div>}
+            {currSelectedFollowing && <div className="movielist">{movieRecoList}</div>}
         </div>
     )
 }

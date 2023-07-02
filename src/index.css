@@ -270,6 +270,16 @@ button[type="submit"] {
   align-items: center;
 }
 
+/* .addbuttoncontainer {
+  position:relative;
+}
+
+.addbutton {
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+} */
+
 .searchcontainer {
   border: 1px solid salmon; 
   position: absolute;
@@ -296,6 +306,12 @@ button[type="submit"] {
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+}
+
+.movielist {
+  display:flex;
+  justify-content: space-around;
+  overflow-x: auto;
 }
 
 ::-webkit-scrollbar {
