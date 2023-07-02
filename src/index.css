@@ -157,13 +157,13 @@ button[type="submit"] {
 .accountpagemaincontainer {
   display: grid;
   grid-template-columns: 1fr 7fr;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .accountsidebarcontainer {
   display: flex;
   flex-direction: column;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   font-size: 1.5rem;
   padding: 20px;
   margin: 10px;
@@ -171,12 +171,12 @@ button[type="submit"] {
 
 .profilecontainer {
  margin: 10px;
- border: 1px solid green;
+ /* border: 1px solid green; */
  padding: 20px;
 }
 
 .profile {
-  border: 1px solid teal;
+  /* border: 1px solid teal; */
 }
 
 .profile > h1 {
@@ -187,7 +187,7 @@ button[type="submit"] {
 
 .profiledetails {
   display: flex;
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
 
 .profiledetails > img {
@@ -205,7 +205,7 @@ button[type="submit"] {
 }
 
 .viewhistory {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   padding: 10px;
 }
 
@@ -216,12 +216,12 @@ button[type="submit"] {
 .viewhistorymovies {
   display:flex;
   overflow-x: auto;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 
 .followingmaincontainer {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .followingmaincontainer > h1 {
@@ -231,7 +231,7 @@ button[type="submit"] {
 }
 
 .followingmaininnercontainer {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   display: grid;
   /* display:flex; */
   grid-template-columns: 9fr 1fr;
@@ -245,7 +245,7 @@ button[type="submit"] {
 }
 
 .followingdetails {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: flex;
   padding: 10px 50px;
   margin-left:10px;
@@ -253,7 +253,7 @@ button[type="submit"] {
 }
 
 .followingitem {
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   margin: 0 10px;
   padding: 5px;
 }
@@ -263,25 +263,21 @@ button[type="submit"] {
 }
 
 .searchmaincontainer {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   position: relative;
   display:grid;
   grid-template-columns: auto auto;
   align-items: center;
 }
 
-/* .addbuttoncontainer {
-  position:relative;
+.followingrecommendationscontainer > h1 {
+  text-align: left;
+  padding: 10px 50px;
+  margin-left:10px;
 }
 
-.addbutton {
-  position:absolute;
-  top: 50%;
-  transform: translateY(-50%);
-} */
-
 .searchcontainer {
-  border: 1px solid salmon; 
+  /* border: 1px solid salmon;  */
   position: absolute;
   top: 50%;
   right: 25px;
@@ -310,7 +306,7 @@ button[type="submit"] {
 
 .movielist {
   display:flex;
-  justify-content: space-around;
+  justify-content: left;
   overflow-x: auto;
 }
 

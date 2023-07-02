@@ -11,7 +11,7 @@ export default function Profile() {
     const {userId} = useParams()
 
     const followingList = account?.following.map((item) => {
-        return (<span>{item.name}</span>)
+        return (<span>{item.name} | </span>)
     })
 
     useEffect(() => {

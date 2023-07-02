@@ -45,9 +45,9 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
 
 
     return (
-        <div>
-            {currSelectedFollowing && <h2>{(account?.following.find(item => item._id === currSelectedFollowing))?.name}'s Recommendations</h2>} 
-            {!currSelectedFollowing && <h2>Your Following's Recommendations</h2>}
+        <div className="followingrecommendationscontainer">
+            {currSelectedFollowing && <h1>{(account?.following.find(item => item._id === currSelectedFollowing))?.name}'s Recommendations</h1>} 
+            {!currSelectedFollowing && <h1>Your Following's Recommendations</h1>}
             {!currSelectedFollowing && <div className="movielist">{followingsRecommendationsList}</div>}
             {currSelectedFollowing && <div className="movielist">{movieRecoList}</div>}
         </div>
