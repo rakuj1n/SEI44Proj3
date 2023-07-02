@@ -41,7 +41,25 @@ export default function KinoloungePage({ user }) {
   for (let i = 0; i < friendsNo; i++) {
     friendsIdArr.push(account?.following[i]._id);
   }
+  //   let promises = [];
+  //   for (let i = 0; i <= friendsNo; i++) {
+  //     promises.push(
+  //       sendRequest(`/api/users/${account?.following[i]?._id}`, "GET")
+  //     );
+  //     //   }
 
+  //     Promise.all(promises)
+  //       .then(function handleData(data) {
+  //         return fetch(`/api/users/`) // should be returned 1 time
+  //           .then((response) => {
+  //             if (response.ok) return response.json();
+  //             throw new Error(response.statusText);
+  //           });
+  //       })
+  //       .catch(function handleError(error) {
+  //         console.log("Error" + error);
+  //       });
+  //   }
   //   console.log("friendsIdArr", FriendRecommended);
   console.log("friendsIdArr", friendsIdArr);
   console.log("friendsNo", friendsNo);
