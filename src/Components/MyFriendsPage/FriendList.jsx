@@ -7,7 +7,7 @@ export default function FriendList({account, handleClick,setCurrSelectedFollowin
 
     const friendList = account?.following.map((item) => {
         return (
-            <div style={{color: currSelectedFollowing === item._id ? '#FFFFFF' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+            <div style={{backgroundColor: currSelectedFollowing === item._id ? '#FDFD96' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
         )
     })
 
@@ -24,7 +24,7 @@ export default function FriendList({account, handleClick,setCurrSelectedFollowin
     
     let list = filtered ? filteredList.map((item) => {
         return (
-            <div style={{color: currSelectedFollowing === item._id ? '#FFFFFF' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+            <div style={{backgroundColor: currSelectedFollowing === item._id ? '#FDFD96' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
         )
     }) : friendList
 

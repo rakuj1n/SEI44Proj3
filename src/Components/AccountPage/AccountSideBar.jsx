@@ -5,8 +5,8 @@ export default function AccountSideBar({user}) {
 
     return (
         <div className="accountsidebarcontainer">
-            <div><Link to={`/users/${user._id}`}>Profile</Link></div>
-            <div><Link to={`/users/${user._id}/settings`}>Settings</Link></div>
+            <Link className="accountsidebaritem" style={{ textDecoration:'none', color:'inherit'}} to={`/users/${user._id}`}>Profile</Link>
+            <Link className="accountsidebaritem" style={{ textDecoration: 'none', color:'inherit' }} to={`/users/${user._id}/settings`}>Settings</Link>
         </div>
     )
 }

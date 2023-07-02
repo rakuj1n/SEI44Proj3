@@ -46,7 +46,7 @@ export default function SearchFriends({setFiltered,handleFilter,setCurrSelectedF
                 <CloseOutlined className='closebutton' onClick={handleClose}/>
             </div>}
             <div className="searchbuttoncontainer">
-            <SearchOutlined className='searchbutton' onClick={handleClick}/>
+            <SearchOutlined style={{scale:'1.5'}} className='searchbutton' onClick={handleClick}/>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import ViewHistory from "./ViewHistory";
-import { useOutletContext, useParams } from "react-router-dom";
+import { useOutletContext, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import sendRequest from "../../utilities/send-request"
 
@@ -11,7 +11,7 @@ export default function Profile() {
     const {userId} = useParams()
 
     const followingList = account?.following.map((item) => {
-        return (<span>{item.name} | </span>)
+        return (<span><Link to={`/users/${item._id}`}>{item.name}</Link> | </span>)
     })
 
     useEffect(() => {

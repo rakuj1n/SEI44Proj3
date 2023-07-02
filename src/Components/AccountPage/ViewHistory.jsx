@@ -1,11 +1,14 @@
-import { useOutletContext } from "react-router-dom"
-import MovieCard from "../MovieCard"
+import { Link } from "react-router-dom"
+
 
 export default function ViewHistory({account}) {
     console.log("viewhist", account)
     const watchedList = account?.watchHistory.map((item) => {
         return (
-            <MovieCard item={item}/>
+        <div className='movieitem' key={item?._id}>
+            <p>{item?.title}</p>
+            <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+        </div>
         )
     })
 

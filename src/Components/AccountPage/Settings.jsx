@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
-import { useOutletContext, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import sendRequest from "../../utilities/send-request"
 import { useNavigate } from "react-router-dom"
+import { Button } from "antd"
 
 
 export default function Settings({user}) {
@@ -78,15 +79,15 @@ export default function Settings({user}) {
         <>
         {isUser ? 
         <main className="settingscontainer">
-            <h3>Change My Profile Picture</h3>
+            <h1>Change My Profile Picture</h1>
             <form onSubmit={handleSubmitPicture}>
-                <label>Enter your image URL:<input type='url' name='url' value={picData.url} onChange={handleChangePic} required></input></label>
+                <label>Enter your image URL:<input className="forminput" type='url' name='url' value={picData.url} onChange={handleChangePic} required></input></label>
                 <button>Upload</button>
             </form>
-            <h3>Change My Password</h3>
+            <h1>Change My Password</h1>
             <form onSubmit={handleSubmitPassword}>
-                <label>Current Password:<input minLength="8" type='password' name='confirm' value={passData.confirm} onChange={handleChangePass} required></input></label><span>{error}</span>
-                <label>New Password:<input minLength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
+                <div className="currpass"><label>Current Password:<input className="forminput" minLength="8" type='password' name='confirm' value={passData.confirm} onChange={handleChangePass} required></input></label><span>{error}</span></div>
+                <div className="newpass"><label>New Password:<input className="forminput" minLength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label></div>
                 <button disabled={disabled}>Submit</button>
             </form>
         </main> 

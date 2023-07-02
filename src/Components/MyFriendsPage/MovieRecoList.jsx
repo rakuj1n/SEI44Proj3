@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 
 export default function MovieRecoList({currSelectedFollowingAccount,currSelectedFollowing,account,allFollowingMovieRecoList}) {
 
@@ -6,14 +6,13 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (
-            <div width='5%' key={item?._id}>
+            <div className='movieitem' key={item?._id}>
                 <p>{item?.title}</p>
-                <img alt='poster' width='15%' src={item?.poster}/>
-                <div>
-                    <img width='5%' src={`${account?.user.picture}`} />
-                    <p>{(account?.following.find(item => item?._id === currSelectedFollowing))?.name} says: {(item?.comments.find(item => item?.userId == currSelectedFollowing))?.comment}</p>
+                <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+                <div className="commentsectionitem">
+                    <img className="profilepic" src={`${account?.user.picture}`} />
+                    <p>{(account?.following.find(item => item?._id === currSelectedFollowing))?.name}: "{(item?.comments.find(item => item?.userId == currSelectedFollowing))?.comment}"</p>
                 </div>
-                <p>Movie Details</p>
             </div>
         )
     })
@@ -22,23 +21,21 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
         return (
             <div key={item._id}>
                 <p>{item.title}</p>
-                <img alt='poster' width='15%' src={item.poster}/>
-                <div>
-                    <img width='5%' src={`${account?.user.picture}`} /> 
+                <img alt='poster' className='poster' src={item.poster}/>
+                <div className="commentsection">
+                    <img src={`${account?.user.picture}`} /> 
                     <p>{account?.user.name} says: {(item?.comments.find(item => item.userId == currSelectedFollowing))?.comment}</p>
                 </div>
-                <p>Movie Details</p>
             </div>
         )
     })
     
     const followingsRecommendationsList = allFollowingMovieRecoList?.map((item) => {
         return (
-            <div min-width='15%' key={item.id}>
+            <div className='movieitem' key={item.id}>
                 <p>{item.title}</p>
-                <img alt='poster' width='15%' src={item.poster}/>
-                <div>{item.comments.map(item => ({"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture})).map(item => <div><img width='5%' src={`${item.picture}`}/><p>{item.name} says "{item.comment}"</p></div>)}</div>
-                <p>Movie Details</p>
+                <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item.poster}/></Link>
+                <div className="commentsection">{item.comments.map(item => ({"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture})).map(item => <div className="commentsectionitem"><img className="profilepic" src={`${item.picture}`}/><p>{item.name}: "{item.comment}"</p></div>)}</div>
             </div>
         )
     })
