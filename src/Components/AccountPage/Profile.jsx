@@ -35,11 +35,17 @@ export default function Profile() {
     }
 
     return (
-        <main>
-            <h1>Profile</h1>
-            <img alt='profile' width='15%' src={profilePic}/>
-            <h3>{account?.user.name}</h3>
-            <p>Following: {followingList}</p>
+        <main className="profilecontainer">
+            <div className="profile">
+            <h1> Profile</h1>
+            <div className="profiledetails">
+                <img alt='profile' width='15%' src={profilePic}/>
+                <div className="profiledetailsinner">
+                    <h3>{account?.user.name}</h3>
+                    <p>Following: {followingList}</p>
+                </div>
+            </div>
+            </div>
             <ViewHistory account={account}/>
         </main>
     )

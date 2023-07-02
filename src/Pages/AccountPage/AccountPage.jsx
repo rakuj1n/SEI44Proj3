@@ -9,9 +9,9 @@ export default function AccountPage({user}) {
     const isUser = user._id == userId
 
     return (
-        <main>
-            {isUser && <AccountSideBar user={user}/>}
-            <Outlet context={[account,setAccount]}/>
+        <main className={isUser ? 'accountpagemaincontainer' : 'accountpagemaincontainernosettings'}>
+            {isUser && <div className='accountpageleft'><AccountSideBar user={user}/></div>}
+            <div className='accountpageright'><Outlet context={[account,setAccount]}/></div>
         </main>
     )
 }

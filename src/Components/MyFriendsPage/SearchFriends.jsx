@@ -35,17 +35,19 @@ export default function SearchFriends({setFiltered,handleFilter,setCurrSelectedF
     }
 
     return (
-        <div>
-            <div>
-                { search && 
-                (<form onSubmit={handleSearch}>
+        <div className="searchmaincontainer">
+            {search && 
+            <div className="searchcontainer">
+                <form onSubmit={handleSearch}>
                     <label>
-                        <input name='searchinput' onChange={handleChange} value={searchInput} placeholder='Search Following'/>
+                        <input className='input' name='searchinput' onChange={handleChange} value={searchInput} placeholder='Search & Enter'/>
                     </label>
-                </form>)}
-                {search && <CloseOutlined onClick={handleClose}/>}
+                </form>
+                <CloseOutlined className='closebutton' onClick={handleClose}/>
+            </div>}
+            <div className="searchbuttoncontainer">
+            <SearchOutlined className='searchbutton' onClick={handleClick}/>
             </div>
-            <SearchOutlined onClick={handleClick}/>
         </div>
     )
 }

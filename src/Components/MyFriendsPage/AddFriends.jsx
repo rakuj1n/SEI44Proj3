@@ -46,7 +46,7 @@ export default function AddFriends({account,setTrigger,user}) {
         <Drawer title="Add people you'd like to follow" placement="right" onClose={onClose} open={open}>
             <p>Type a username:</p>
             <form onSubmit={handleAdd}>
-                <label><input name='input' value={input} onChange={handleChange}/></label>
+                <label><input name='input' value={input} onChange={handleChange}/></label><br/>
                 <button>Follow</button>
                 <p>{error}</p>
             </form>

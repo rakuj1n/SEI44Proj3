@@ -7,7 +7,7 @@ export default function FriendList({account, handleClick,setCurrSelectedFollowin
 
     const friendList = account?.following.map((item) => {
         return (
-            <div key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+            <div className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
         )
     })
 
@@ -15,7 +15,7 @@ export default function FriendList({account, handleClick,setCurrSelectedFollowin
         const filteredFriendList = account?.following.filter(item => item.name.toUpperCase().startsWith(searchInput.toUpperCase()))
         const filtered = filteredFriendList.map((item) => {
             return (
-                <div key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+                <div className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
             )
         })
         setFilteredList(filtered)
@@ -24,8 +24,8 @@ export default function FriendList({account, handleClick,setCurrSelectedFollowin
     let list = filtered ? filteredList : friendList
 
     return (
-        <div>
-            {list}
+        <div className="followingcontainer">
+            <div className="followingdetails">{list}</div>
             <SearchFriends setCurrSelectedFollowing={setCurrSelectedFollowing} handleFilter={handleFilter} setFiltered={setFiltered}/>
         </div>
     )

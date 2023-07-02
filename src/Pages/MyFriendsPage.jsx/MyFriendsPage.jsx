@@ -39,7 +39,6 @@ export default function MyFriendsPage({user}) {
 
     function handleClick(id) {
         setCurrSelectedFollowing(id)
-        console.log("this",currSelectedFollowing)
     }
 
     // this useEffect retrieves the account of one of the following users that the logged-in user clicks on
@@ -75,14 +74,16 @@ export default function MyFriendsPage({user}) {
     return (
         <>
         {isUser ? 
-        <main>
+        <main className="followingmaincontainer">
             <h1>Following ({friendsNo})</h1>
+            <div className="followingmaininnercontainer">
             {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
             <AddFriends account={account} user={user} setTrigger={setTrigger}/>
+            </div>
             {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
         </main>
         :
-        <p>Unauthorised.</p>
+        <p>404 Page Not Found.</p>
         }
         </>
     )

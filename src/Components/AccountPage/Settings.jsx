@@ -77,7 +77,7 @@ export default function Settings({user}) {
     return (
         <>
         {isUser ? 
-        <main>
+        <main className="settingscontainer">
             <h3>Change My Profile Picture</h3>
             <form onSubmit={handleSubmitPicture}>
                 <label>Enter your image URL:<input type='url' name='url' value={picData.url} onChange={handleChangePic} required></input></label>
