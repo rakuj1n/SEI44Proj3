@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function MovieRecoList({currSelectedFollowingAccount,currSelectedFollowing,account,allFollowingMovieRecoList}) {
@@ -40,13 +41,44 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
         )
     })
 
+    //----------------------------------
+    const scrollableDivRef = useRef(null)
+    function handleWheel(event) {
+        const scrollableDiv = scrollableDivRef.current
+        if (event.target === scrollableDiv || scrollableDiv.contains(event.target)) {
+            event.preventDefault(); // Prevent default scrolling behavior
+      
+            // Adjust the scroll position based on the wheel delta
+            scrollableDiv.scrollLeft += event.deltaY;
+        }
+    }
+
+    useEffect(() => {
+        const disableScroll = (event) => {
+          const scrollableDiv = scrollableDivRef.current;
+    
+          // Check if the mouse is inside the scrollable div
+          if (scrollableDiv.contains(event.target)) {
+            event.preventDefault(); // Prevent default scrolling behavior
+          }
+        };
+    
+        // Add event listener to window to disable overall scrolling
+        window.addEventListener('wheel', disableScroll, { passive: false });
+    
+        return () => {
+          // Clean up the event listener when the component unmounts
+          window.removeEventListener('wheel', disableScroll);
+        };
+      }, []);
+//----------------------------
 
     return (
         <div className="followingrecommendationscontainer">
             {currSelectedFollowing && <h1>{(account?.following.find(item => item._id === currSelectedFollowing))?.name}'s Recommendations</h1>} 
             {!currSelectedFollowing && <h1>Your Following's Recommendations</h1>}
-            {!currSelectedFollowing && <div className="movielist">{followingsRecommendationsList}</div>}
-            {currSelectedFollowing && <div className="movielist">{movieRecoList}</div>}
+            {!currSelectedFollowing && <div onWheel={handleWheel} ref={scrollableDivRef} className="movielist">{followingsRecommendationsList}</div>}
+            {currSelectedFollowing && <div onWheel={handleWheel} ref={scrollableDivRef} className="movielist">{movieRecoList}</div>}
         </div>
     )
 }
