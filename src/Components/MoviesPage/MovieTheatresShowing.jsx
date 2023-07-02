@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function MovieTheatresShowing() {
   const theatres = [
@@ -16,9 +16,10 @@ export default function MovieTheatresShowing() {
   ];
 
   const navigate = useNavigate();
+  const { title } = useParams();
 
   function handleClick() {
-    navigate("/movies/:movieId/seat-selection");
+    navigate(`/movies/${title}/seat-selection`);
   }
 
   return (
