@@ -45,10 +45,22 @@ const MoviesDetailsPage = () => {
     return <div>Loading...</div>;
   }
 
+  const handleBuyNow = () => {
+    console.log("Buy");
+  };
+
+  const handleRent = () => {
+    console.log("Rent");
+  };
+
   const buyOrRentButton = movie.nowShowing ? (
-    <button className="buy-now-button">Buy Now</button>
+    <button className="buy-now-button" onClick={handleBuyNow}>
+      Buy Now
+    </button>
   ) : (
-    <button className="rent-button">Rent</button>
+    <button className="rent-button" onClick={handleRent}>
+      Rent
+    </button>
   );
 
   return (
