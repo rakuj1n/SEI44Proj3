@@ -5,6 +5,7 @@ export default function FriendsWatchedCard({ movieDetails }) {
   const navigate = useNavigate();
   const handleMovieNavigate = () => {
     navigate(`/kinolounge/${movieDetails._id}/`, {
+      // navigate(`/kinolounge/movie/`, {
       state: {
         movieDetails,
       },
