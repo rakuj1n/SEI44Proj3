@@ -36,12 +36,25 @@ export default function Navbar({ user, setUser }) {
                 />
               </div>
               <p>Hello, {user.name}</p>
-              <Link to={`/users/${user._id}`}>My Profile</Link>
-              <Link to={`/users/${user._id}/friends`}>My Friends</Link>
-              <Link to={`/users/${user._id}/settings`}>Settings</Link>
-              <Link to="" onClick={handleLogOut}>
-                Log Out
-              </Link>
+              {pathname !== "/mainpage" && (
+                <button>
+                  <Link to="/mainpage">Home</Link>
+                </button>
+              )}
+              <button>
+                <Link to={`/users/${user._id}`}>My Profile</Link>
+              </button>
+              <button>
+                <Link to={`/users/${user._id}/friends`}>My Friends</Link>
+              </button>
+              <button>
+                <Link to={`/users/${user._id}/settings`}>Settings</Link>
+              </button>
+              <button>
+                <Link to="" onClick={handleLogOut}>
+                  Log Out
+                </Link>
+              </button>
             </div>
           ) : null}
         </div>

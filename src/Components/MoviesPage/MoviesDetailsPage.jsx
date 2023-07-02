@@ -55,11 +55,11 @@ const MoviesDetailsPage = () => {
 
   const buyOrRentButton = movie.nowShowing ? (
     <button className="buy-now-button" onClick={handleBuyNow}>
-      Buy Now
+      Buy Tickets Now
     </button>
   ) : (
     <button className="rent-button" onClick={handleRent}>
-      Rent
+      Rent Movie Now
     </button>
   );
 
@@ -70,7 +70,7 @@ const MoviesDetailsPage = () => {
       <div>{buyOrRentButton}</div>
       <p className="movie-description">{movie.details}</p>
       <p className="movie-actor">
-        <strong>Actors:</strong> {movie.actor.join(", ")}
+        <strong>Main Cast:</strong> {movie.actor.join(", ")}
       </p>
       <p className="movie-director">Director: {movie.director}</p>
 
