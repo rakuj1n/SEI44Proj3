@@ -37,9 +37,15 @@ export default function App() {
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/mainpage" element={<MainPage user={user} />} />
-            <Route path="/users/:userId/friends" element={<MyFriendsPage user={user} />} />
+            <Route
+              path="/users/:userId/friends"
+              element={<MyFriendsPage user={user} />}
+            />
             <Route path="/users/:userId" element={<AccountPage user={user} />}>
-              <Route path="/users/:userId/settings" element={<Settings user={user} />} />
+              <Route
+                path="/users/:userId/settings"
+                element={<Settings user={user} />}
+              />
               <Route path="/users/:userId" element={<Profile user={user} />} />
             </Route>
             <Route path="/kinolounge" element={<KinoloungePage />} />
@@ -48,7 +54,10 @@ export default function App() {
               path="/kinolounge/:movieId/comments"
               element={<MoviePlayAndCommentPage user={user} />}
             />
-            <Route path="/kinolounge/:movieId" element={<PlayMoviePage />} />
+            <Route
+              path="/kinolounge/:movieId"
+              element={<PlayMoviePage user={user} />}
+            />
             <Route path="/movies" element={<MoviesPage />} />
             <Route
               path="/movies/:movieId/seat-selection"
@@ -58,7 +67,7 @@ export default function App() {
 
             <Route path="/payments" element={<PaymentsPage />} />
             <Route>
-              <Route path="/kinolounge/movie" element={<PlayMoviePage />} />
+              {/* <Route path="/kinolounge/movie" element={<PlayMoviePage user={user}/>} /> */}
               <Route path="kinolounge/page/sfs" element={<SFSPicksPage />} />
               <Route
                 path="kinolounge/page/le-french-cinema"

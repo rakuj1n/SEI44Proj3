@@ -19,9 +19,9 @@ export default function PaymentsPage() {
               {state.price}
             </div>
           </div>
+          <button>Checkout</button>
         </>
       )}
-      <button>Checkout</button>
     </main>
   );
 }

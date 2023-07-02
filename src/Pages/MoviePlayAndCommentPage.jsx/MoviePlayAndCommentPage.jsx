@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // require("dotenv").config();
 // require("./config/database");
@@ -31,10 +31,18 @@ export default function MoviePlayAndCommentPage({ user }) {
   };
   return (
     <>
-      Now playing: {movieTitle}
-      {/* <video width="750" height="500" controls allowFullScreen>
-        <source src={src} />
-      </video> */}
+      <h2>
+        {" "}
+        Back to{" "}
+        <Link to="/kinolounge">
+          <img
+            src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
+            alt="logo_homepage"
+          />
+        </Link>
+      </h2>
+      <h2>Now playing: {movieTitle}</h2>
+
       <iframe
         width="560"
         height="315"
@@ -42,23 +50,25 @@ export default function MoviePlayAndCommentPage({ user }) {
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
+        allowFullScreen
       ></iframe>
       <fieldset className="comment-container">
         <form onSubmit={handleSubmit}>
           <img src={userProfilePic} alt="userpic" />
           <h2>How's the movie, {username}</h2>
-          <h3>You have watched {movieTitle}</h3>. Would you like to share with
-          your friends?
+          <h3>
+            You have watched {movieTitle}. Would you like to share with your
+            friends?
+          </h3>
           <input
             className="comment-box"
             value={comment}
             onChange={handleChange}
             placeholder="Would you recommend your friends to watch?"
           ></input>
-          <button>Thumb ^</button>
-          <button>Thumb v</button>
-          <button>Comment</button>
+          <button>👍</button>
+          <button>👎</button>
+          <button>Submit</button>
         </form>
       </fieldset>
     </>
