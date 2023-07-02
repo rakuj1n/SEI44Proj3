@@ -185,20 +185,17 @@ button[type="submit"] {
 .movie-details {
   flex-grow: 1;
   margin-left: 20px;
-  border: 1px solid #ccc;
+  border: 5px solid black;
   padding: 20px;
   margin-bottom: 20px;
 }
 
-.movie-description {
-  margin-bottom: 10px;
-  border: black;
-}
-
+.movie-description,
 .movie-director,
 .movie-actor,
-.comments-heading {
-  font-weight: bold;
+.comments-heading,
+.movie-details p {
+  margin-bottom: 10px;
 }
 
 .movie-details h2 {
@@ -209,10 +206,6 @@ button[type="submit"] {
 .movie-details img {
   width: 200px;
   height: auto;
-  margin-bottom: 10px;
-}
-
-.movie-details p {
   margin-bottom: 10px;
 }
 

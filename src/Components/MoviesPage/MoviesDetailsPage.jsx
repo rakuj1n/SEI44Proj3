@@ -68,14 +68,21 @@ const MoviesDetailsPage = () => {
       <h2 className="movie-title">{movie.title}</h2>
       <img src={movie.poster} alt={movie.title} className="movie-poster" />
       <div>{buyOrRentButton}</div>
-      <p className="movie-description">{movie.details}</p>
+      <p className="movie-description">
+        <strong>Synopsis:</strong> {movie.details}
+      </p>
       <p className="movie-actor">
         <strong>Main Cast:</strong> {movie.actor.join(", ")}
       </p>
-      <p className="movie-director">Director: {movie.director}</p>
+      <p className="movie-director">
+        <strong>Director:</strong> {movie.director}
+      </p>
 
       <div className="comments">
-        <p className="comments-heading">Comments</p>
+        <hr></hr>
+        <p className="comments-heading">
+          <strong>Comments</strong>
+        </p>
         {movie.comments.length > 0 ? (
           <Slider {...carouselSettings}>
             {movie.comments.map((comment) => (
