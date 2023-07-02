@@ -18,16 +18,10 @@ const MoviesDetailsPage = () => {
   const { title } = useParams();
   const [movie, setMovie] = useState(null);
 
-  useEffect(() => {
-    fetchMovie(title);
-  }, [title]);
-
   const fetchMovie = async (movieTitle) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/movies?title=${encodeURIComponent(
-          movieTitle
-        )}`
+        `/api/movies?title=${encodeURIComponent(movieTitle)}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -43,6 +37,10 @@ const MoviesDetailsPage = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    fetchMovie(title);
+  }, [title]);
 
   if (!movie) {
     return <div>Loading...</div>;

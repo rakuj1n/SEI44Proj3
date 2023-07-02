@@ -1,8 +1,7 @@
 const Movie = require("../../models/api/movie");
 
 const index = async (req, res) => {
-  const { title } = req.query;
-  const movies = await Movie.find({ title });
+  const movies = await Movie.find();
   res.json({ movies });
 };
 

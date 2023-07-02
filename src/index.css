@@ -239,6 +239,10 @@ button[type="submit"] {
   transition: transform 0.3s;
 }
 
+.movie-item img:hover {
+  transform: scale(1.1);
+}
+
 .enlarged-image-overlay {
   position: fixed;
   top: 0;
@@ -253,12 +257,7 @@ button[type="submit"] {
 }
 
 .enlarged-image {
-  max-width: 200%;
-  max-height: 200%;
+  width: 500px;
+  height: 500px;
   object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.enlarged-image:hover {
-  transform: scale(1.1);
 }

@@ -34,10 +34,7 @@ export default function App() {
           <Routes>
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route
-              path="/mainpage/:userId"
-              element={<MainPage user={user} />}
-            />
+            <Route path="/mainpage" element={<MainPage user={user} />} />
             <Route path="/users/:userId/friends" element={<MyFriendsPage />} />
             <Route path="/users/:userId" element={<AccountPage />}>
               <Route path="/users/:userId/settings" element={<Settings />} />

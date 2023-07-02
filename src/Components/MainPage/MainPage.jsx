@@ -4,8 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const MainPage = ({ user }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+const MainPage = () => {
   const [movies, setMovies] = useState([]);
   const [promotions, setPromotions] = useState([
     "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1687924767873?w=145&dpr=1.3",
@@ -20,52 +19,33 @@ const MainPage = ({ user }) => {
     "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938041767?w=145&dpr=1.3",
     "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938708790?w=145&dpr=1.3",
   ]);
+  const [enlargedImage, setEnlargedImage] = useState(null);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const handleImageClick = (image) => {
+    setEnlargedImage(image);
   };
-
-  useEffect(() => {
-    fetchMovies();
-  }, []);
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/movies");
+      const response = await fetch("/api/movies");
       if (!response.ok) {
         throw new Error("Failed to fetch movies");
       }
       const data = await response.json();
+      console.log(data.movies);
       setMovies(data.movies);
     } catch (error) {
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
   return (
     <div>
-      <div className="user-nav">
-        <div className="user-dropdown">
-          <button className="user-nav-button" onClick={toggleDropdown}>
-            User Options
-          </button>
-          {isDropdownOpen && user ? (
-            <div className="dropdown-content">
-              <div className="user-profile">
-                <img
-                  src={user.picture}
-                  alt="User Profile"
-                  className="profile-picture"
-                />
-              </div>
-              <Link to={`/users/${user._id}`}>My Profile</Link>
-              <Link to={`/users/${user._id}/friends`}>My Friends</Link>
-              <Link to={`/users/${user._id}/settings`}>Settings</Link>
-            </div>
-          ) : null}
-        </div>
-      </div>
-
+      {/* Side Nav Bar */}
       <div className="kinolounge">
         <Link to="/kinolounge" className="kinolounge-link">
           Kinolounge
@@ -73,11 +53,9 @@ const MainPage = ({ user }) => {
         <Link to="/movies" className="movies-button">
           Movies
         </Link>
-        <Link to="/promotions" className="promotions-button">
-          Promotions
-        </Link>
       </div>
 
+      {/* Now Showing */}
       <div className="now-showing-carousel">
         <h2>Now Showing</h2>
         {movies.length > 4 ? (
@@ -111,16 +89,18 @@ const MainPage = ({ user }) => {
         )}
       </div>
 
+      {/* Promotion */}
       <div className="promotion-section">
         <h2>Promotions</h2>
         {promotions.length > 4 ? (
           <Slider slidesToShow={4} slidesToScroll={1}>
             {promotions.map((promotion, index) => (
-              <div key={index}>
+              <div className="movie-item" key={index}>
                 <img
                   src={promotion}
                   alt={`Promotion ${index + 1}`}
                   style={{ maxWidth: "200px", maxHeight: "300px" }}
+                  onClick={() => handleImageClick(promotion)}
                 />
               </div>
             ))}
@@ -133,12 +113,25 @@ const MainPage = ({ user }) => {
                   src={promotion}
                   alt={`Promotion ${index + 1}`}
                   style={{ maxWidth: "200px", maxHeight: "300px" }}
+                  onClick={() => handleImageClick(promotion)}
                 />
               </div>
             ))}
           </div>
         )}
       </div>
+      {enlargedImage && (
+        <div
+          className="enlarged-image-overlay"
+          onClick={() => setEnlargedImage(null)}
+        >
+          <img
+            src={enlargedImage}
+            alt="Enlarged Promotion"
+            className="enlarged-image"
+          />
+        </div>
+      )}
     </div>
   );
 };
