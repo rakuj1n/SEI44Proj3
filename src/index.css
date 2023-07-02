@@ -357,3 +357,188 @@ button[type="submit"] {
 }
 
 /* End Damien CSS */
+
+
+/* lakjin css */
+
+.accountpagemaincontainer {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  /* border: 1px solid red; */
+}
+
+.accountsidebarcontainer {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid white; */
+  font-size: 1.5rem;
+  padding: 20px;
+  margin: 10px;
+}
+
+.profilecontainer {
+ margin: 10px;
+ /* border: 1px solid green; */
+ padding: 20px;
+}
+
+.profile {
+  /* border: 1px solid teal; */
+}
+
+.profile > h1 {
+  text-align: left;
+  margin-left: 10px;
+}
+
+
+.profiledetails {
+  display: flex;
+  /* border: 1px solid orange; */
+}
+
+.profiledetails > img {
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profiledetailsinner {
+  text-align: left;
+  margin-left: 30px
+}
+
+.viewhistory {
+  /* border: 1px solid blue; */
+  padding: 10px;
+}
+
+.viewhistory > h1 {
+  text-align: left;
+}
+
+.viewhistorymovies {
+  display:flex;
+  overflow-x: auto;
+  justify-content: left;
+  align-items: center;
+}
+
+.followingmaincontainer {
+  /* border: 1px solid red; */
+}
+
+.followingmaincontainer > h1 {
+  text-align: left;
+  padding: 10px 50px;
+  margin-left:10px;
+}
+
+.followingmaininnercontainer {
+  /* border: 1px solid orange; */
+  display: grid;
+  /* display:flex; */
+  grid-template-columns: 9fr 1fr;
+}
+
+.followingcontainer {
+  display:flex;
+  display:grid;
+  grid-template-columns: 9fr 1fr;
+  align-items: center;
+}
+
+.followingdetails {
+  /* border: 1px solid green; */
+  display: flex;
+  padding: 10px 50px;
+  margin-left:10px;
+  overflow-x: auto;
+}
+
+.followingitem {
+  /* border: 1px solid yellow; */
+  margin: 0 10px;
+  padding: 5px;
+}
+
+.followingitem:hover {
+  cursor: pointer;
+}
+
+.searchmaincontainer {
+  /* border: 1px solid blue; */
+  position: relative;
+  display:grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
+.followingrecommendationscontainer > h1 {
+  text-align: left;
+  padding: 10px 50px;
+  margin-left:10px;
+}
+
+.searchcontainer {
+  /* border: 1px solid salmon;  */
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  width: 250px; 
+  transform: translateY(-50%);
+}
+
+.input {
+  height:41px;
+  width:240px;
+}
+
+.closebutton {
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  transform: translateY(-50%);
+}
+
+.searchbuttoncontainer {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.movielist {
+  display:flex;
+  justify-content: left;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(110, 110, 110);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(110, 110, 110);
+}
+
+::-webkit-scrollbar-track-piece {
+  /* background: #304158; */
+  /* background: #27374D; */
+}
+
+/* lakjin css */

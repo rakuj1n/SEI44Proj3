@@ -10,9 +10,9 @@ export default function ViewHistory({account}) {
     })
 
     return (
-        <div>
-            <h2>Your Watch History</h2>
-            <div>{watchedList}</div>
+        <div className="viewhistory">
+            <h1>Watch History</h1>
+            <div className="viewhistorymovies">{watchedList}</div>
         </div>
     )
 }

@@ -1,12 +1,12 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-export default function AccountSideBar({userId}) { //protect this component, own user only
+export default function AccountSideBar({user}) { 
 
     return (
-        <div>
-            <Link to={`/users/${userId}`}>Profile</Link>
-            <Link to={`/users/${userId}/settings`}>Settings</Link>  
+        <div className="accountsidebarcontainer">
+            <div><Link to={`/users/${user._id}`}>Profile</Link></div>
+            <div><Link to={`/users/${user._id}/settings`}>Settings</Link></div>
         </div>
     )
 }

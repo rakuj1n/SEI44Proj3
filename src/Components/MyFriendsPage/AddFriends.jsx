@@ -1,11 +1,15 @@
-import { PlusSquareOutlined } from "@ant-design/icons"
 import {  Button, Drawer  } from 'antd'
 import { useState } from "react"
 import sendRequest from "../../utilities/send-request"
 
-export default function AddFriends() {
+
+export default function AddFriends({account,setTrigger,user}) {
     const [input,setInput] = useState('')
     const [open, setOpen] = useState(false)
+    const [error,setError] = useState('')
+    const [status, setStatus] = useState('idle')
+    console.log('addfriendsuser',user?._id)
+
     function showDrawer() {
         setOpen(true);
     };
@@ -15,22 +19,23 @@ export default function AddFriends() {
 
     async function handleAdd(e) {
         e.preventDefault()
-        console.log(input)
-        // try {
-        //     await sendRequest(`/api/users/${userId}/pic`,'PUT',picData)
-        //     navigate(`/users/${userId}`)
-        // } catch (err) {
-        //     console.log(err)
-        // }    
-        // search database for inputted user
-        // check if following array of logined user already has the inputted user in following array
-        // if not, push it in
-        // clear input
-        // "user followed!"
+        setStatus('loading')
+        try {
+            await sendRequest(`/api/users/${user?._id}/friend`,'PUT',{username:input})
+            onClose()
+            setTrigger(prev => !prev)
+        } catch (err) {
+            setError("Error: Please check username.")
+        }    
+        setStatus('success')
     }
 
     function handleChange(e) {
         setInput(e.target.value)
+    }
+
+    if (status === 'loading') {
+        return (<p>loading</p>)
     }
 
     return (
@@ -41,8 +46,9 @@ export default function AddFriends() {
         <Drawer title="Add people you'd like to follow" placement="right" onClose={onClose} open={open}>
             <p>Type a username:</p>
             <form onSubmit={handleAdd}>
-                <label><input name='input' value={input} onChange={handleChange}/></label>
+                <label><input name='input' value={input} onChange={handleChange}/></label><br/>
                 <button>Follow</button>
+                <p>{error}</p>
             </form>
             
         </Drawer>

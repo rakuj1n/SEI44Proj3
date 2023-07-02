@@ -1,33 +1,37 @@
-import { useEffect, useState } from "react"
-import sendRequest from "../../utilities/send-request"
+import { useState } from "react"
 import SearchFriends from "./SearchFriends"
 
-export default function FriendList({account, handleClick}) {
+export default function FriendList({account, handleClick,setCurrSelectedFollowing,currSelectedFollowing}) {
     const [filtered,setFiltered] = useState(false)
     const [filteredList,setFilteredList] = useState(null)
 
     const friendList = account?.following.map((item) => {
         return (
-            <div key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+            <div style={{color: currSelectedFollowing === item._id ? '#FFFFFF' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
         )
     })
 
     function handleFilter(searchInput) {
         const filteredFriendList = account?.following.filter(item => item.name.toUpperCase().startsWith(searchInput.toUpperCase()))
-        const filtered = filteredFriendList.map((item) => {
-            return (
-                <div key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
-            )
-        })
-        setFilteredList(filtered)
+        // friendlistfiltered = friendList?.filter(item => (filteredFriendList.map(item => item._id)).includes(item.key))
+        // const filtered = filteredFriendList.map((item) => {
+        //     return (
+        //         <div style={{color: currSelectedFollowing === item._id ? '#FFFFFF' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+        //     )
+        // })
+        setFilteredList(filteredFriendList)
     }
-
-    let list = filtered ? filteredList : friendList
+    
+    let list = filtered ? filteredList.map((item) => {
+        return (
+            <div style={{color: currSelectedFollowing === item._id ? '#FFFFFF' : ''}} className='followingitem' key={item._id} onClick={() => handleClick(item._id)}>{item.name}</div>
+        )
+    }) : friendList
 
     return (
-        <div>
-            {list}
-            <SearchFriends handleFilter={handleFilter} setFiltered={setFiltered}/>
+        <div className="followingcontainer">
+            <div className="followingdetails">{list}</div>
+            <SearchFriends setCurrSelectedFollowing={setCurrSelectedFollowing} handleFilter={handleFilter} setFiltered={setFiltered}/>
         </div>
     )
 }

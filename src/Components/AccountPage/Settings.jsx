@@ -4,9 +4,11 @@ import sendRequest from "../../utilities/send-request"
 import { useNavigate } from "react-router-dom"
 
 
-export default function Settings() {
+export default function Settings({user}) {
     const {userId} = useParams()
     const navigate = useNavigate()
+    const isUser = user._id == userId
+    const [status, setStatus] = useState('idle')
 
     const [picData,setPicData] = useState({
         url:''
@@ -37,24 +39,28 @@ export default function Settings() {
 
     async function handleSubmitPicture(e) {
         e.preventDefault()
+        setStatus('loading')
         try {
-            await sendRequest(`/api/users/${userId}/pic`,'PUT',picData)
-            navigate(`/users/${userId}`)
+            await sendRequest(`/api/users/${user._id}/pic`,'PUT',picData)
+            navigate(`/users/${user._id}`)
         } catch (err) {
             console.log(err)
-        }       
+        } 
+        setStatus('success')      
     }
 
     const [error,setError] = useState('')
 
     async function handleSubmitPassword(e) {
         e.preventDefault()
+        setStatus('loading')
         try {
-            await sendRequest(`/api/users/${userId}/password`,'PUT',passData)
-            navigate(`/users/${userId}`)
+            await sendRequest(`/api/users/${user._id}/password`,'PUT',passData)
+            navigate(`/users/${user._id}`)
         } catch (err) {
             setError('Please re-enter current password.')
         }
+        setStatus('success')      
     }
 
     const disabled = passData.confirm !== "" && (passData.confirm == passData.password)
@@ -64,8 +70,14 @@ export default function Settings() {
         if (!disabled) setError('')
     },[disabled])
 
+    if (status === 'loading') {
+        return (<p>loading</p>)
+    }
+
     return (
-        <main>
+        <>
+        {isUser ? 
+        <main className="settingscontainer">
             <h3>Change My Profile Picture</h3>
             <form onSubmit={handleSubmitPicture}>
                 <label>Enter your image URL:<input type='url' name='url' value={picData.url} onChange={handleChangePic} required></input></label>
@@ -77,6 +89,10 @@ export default function Settings() {
                 <label>New Password:<input minLength="8" type='password' name='password' value={passData.password} onChange={handleChangePass} required></input></label>
                 <button disabled={disabled}>Submit</button>
             </form>
-        </main>
+        </main> 
+        : 
+        <p>Unauthorised.</p>
+        }
+        </>
     )
 }

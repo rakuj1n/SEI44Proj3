@@ -6,52 +6,85 @@ import sendRequest from "../../utilities/send-request"
 import { useEffect, useState } from "react"
 
 
-export default function MyFriendsPage() {
+export default function MyFriendsPage({user}) {
 
-    let friendsNo = 1
     const {userId} = useParams()
     const [account,setAccount] = useState(null)
+    const [trigger,setTrigger] = useState(false)
+    const isUser = user._id == userId
+    const [status, setStatus] = useState('idle')
+    const [statusFriendList, setStatusFriendList] = useState('idle')
 
+    const [allFollowingMovieRecoList,setAllFollowingMovieRecoList] = useState(null)
+    
+    let friendsNo = account?.following.length
+    
+    // this useEffect retrieves logged-in user's account and sets it to account state to access following array
     useEffect(() => {
         async function getAccount() {
+            setStatusFriendList('loading')
             try {
-                const account = await sendRequest(`/api/users/${userId}`,'GET')
+                const account = await sendRequest(`/api/users/${user._id}`,'GET')
                 setAccount(account)
-                console.log(account)
             } catch (err) {
                 console.log(err)
             }
+            setStatusFriendList('success')
         }
         getAccount()
-    },[userId])
+    },[trigger])
 
     const [currSelectedFollowing, setCurrSelectedFollowing] = useState(null)
     const [currSelectedFollowingAccount,setCurrSelectedFollowingAccount] = useState(null)
 
-    function handleClick(userId) {
-        setCurrSelectedFollowing(userId)
-        console.log("this",currSelectedFollowing)
+    function handleClick(id) {
+        setCurrSelectedFollowing(id)
     }
 
+    // this useEffect retrieves the account of one of the following users that the logged-in user clicks on
     useEffect(() => {
         async function getAccount() {
+            setStatus('loadingfollowing')
             try {
                 const account = await sendRequest(`/api/users/${currSelectedFollowing}`,'GET')
                 setCurrSelectedFollowingAccount(account)
-                console.log("account",account)
             } catch (err) {
                 console.log(err)
             }
+            setStatus('success')
         }
         getAccount()
     },[currSelectedFollowing])
 
+    useEffect(() => {
+        async function getAllFollowingMovieRecoList() {
+            setStatus('loadingfollowing')
+            try {
+                const res = await sendRequest(`/api/users/${user._id}/your-following-recommended`,'GET')
+                setAllFollowingMovieRecoList(res[0].moviesRecommended)
+            } catch (err) {
+                console.log(err)
+            }
+            setStatus('success')
+        }
+        getAllFollowingMovieRecoList()
+    },[trigger])
+
+
     return (
-        <main>
+        <>
+        {isUser ? 
+        <main className="followingmaincontainer">
             <h1>Following ({friendsNo})</h1>
-            <FriendList account={account} handleClick={handleClick}/>
-            <AddFriends />
-            <MovieRecoList account={account} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/>
+            <div className="followingmaininnercontainer">
+            {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} currSelectedFollowing={currSelectedFollowing} account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
+            <div className="addbuttoncontainer"><AddFriends className='addbutton' account={account} user={user} setTrigger={setTrigger}/></div>
+            </div>
+            {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
         </main>
+        :
+        <p>404 Page Not Found.</p>
+        }
+        </>
     )
 }

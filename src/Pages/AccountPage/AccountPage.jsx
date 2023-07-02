@@ -1,16 +1,17 @@
 import { Outlet, useParams } from 'react-router-dom'
 import AccountSideBar from '../../Components/AccountPage/AccountSideBar'
-import { useEffect, useState } from 'react'
-import sendRequest from "../../utilities/send-request"
+import { useState } from 'react'
 
-export default function AccountPage() {
+
+export default function AccountPage({user}) {
     const {userId} = useParams()
     const [account, setAccount] = useState(null)
+    const isUser = user._id == userId
 
     return (
-        <main>
-            <AccountSideBar userId={userId}/>  {/* protect this route, own user only */}
-            <Outlet context={[account,setAccount]}/>
+        <main className={isUser ? 'accountpagemaincontainer' : 'accountpagemaincontainernosettings'}>
+            {isUser && <div className='accountpageleft'><AccountSideBar user={user}/></div>}
+            <div className='accountpageright'><Outlet context={[account,setAccount]}/></div>
         </main>
     )
 }
