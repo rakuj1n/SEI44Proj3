@@ -10,7 +10,7 @@ export default function SeatSelectionPage() {
   const [qty, setQty] = useState(0);
   const [amount, setAmount] = useState(0);
 
-  useEffect(() => {}, [seatSelection, qty, amount]);
+  useEffect(() => {}, [seatSelection]);
 
   function addSeats(addSeat) {
     if (seatSelection.indexOf(addSeat) === -1) {
