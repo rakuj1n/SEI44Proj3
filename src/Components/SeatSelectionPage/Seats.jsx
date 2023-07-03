@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import IconButton from "@mui/material/IconButton";
 
-export default function Seats({ seats, addSeats, removeSeats }) {
+export default function Seats({ seats, addSeats, removeSeats, reset }) {
   const [active, setActive] = useState(false);
 
   function handleSeat(event) {
@@ -14,6 +14,10 @@ export default function Seats({ seats, addSeats, removeSeats }) {
 
     console.log(event.currentTarget.value);
   }
+
+  useEffect(() => {
+    setActive(false);
+  }, [reset]);
 
   return (
     <IconButton value={seats} onClick={handleSeat} size="small">

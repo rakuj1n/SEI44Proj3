@@ -10,6 +10,7 @@ export default function SeatSelectionPage() {
   const [seatSelection, setSeatSelection] = useState([]);
   const [qty, setQty] = useState(0);
   const [amount, setAmount] = useState(0);
+  const [reset, setReset] = useState(false);
 
   const navigate = useNavigate();
   const { title } = useParams();
@@ -36,6 +37,7 @@ export default function SeatSelectionPage() {
   }
 
   function handleReset() {
+    setReset(!reset);
     setSeatSelection([]);
     setQty(0);
     setAmount(0);
@@ -48,7 +50,11 @@ export default function SeatSelectionPage() {
   return (
     <Container maxWidth="ml">
       <Stack spacing={0}>
-        <SeatsSelection addSeats={addSeats} removeSeats={removeSeats} />
+        <SeatsSelection
+          addSeats={addSeats}
+          removeSeats={removeSeats}
+          reset={reset}
+        />
         <SeatsLegend />
         <TicketsTable seatSelection={seatSelection} qty={qty} amount={amount} />
       </Stack>

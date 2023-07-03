@@ -1,7 +1,7 @@
 import Container from "@mui/material/Container";
 import Seats from "./Seats";
 
-export default function SeatsSelection({ addSeats, removeSeats }) {
+export default function SeatsSelection({ addSeats, removeSeats, reset }) {
   const seatings = [
     ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
     ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8"],
@@ -33,6 +33,7 @@ export default function SeatsSelection({ addSeats, removeSeats }) {
                               seats={seats}
                               addSeats={addSeats}
                               removeSeats={removeSeats}
+                              reset={reset}
                             />
                           </div>
                         );
