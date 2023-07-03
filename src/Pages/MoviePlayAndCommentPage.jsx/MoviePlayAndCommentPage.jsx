@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import sendRequest from "../../utilities/send-request";
-import sendRequest from "../../utilities/send-request";
+// import sendRequest from "../../utilities/send-request";
 
 // require("dotenv").config();
 // require("./config/database");
