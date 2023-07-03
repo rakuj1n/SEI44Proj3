@@ -43,7 +43,7 @@ const PromotionDetailsPage = () => {
         alt={promotion.title}
         className="promotion-image"
       />
-      <p>{promotion.detail}</p>
+      <p className="promotion-detail">{promotion.detail}</p>
     </div>
   );
 };

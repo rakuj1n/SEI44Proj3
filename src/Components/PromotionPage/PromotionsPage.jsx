@@ -29,17 +29,15 @@ const PromotionsPage = () => {
         {promotions.map((promotion) => (
           <div key={promotion.title} className="promotion-item">
             <Link to={`/promotions/${encodeURIComponent(promotion.title)}`}>
-              <img
-                src={promotion.image}
-                alt={promotion.title}
-                className="promotion-image"
-              />
-            </Link>
-            <div className="all-promotion-details">
-              <Link to={`/promotions/${encodeURIComponent(promotion.title)}`}>
+              <div className="promotion-content">
+                <img
+                  src={promotion.image}
+                  alt={promotion.title}
+                  className="promotion-image"
+                />
                 <h2 className="promotion-title">{promotion.title}</h2>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

@@ -291,15 +291,13 @@ button[type="submit"] {
 
 /* Start Damien CSS */
 
-.movies-grid,
-.promotion-grid {
+.movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 }
 
-.movie-item,
-.promotion-item {
+.movie-item {
   width: 200px;
   margin: 10px;
   text-align: center;
@@ -317,8 +315,7 @@ button[type="submit"] {
   transition: transform 0.3s ease;
 }
 
-.movie-item img,
-.promotion-item img {
+.movie-item img {
   max-width: 200px;
 }
 
@@ -335,21 +332,16 @@ button[type="submit"] {
 .movie-director,
 .movie-actor,
 .comments-heading,
-.all-movie-details p,
-.promotion-title,
-.promotion-image,
-.all-promotion-details p {
+.all-movie-details p {
   margin-bottom: 10px;
 }
 
-.movie-details h2,
-.promotion-details h2 {
+.movie-details h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-.movie-details img,
-.promotion-details img {
+.movie-details img {
   width: 200px;
   height: auto;
   margin-bottom: 10px;
@@ -416,6 +408,35 @@ button[type="submit"] {
 
 .movie-item img:hover {
   transform: scale(1.1);
+}
+
+.promotions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.promotion-item {
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+.promotion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.promotion-image {
+  max-width: 200px;
+  max-height: 300px;
+  margin-bottom: 10px;
+}
+
+.promotion-title {
+  font-size: 18px;
 }
 /* End Damien CSS */
 
