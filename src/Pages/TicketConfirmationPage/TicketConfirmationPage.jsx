@@ -1,4 +1,8 @@
+import { useLocation } from "react-router-dom";
+
 export default function TicketConfirmationPage({ user }) {
+  const location = useLocation();
+
   return (
     <div className="ticketConfirmation">
       <h1>Ticket Booking has been Confirmed!</h1>
@@ -9,7 +13,7 @@ export default function TicketConfirmationPage({ user }) {
       <br />
       <h2>Booking Details</h2>
       <br />
-      <h2>You have booked (qty) Tickets</h2>
+      <h2>You have booked ({location.state.qty}) Tickets</h2>
       <br />
       <hr />
       <br />

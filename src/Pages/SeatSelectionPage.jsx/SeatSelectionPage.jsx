@@ -44,7 +44,9 @@ export default function SeatSelectionPage() {
   }
 
   function handleConfirmedSeats() {
-    navigate(`/movies/${title}/ticket-confirmation`);
+    navigate(`/movies/${title}/ticket-confirmation`, {
+      state: { qty: qty },
+    });
   }
 
   return (
