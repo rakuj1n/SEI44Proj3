@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import MovieTheatresShowing from "./MovieTheatresShowing";
 
 const MoviesDetailsPage = () => {
   const carouselSettings = {
@@ -17,6 +18,7 @@ const MoviesDetailsPage = () => {
 
   const { title } = useParams();
   const [movie, setMovie] = useState(null);
+  const [showTheatres, setShowTheatres] = useState(false);
 
   const fetchMovie = async (movieTitle) => {
     try {
@@ -46,6 +48,7 @@ const MoviesDetailsPage = () => {
   }
 
   const handleBuyNow = () => {
+    setShowTheatres(true);
     console.log("Buy");
   };
 
@@ -96,6 +99,7 @@ const MoviesDetailsPage = () => {
           <p>No Comments Yet</p>
         )}
       </div>
+      {showTheatres && <MovieTheatresShowing />}
     </div>
   );
 };
