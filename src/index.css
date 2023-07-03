@@ -243,11 +243,16 @@ button[type="submit"] {
   padding: 5px;
 }
 
-.seatRowContainer {
+.seatingContainer {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: center;
   gap: 20px;
+}
+
+.seatRowContainer {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .seatsRow {
