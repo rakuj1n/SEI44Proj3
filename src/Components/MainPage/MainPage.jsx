@@ -68,17 +68,19 @@ const MainPage = () => {
         <p></p>
         {movies.length > 0 ? (
           <Slider {...carouselSettings}>
-            {movies.map((movie) => (
-              <div key={movie.title}>
-                <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    style={{ maxWidth: "300px", maxHeight: "300px" }}
-                  />
-                </Link>
-              </div>
-            ))}
+            {movies
+              .filter((movie) => movie.nowShowing)
+              .map((movie) => (
+                <div key={movie.title}>
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "300px", maxHeight: "300px" }}
+                    />
+                  </Link>
+                </div>
+              ))}
           </Slider>
         ) : (
           <p>No movies available for the carousel</p>
@@ -168,6 +170,44 @@ const MainPage = () => {
           />
         </div>
       )}
+      {/* Kinolounge */}
+      <div className="kinolounge-carousel">
+        <h2>KinoLounge</h2>
+        <hr></hr>
+        {movies.length > 4 ? (
+          <Slider slidesToShow={4} slidesToScroll={1}>
+            {movies
+              .filter((movie) => !movie.nowShowing)
+              .map((movie) => (
+                <div key={movie.title}>
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    />
+                  </Link>
+                </div>
+              ))}
+          </Slider>
+        ) : (
+          <div className="movies-row">
+            {movies
+              .filter((movie) => !movie.nowShowing)
+              .map((movie) => (
+                <div key={movie.title} className="movie-item">
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    />
+                  </Link>
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
