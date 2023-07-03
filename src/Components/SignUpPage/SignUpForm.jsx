@@ -40,7 +40,7 @@ export default function SignUpForm({ setUser }) {
       setUser(user);
 
       if (user) {
-        navigate(`/mainpage/${user._id}`);
+        navigate("/mainpage");
       }
     } catch {
       setNewUser({ ...newUser, errorMessage: "Sign Up Failed. Try Again." });

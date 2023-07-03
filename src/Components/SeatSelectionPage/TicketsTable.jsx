@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 
-export default function TicketsTable() {
+export default function TicketsTable({ seatSelection, qty, amount }) {
   return (
     <Container maxWidth="ml">
       <TableContainer component={Paper}>
@@ -21,14 +21,18 @@ export default function TicketsTable() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell align="left">Seats: Adult $10.00</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">$20</TableCell>
+              <TableCell align="left">
+                Seats: {seatSelection.join(", ")}
+                <br />
+                <span>Adult $10.00</span>
+              </TableCell>
+              <TableCell align="right">{qty}</TableCell>
+              <TableCell align="right">${amount}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell align="left">TOTAL</TableCell>
               <TableCell align="right"></TableCell>
-              <TableCell align="right">$20</TableCell>
+              <TableCell align="right">${amount}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

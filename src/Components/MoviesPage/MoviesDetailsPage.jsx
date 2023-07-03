@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import MovieTheatresShowing from "./MovieTheatresShowing";
 
 const MoviesDetailsPage = () => {
   const carouselSettings = {
@@ -96,6 +97,8 @@ const MoviesDetailsPage = () => {
           <p>No Comments Yet</p>
         )}
       </div>
+      <hr />
+      <MovieTheatresShowing />
     </div>
   );
 };

@@ -209,7 +209,7 @@ button[type="submit"] {
 }
 
 .seatsSelector {
-  height: 350px;
+  height: 360px;
   background-color: black;
   color: white;
 }
@@ -223,7 +223,7 @@ button[type="submit"] {
 
 .seatSelectionContainer {
   height: 250px;
-  width: 600px;
+  width: 550px;
 }
 
 .screen {
@@ -239,7 +239,36 @@ button[type="submit"] {
 .screenText {
   line-height: 30px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.seatingContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 20px;
+}
+
+.seatRowContainer {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.seatsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+  gap: 2px;
+}
+
+.rowLabels {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  text-align: right;
+  font-size: 14px;
 }
 
 /* .seatsLegend {
