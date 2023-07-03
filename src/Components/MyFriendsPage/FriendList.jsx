@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import SearchFriends from "./SearchFriends"
 
 export default function FriendList({account, handleClick,setCurrSelectedFollowing,currSelectedFollowing}) {
@@ -28,9 +28,40 @@ export default function FriendList({account, handleClick,setCurrSelectedFollowin
         )
     }) : friendList
 
+    //----------------------------
+    const [isDragging, setIsDragging] = useState(false)
+    const [mouseStartX, setMouseStartX] = useState(0)
+    const [scrollStartX, setScrollStartX] = useState(0)
+    const scrollableRef = useRef(null)
+
+    const handleMouseDown = (e) => {
+        e.preventDefault()
+        setIsDragging(true)
+        setMouseStartX(e.pageX)
+        setScrollStartX(scrollableRef.current.scrollLeft)
+    }
+
+    const handleMouseUp = () => {
+        setIsDragging(false)
+    }
+
+    const handleMouseMove = (e) => {
+        if (isDragging) {
+        const mouseMoveX = e.pageX - mouseStartX
+        scrollableRef.current.scrollLeft = scrollStartX - mouseMoveX
+        }
+    }
+
+    const style = {
+        cursor: isDragging ? 'grab' : 'auto'
+    }
+
+//----------------------------
+
     return (
         <div className="followingcontainer">
-            <div className="followingdetails">{list}</div>
+            <div style={style}
+            ref={scrollableRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} className="followingdetails">{list}</div>
             <SearchFriends setCurrSelectedFollowing={setCurrSelectedFollowing} handleFilter={handleFilter} setFiltered={setFiltered}/>
         </div>
     )

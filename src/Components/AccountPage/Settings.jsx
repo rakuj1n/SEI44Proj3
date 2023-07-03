@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import sendRequest from "../../utilities/send-request"
 import { useNavigate } from "react-router-dom"
 import { Button } from "antd"
+import Loading from "../Loading"
 
 
 export default function Settings({user}) {
@@ -72,7 +73,7 @@ export default function Settings({user}) {
     },[disabled])
 
     if (status === 'loading') {
-        return (<p>loading</p>)
+        return (<Loading />)
     }
 
     return (

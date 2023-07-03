@@ -7,7 +7,7 @@ export default function ViewHistory({account}) {
     const watchedList = account?.watchHistory.map((item) => {
         return (
         <div className='movieitem' key={item?._id}>
-            <p>{item?.title}</p>
+            <p><strong>{item?.title}</strong></p>
             <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
             <p></p>
             <p></p>
@@ -22,6 +22,7 @@ export default function ViewHistory({account}) {
     const scrollableRef = useRef(null)
 
     const handleMouseDown = (e) => {
+        e.preventDefault()
         setIsDragging(true)
         setMouseStartX(e.pageX)
         setScrollStartX(scrollableRef.current.scrollLeft)

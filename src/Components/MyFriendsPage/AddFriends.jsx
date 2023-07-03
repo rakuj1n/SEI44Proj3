@@ -1,6 +1,7 @@
 import {  Button, Drawer  } from 'antd'
 import { useState } from "react"
 import sendRequest from "../../utilities/send-request"
+import Loading from '../Loading'
 
 
 export default function AddFriends({account,setTrigger,user}) {
@@ -35,7 +36,7 @@ export default function AddFriends({account,setTrigger,user}) {
     }
 
     if (status === 'loading') {
-        return (<p>loading</p>)
+        return (<Loading />)
     }
 
     return (

@@ -4,6 +4,7 @@ import MovieRecoList from "../../Components/MyFriendsPage/MovieRecoList"
 import { useParams } from "react-router-dom"
 import sendRequest from "../../utilities/send-request"
 import { useEffect, useState } from "react"
+import Loading from "../../Components/Loading"
 
 
 export default function MyFriendsPage({user}) {
@@ -77,10 +78,10 @@ export default function MyFriendsPage({user}) {
         <main className="followingmaincontainer">
             <h1>Following ({friendsNo})</h1>
             <div className="followingmaininnercontainer">
-            {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} currSelectedFollowing={currSelectedFollowing} account={account} handleClick={handleClick}/> : <p>loadingaccount</p>}
+            {status !== 'loading' ? <FriendList setCurrSelectedFollowing={setCurrSelectedFollowing} currSelectedFollowing={currSelectedFollowing} account={account} handleClick={handleClick}/> : <Loading />}
             <div className="addbuttoncontainer"><AddFriends account={account} user={user} setTrigger={setTrigger}/></div>
             </div>
-            {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <p>loadingfollowing</p>}
+            {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <Loading />}
         </main>
         :
         <p>404 Page Not Found.</p>

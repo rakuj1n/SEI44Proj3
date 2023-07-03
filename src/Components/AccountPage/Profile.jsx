@@ -2,6 +2,7 @@ import ViewHistory from "./ViewHistory";
 import { useOutletContext, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import sendRequest from "../../utilities/send-request"
+import Loading from "../Loading";
 
 
 export default function Profile() {
@@ -31,7 +32,7 @@ export default function Profile() {
     const profilePic = account?.user.picture || 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png'
 
     if (status === 'loading') {
-        return (<p>loading</p>)
+        return (<Loading />)
     }
 
     return (
