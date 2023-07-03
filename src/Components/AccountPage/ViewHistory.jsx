@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useEffect,useRef } from "react"
+import { useRef, useState } from "react"
 
 
 export default function ViewHistory({account}) {
@@ -9,48 +9,45 @@ export default function ViewHistory({account}) {
         <div className='movieitem' key={item?._id}>
             <p>{item?.title}</p>
             <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+            <p></p>
+            <p></p>
         </div>
         )
     })
 
-        //----------------------------------
-        const scrollableDivRef = useRef(null)
-        function handleWheel(event) {
-            const scrollableDiv = scrollableDivRef.current
-            if (event.target === scrollableDiv || scrollableDiv.contains(event.target)) {
-                event.preventDefault(); // Prevent default scrolling behavior
-          
-                // Adjust the scroll position based on the wheel delta
-                scrollableDiv.scrollLeft += event.deltaY;
-            }
-        }
-    
-        useEffect(() => {
-            const disableScroll = (event) => {
-              const scrollableDiv = scrollableDivRef.current;
-        
-              // Check if the mouse is inside the scrollable div
-              if (scrollableDiv.contains(event.target)) {
-                event.preventDefault(); // Prevent default scrolling behavior
-              }
-            };
-        
-            // Add event listener to window to disable overall scrolling
-            window.addEventListener('wheel', disableScroll, { passive: false });
-        
-            return () => {
-              // Clean up the event listener when the component unmounts
-              window.removeEventListener('wheel', disableScroll);
-            };
-          }, []);
+    //----------------------------
+    const [isDragging, setIsDragging] = useState(false)
+    const [mouseStartX, setMouseStartX] = useState(0)
+    const [scrollStartX, setScrollStartX] = useState(0)
+    const scrollableRef = useRef(null)
 
-          //onWheel={handleWheel} ref={scrollableDivRef}
+    const handleMouseDown = (e) => {
+        setIsDragging(true)
+        setMouseStartX(e.pageX)
+        setScrollStartX(scrollableRef.current.scrollLeft)
+    }
+
+    const handleMouseUp = () => {
+        setIsDragging(false)
+    }
+
+    const handleMouseMove = (e) => {
+        if (isDragging) {
+        const mouseMoveX = e.pageX - mouseStartX
+        scrollableRef.current.scrollLeft = scrollStartX - mouseMoveX
+        }
+    }
+
+    const style = {
+        cursor: isDragging ? 'grab' : 'auto'
+    }
+
     //----------------------------
 
     return (
         <div className="viewhistory">
             <h1>Watch History</h1>
-            <div onWheel={handleWheel} ref={scrollableDivRef} className="viewhistorymovies">{watchedList}</div>
+            <div style={style} ref={scrollableRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} className="viewhistorymovies">{watchedList}</div>
         </div>
     )
 }
