@@ -3,14 +3,12 @@ import SeatsSelection from "../../Components/SeatSelectionPage/SeatsSelection";
 import TicketsTable from "../../Components/SeatSelectionPage/TicketsTable";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function SeatSelectionPage() {
   const [seatSelection, setSeatSelection] = useState([]);
   const [qty, setQty] = useState(0);
   const [amount, setAmount] = useState(0);
-
-  useEffect(() => {}, [seatSelection]);
 
   function addSeats(addSeat) {
     if (seatSelection.indexOf(addSeat) === -1) {
