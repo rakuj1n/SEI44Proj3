@@ -780,20 +780,13 @@ header a:hover {
 .friends-watched-banner,
 .page-header-content,
 .kinolounge-header,
-.PlayRentPageContainer {
+.PlayRentPageContent {
   color: white;
 }
 
 html {
   scroll-behavior: smooth;
 }
-
-/* .star-rating {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-} */
 .star-rating-on {
   background-color: transparent;
   border: none;
@@ -808,10 +801,20 @@ html {
   cursor: pointer;
   color: #ccc;
 }
-.BackgroundContainer {
-  /* filter: blur(8px) !important; */
+.PlayRentPageContentContainer {
+  position: relative;
+  background-size: cover;
+  /* top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
+  position: absolute;
 }
-.PlayRentPageContainer {
-  filter: none;
+
+.PlayRentPageContentContainer::before {
+  background-image: url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg);
+  /* background: inherit; */
+  filter: blur(8px);
 }
+
 /* end of Wesley css */

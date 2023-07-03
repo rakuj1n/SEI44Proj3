@@ -52,8 +52,7 @@ export default function PlayMoviePage({ user }) {
   const backgroundStyle = {
     backgroundImage: `url(${poster})`,
     backgroundSize: "cover",
-
-    position: "absolute",
+    // position: "absolute",
     // width: "auto",
     // height: "auto",
   };
@@ -99,9 +98,9 @@ export default function PlayMoviePage({ user }) {
     <>
       {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
-      <div className="BackgroundContainer" style={backgroundStyle}>
-        {/* <div className="BackgroundContainer" > */}
-        <div className="PlayRentPageContainer">
+      <div className="PlayRentPageContentContainer" style={backgroundStyle}>
+        {/* <div className="PlayRentPageContentContainer"> */}
+        <div className="PlayRentPageContent">
           <img width="30%" src={poster} alt="pic" />
           <h2>{movieTitle}</h2>
 
