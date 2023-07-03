@@ -6,6 +6,9 @@
   --tan-3: #e2d9d1;
   --tan-4: #d3c1ae;
   --orange: #f67f00;
+  --shawRed: rgb(142, 13, 15);
+  --shawBorderRed: rgb(179, 17, 18);
+  --shawBlue: rgb(37, 37, 63);
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -23,7 +26,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  /* background-color: var (--tan-4); */
+  background-color: var(--shawBlue);
   padding: 2vmin;
   height: 100vh;
 }
@@ -124,13 +128,14 @@ a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  /* background-color: var(--orange); */
+  background-color: var(--shawRed);
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: 0.1vmin solid var(--tan-2);
-  border-radius: 0.5vmin;
+  /* border: 0.1vmin solid var(--tan-2); */
+  border: 0.5vmin solid var(--shawBorderRed);
   outline: none;
   cursor: pointer;
 }
@@ -358,7 +363,6 @@ button[type="submit"] {
 
 /* End Damien CSS */
 
-
 /* lakjin css */
 
 .accountpagemaincontainer {
@@ -395,23 +399,23 @@ button[type="submit"] {
 }
 
 .profilecontainer {
- margin: 10px;
- padding: 20px;
+  margin: 10px;
+  padding: 20px;
 }
 
 .profile {
   /* border: 1px solid teal; */
 }
 
-.addbuttoncontainer  {
+.addbuttoncontainer {
   position: relative;
 }
 
 .addbutton {
   position: absolute;
-  margin:0;
-  padding:0;
-  top:10%;
+  margin: 0;
+  padding: 0;
+  top: 10%;
   /* right: 10px; */
   /* transform: translateY(-50%); */
 }
@@ -421,13 +425,12 @@ button[type="submit"] {
   margin-left: 10px;
 }
 
-
 .profiledetails {
   display: flex;
 }
 
 .profiledetails > img {
-  width:100px;
+  width: 100px;
   height: 100px;
   border-radius: 50%;
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
@@ -437,7 +440,7 @@ button[type="submit"] {
 
 .profiledetailsinner {
   text-align: left;
-  margin-left: 30px
+  margin-left: 30px;
 }
 
 .viewhistory {
@@ -449,7 +452,7 @@ button[type="submit"] {
 }
 
 .viewhistorymovies {
-  display:flex;
+  display: flex;
   overflow-x: auto;
   justify-content: left;
   align-items: center;
@@ -462,7 +465,7 @@ button[type="submit"] {
 .followingmaincontainer > h1 {
   text-align: left;
   padding: 10px 50px;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 .followingmaininnercontainer {
@@ -472,8 +475,8 @@ button[type="submit"] {
 }
 
 .followingcontainer {
-  display:flex;
-  display:grid;
+  display: flex;
+  display: grid;
   grid-template-columns: 9fr 1fr;
   align-items: center;
 }
@@ -482,7 +485,7 @@ button[type="submit"] {
   /* border: 1px solid green; */
   display: flex;
   padding: 10px 50px;
-  margin-left:10px;
+  margin-left: 10px;
   overflow-x: auto;
 }
 
@@ -490,19 +493,19 @@ button[type="submit"] {
   /* border: 1px solid yellow; */
   margin: 0 5px;
   padding: 5px 10px;
-  background-color:antiquewhite;
+  background-color: antiquewhite;
   border-radius: 15px;
 }
 
 .followingitem:hover {
   cursor: pointer;
-  background-color: #FDF2E8;
+  background-color: #fdf2e8;
 }
 
 .searchmaincontainer {
   /* border: 1px solid blue; */
   position: relative;
-  display:grid;
+  display: grid;
   grid-template-columns: auto auto;
   align-items: center;
 }
@@ -510,7 +513,7 @@ button[type="submit"] {
 .followingrecommendationscontainer > h1 {
   text-align: left;
   padding: 10px 50px;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 .searchcontainer {
@@ -518,7 +521,7 @@ button[type="submit"] {
   position: absolute;
   top: 50%;
   right: 25px;
-  width: 250px; 
+  width: 250px;
   transform: translateY(-50%);
   animation: opensearch 500ms ease forwards;
 }
@@ -533,8 +536,8 @@ button[type="submit"] {
 }
 
 .input {
-  height:41px;
-  width:240px;
+  height: 41px;
+  width: 240px;
   animation: openinput 500ms ease forwards;
 }
 
@@ -553,7 +556,7 @@ button[type="submit"] {
 }
 
 .movielist {
-  display:flex;
+  display: flex;
   justify-content: left;
   overflow-x: auto;
   padding: 10px;
@@ -565,11 +568,11 @@ button[type="submit"] {
 }
 
 .poster {
-  transition: all ease 200ms
+  transition: all ease 200ms;
 }
 
 .poster:hover {
-  scale:1.035;
+  scale: 1.035;
 }
 
 .poster {
@@ -577,13 +580,13 @@ button[type="submit"] {
 }
 
 .profilepic {
-  width:60px;
-  height:60px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
 .commentsectionitem {
-  display:flex;
+  display: flex;
   align-items: center;
   margin: 20px 0;
   max-width: 300px;
@@ -598,16 +601,17 @@ button[type="submit"] {
 }
 
 .settingscontainer {
-  padding:20px;
-  margin:10px;
+  padding: 20px;
+  margin: 10px;
 }
 
-.currpass, .newpass {
-  margin:10px
+.currpass,
+.newpass {
+  margin: 10px;
 }
 
 .forminput {
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .settingscontainer > h1 {
@@ -615,7 +619,7 @@ button[type="submit"] {
 }
 
 .settingscontainer > form {
-  display:block;
+  display: block;
   text-align: left;
 }
 
@@ -687,3 +691,69 @@ button[type="submit"] {
 }
 
 /* lakjin css */
+/* Wesley css */
+header {
+  justify-content: flex-start;
+  display: flex;
+  /* background-color: rgb(168, 215, 105); */
+}
+
+header ul {
+  display: flex;
+  list-style: none;
+}
+
+header a {
+  color: #eee;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin: auto 1em;
+}
+
+header a:hover {
+  color: red;
+  padding-bottom: 3px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.you-might-be-interested-banner,
+.friends-watched-banner,
+.page-header-content,
+.kinolounge-header,
+.PlayRentPageContainer {
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* .star-rating {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+} */
+.star-rating-on {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--shawRed);
+}
+.star-rating-off {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #ccc;
+}
+.BackgroundContainer {
+  /* filter: blur(8px) !important; */
+}
+.PlayRentPageContainer {
+  filter: none;
+}
+/* end of Wesley css */
