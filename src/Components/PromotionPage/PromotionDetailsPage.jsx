@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const PromotionDetailsPage = () => {
   const { title } = useParams();
   const [promotion, setPromotion] = useState(null);
+  const [enlargedImage, setEnlargedImage] = useState(null);
 
   const fetchPromotions = async (promotionTitle) => {
     try {
@@ -35,6 +35,14 @@ const PromotionDetailsPage = () => {
     return <div>Loading...</div>;
   }
 
+  const handleImageClick = (image) => {
+    setEnlargedImage(image);
+  };
+
+  const closeModal = () => {
+    setEnlargedImage(null);
+  };
+
   return (
     <div className="promotion-details">
       <h2 className="promotion-title">{promotion.title}</h2>
@@ -42,8 +50,19 @@ const PromotionDetailsPage = () => {
         src={promotion.image}
         alt={promotion.title}
         className="promotion-image"
+        onClick={() => handleImageClick(promotion.image)}
       />
       <p className="promotion-detail">{promotion.detail}</p>
+
+      {enlargedImage && (
+        <div className="enlarged-image-modal" onClick={closeModal}>
+          <img
+            src={enlargedImage}
+            alt={promotion.title}
+            className="enlarged-image"
+          />
+        </div>
+      )}
     </div>
   );
 };
