@@ -329,7 +329,7 @@ button[type="submit"] {
 .movie-director,
 .movie-actor,
 .comments-heading,
-.movie-details p {
+.all-movie-details p {
   margin-bottom: 10px;
 }
 
@@ -347,6 +347,24 @@ button[type="submit"] {
 .profile-picture {
   width: 100px;
   height: 100px;
+}
+
+.kinolounge-carousel .movies-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.kinolounge-carousel .movie-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
 }
 
 .now-showing-carousel .movies-row {
@@ -429,6 +447,9 @@ button[type="submit"] {
 
 .profilecontainer {
   margin: 10px;
+  /* border: 1px solid green; */
+  padding: 20px;
+  margin: 10px;
   padding: 20px;
 }
 
@@ -460,6 +481,7 @@ button[type="submit"] {
 
 .profiledetails > img {
   width: 100px;
+  width: 100px;
   height: 100px;
   border-radius: 50%;
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
@@ -469,6 +491,7 @@ button[type="submit"] {
 
 .profiledetailsinner {
   text-align: left;
+  margin-left: 30px;
   margin-left: 30px;
 }
 
@@ -481,6 +504,7 @@ button[type="submit"] {
 }
 
 .viewhistorymovies {
+  display: flex;
   display: flex;
   overflow-x: auto;
   justify-content: left;
@@ -495,6 +519,7 @@ button[type="submit"] {
   text-align: left;
   padding: 10px 50px;
   margin-left: 10px;
+  margin-left: 10px;
 }
 
 .followingmaininnercontainer {
@@ -506,6 +531,8 @@ button[type="submit"] {
 .followingcontainer {
   display: flex;
   display: grid;
+  display: flex;
+  display: grid;
   grid-template-columns: 9fr 1fr;
   align-items: center;
 }
@@ -514,6 +541,7 @@ button[type="submit"] {
   /* border: 1px solid green; */
   display: flex;
   padding: 10px 50px;
+  margin-left: 10px;
   margin-left: 10px;
   overflow-x: auto;
 }
@@ -535,6 +563,7 @@ button[type="submit"] {
   /* border: 1px solid blue; */
   position: relative;
   display: grid;
+  display: grid;
   grid-template-columns: auto auto;
   align-items: center;
 }
@@ -542,6 +571,7 @@ button[type="submit"] {
 .followingrecommendationscontainer > h1 {
   text-align: left;
   padding: 10px 50px;
+  margin-left: 10px;
   margin-left: 10px;
 }
 
@@ -567,7 +597,6 @@ button[type="submit"] {
 .input {
   height: 41px;
   width: 240px;
-  animation: openinput 500ms ease forwards;
 }
 
 .closebutton {

@@ -20,6 +20,15 @@ const MainPage = () => {
     "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938708790?w=145&dpr=1.3",
   ]);
   const [enlargedImage, setEnlargedImage] = useState(null);
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+  };
 
   const handleImageClick = (image) => {
     setEnlargedImage(image);
@@ -54,9 +63,34 @@ const MainPage = () => {
         </Link>
       </div>
 
+      {/* Movies Carousel */}
+      <div className="movies-carousel">
+        <p></p>
+        {movies.length > 0 ? (
+          <Slider {...carouselSettings}>
+            {movies
+              .filter((movie) => movie.nowShowing)
+              .map((movie) => (
+                <div key={movie.title}>
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "300px", maxHeight: "300px" }}
+                    />
+                  </Link>
+                </div>
+              ))}
+          </Slider>
+        ) : (
+          <p>No movies available for the carousel</p>
+        )}
+      </div>
+
       {/* Now Showing */}
       <div className="now-showing-carousel">
         <h2>Now Showing</h2>
+        <hr></hr>
         {movies.length > 4 ? (
           <Slider slidesToShow={4} slidesToScroll={1}>
             {movies
@@ -95,6 +129,7 @@ const MainPage = () => {
       {/* Promotion */}
       <div className="promotion-section">
         <h2>Promotions</h2>
+        <hr></hr>
         {promotions.length > 4 ? (
           <Slider slidesToShow={4} slidesToScroll={1}>
             {promotions.map((promotion, index) => (
@@ -135,6 +170,44 @@ const MainPage = () => {
           />
         </div>
       )}
+      {/* Kinolounge */}
+      <div className="kinolounge-carousel">
+        <h2>KinoLounge</h2>
+        <hr></hr>
+        {movies.length > 4 ? (
+          <Slider slidesToShow={4} slidesToScroll={1}>
+            {movies
+              .filter((movie) => !movie.nowShowing)
+              .map((movie) => (
+                <div key={movie.title}>
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    />
+                  </Link>
+                </div>
+              ))}
+          </Slider>
+        ) : (
+          <div className="movies-row">
+            {movies
+              .filter((movie) => !movie.nowShowing)
+              .map((movie) => (
+                <div key={movie.title} className="movie-item">
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    />
+                  </Link>
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -18,6 +18,8 @@ const MoviesDetailsPage = () => {
 
   const { title } = useParams();
   const [movie, setMovie] = useState(null);
+  const [showTheatres, setShowTheatres] = useState(false);
+  const navigate = useNavigate();
 
   const fetchMovie = async (movieTitle) => {
     try {
@@ -47,11 +49,16 @@ const MoviesDetailsPage = () => {
   }
 
   const handleBuyNow = () => {
-    console.log("Buy");
+    setShowTheatres(true);
   };
 
   const handleRent = () => {
-    console.log("Rent");
+    navigate(`/payments`, {
+      state: {
+        movieTitle: movie.title,
+        poster: movie.poster,
+      },
+    });
   };
 
   const buyOrRentButton = movie.nowShowing ? (
@@ -60,7 +67,7 @@ const MoviesDetailsPage = () => {
     </button>
   ) : (
     <button className="rent-button" onClick={handleRent}>
-      Rent Movie Now
+      Rent S$4.99
     </button>
   );
 
@@ -97,8 +104,7 @@ const MoviesDetailsPage = () => {
           <p>No Comments Yet</p>
         )}
       </div>
-      <hr />
-      <MovieTheatresShowing />
+      {showTheatres && <MovieTheatresShowing />}
     </div>
   );
 };
