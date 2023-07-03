@@ -364,13 +364,15 @@ button[type="submit"] {
 .accountpagemaincontainer {
   display: grid;
   grid-template-columns: 1fr 7fr;
-  /* border: 1px solid red; */
+}
+
+.accountpagemaincontainernosettings {
+  margin: 0 250px;
 }
 
 .accountsidebarcontainer {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid white; */
   font-size: 1.5rem;
   padding: 20px;
   margin: 10px;
@@ -394,7 +396,6 @@ button[type="submit"] {
 
 .profilecontainer {
  margin: 10px;
- /* border: 1px solid green; */
  padding: 20px;
 }
 
@@ -423,7 +424,6 @@ button[type="submit"] {
 
 .profiledetails {
   display: flex;
-  /* border: 1px solid orange; */
 }
 
 .profiledetails > img {
@@ -441,7 +441,6 @@ button[type="submit"] {
 }
 
 .viewhistory {
-  /* border: 1px solid blue; */
   padding: 10px;
 }
 
@@ -457,7 +456,7 @@ button[type="submit"] {
 }
 
 .followingmaincontainer {
-  /* border: 1px solid red; */
+  margin: 0 10%;
 }
 
 .followingmaincontainer > h1 {
@@ -467,7 +466,6 @@ button[type="submit"] {
 }
 
 .followingmaininnercontainer {
-  /* border: 1px solid orange; */
   display: grid;
   /* display:flex; */
   grid-template-columns: 9fr 1fr;
