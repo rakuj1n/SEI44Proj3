@@ -34,6 +34,9 @@ export default function KinoloungeNavBar() {
             <li>
               <Link to="/kinolounge">Friend's recommendations</Link>
             </li>
+            <li>
+              <a href="#For-you">For you</a>
+            </li>
           </ul>
         </div>
       </header>

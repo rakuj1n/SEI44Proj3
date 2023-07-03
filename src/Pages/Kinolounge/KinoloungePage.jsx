@@ -73,6 +73,7 @@ export default function KinoloungePage({ user }) {
       <h2 className="you-might-be-interested-banner">
         You might be interested in
       </h2>
+      <a id="For-you" />
       <Slider slidesToShow={4} slidesToScroll={1}>
         {movies.movies?.map((movie, index) => (
           // <div className="movie-item" key={index}>

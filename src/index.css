@@ -604,4 +604,10 @@ html {
   cursor: pointer;
   color: #ccc;
 }
+.BackgroundContainer {
+  /* filter: blur(8px) !important; */
+}
+.PlayRentPageContainer {
+  filter: none;
+}
 /* end of Wesley css */
