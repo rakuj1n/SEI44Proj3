@@ -24,9 +24,9 @@ import SeatSelectionPage from "../SeatSelectionPage.jsx/SeatSelectionPage";
 import MoviesDetailsPage from "../../Components/MoviesPage/MoviesDetailsPage";
 import MoviePlayAndCommentPage from "../MoviePlayAndCommentPage.jsx/MoviePlayAndCommentPage";
 import CheckoutPage from "../CheckoutPage/Checkout";
-import TicketConfirmationPage from "../NewOrderPage/TicketConfirmationPage/TicketConfirmationPage";
 import PromotionsPage from "../../Components/PromotionPage/PromotionsPage";
 import PromotionDetailsPage from "../../Components/PromotionPage/PromotionDetailsPage";
+import TicketConfirmationPage from "../TicketConfirmationPage/TicketConfirmationPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
