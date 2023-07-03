@@ -120,6 +120,19 @@ async function getAllRecommendedForAnAccount(req,res) {
     }
 }
 
+async function updateMoviesRecommended(req,res) {
+    const userId = req.params.userId
+    try {
+        const account = await Account.findOne({user:userId})
+        if (!account) throw new Error('Account not found.')
+        if (account.moviesRecommended.includes(req.body.movieId)) throw new Error("Already added.")
+        await Account.findOneAndUpdate({user:userId},{$addToSet:{moviesRecommended:req.body.movieId}})
+        res.status(200).json(account)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
 module.exports = {
     create,
     login,
@@ -128,5 +141,6 @@ module.exports = {
     updatePic,
     updatePass,
     updateFriend,
-    getAllRecommendedForAnAccount
+    getAllRecommendedForAnAccount,
+    updateMoviesRecommended
 }
