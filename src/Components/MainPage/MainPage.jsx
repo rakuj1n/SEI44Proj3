@@ -6,20 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const MainPage = () => {
   const [movies, setMovies] = useState([]);
-  const [promotions, setPromotions] = useState([
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1687924767873?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/17-photo-1686025585705?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673924882580?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/19-photo-1681977760547?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673925224046?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1686022927461?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673925312075?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673937754657?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673937965216?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938041767?w=145&dpr=1.3",
-    "https://shawsgqk.gumlet.io/fetch/https://snow-shaw-cdn.azureedge.net/prd/content/images/promotions/default/en-sg/Promotion-photo-1673938708790?w=145&dpr=1.3",
-  ]);
-  const [enlargedImage, setEnlargedImage] = useState(null);
+  const [promotions, setPromotions] = useState([]);
   const carouselSettings = {
     dots: true,
     infinite: true,
@@ -28,10 +15,6 @@ const MainPage = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-  };
-
-  const handleImageClick = (image) => {
-    setEnlargedImage(image);
   };
 
   const fetchMovies = async () => {
@@ -47,12 +30,28 @@ const MainPage = () => {
     }
   };
 
+  const fetchPromotions = async () => {
+    try {
+      const response = await fetch("/api/promotions");
+      if (!response.ok) {
+        throw new Error("Failed to fetch promotions");
+      }
+      const data = await response.json();
+      setPromotions(data.promotions);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchMovies();
+    fetchPromotions();
   }, []);
 
   return (
     <div>
+      {/* Dropdown Boxes */}
+
       {/* Side Nav Bar */}
       <div className="kinolounge">
         <Link to="/kinolounge" className="kinolounge-link">
@@ -60,6 +59,9 @@ const MainPage = () => {
         </Link>
         <Link to="/movies" className="movies-button">
           Movies
+        </Link>
+        <Link to="/promotions" className="promotions-button">
+          Promotions
         </Link>
       </div>
 
@@ -132,44 +134,35 @@ const MainPage = () => {
         <hr></hr>
         {promotions.length > 4 ? (
           <Slider slidesToShow={4} slidesToScroll={1}>
-            {promotions.map((promotion, index) => (
-              <div className="movie-item" key={index}>
-                <img
-                  src={promotion}
-                  alt={`Promotion ${index + 1}`}
-                  style={{ maxWidth: "200px", maxHeight: "300px" }}
-                  onClick={() => handleImageClick(promotion)}
-                />
+            {promotions.map((promotion) => (
+              <div className="movie-item" key={promotion._id}>
+                <Link to={`/promotions/${encodeURIComponent(promotion.title)}`}>
+                  <img
+                    src={promotion.image}
+                    alt={promotion.title}
+                    style={{ maxWidth: "200px", maxHeight: "300px" }}
+                  />
+                </Link>
               </div>
             ))}
           </Slider>
         ) : (
           <div className="movies-row">
-            {promotions.map((promotion, index) => (
-              <div className="movie-item" key={index}>
-                <img
-                  src={promotion}
-                  alt={`Promotion ${index + 1}`}
-                  style={{ maxWidth: "200px", maxHeight: "300px" }}
-                  onClick={() => handleImageClick(promotion)}
-                />
+            {promotions.map((promotion) => (
+              <div className="movie-item" key={promotion._id}>
+                <Link to={`/promotions/${encodeURIComponent(promotion.title)}`}>
+                  <img
+                    src={promotion.image}
+                    alt={promotion.title}
+                    style={{ maxWidth: "200px", maxHeight: "300px" }}
+                  />
+                </Link>
               </div>
             ))}
           </div>
         )}
       </div>
-      {enlargedImage && (
-        <div
-          className="enlarged-image-overlay"
-          onClick={() => setEnlargedImage(null)}
-        >
-          <img
-            src={enlargedImage}
-            alt="Enlarged Promotion"
-            className="enlarged-image"
-          />
-        </div>
-      )}
+
       {/* Kinolounge */}
       <div className="kinolounge-carousel">
         <h2>KinoLounge</h2>

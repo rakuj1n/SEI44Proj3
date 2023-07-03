@@ -291,33 +291,39 @@ button[type="submit"] {
 
 /* Start Damien CSS */
 
-.movies-grid {
+.movies-grid,
+.promotion-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 }
 
-.movie-item {
+.movie-item,
+.promotion-item {
   width: 200px;
   margin: 10px;
   text-align: center;
 }
 
-.movie-item:hover .movie-image {
+.movie-item:hover .movie-image,
+.promotion-item:hover .promotion-image {
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
 
-.movie-item:hover .movie-title {
+.movie-item:hover .movie-title,
+.promotion-item:hover .promotion-title {
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
 
-.movie-item img {
+.movie-item img,
+.promotion-item img {
   max-width: 200px;
 }
 
-.movie-details {
+.movie-details,
+.promotion-details {
   flex-grow: 1;
   margin-left: 20px;
   border: 5px solid black;
@@ -329,16 +335,21 @@ button[type="submit"] {
 .movie-director,
 .movie-actor,
 .comments-heading,
-.all-movie-details p {
+.all-movie-details p,
+.promotion-title,
+.promotion-image,
+.all-promotion-details p {
   margin-bottom: 10px;
 }
 
-.movie-details h2 {
+.movie-details h2,
+.promotion-details h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-.movie-details img {
+.movie-details img,
+.promotion-details img {
   width: 200px;
   height: auto;
   margin-bottom: 10px;
@@ -385,29 +396,27 @@ button[type="submit"] {
   transition: transform 0.3s;
 }
 
+.promotion-section .movies-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.promotion-section .movie-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
+}
+
 .movie-item img:hover {
   transform: scale(1.1);
 }
-
-.enlarged-image-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.enlarged-image {
-  width: 500px;
-  height: 500px;
-  object-fit: contain;
-}
-
 /* End Damien CSS */
 
 /* lakjin css */
