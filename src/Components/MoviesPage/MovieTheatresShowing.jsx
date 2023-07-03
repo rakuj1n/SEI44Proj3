@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function MovieTheatresShowing() {
+export default function MovieTheatresShowing({ movieTitle, moviePoster }) {
   const theatres = [
     "Shaw Theatres Lido",
     "Shaw Theatres Balestier",
@@ -19,7 +19,9 @@ export default function MovieTheatresShowing() {
   const { title } = useParams();
 
   function handleClick() {
-    navigate(`/movies/${title}/seat-selection`);
+    navigate(`/movies/${title}/seat-selection`, {
+      state: { movieTitle: movieTitle, moviePoster: moviePoster },
+    });
   }
 
   return (

@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import MovieDetail from "../../Components/SeatSelectionPage/MovieDetail";
 
 export default function TicketConfirmationPage({ user }) {
   const location = useLocation();
@@ -12,6 +13,10 @@ export default function TicketConfirmationPage({ user }) {
       </p>
       <br />
       <h2>Booking Details</h2>
+      <MovieDetail
+        movieTitle={location.state.movieTitle}
+        moviePoster={location.state.moviePoster}
+      />
       <br />
       <h2>You have booked ({location.state.qty}) Tickets</h2>
       <br />

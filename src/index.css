@@ -194,6 +194,21 @@ button[type="submit"] {
   width: 80px;
 }
 
+.detailsContainer {
+  background-color: rgb(48, 44, 45);
+  color: white;
+  height: 200px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: left;
+  gap: 60px;
+}
+
+.detailsImg {
+  display: flex;
+  padding: 10px;
+}
+
 .seatsLegendContainer {
   background-color: rgb(48, 44, 45);
   color: white;
@@ -280,7 +295,7 @@ button[type="submit"] {
   text-align: left;
   color: white;
   padding: 10px 40px 10px 40px;
-  background-color: rgb(48, 44, 45);
+  background-color: rgb(26, 26, 26);
 }
 
 .bold {

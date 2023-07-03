@@ -104,7 +104,12 @@ const MoviesDetailsPage = () => {
           <p>No Comments Yet</p>
         )}
       </div>
-      {showTheatres && <MovieTheatresShowing />}
+      {showTheatres && (
+        <MovieTheatresShowing
+          movieTitle={movie.title}
+          moviePoster={movie.poster}
+        />
+      )}
     </div>
   );
 };

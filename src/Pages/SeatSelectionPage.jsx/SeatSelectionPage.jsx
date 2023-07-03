@@ -4,7 +4,8 @@ import TicketsTable from "../../Components/SeatSelectionPage/TicketsTable";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import MovieDetail from "../../Components/SeatSelectionPage/MovieDetail";
 
 export default function SeatSelectionPage() {
   const [seatSelection, setSeatSelection] = useState([]);
@@ -13,6 +14,7 @@ export default function SeatSelectionPage() {
   const [reset, setReset] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const { title } = useParams();
 
   function addSeats(addSeat) {
@@ -45,13 +47,21 @@ export default function SeatSelectionPage() {
 
   function handleConfirmedSeats() {
     navigate(`/movies/${title}/ticket-confirmation`, {
-      state: { qty: qty },
+      state: {
+        qty: qty,
+        movieTitle: location.state.movieTitle,
+        moviePoster: location.state.moviePoster,
+      },
     });
   }
 
   return (
     <Container maxWidth="ml">
       <Stack spacing={0}>
+        <MovieDetail
+          movieTitle={location.state.movieTitle}
+          moviePoster={location.state.moviePoster}
+        />
         <SeatsSelection
           addSeats={addSeats}
           removeSeats={removeSeats}
