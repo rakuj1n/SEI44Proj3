@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import MovieCard from "../../Components/MovieCard";
 import FriendsWatched from "../../Components/FriendsWatched";
 import sendRequest from "../../utilities/send-request";
+import ForYou from "../../Components/ForYou";
 
 export default function KinoloungePage({ user }) {
   const [movies, setMovies] = useState([]);
@@ -79,12 +80,13 @@ export default function KinoloungePage({ user }) {
       <KinoCarousel />
       <h2 className="friends-watched-banner">Your friends have watched</h2>
       <FriendsWatched moviesWatched={allFollowingMovieRecoList} />
-      {/* <FriendsWatched moviesWatched={movies} /> */}
+
       <a id="For-you" />
       <h2 className="you-might-be-interested-banner">
         You might be interested in
       </h2>
-      <Slider slidesToShow={4} slidesToScroll={1}>
+      <ForYou moviesWatched={movies} />
+      {/* <Slider slidesToShow={4} slidesToScroll={1}>
         {movies.movies?.map((movie, index) => (
           <div key={index}>
             <span>
@@ -92,7 +94,7 @@ export default function KinoloungePage({ user }) {
             </span>
           </div>
         ))}
-      </Slider>
+      </Slider> */}
       {/* {movies.movies?.map((movie) => (
         <MovieCard item={movie} />
       ))} */}
