@@ -32,7 +32,7 @@ export default function PlayMoviePage({ user }) {
   if (status === "success") {
     for (let i = 0; i < account?.rentedMovies.length; i++) {
       ownedArr.push(account?.rentedMovies[i]._id);
-      console.log("success", account?.rentedMovies[i]._id);
+      // console.log("success", account?.rentedMovies[i]._id);
     }
     console.log("owned", ownedArr);
   }
@@ -66,10 +66,19 @@ export default function PlayMoviePage({ user }) {
     navigate("/kinolounge");
   };
 
-  const handleBuy_Rent = () => {
+  const handleBuy_Rent = async () => {
     console.log("ownsmovie", ownsMovie);
     if (ownsMovie) {
-      console.log("play");
+      console.log("play", state.movieDetails._id);
+
+      try {
+        await sendRequest(`/api/users/${user._id}/movies-watched`, "PUT", {
+          movieId: state.movieDetails._id,
+        });
+        console.log("WOOWOWOW");
+      } catch (err) {
+        console.log(err);
+      }
       navigate(`/kinolounge/${movieId}/comments`, {
         state: {
           state,
