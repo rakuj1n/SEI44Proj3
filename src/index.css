@@ -579,4 +579,8 @@ header a:hover {
   color: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* end of Wesley css */
