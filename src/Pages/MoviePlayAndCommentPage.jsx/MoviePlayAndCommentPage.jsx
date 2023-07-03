@@ -8,6 +8,8 @@ export default function MoviePlayAndCommentPage({ user }) {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
   // console.log("passing", state);
   //To push user watched to db
 
@@ -17,13 +19,17 @@ export default function MoviePlayAndCommentPage({ user }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (rating > 2) {
+      console.log("Recommended! Rating:", rating);
+      //Submit recommended
+    }
+
     if (comment.length !== 0) {
       //submit comment to db!
-
       console.log("Submit comment", comment);
     }
 
-    navigate("/kinolounge");
+    // navigate("/kinolounge");
   };
 
   const handleChange = (event) => {
@@ -32,8 +38,7 @@ export default function MoviePlayAndCommentPage({ user }) {
   return (
     <>
       <h2>
-        {" "}
-        Back to{" "}
+        Back to
         <Link to="/kinolounge">
           <img
             src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
@@ -66,8 +71,33 @@ export default function MoviePlayAndCommentPage({ user }) {
             onChange={handleChange}
             placeholder="Would you recommend your friends to watch?"
           ></input>
-          <button>👍</button>
-          <button>👎</button>
+          <div className="star-rating">
+            {[...Array(5)].map((star, index) => {
+              index += 1;
+              return (
+                <button
+                  type="button"
+                  key={index}
+                  className={
+                    index <= (hover || rating)
+                      ? "star-rating-on"
+                      : "star-rating-off"
+                  }
+                  onClick={() => setRating(index)}
+                  onMouseEnter={() => setHover(index)}
+                  onMouseLeave={() => setHover(rating)}
+                  onDoubleClick={() => {
+                    setRating(0);
+                    setHover(0);
+                  }}
+                >
+                  <span className="star">&#9733;</span>
+                </button>
+              );
+            })}
+          </div>
+          {/* <button>👍</button>
+          <button>👎</button> */}
           <button>Submit</button>
         </form>
       </fieldset>

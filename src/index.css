@@ -575,7 +575,8 @@ header a:hover {
 .you-might-be-interested-banner,
 .friends-watched-banner,
 .page-header-content,
-.kinolounge-header {
+.kinolounge-header,
+.PlayRentPageContainer {
   color: white;
 }
 
@@ -583,4 +584,24 @@ html {
   scroll-behavior: smooth;
 }
 
+/* .star-rating {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+} */
+.star-rating-on {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--shawRed);
+}
+.star-rating-off {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #ccc;
+}
 /* end of Wesley css */

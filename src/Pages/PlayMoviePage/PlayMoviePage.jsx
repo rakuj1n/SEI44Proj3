@@ -48,6 +48,19 @@ export default function PlayMoviePage({ user }) {
   const DIRECTOR = state.movieDetails.director;
   const details = state.movieDetails.details;
 
+  const playMoviestyle = {
+    // height: "160px",
+    // color: "#fff",
+    // lineHeight: "160px",
+    // textAlign: "center",
+    // background: "#364d79",
+    backgroundImage: `url(${poster})`,
+    backgroundSize: "cover",
+    position: "absolute",
+    // width: "auto",
+    // height: "auto",
+  };
+
   const handleClick = () => {
     console.log("Return click");
     navigate("/kinolounge");
@@ -65,7 +78,7 @@ export default function PlayMoviePage({ user }) {
       //   Then navigate to reviews and commments
     } else {
       console.log("to rent");
-      navigate("/payments", {
+      navigate("/checkout", {
         state: {
           currency,
           price,
@@ -82,22 +95,22 @@ export default function PlayMoviePage({ user }) {
 
   return (
     <>
-      <>play/rent movie page</>;
+      {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
-      <div className="PlayRentPageContainer">
+      <div className="PlayRentPageContainer" style={playMoviestyle}>
         <img width="30%" src={poster} alt="pic" />
-        <p>{movieTitle}</p>
+        <h2>{movieTitle}</h2>
 
         <button onClick={handleBuy_Rent}>
           {ownsMovie ? "Play" : `Rent ${currency}${price}`}
         </button>
+        <div>{details}</div>
+        <div>MAIN CAST &nbsp;{CAST}</div>
+        <div>DIRECTOR &nbsp; {DIRECTOR}</div>
+        <button onClick={handleClick} className="return-button">
+          Cancel
+        </button>
       </div>
-      <div>{details}</div>
-      <div>MAIN CAST {CAST}</div>
-      <div>DIRECTOR {DIRECTOR}</div>
-      <button onClick={handleClick} className="return-button">
-        Cancel
-      </button>
     </>
   );
 }

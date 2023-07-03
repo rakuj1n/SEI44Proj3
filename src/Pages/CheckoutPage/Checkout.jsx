@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-export default function PaymentsPage() {
+export default function CheckoutPage() {
   const { state } = useLocation();
 
   console.log(state);
