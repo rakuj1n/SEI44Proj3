@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import sendRequest from "../../utilities/send-request";
+import Loading from "../../Components/Loading";
 
 export default function PlayMoviePage({ user }) {
   const [account, setAccount] = useState(null);
@@ -31,7 +32,7 @@ export default function PlayMoviePage({ user }) {
   if (status === "success") {
     for (let i = 0; i < account?.rentedMovies.length; i++) {
       ownedArr.push(account?.rentedMovies[i]._id);
-      console.log("success", account?.rentedMovies[i]._id);
+      // console.log("success", account?.rentedMovies[i]._id);
     }
     console.log("owned", ownedArr);
   }
@@ -51,8 +52,7 @@ export default function PlayMoviePage({ user }) {
   const backgroundStyle = {
     backgroundImage: `url(${poster})`,
     backgroundSize: "cover",
-
-    position: "absolute",
+    // position: "absolute",
     // width: "auto",
     // height: "auto",
   };
@@ -66,10 +66,19 @@ export default function PlayMoviePage({ user }) {
     navigate("/kinolounge");
   };
 
-  const handleBuy_Rent = () => {
+  const handleBuy_Rent = async () => {
     console.log("ownsmovie", ownsMovie);
     if (ownsMovie) {
-      console.log("play");
+      console.log("play", state.movieDetails._id);
+
+      try {
+        await sendRequest(`/api/users/${user._id}/movies-watched`, "PUT", {
+          movieId: state.movieDetails._id,
+        });
+        console.log("WOOWOWOW");
+      } catch (err) {
+        console.log(err);
+      }
       navigate(`/kinolounge/${movieId}/comments`, {
         state: {
           state,
@@ -90,16 +99,17 @@ export default function PlayMoviePage({ user }) {
   };
 
   if (status === "loading") {
-    return <p>loading</p>;
+    return <Loading />;
+    // return <p>loading</p>;
   }
 
   return (
     <>
       {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
-      <div className="BackgroundContainer" style={backgroundStyle}>
-        {/* <div className="BackgroundContainer" > */}
-        <div className="PlayRentPageContainer">
+      <div className="PlayRentPageContentContainer" style={backgroundStyle}>
+        {/* <div className="PlayRentPageContentContainer"> */}
+        <div className="PlayRentPageContent">
           <img width="30%" src={poster} alt="pic" />
           <h2>{movieTitle}</h2>
 

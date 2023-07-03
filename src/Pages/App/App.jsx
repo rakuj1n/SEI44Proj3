@@ -25,6 +25,8 @@ import MoviesDetailsPage from "../../Components/MoviesPage/MoviesDetailsPage";
 import MoviePlayAndCommentPage from "../MoviePlayAndCommentPage.jsx/MoviePlayAndCommentPage";
 import CheckoutPage from "../CheckoutPage/Checkout";
 import TicketConfirmationPage from "../NewOrderPage/TicketConfirmationPage/TicketConfirmationPage";
+import PromotionsPage from "../../Components/PromotionPage/PromotionsPage";
+import PromotionDetailsPage from "../../Components/PromotionPage/PromotionDetailsPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -63,6 +65,11 @@ export default function App() {
               element={<PlayMoviePage user={user} />}
             />
             <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/promotions" element={<PromotionsPage />} />
+            <Route
+              path="/promotions/:title"
+              element={<PromotionDetailsPage />}
+            />
             <Route
               path="/movies/:title/seat-selection"
               element={<SeatSelectionPage />}

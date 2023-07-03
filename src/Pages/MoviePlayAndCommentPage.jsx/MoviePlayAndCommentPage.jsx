@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import sendRequest from "../../utilities/send-request";
 
 // require("dotenv").config();
 // require("./config/database");
@@ -17,19 +18,35 @@ export default function MoviePlayAndCommentPage({ user }) {
   const userProfilePic = user?.picture;
   const username = user?.name;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (rating > 2) {
       console.log("Recommended! Rating:", rating);
       //Submit recommended
+      try {
+        await sendRequest(`/api/users/${user._id}/movies-recommended`, "PUT", {
+          movieId: state.state.movieDetails._id,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     if (comment.length !== 0) {
       //submit comment to db!
+      try {
+        await sendRequest(
+          `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
+          "PUT",
+          { comment: comment }
+        );
+      } catch (err) {
+        console.log(err);
+      }
       console.log("Submit comment", comment);
     }
 
-    // navigate("/kinolounge");
+    navigate("/kinolounge");
   };
 
   const handleChange = (event) => {

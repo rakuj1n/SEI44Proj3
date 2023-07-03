@@ -35,7 +35,7 @@ const MoviesPage = () => {
                 className="movie-image"
               />
             </Link>
-            <div className="movie-details">
+            <div className="all-movie-details">
               <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                 <h2 className="movie-title">{movie.title}</h2>
               </Link>
