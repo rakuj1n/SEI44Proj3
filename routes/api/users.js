@@ -13,6 +13,6 @@ router.put('/:userId/pic',ensureLoggedIn,usersCtrl.updatePic)
 router.put('/:userId/password',ensureLoggedIn,usersCtrl.updatePass)
 router.put('/:userId/friend',ensureLoggedIn,usersCtrl.updateFriend)
 router.get('/:userId/your-following-recommended',ensureLoggedIn,usersCtrl.getAllRecommendedForAnAccount)
-
+router.put('/:userId/movies-recommended',ensureLoggedIn,usersCtrl.updateMoviesRecommended)
 
 module.exports = router
