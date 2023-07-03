@@ -5,11 +5,9 @@ export default function FriendsWatched({ moviesWatched }) {
   console.log("FirnedsWatched", moviesWatched);
   return (
     <>
-      {/* To map according to movies watched */}
-
       <Slider slidesToShow={4} slidesToScroll={1}>
-        {moviesWatched.movies?.map((movie, index) => (
-          // <div className="movie-item" key={index}>
+        {/* {moviesWatched?.movies?.map((movie, index) => ( */}
+        {moviesWatched?.map((movie, index) => (
           <div key={index}>
             <span key={movie._id}>
               <FriendsWatchedCard movieDetails={movie} />
