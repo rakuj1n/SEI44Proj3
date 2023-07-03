@@ -55,6 +55,8 @@ export default function SeatSelectionPage() {
     });
   }
 
+  const disabled = qty === 0;
+
   return (
     <Container maxWidth="ml">
       <Stack spacing={0}>
@@ -70,8 +72,12 @@ export default function SeatSelectionPage() {
         <SeatsLegend />
         <TicketsTable seatSelection={seatSelection} qty={qty} amount={amount} />
       </Stack>
-      <button onClick={handleReset}>RESET</button>
-      <button onClick={handleConfirmedSeats}>CONFIRM SEAT(S)</button>
+      <button onClick={handleReset} disabled={disabled}>
+        RESET
+      </button>
+      <button onClick={handleConfirmedSeats} disabled={disabled}>
+        CONFIRM SEAT(S)
+      </button>
     </Container>
   );
 }
