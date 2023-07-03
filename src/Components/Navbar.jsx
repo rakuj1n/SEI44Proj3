@@ -41,19 +41,21 @@ export default function Navbar({ user, setUser }) {
                   <Link to="/mainpage">Home</Link>
                 </button>
               )}
-              {pathname !== `/users/${user._id}` && (
-                <button>
-                  <Link to={`/users/${user._id}`}>My Profile</Link>
-                </button>
-              )}
+              {pathname !== `/users/${user._id}` &&
+                pathname !== `/users/${user._id}/settings` && (
+                  <button>
+                    <Link to={`/users/${user._id}`}>My Profile</Link>
+                  </button>
+                )}
               <button>
                 <Link to={`/users/${user._id}/friends`}>My Friends</Link>
               </button>
-              {pathname !== `/users/${user._id}` && (
-                <button>
-                  <Link to={`/users/${user._id}/settings`}>Settings</Link>
-                </button>
-              )}
+              {pathname !== `/users/${user._id}` &&
+                pathname !== `/users/${user._id}/settings` && (
+                  <button>
+                    <Link to={`/users/${user._id}/settings`}>Settings</Link>
+                  </button>
+                )}
               <button>
                 <Link to="" onClick={handleLogOut}>
                   Log Out
