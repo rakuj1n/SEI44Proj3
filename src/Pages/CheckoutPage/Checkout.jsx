@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-export default function PaymentsPage() {
+export default function CheckoutPage() {
   const { state } = useLocation();
 
   console.log(state);
@@ -19,9 +19,9 @@ export default function PaymentsPage() {
               {state.price}
             </div>
           </div>
+          <button>Checkout</button>
         </>
       )}
-      <button>Checkout</button>
     </main>
   );
 }

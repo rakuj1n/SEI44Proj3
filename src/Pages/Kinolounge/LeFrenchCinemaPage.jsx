@@ -4,12 +4,12 @@ export default function LeFrenchCinema() {
   return (
     <>
       <KinoloungeNavBar />
-      <h1>Le French Cinema</h1>
+      <h1 className="kinolounge-header">Le French Cinema</h1>
       <div className="page-header-content">
-        "Welcome to the Singapore Le French Cinema corner!"
+        Welcome to the Singapore Le French Cinema corner!
         <p />
-        "French cinema has produced a notable array of films of great merit and
-        we are delighted to showcase some of these titles."
+        French cinema has produced a notable array of films of great merit and
+        we are delighted to showcase some of these titles.
         <p />
         Presented for the first time in Singapore, The Singapore French Summer
         Festival (SFSF) is organised by The Embassy of France in Singapore, in

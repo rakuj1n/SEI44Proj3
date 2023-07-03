@@ -1,32 +1,65 @@
 import { useEffect, useState } from "react";
 import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import sendRequest from "../../utilities/send-request";
 
-export default function PlayMoviePage() {
+export default function PlayMoviePage({ user }) {
+  const [account, setAccount] = useState(null);
+  const [status, setStatus] = useState("idle");
   const navigate = useNavigate();
   const { state } = useLocation();
-  const [ownsMovie, setOwnsMovie] = useState(false);
+  //   const [ownsMovie, setOwnsMovie] = useState(false);
 
-  //To pull movie owns or not from db
-  useEffect(() => {
-    if (state?.movieDetails?.title === "The Witcher") {
-      console.log("owns");
-      setOwnsMovie(true);
-    }
-  }, []);
-
+  const userId = user._id;
   const { movieId } = useParams();
+
+  useEffect(() => {
+    async function getAccount() {
+      setStatus("loading");
+      try {
+        const account = await sendRequest(`/api/users/${userId}`, "GET");
+        setAccount(account);
+      } catch (err) {
+        console.log(err);
+      }
+      setStatus("success");
+    }
+    getAccount();
+  }, [userId]);
+
+  let ownedArr = [];
+  if (status === "success") {
+    for (let i = 0; i < account?.rentedMovies.length; i++) {
+      ownedArr.push(account?.rentedMovies[i]._id);
+      console.log("success", account?.rentedMovies[i]._id);
+    }
+    console.log("owned", ownedArr);
+  }
+  let ownsMovie = ownedArr.includes(movieId);
+  console.log(ownsMovie);
+
   console.log("movieId", movieId);
   const price = 4.99;
   const currency = "S$";
 
-  // to fill/replace in props
   const poster = state.movieDetails.poster;
   const movieTitle = state.movieDetails.title;
   const CAST = state.movieDetails.actor.join(",");
   const DIRECTOR = state.movieDetails.director;
   const details = state.movieDetails.details;
-  //   const LANGUAGE = "language_props";
+
+  const backgroundStyle = {
+    backgroundImage: `url(${poster})`,
+    backgroundSize: "cover",
+
+    position: "absolute",
+    // width: "auto",
+    // height: "auto",
+  };
+  const containerStyle = {
+    // filter: "none",
+    // filter: `blur(8px)`,
+  };
 
   const handleClick = () => {
     console.log("Return click");
@@ -45,7 +78,7 @@ export default function PlayMoviePage() {
       //   Then navigate to reviews and commments
     } else {
       console.log("to rent");
-      navigate("/payments", {
+      navigate("/checkout", {
         state: {
           currency,
           price,
@@ -56,25 +89,31 @@ export default function PlayMoviePage() {
     }
   };
 
+  if (status === "loading") {
+    return <p>loading</p>;
+  }
+
   return (
     <>
-      <>play/rent movie page</>;
+      {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
-      <div className="PlayRentPageContainer">
-        <img src={poster} alt="pic" />
-        <p>{movieTitle}</p>
+      <div className="BackgroundContainer" style={backgroundStyle}>
+        {/* <div className="BackgroundContainer" > */}
+        <div className="PlayRentPageContainer">
+          <img width="30%" src={poster} alt="pic" />
+          <h2>{movieTitle}</h2>
 
-        <button onClick={handleBuy_Rent}>
-          {ownsMovie ? "Play" : `Rent ${currency}${price}`}
-        </button>
+          <button onClick={handleBuy_Rent}>
+            {ownsMovie ? "Play" : `Rent ${currency}${price}`}
+          </button>
+          <div>{details}</div>
+          <div>MAIN CAST &nbsp;{CAST}</div>
+          <div>DIRECTOR &nbsp; {DIRECTOR}</div>
+          <button onClick={handleClick} className="return-button">
+            Cancel
+          </button>
+        </div>
       </div>
-      <div>{details}</div>
-      <div>MAIN CAST {CAST}</div>
-      <div>DIRECTOR {DIRECTOR}</div>
-      {/* <div>LANGUAGE {LANGUAGE}</div> */}
-      <button onClick={handleClick} className="return">
-        Cancel
-      </button>
     </>
   );
 }
