@@ -29,9 +29,9 @@ export default function PlayMoviePage({ user }) {
 
   let ownedArr = [];
   if (status === "success") {
-    for (let i = 0; i < account.rentedMovies.length; i++) {
-      ownedArr.push(account.rentedMovies[i]._id);
-      console.log("success", account.rentedMovies[i]._id);
+    for (let i = 0; i < account?.rentedMovies.length; i++) {
+      ownedArr.push(account?.rentedMovies[i]._id);
+      console.log("success", account?.rentedMovies[i]._id);
     }
     console.log("owned", ownedArr);
   }
@@ -85,7 +85,7 @@ export default function PlayMoviePage({ user }) {
       <>play/rent movie page</>;
       <KinoloungeNavBar />
       <div className="PlayRentPageContainer">
-        <img src={poster} alt="pic" />
+        <img width="30%" src={poster} alt="pic" />
         <p>{movieTitle}</p>
 
         <button onClick={handleBuy_Rent}>

@@ -1,32 +1,37 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function FriendsWatchedCard({ movieDetails }) {
   // console.log("details", movieDetails);
-  const navigate = useNavigate();
-  const handleMovieNavigate = () => {
-    navigate(`/kinolounge/${movieDetails._id}/`, {
-      // navigate(`/kinolounge/movie/`, {
-      state: {
-        movieDetails,
-      },
-    });
-  };
+  // const navigate = useNavigate();
+  // const handleMovieNavigate = () => {
+  //   console.log("click");
+  //   navigate(`/kinolounge/${movieDetails._id}/`, {
+  //     state: {
+  //       movieDetails,
+  //     },
+  //   });
+  // };
 
   return (
     <>
-      {/* <Link to={`/kinolounge/${movieDetails._id}`}>
+      <Link
+        to={`/kinolounge/${movieDetails._id}/`}
+        className="friend-watched-container"
+        // onClick={handleMovieNavigate}
+        state={{ movieDetails }}
+      >
         <span>
-          <img src={movieDetails.poster} alt={movieDetails.title} />
+          <img width="40%" src={movieDetails.poster} alt={movieDetails.title} />
         </span>
-      </Link> */}
-      <button
+      </Link>
+      {/* <button
         className="friend-watched-container"
         onClick={handleMovieNavigate}
       >
         <span>
-          <img src={movieDetails.poster} alt={movieDetails.title} />
+          <img width="40%" src={movieDetails.poster} alt={movieDetails.title} />
         </span>
-      </button>
+      </button> */}
     </>
   );
 }
