@@ -168,6 +168,7 @@ button[type="submit"] {
   grid-template-columns: 400px 7fr;
   grid-template-rows: auto auto;
   text-align: start;
+  color: gray;
   margin: 0px 200px 0px 200px;
 }
 
