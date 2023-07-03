@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import sendRequest from "../../utilities/send-request";
+import Loading from "../../Components/Loading";
 
 export default function PlayMoviePage({ user }) {
   const [account, setAccount] = useState(null);
@@ -90,7 +91,8 @@ export default function PlayMoviePage({ user }) {
   };
 
   if (status === "loading") {
-    return <p>loading</p>;
+    return <Loading />;
+    // return <p>loading</p>;
   }
 
   return (
