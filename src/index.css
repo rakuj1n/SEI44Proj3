@@ -587,6 +587,9 @@ button[type="submit"] {
   align-items: center;
   margin: 20px 0;
   max-width: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: antiquewhite;
 }
 
 .commentsectionitem > p {
