@@ -53,7 +53,7 @@ const MoviesDetailsPage = () => {
   };
 
   const handleRent = () => {
-    navigate(`/payments`, {
+    navigate(`/checkout`, {
       state: {
         movieTitle: movie.title,
         poster: movie.poster,
