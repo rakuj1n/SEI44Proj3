@@ -4,11 +4,15 @@ import TicketsTable from "../../Components/SeatSelectionPage/TicketsTable";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function SeatSelectionPage() {
   const [seatSelection, setSeatSelection] = useState([]);
   const [qty, setQty] = useState(0);
   const [amount, setAmount] = useState(0);
+
+  const navigate = useNavigate();
+  const { title } = useParams();
 
   function addSeats(addSeat) {
     if (seatSelection.indexOf(addSeat) === -1) {
@@ -38,7 +42,7 @@ export default function SeatSelectionPage() {
   }
 
   function handleConfirmedSeats() {
-    return;
+    navigate(`/movies/${title}/ticket-confirmation`);
   }
 
   return (

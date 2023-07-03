@@ -24,6 +24,7 @@ import SeatSelectionPage from "../SeatSelectionPage.jsx/SeatSelectionPage";
 import MoviesDetailsPage from "../../Components/MoviesPage/MoviesDetailsPage";
 import MoviePlayAndCommentPage from "../MoviePlayAndCommentPage.jsx/MoviePlayAndCommentPage";
 import CheckoutPage from "../CheckoutPage/Checkout";
+import TicketConfirmationPage from "../NewOrderPage/TicketConfirmationPage/TicketConfirmationPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -67,7 +68,10 @@ export default function App() {
               element={<SeatSelectionPage />}
             />
             <Route path="/movies/:title" element={<MoviesDetailsPage />} />
-
+            <Route
+              path="/movies/:title/ticket-confirmation"
+              element={<TicketConfirmationPage user={user} />}
+            />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route>
               {/* <Route path="/kinolounge/movie" element={<PlayMoviePage user={user}/>} /> */}
