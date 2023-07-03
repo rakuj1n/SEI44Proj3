@@ -63,7 +63,7 @@ export default function App() {
             />
             <Route path="/movies" element={<MoviesPage />} />
             <Route
-              path="/movies/:movieId/seat-selection"
+              path="/movies/:title/seat-selection"
               element={<SeatSelectionPage />}
             />
             <Route path="/movies/:title" element={<MoviesDetailsPage />} />

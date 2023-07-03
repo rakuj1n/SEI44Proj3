@@ -22,7 +22,7 @@ export default function LogInForm({ setUser }) {
       setUser(user);
 
       if (user) {
-        navigate(`/mainpage/${user._id}`);
+        navigate("/mainpage");
       }
     } catch {
       setErrorMessage("Log In Failed. Try Again.");
