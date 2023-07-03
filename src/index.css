@@ -276,6 +276,22 @@ button[type="submit"] {
   font-size: 14px;
 }
 
+.ticketConfirmation {
+  text-align: left;
+  color: white;
+  padding: 10px 40px 10px 40px;
+  background-color: rgb(48, 44, 45);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.ticketInfo {
+  font-weight: bold;
+  color: gold;
+}
+
 /* .seatsLegend {
   background-color: rgb(48, 44, 45);
   color: white;
