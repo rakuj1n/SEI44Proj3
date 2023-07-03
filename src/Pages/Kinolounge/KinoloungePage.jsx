@@ -67,11 +67,12 @@ export default function KinoloungePage({ user }) {
   return (
     <>
       <KinoloungeNavBar />
-      Kinolounge page
       <KinoCarousel />
-      <h2>Your friends have watched</h2>
+      <h2 className="friends-watched-banner">Your friends have watched</h2>
       <FriendsWatched moviesWatched={movies} />
-      <h2>You might be interested in</h2>
+      <h2 className="you-might-be-interested-banner">
+        You might be interested in
+      </h2>
       <Slider slidesToShow={4} slidesToScroll={1}>
         {movies.movies?.map((movie, index) => (
           // <div className="movie-item" key={index}>
