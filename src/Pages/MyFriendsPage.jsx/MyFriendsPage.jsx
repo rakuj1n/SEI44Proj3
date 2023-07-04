@@ -40,6 +40,9 @@ export default function MyFriendsPage({user}) {
 
     function handleClick(id) {
         setCurrSelectedFollowing(id)
+        if (currSelectedFollowing === id) {
+            setCurrSelectedFollowing(null)
+        }
     }
 
     // this useEffect retrieves the account of one of the following users that the logged-in user clicks on
