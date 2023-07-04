@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Navbar from "../Navbar";
 
-const MainPage = () => {
+const MainPageStanding = () => {
   const [movies, setMovies] = useState([]);
   const [promotions, setPromotions] = useState([]);
   const carouselSettings = {
@@ -50,6 +51,9 @@ const MainPage = () => {
 
   return (
     <div>
+      <Navbar />
+      {/* Dropdown Boxes */}
+
       {/* Side Nav Bar */}
       <div className="kinolounge">
         <Link to="/kinolounge" className="kinolounge-link">
@@ -203,4 +207,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default MainPageStanding;
