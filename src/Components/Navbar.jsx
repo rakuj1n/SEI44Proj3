@@ -1,14 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import * as userService from "../utilities/users-service";
 import React, { useState, useEffect } from "react";
+import * as userService from "../utilities/users-service";
 
 export default function Navbar({ user, setUser }) {
   const pathname = useLocation().pathname;
-  function handleLogOut() {
-    userService.logOut();
-    setUser(null);
-  }
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -19,6 +14,11 @@ export default function Navbar({ user, setUser }) {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleLogOut = () => {
+    userService.logOut();
+    setUser(null);
+  };
+
   return (
     <nav>
       <div className="user-nav">
@@ -26,45 +26,57 @@ export default function Navbar({ user, setUser }) {
           <button className="user-nav-button" onClick={toggleDropdown}>
             User Options
           </button>
-          {isDropdownOpen && user ? (
+          {isDropdownOpen && (
             <div className="dropdown-content">
-              <div className="user-profile">
-                <img
-                  src={user.picture}
-                  alt="User Profile"
-                  className="profile-picture"
-                />
-              </div>
-              <p>Hello, {user.name}</p>
-              {pathname !== "/mainpage" && (
+              {!user && pathname === "/" ? (
                 <button>
-                  <Link to="/mainpage">Home</Link>
+                  <Link to="/login">Login</Link>
                 </button>
+              ) : (
+                <>
+                  {user && (
+                    <div className="user-profile">
+                      <img
+                        src={user.picture}
+                        alt="User Profile"
+                        className="profile-picture"
+                      />
+                    </div>
+                  )}
+                  {user && <p>Hello, {user.name}</p>}
+                  {pathname !== "/mainpage" && (
+                    <button>
+                      <Link to="/mainpage">Home</Link>
+                    </button>
+                  )}
+                  {user &&
+                    pathname !== `/users/${user._id}` &&
+                    pathname !== `/users/${user._id}/settings` && (
+                      <button>
+                        <Link to={`/users/${user._id}`}>My Profile</Link>
+                      </button>
+                    )}
+                  {user && pathname !== `/users/${user._id}/friends` && (
+                    <button>
+                      <Link to={`/users/${user._id}/friends`}>My Friends</Link>
+                    </button>
+                  )}
+                  {user &&
+                    pathname !== `/users/${user._id}` &&
+                    pathname !== `/users/${user._id}/settings` && (
+                      <button>
+                        <Link to={`/users/${user._id}/settings`}>Settings</Link>
+                      </button>
+                    )}
+                  {user && (
+                    <button onClick={handleLogOut}>
+                      <Link to="/">Log Out</Link>
+                    </button>
+                  )}
+                </>
               )}
-              {pathname !== `/users/${user._id}` &&
-                pathname !== `/users/${user._id}/settings` && (
-                  <button>
-                    <Link to={`/users/${user._id}`}>My Profile</Link>
-                  </button>
-                )}
-              {pathname !== `/users/${user._id}/friends` && (
-                <button>
-                  <Link to={`/users/${user._id}/friends`}>My Friends</Link>
-                </button>
-              )}
-              {pathname !== `/users/${user._id}` &&
-                pathname !== `/users/${user._id}/settings` && (
-                  <button>
-                    <Link to={`/users/${user._id}/settings`}>Settings</Link>
-                  </button>
-                )}
-              <button>
-                <Link to="" onClick={handleLogOut}>
-                  Log Out
-                </Link>
-              </button>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     </nav>
