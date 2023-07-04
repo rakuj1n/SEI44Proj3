@@ -75,7 +75,6 @@ export default function PlayMoviePage({ user }) {
         await sendRequest(`/api/users/${user._id}/movies-watched`, "PUT", {
           movieId: state.movieDetails._id,
         });
-        console.log("WOOWOWOW");
       } catch (err) {
         console.log(err);
       }
@@ -93,6 +92,7 @@ export default function PlayMoviePage({ user }) {
           price,
           movieTitle,
           poster,
+          movieId,
         },
       });
     }

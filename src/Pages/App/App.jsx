@@ -79,7 +79,7 @@ export default function App() {
               path="/movies/:title/ticket-confirmation"
               element={<TicketConfirmationPage user={user} />}
             />
-            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/checkout" element={<CheckoutPage user={user} />} />
             <Route>
               {/* <Route path="/kinolounge/movie" element={<PlayMoviePage user={user}/>} /> */}
               <Route path="kinolounge/page/sfs" element={<SFSPicksPage />} />

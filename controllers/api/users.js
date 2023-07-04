@@ -165,6 +165,22 @@ async function updateMoviesWatched(req, res) {
     res.status(400).json(err);
   }
 }
+async function updateMoviesRented(req, res) {
+  const userId = req.params.userId;
+  try {
+    const account = await Account.findOne({ user: userId });
+    if (!account) throw new Error("Account not found.");
+    if (account.rentedMovies.includes(req.body.movieId))
+      throw new Error("Already added.");
+    await Account.findOneAndUpdate(
+      { user: userId },
+      { $addToSet: { rentedMovies: req.body.movieId } }
+    );
+    res.status(200).json(account);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
 
 module.exports = {
   create,
@@ -177,4 +193,5 @@ module.exports = {
   getAllRecommendedForAnAccount,
   updateMoviesRecommended,
   updateMoviesWatched,
+  updateMoviesRented,
 };

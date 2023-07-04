@@ -27,5 +27,10 @@ router.put(
   ensureLoggedIn,
   usersCtrl.updateMoviesWatched
 );
+router.put(
+  "/:userId/movies-rented",
+  ensureLoggedIn,
+  usersCtrl.updateMoviesRented
+);
 
 module.exports = router;
