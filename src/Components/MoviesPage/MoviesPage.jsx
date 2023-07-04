@@ -5,6 +5,7 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [genreOptions, setGenreOptions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchMovies = async () => {
     try {
@@ -12,8 +13,6 @@ const MoviesPage = () => {
       if (response.ok) {
         const data = await response.json();
         setMovies(data.movies);
-
-        // Extract unique genre values from movies data and sort them in ascending order
         const uniqueGenres = [
           ...new Set(data.movies.map((movie) => movie.genre)),
         ];
@@ -35,10 +34,18 @@ const MoviesPage = () => {
     setSelectedGenre(e.target.value);
   };
 
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   const filteredMovies =
     selectedGenre === "All"
       ? movies
       : movies.filter((movie) => movie.genre === selectedGenre);
+
+  const searchResults = filteredMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -59,9 +66,19 @@ const MoviesPage = () => {
             </option>
           ))}
         </select>
+        <label htmlFor="search" className="filter-label">
+          Search:
+        </label>
+        <input
+          type="text"
+          id="search"
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+          className="filter-input"
+        />
       </div>
       <div className="movies-grid">
-        {filteredMovies.map((movie) => (
+        {searchResults.map((movie) => (
           <div key={movie.title} className="movie-item">
             <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
               <img

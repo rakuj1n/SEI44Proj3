@@ -498,6 +498,7 @@ button[type="submit"] {
 
 .filter-label {
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .filter-dropdown {
