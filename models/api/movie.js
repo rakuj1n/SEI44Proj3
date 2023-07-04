@@ -3,7 +3,8 @@ const { Schema, model } = mongoose;
 
 const commentSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User" },
+    userId: { type: Schema.Types.ObjectId, ref: "User", unique: true },
+    rating: { type: Number },
     comment: { type: String },
   },
   { timestamps: true }
@@ -17,7 +18,6 @@ const movieSchema = new Schema({
   director: { type: String },
   nowShowing: { type: Boolean },
   comments: [commentSchema],
-  genre: { type: String },
 });
 
 module.exports = model("Movie", movieSchema);
