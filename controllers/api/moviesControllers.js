@@ -1,4 +1,6 @@
 const Movie = require("../../models/api/movie");
+const Account = require("../../models/api/account");
+
 
 const index = async (req, res) => {
   const movies = await Movie.find();
@@ -14,6 +16,11 @@ async function addComment(req,res) {
     if (userComment) {
       userComment.comment = req.body.comment
       userComment.rating = req.body.rating
+      if (req.body.rating < 3) {
+        const account = await Account.findOne({user:userId})
+        account.moviesRecommended = account.moviesRecommended.filter(item => item.toString() !== movieId)
+        await account.save()
+      }
       await movie.save()
     } else {
       movie.comments.push({
