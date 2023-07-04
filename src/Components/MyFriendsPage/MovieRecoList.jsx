@@ -46,14 +46,14 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
                 <p><strong>{item.title}</strong></p>
                 <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item.poster}/></Link>
                 <p><em>Average following's rating:&nbsp;  
-                    {(item.comments
+                    {((item.comments
                     .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
                     .filter(item => (account?.following.map(item => item._id)).includes(item.userid))
                     .reduce((acc, curr) => acc + curr.rating,0))
                     /
                     (item.comments
                         .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
-                        .filter(item => (account?.following.map(item => item._id)).includes(item.userid))).length} <StarOutlined /></em></p>
+                        .filter(item => (account?.following.map(item => item._id)).includes(item.userid))).length).toFixed(1)} <StarOutlined /></em></p>
                 <div className="commentsection">
                     {item.comments
                     .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
