@@ -40,6 +40,9 @@ export default function MyFriendsPage({user}) {
 
     function handleClick(id) {
         setCurrSelectedFollowing(id)
+        if (currSelectedFollowing === id) {
+            setCurrSelectedFollowing(null)
+        }
     }
 
     // this useEffect retrieves the account of one of the following users that the logged-in user clicks on
@@ -62,6 +65,7 @@ export default function MyFriendsPage({user}) {
             setStatus('loadingfollowing')
             try {
                 const res = await sendRequest(`/api/users/${user._id}/your-following-recommended`,'GET')
+                console.log(res)
                 setAllFollowingMovieRecoList(res[0].moviesRecommended)
             } catch (err) {
                 console.log(err)

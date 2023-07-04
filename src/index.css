@@ -21,6 +21,7 @@
 
 body {
   margin: 0;
+  color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -489,6 +490,21 @@ button[type="submit"] {
   border: 1px solid #ccc;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filter-label {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.filter-dropdown {
+  width: 200px;
+}
 /* End Damien CSS */
 
 /* lakjin css */
@@ -509,6 +525,7 @@ button[type="submit"] {
   padding: 20px;
   margin: 10px;
   margin-top: 35px;
+  color: var(--shawBlue);
 }
 
 .accountsidebaritem {
@@ -523,7 +540,27 @@ button[type="submit"] {
 }
 
 .accountsidebaritem:hover {
-  background-color: #efe0d3;
+  background-color: rgb(234, 198, 190);
+}
+
+.profilefollowingitem {
+  margin: 4px;
+}
+
+.profilefollowingitemfollowing {
+  display:flex;
+  margin: 30px;
+  gap: 15px;
+}
+
+.profilefollowingpic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.profilefollowingitem:hover {
+  color:#ccc;
 }
 
 .profilecontainer {
@@ -544,11 +581,23 @@ button[type="submit"] {
 
 .addbutton {
   position: absolute;
+  color: white;
   margin: 0;
   padding: 0;
   top: 10%;
   /* right: 10px; */
   /* transform: translateY(-50%); */
+}
+
+.ant-drawer-wrapper-body {
+  background-color: rgb(60, 60, 100);
+  color:white;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-drawer-title, .ant-drawer-header-title {
+  color:white;
 }
 
 .profile > h1 {
@@ -574,6 +623,11 @@ button[type="submit"] {
   text-align: left;
   margin-left: 30px;
   margin-left: 30px;
+}
+
+.profiledetailsinner > a {
+  color:inherit;
+  text-decoration: none;
 }
 
 .viewhistory {
@@ -631,13 +685,13 @@ button[type="submit"] {
   /* border: 1px solid yellow; */
   margin: 0 5px;
   padding: 5px 10px;
-  background-color: antiquewhite;
+  background-color: rgb(60, 60, 100);
   border-radius: 15px;
 }
 
 .followingitem:hover {
   cursor: pointer;
-  background-color: #fdf2e8;
+  background-color: rgb(98, 98, 166);
 }
 
 .searchmaincontainer {
@@ -685,6 +739,7 @@ button[type="submit"] {
   top: 50%;
   right: 7%;
   transform: translateY(-50%);
+  color: var(--shawBlue)
 }
 
 .searchbuttoncontainer {
@@ -731,7 +786,7 @@ button[type="submit"] {
   max-width: 300px;
   padding: 10px;
   border-radius: 20px;
-  background-color: antiquewhite;
+  background-color: rgb(60, 60, 100);
 }
 
 .commentsectionitem > p {

@@ -1,3 +1,4 @@
+import { StarOutlined } from '@ant-design/icons'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -10,13 +11,20 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
             <div className='movieitem' key={item?._id}>
                 <p><strong>{item?.title}</strong></p>
                 <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+                {(item.comments.find(item => item.userId == currSelectedFollowing)) && 
                 <div className="commentsectionitem">
-                    <img className="profilepic" src={`${account?.user.picture}`} />
-                    <p>{(account?.following.find(item => item?._id === currSelectedFollowing))?.name}: <em>"{(item?.comments.find(item => item?.userId == currSelectedFollowing))?.comment}"</em></p>
-                </div>
+                    <div>
+                    <img className="profilepic" src={`${currSelectedFollowingAccount?.user.picture}`} />
+                    <p style={{margin:"0"}}>{(item.comments.find(item => item.userId == currSelectedFollowing))?.rating} <StarOutlined /></p>
+                    </div>
+                    <p>
+                        {(account?.following.find(item => item?._id === currSelectedFollowing))?.name}: <em>"{(item.comments.find(item => item.userId == currSelectedFollowing))?.comment}"</em>
+                    </p>
+                </div>}
             </div>
         )
     })
+
 
     const myMovieRecoList = account?.moviesRecommended.map((item) => {
         return (
@@ -31,12 +39,34 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
         )
     })
     
+    console.log(allFollowingMovieRecoList)
     const followingsRecommendationsList = allFollowingMovieRecoList?.map((item) => {
         return (
             <div className='movieitem' key={item.id}>
                 <p><strong>{item.title}</strong></p>
                 <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item.poster}/></Link>
-                <div className="commentsection">{item.comments.map(item => ({"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture})).map(item => <div className="commentsectionitem"><img className="profilepic" src={`${item.picture}`}/><p>{item.name}: <em>"{item.comment}"</em></p></div>)}</div>
+                <p><em>Average following's rating:&nbsp;  
+                    {((item.comments
+                    .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
+                    .filter(item => (account?.following.map(item => item._id)).includes(item.userid))
+                    .reduce((acc, curr) => acc + curr.rating,0))
+                    /
+                    (item.comments
+                        .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
+                        .filter(item => (account?.following.map(item => item._id)).includes(item.userid))).length).toFixed(1)} <StarOutlined /></em></p>
+                <div className="commentsection">
+                    {item.comments
+                    .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
+                    .filter(item => (account?.following.map(item => item._id)).includes(item.userid))
+                    .map(item => 
+                    <div className="commentsectionitem">
+                        <div>
+                            <img className="profilepic" src={`${item.picture}`}/>
+                            <p style={{margin:"0",marginBottom:"0"}}>{item.rating} <StarOutlined /></p>
+                        </div>
+                        <p>{item.name}: <em>"{item.comment}"</em></p>
+                    </div>)}
+                </div>
             </div>
         )
     })
