@@ -65,6 +65,7 @@ export default function MyFriendsPage({user}) {
             setStatus('loadingfollowing')
             try {
                 const res = await sendRequest(`/api/users/${user._id}/your-following-recommended`,'GET')
+                console.log(res)
                 setAllFollowingMovieRecoList(res[0].moviesRecommended)
             } catch (err) {
                 console.log(err)

@@ -122,6 +122,7 @@ async function getAllRecommendedForAnAccount(req, res) {
         },
       },
     ]);
+    console.log(array)
     const array2 = await Movie.populate(array, { path: "moviesRecommended" });
     const getAllRecommendedForAnAccount = await User.populate(array2, {
       path: "moviesRecommended.comments.userId",
