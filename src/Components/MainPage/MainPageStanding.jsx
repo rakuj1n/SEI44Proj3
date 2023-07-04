@@ -27,7 +27,7 @@ const MainPageStanding = () => {
       const data = await response.json();
       setMovies(data.movies);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
@@ -40,7 +40,7 @@ const MainPageStanding = () => {
       const data = await response.json();
       setPromotions(data.promotions);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
