@@ -122,6 +122,7 @@ async function getAllRecommendedForAnAccount(req, res) {
         },
       },
     ]);
+    console.log(array)
     const array2 = await Movie.populate(array, { path: "moviesRecommended" });
     const getAllRecommendedForAnAccount = await User.populate(array2, {
       path: "moviesRecommended.comments.userId",
@@ -166,6 +167,19 @@ async function updateMoviesWatched(req, res) {
   }
 }
 
+async function deleteFollowing(req,res) {
+  const userId = req.params.userId;
+  console.log(req.body.id)
+  try {
+    const account = await Account.findOne({ user: userId });
+    account.following = account.following.filter((item) => item.toString() !== req.body.id)
+    await account.save()
+    res.status(200).json(account)
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
 module.exports = {
   create,
   login,
@@ -177,4 +191,5 @@ module.exports = {
   getAllRecommendedForAnAccount,
   updateMoviesRecommended,
   updateMoviesWatched,
+  deleteFollowing
 };

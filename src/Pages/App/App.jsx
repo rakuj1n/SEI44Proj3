@@ -27,6 +27,7 @@ import CheckoutPage from "../CheckoutPage/Checkout";
 import PromotionsPage from "../../Components/PromotionPage/PromotionsPage";
 import PromotionDetailsPage from "../../Components/PromotionPage/PromotionDetailsPage";
 import TicketConfirmationPage from "../TicketConfirmationPage/TicketConfirmationPage";
+import AccountFollowing from "../../Components/AccountPage/AccountFollowing";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -48,6 +49,10 @@ export default function App() {
               <Route
                 path="/users/:userId/settings"
                 element={<Settings user={user} />}
+              />
+              <Route
+                path="/users/:userId/following"
+                element={<AccountFollowing user={user} />}
               />
               <Route path="/users/:userId" element={<Profile user={user} />} />
             </Route>

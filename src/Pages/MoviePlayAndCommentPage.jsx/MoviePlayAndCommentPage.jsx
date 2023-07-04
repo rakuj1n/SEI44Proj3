@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import sendRequest from "../../utilities/send-request";
+import Loading from "../../Components/Loading";
 
 // require("dotenv").config();
 // require("./config/database");
@@ -11,6 +12,7 @@ export default function MoviePlayAndCommentPage({ user }) {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [status, setStatus] = useState('idle')
   // console.log("passing", state);
   //To push user watched to db
 
@@ -18,8 +20,25 @@ export default function MoviePlayAndCommentPage({ user }) {
   const userProfilePic = user?.picture;
   const username = user?.name;
 
+  useEffect(() => {
+    async function fetchComments() {
+      try {
+        const res = await sendRequest(
+          `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
+          "GET"
+        )
+        setRating(res.rating)
+        setComment(res.comment)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchComments()
+  },[])
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setStatus('loading')
     if (rating > 2) {
       console.log("Recommended! Rating:", rating);
       //Submit recommended
@@ -32,20 +51,23 @@ export default function MoviePlayAndCommentPage({ user }) {
       }
     }
 
-    if (comment.length !== 0) {
-      //submit comment to db!
-      try {
-        await sendRequest(
-          `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
-          "PUT",
-          { comment: comment }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-      console.log("Submit comment", comment);
-    }
 
+    //submit comment to db!
+    try {
+      await sendRequest(
+        `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
+        "PUT",
+        { 
+          comment: comment,
+          rating: rating
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    console.log("Submit comment", comment);
+
+    setStatus('success')
     navigate("/kinolounge");
   };
 
@@ -115,7 +137,7 @@ export default function MoviePlayAndCommentPage({ user }) {
           </div>
           {/* <button>👍</button>
           <button>👎</button> */}
-          <button>Submit</button>
+          {status === 'loading' ? <Loading /> : <button>Submit</button>}
         </form>
       </fieldset>
     </>

@@ -12,8 +12,8 @@ export default function Profile() {
 
   const followingList = account?.following.map((item) => {
     return (
-      <span>
-        <Link to={`/users/${item._id}`}>{item.name}</Link> |{" "}
+      <span className='profilefollowingitem'>
+        <Link style={{ textDecoration:'none', color:'inherit'}} to={`/users/${item._id}`}>{item.name}</Link>
       </span>
     );
   });

@@ -27,5 +27,6 @@ router.put(
   ensureLoggedIn,
   usersCtrl.updateMoviesWatched
 );
+router.delete("/:userId/following",ensureLoggedIn,usersCtrl.deleteFollowing)
 
 module.exports = router;

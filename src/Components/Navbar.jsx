@@ -49,7 +49,7 @@ export default function Navbar({ user, setUser }) {
                 )}
               {pathname !== `/users/${user._id}/friends` && (
                 <button>
-                  <Link to={`/users/${user._id}/friends`}>My Friends</Link>
+                  <Link to={`/users/${user._id}/friends`}>My Following</Link>
                 </button>
               )}
               {pathname !== `/users/${user._id}` &&
