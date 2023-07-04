@@ -5,10 +5,10 @@ export default function CheckoutPage({ user }) {
   const navigate = useNavigate();
   const { state } = useLocation();
   console.log("user", user._id);
-  console.log("CheckoutSTate", state.movieId);
+  console.log("CheckoutSTate", state?.movieId);
 
   const handleCheckout = async () => {
-    console.log("CheckoutMovie", state.movieId);
+    console.log("CheckoutMovie", state?.movieId);
 
     try {
       await sendRequest(`/api/users/${user._id}/movies-rented`, "PUT", {
@@ -23,7 +23,7 @@ export default function CheckoutPage({ user }) {
   return (
     <main className="payment_page">
       {state === null ? (
-        <>error no payments</>
+        <h1 className="checkout-container">No payments found!</h1>
       ) : (
         <>
           {/* Checkout page */}
