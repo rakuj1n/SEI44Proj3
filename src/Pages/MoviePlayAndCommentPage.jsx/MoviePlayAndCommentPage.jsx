@@ -51,22 +51,22 @@ export default function MoviePlayAndCommentPage({ user }) {
       }
     }
 
-    if (comment.length !== 0) {
-      //submit comment to db!
-      try {
-        await sendRequest(
-          `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
-          "PUT",
-          { 
-            comment: comment,
-            rating: rating
-          }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-      console.log("Submit comment", comment);
+
+    //submit comment to db!
+    try {
+      await sendRequest(
+        `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
+        "PUT",
+        { 
+          comment: comment,
+          rating: rating
+        }
+      );
+    } catch (err) {
+      console.log(err);
     }
+    console.log("Submit comment", comment);
+
     setStatus('success')
     navigate("/kinolounge");
   };

@@ -28,7 +28,7 @@ export default function AccountFollowing({user}) {
 
     async function handleDelete(idToDelete) {
         try {
-            await sendRequest(`/api/users/${userId}/following`, "PUT",{id:idToDelete});
+            await sendRequest(`/api/users/${userId}/following`, "DELETE",{id:idToDelete});
             setTrigger(prev => !prev)
         } catch (err) {
             console.log(err)
