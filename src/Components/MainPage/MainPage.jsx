@@ -50,8 +50,6 @@ const MainPage = () => {
 
   return (
     <div>
-      {/* Dropdown Boxes */}
-
       {/* Side Nav Bar */}
       <div className="kinolounge">
         <Link to="/kinolounge" className="kinolounge-link">
