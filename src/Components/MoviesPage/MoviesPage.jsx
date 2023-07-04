@@ -38,6 +38,11 @@ const MoviesPage = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleReset = () => {
+    setSelectedGenre("All");
+    setSearchTerm("");
+  };
+
   const filteredMovies =
     selectedGenre === "All"
       ? movies
@@ -76,6 +81,9 @@ const MoviesPage = () => {
           onChange={handleSearchTermChange}
           className="filter-input"
         />
+        <button onClick={handleReset} className="reset-button">
+          Reset
+        </button>
       </div>
       <div className="movies-grid">
         {searchResults.map((movie) => (
