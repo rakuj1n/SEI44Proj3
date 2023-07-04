@@ -500,6 +500,18 @@ button[type="submit"] {
   margin: 4px;
 }
 
+.profilefollowingitemfollowing {
+  display:flex;
+  margin: 30px;
+  gap: 15px;
+}
+
+.profilefollowingpic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 .profilefollowingitem:hover {
   color:#ccc;
 }
