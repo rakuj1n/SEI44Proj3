@@ -16,6 +16,8 @@ export default function TicketConfirmationPage({ user }) {
       <MovieDetail
         movieTitle={location.state.movieTitle}
         moviePoster={location.state.moviePoster}
+        theatre={location.state.theatre}
+        timing={location.state.timing}
       />
       <br />
       <h2>You have booked ({location.state.qty}) Tickets</h2>

@@ -51,6 +51,8 @@ export default function SeatSelectionPage() {
         qty: qty,
         movieTitle: location.state.movieTitle,
         moviePoster: location.state.moviePoster,
+        theatre: location.state.theatre,
+        timing: location.state.timing,
       },
     });
   }
@@ -63,6 +65,8 @@ export default function SeatSelectionPage() {
         <MovieDetail
           movieTitle={location.state.movieTitle}
           moviePoster={location.state.moviePoster}
+          theatre={location.state.theatre}
+          timing={location.state.timing}
         />
         <SeatsSelection
           addSeats={addSeats}

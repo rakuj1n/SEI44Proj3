@@ -202,6 +202,7 @@ button[type="submit"] {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: left;
+  text-align: left;
   gap: 60px;
 }
 
