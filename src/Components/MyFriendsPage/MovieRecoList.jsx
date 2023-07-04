@@ -48,16 +48,16 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
                 <p><em>Average following's rating:&nbsp;  
                     {((item.comments
                     .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
-                    .filter(item => (account?.following.map(item => item._id)).includes(item.userid))
+                    .filter(item => (account?.following.map(item => item._id))?.includes(item.userid))
                     .reduce((acc, curr) => acc + curr.rating,0))
                     /
                     (item.comments
                         .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
-                        .filter(item => (account?.following.map(item => item._id)).includes(item.userid))).length).toFixed(1)} <StarOutlined /></em></p>
+                        .filter(item => (account?.following.map(item => item._id))?.includes(item.userid))).length).toFixed(1)} <StarOutlined /></em></p>
                 <div className="commentsection">
                     {item.comments
                     .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
-                    .filter(item => (account?.following.map(item => item._id)).includes(item.userid))
+                    .filter(item => (account?.following.map(item => item._id))?.includes(item.userid))
                     .map(item => 
                     <div className="commentsectionitem">
                         <div>
