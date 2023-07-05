@@ -29,8 +29,8 @@ export default function KinoCarousel() {
               src="https://w7.pngwing.com/pngs/181/900/png-transparent-play-icon-red-area-font-play-button-text-internet-circle-thumbnail.png"
               alt="playButton"
             /> */}
-            <button className="playbutton">Rent S$4.99</button>
-            <span>Trailer</span>
+            {/* <button className="playbutton">Rent S$4.99</button>
+            <span>Trailer</span> */}
           </p>
         </div>
         <div>
@@ -43,7 +43,7 @@ export default function KinoCarousel() {
             A friendship forms between a never-aging 10-year-old vampire and an
             orphan schoolboy, but a moon headed monster throws obstacles in
             their paths.
-            <button className="playbutton">Rent S$4.99</button>
+            {/* <button className="playbutton">Rent S$4.99</button> */}
           </p>
         </div>
         <div>
@@ -56,7 +56,7 @@ export default function KinoCarousel() {
             SamSam appears to have it all: his own flying saucer and great
             family and friends. But the one thing he has yet to attain are
             actual superpowers.
-            <button className="playbutton">Rent S$4.99</button>
+            {/* <button className="playbutton">Rent S$4.99</button> */}
           </p>
         </div>
         <div>
@@ -69,7 +69,7 @@ export default function KinoCarousel() {
             Strange lights over the quiet town of Mossingham herald the arrival
             of a mystery visitor from far across the galaxy… but at nearby Mossy
             Bottom Farm
-            <button className="playbutton">Rent S$4.99</button>
+            {/* <button className="playbutton">Rent S$4.99</button> */}
           </p>
         </div>
         {/* <div>
