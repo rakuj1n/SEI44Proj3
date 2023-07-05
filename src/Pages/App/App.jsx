@@ -71,12 +71,12 @@ export default function App() {
               element={<PromotionDetailsPage />}
             />
             <Route
-              path="/movies/:title/seat-selection"
+              path="/movies/:title/seat-selection/:movieId"
               element={<SeatSelectionPage user={user} />}
             />
             <Route path="/movies/:title" element={<MoviesDetailsPage />} />
             <Route
-              path="/movies/:title/ticket-confirmation"
+              path="/movies/:title/ticket-confirmation/:movieId"
               element={<TicketConfirmationPage user={user} />}
             />
             <Route path="/checkout" element={<CheckoutPage />} />

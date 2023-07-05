@@ -11,7 +11,7 @@ export default function MovieTheatresShowing({
   const timing = "11:35 AM";
 
   function handleClick() {
-    navigate(`/movies/${title}/seat-selection`, {
+    navigate(`/movies/${title}/seat-selection/${movieId}`, {
       state: {
         movieTitle: movieTitle,
         moviePoster: moviePoster,
