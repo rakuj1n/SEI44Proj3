@@ -70,6 +70,28 @@ const movieArr = [
         director:'Jonathan Tropper',
         nowShowing:false,
         comments:[]
+    },
+    {
+      title: "Indiana Jones",
+      actor: ["Philip Kaufman", "George Lucas"],
+      details:
+        "Finding himself in a new era, approaching retirement, Indy wrestles with fitting into a world that seems to have outgrown him. But as the tentacles of an all-too-familiar evil return in the form of an old rival, Indy must don his hat and pick up his whip once more to make sure an ancient and powerful artifact doesn’t fall into the wrong hands.",
+      poster:
+        "https://www.themoviedb.org/t/p/w1280/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
+      director: "James Mangold",
+      nowShowing: false,
+      comments: [],
+    },
+    {
+      title: "The Ghost Station",
+      actor: ["Kim Bo-Ra", "Kim Jae-Hyun", "Shin So-yul"],
+      details:
+        "Reporter Na-yeong and her partner investigate a series of mysterious deaths and a perplexing case where her source was allegedly already dead at the time of their interview. Together they end up confronting a terrifying truth.",
+      poster:
+        "https://www.themoviedb.org/t/p/w1280/orL3v5KKRqFhwJYGkrZ3jmKEAgy.jpg",
+      director: "Jeong Yong-ki",
+      nowShowing: true,
+      comments: [],
     }
 ]
 
