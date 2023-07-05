@@ -2,7 +2,6 @@ import Slider from "react-slick";
 import FriendsWatchedCard from "./KinoloungePage/FriendsWatchedCard";
 
 export default function ForYou({ moviesWatched }) {
-  console.log("FirnedsWatched", moviesWatched);
   return (
     <>
       <Slider
@@ -10,14 +9,15 @@ export default function ForYou({ moviesWatched }) {
         slidesToScroll={1}
         infinite={moviesWatched?.length > 4}
       >
-        {moviesWatched?.movies?.map((movie, index) => (
-          // {moviesWatched?.map((movie, index) => (
-          <div className="ForYouLink" key={index}>
-            {/* <span key={movie._id}> */}
-            <FriendsWatchedCard movieDetails={movie} />
-            {/* </span> */}
-          </div>
-        ))}
+        {moviesWatched?.movies
+          ?.filter((movie) => !movie.nowShowing)
+          .map((movie, index) => (
+            // {moviesWatched?.map((movie, index) => (
+            <div className="ForYouLink" key={index}>
+              {console.log("nowShowing", movie.nowShowing)}
+              <FriendsWatchedCard movieDetails={movie} />
+            </div>
+          ))}
       </Slider>
     </>
   );
