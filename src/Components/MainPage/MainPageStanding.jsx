@@ -52,8 +52,6 @@ const MainPageStanding = () => {
   return (
     <div>
       <Navbar />
-      {/* Dropdown Boxes */}
-
       {/* Side Nav Bar */}
       <div className="kinolounge">
         <Link to="/kinolounge" className="kinolounge-link">
