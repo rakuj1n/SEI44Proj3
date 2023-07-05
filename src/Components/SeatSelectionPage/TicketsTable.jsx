@@ -40,23 +40,3 @@ export default function TicketsTable({ seatSelection, qty, amount }) {
     </Container>
   );
 }
-
-//     <table>
-//       <thead>
-//         <th>TYPE</th>
-//         <th>QUANTITY</th>
-//         <th>AMOUNT</th>
-//       </thead>
-//       <tbody>
-//         <td>Seats: </td>
-//         <td>Count</td>
-//         <td>$10</td>
-//       </tbody>
-//       <tfoot>
-//         <td>TOTAL</td>
-//         <td> </td>
-//         <td>$20</td>
-//       </tfoot>
-//     </table>
-//   );
-// }

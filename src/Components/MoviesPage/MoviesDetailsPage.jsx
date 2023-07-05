@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MovieTheatresShowing from "./MovieTheatresShowing";
+import Loading from "../Loading";
+import sendRequest from "../../utilities/send-request";
 
-const MoviesDetailsPage = () => {
+const MoviesDetailsPage = ({ user }) => {
+  const [status, setStatus] = useState("idle");
+  const [account, setAccount] = useState(null);
+  const userId = user._id;
+  // console.log("user_moviesDetailsPage", user);
   const carouselSettings = {
     dots: true,
     infinite: true,
@@ -15,12 +21,41 @@ const MoviesDetailsPage = () => {
     autoplay: true,
     autoplaySpeed: 5000,
   };
-
+  const { state } = useLocation();
+  console.log("state__MoviesDetailsPage", state);
   const { title } = useParams();
   const [movie, setMovie] = useState(null);
   const [showTheatres, setShowTheatres] = useState(false);
   const navigate = useNavigate();
+  // Wes
+  const movieId = state._id;
+  useEffect(() => {
+    async function getAccount() {
+      setStatus("loading");
+      try {
+        const account = await sendRequest(`/api/users/${userId}`, "GET");
+        setAccount(account);
+      } catch (err) {
+        console.log(err);
+      }
+      setStatus("success");
+    }
+    getAccount();
+  }, [userId]);
 
+  let ownedArr = [];
+  if (status === "success") {
+    for (let i = 0; i < account?.rentedMovies.length; i++) {
+      ownedArr.push(account?.rentedMovies[i]._id);
+    }
+    console.log("owned", ownedArr);
+  }
+  let ownsMovie = ownedArr.includes(movieId);
+  console.log(ownsMovie);
+
+  const price = 4.99;
+  const currency = "S$";
+  // Wes
   const fetchMovie = async (movieTitle) => {
     try {
       const response = await fetch(
@@ -45,7 +80,7 @@ const MoviesDetailsPage = () => {
   }, [title]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const handleBuyNow = () => {
@@ -55,8 +90,21 @@ const MoviesDetailsPage = () => {
   const handleRent = () => {
     navigate(`/checkout`, {
       state: {
+        currency,
+        price,
         movieTitle: movie.title,
         poster: movie.poster,
+        movieId: movieId,
+      },
+    });
+  };
+
+  const handlePlay = () => {
+    const stateToPass = { item: state };
+    console.log("play_statetopass", stateToPass);
+    navigate(`/kinolounge/${movieId}/comments`, {
+      state: {
+        state: stateToPass,
       },
     });
   };
@@ -65,9 +113,11 @@ const MoviesDetailsPage = () => {
     <button className="buy-now-button" onClick={handleBuyNow}>
       Buy Tickets Now
     </button>
+  ) : ownsMovie ? (
+    <button onClick={handlePlay}>Play Movie</button>
   ) : (
     <button className="rent-button" onClick={handleRent}>
-      Rent S$4.99
+      {`Rent ${currency}${price}`}
     </button>
   );
 
@@ -108,6 +158,7 @@ const MoviesDetailsPage = () => {
         <MovieTheatresShowing
           movieTitle={movie.title}
           moviePoster={movie.poster}
+          movieId={movie._id}
         />
       )}
     </div>

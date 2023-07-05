@@ -76,7 +76,6 @@ export default function App() {
               path="/kinolounge"
               element={<KinoloungePage user={user} />}
             />
-            {/* To add /:movieId */}
             <Route
               path="/kinolounge/:movieId/comments"
               element={<MoviePlayAndCommentPage user={user} />}
@@ -92,12 +91,15 @@ export default function App() {
               element={<PromotionDetailsPage />}
             />
             <Route
-              path="/movies/:title/seat-selection"
-              element={<SeatSelectionPage />}
+              path="/movies/:title/seat-selection/:movieId"
+              element={<SeatSelectionPage user={user} />}
             />
-            <Route path="/movies/:title" element={<MoviesDetailsPage />} />
             <Route
-              path="/movies/:title/ticket-confirmation"
+              path="/movies/:title"
+              element={<MoviesDetailsPage user={user} />}
+            />
+            <Route
+              path="/movies/:title/ticket-confirmation/:movieId"
               element={<TicketConfirmationPage user={user} />}
             />
             <Route path="/checkout" element={<CheckoutPage user={user} />} />

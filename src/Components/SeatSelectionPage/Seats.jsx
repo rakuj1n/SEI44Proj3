@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import IconButton from "@mui/material/IconButton";
 
-export default function Seats({ seats, addSeats, removeSeats, reset }) {
+export default function Seats({
+  seats,
+  addSeats,
+  removeSeats,
+  reset,
+  occupiedSeats,
+}) {
   const [active, setActive] = useState(false);
 
   function handleSeat(event) {
@@ -11,17 +17,24 @@ export default function Seats({ seats, addSeats, removeSeats, reset }) {
     !active
       ? addSeats(event.currentTarget.value)
       : removeSeats(event.currentTarget.value);
-
-    console.log(event.currentTarget.value);
   }
 
   useEffect(() => {
     setActive(false);
   }, [reset]);
 
+  const disabled = occupiedSeats.find((occupied) => occupied === seats);
+
   return (
-    <IconButton value={seats} onClick={handleSeat} size="small">
-      <EventSeatIcon sx={{ color: active ? "yellow" : "white" }} />
+    <IconButton
+      value={seats}
+      onClick={handleSeat}
+      disabled={disabled}
+      size="small"
+    >
+      <EventSeatIcon
+        sx={{ color: active ? "yellow" : disabled ? "gray" : "white" }}
+      />
     </IconButton>
   );
 }

@@ -16,9 +16,8 @@ export default function KinoloungeNavBar() {
               <Link to="/kinolounge/">Home</Link>
             </li>
             <li>
-              <Link to="/kinolounge/#For-you" />
+              {/* <Link to="/kinolounge/#For-you" /> */}
               <a href="#For-you">Friend's recommendations</a>
-              {/* </Link> */}
             </li>
             <li>
               <Link to="/kinolounge/page/sfs">SFS Picks</Link>
