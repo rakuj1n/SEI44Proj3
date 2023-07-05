@@ -10,9 +10,14 @@ export default function FriendsWatchedCard({ movieDetails }) {
         className="friend-watched-container"
         state={{ item }}
       >
-        <span>
-          <img width="40%" src={movieDetails.poster} alt={movieDetails.title} />
-        </span>
+        {/* <span> */}
+        <img
+          className="poster"
+          width="75%"
+          src={movieDetails.poster}
+          alt={movieDetails.title}
+        />
+        {/* </span> */}
       </Link>
     </>
   );

@@ -170,9 +170,6 @@ export default function KinoloungePage({ user }) {
     }
   );
 
-  // console.log("friendsIdArr", friendsIdArr);
-  // console.log("friendsNo", friendsNo);
-  // console.log("kino account", account);
   return (
     <>
       <KinoloungeNavBar />
@@ -187,7 +184,7 @@ export default function KinoloungePage({ user }) {
       <h2 className="you-might-be-interested-banner">
         You might be interested in
       </h2>
-      <ForYou moviesWatched={movies} />
+      <ForYou className="test" moviesWatched={movies} />
     </>
   );
 }

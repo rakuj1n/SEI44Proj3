@@ -5,9 +5,6 @@ const contentStyle = {
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
-  //   background: "#364d79",
-  //   backgroundImage: `url(https://d2gynsnnx1ixn5.cloudfront.net/jokp2/images/1600x600/film/162540/640c4b32c9ba526003dc9eec2d947b93.jpg)`,
-  //   backgroundSize: "cover",
 };
 
 export default function KinoCarousel() {
