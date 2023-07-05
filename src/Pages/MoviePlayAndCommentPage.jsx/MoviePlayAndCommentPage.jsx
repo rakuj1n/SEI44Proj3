@@ -86,7 +86,7 @@ export default function MoviePlayAndCommentPage({ user }) {
       </h2>
       <h2>Now playing: {movieTitle}</h2>
 
-      {/* <iframe
+      <iframe
         width="560"
         height="315"
         src="https://www.youtube.com/embed/C0DPdy98e4c"
@@ -94,7 +94,7 @@ export default function MoviePlayAndCommentPage({ user }) {
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-      ></iframe> */}
+      ></iframe>
       <fieldset className="comment-container">
         <form onSubmit={handleSubmit}>
           <img src={userProfilePic} alt="userpic" />
