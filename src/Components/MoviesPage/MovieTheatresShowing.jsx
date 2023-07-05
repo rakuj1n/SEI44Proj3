@@ -1,6 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function MovieTheatresShowing({ movieTitle, moviePoster }) {
+export default function MovieTheatresShowing({
+  movieTitle,
+  moviePoster,
+  movieId,
+}) {
   const navigate = useNavigate();
   const { title } = useParams();
   const theatre = "Shaw Theatres Lido";
@@ -11,6 +15,7 @@ export default function MovieTheatresShowing({ movieTitle, moviePoster }) {
       state: {
         movieTitle: movieTitle,
         moviePoster: moviePoster,
+        movieId: movieId,
         theatre: theatre,
         timing: timing,
       },

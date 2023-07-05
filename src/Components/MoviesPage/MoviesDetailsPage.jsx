@@ -108,6 +108,7 @@ const MoviesDetailsPage = () => {
         <MovieTheatresShowing
           movieTitle={movie.title}
           moviePoster={movie.poster}
+          movieId={movie._id}
         />
       )}
     </div>

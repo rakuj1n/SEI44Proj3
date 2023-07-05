@@ -3,19 +3,41 @@ import SeatsSelection from "../../Components/SeatSelectionPage/SeatsSelection";
 import TicketsTable from "../../Components/SeatSelectionPage/TicketsTable";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import MovieDetail from "../../Components/SeatSelectionPage/MovieDetail";
+import sendRequest from "../../utilities/send-request";
+import Loading from "../../Components/Loading";
 
-export default function SeatSelectionPage() {
+export default function SeatSelectionPage({ user }) {
+  const [loading, setLoading] = useState(true);
   const [seatSelection, setSeatSelection] = useState([]);
+  const [occupiedSeats, setOccupiedSeats] = useState([]);
   const [qty, setQty] = useState(0);
   const [amount, setAmount] = useState(0);
   const [reset, setReset] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
   const { title } = useParams();
+
+  useEffect(() => {
+    async function retrieveTickets() {
+      setLoading(true);
+      const response = await fetch(`/api/tickets/64a1803566d4761b4049ddf0`);
+      const jsonData = await response.json();
+
+      let takenSeats = [];
+      for (let i = 0; i < jsonData.retrievedTickets.length; i++) {
+        jsonData.retrievedTickets[i].seats.map((seat) => takenSeats.push(seat));
+      }
+
+      setOccupiedSeats(takenSeats);
+      setLoading(false);
+    }
+    retrieveTickets();
+  }, []);
 
   function addSeats(addSeat) {
     if (seatSelection.indexOf(addSeat) === -1) {
@@ -45,7 +67,17 @@ export default function SeatSelectionPage() {
     setAmount(0);
   }
 
-  function handleConfirmedSeats() {
+  async function handleConfirmedSeats() {
+    try {
+      await sendRequest("/api/tickets", "POST", {
+        movie: location.state.movieId,
+        bookingUser: user._id,
+        seats: seatSelection,
+      });
+    } catch (err) {
+      setErrorMessage("Ticket Purchase Failed. Try Again.");
+    }
+
     navigate(`/movies/${title}/ticket-confirmation`, {
       state: {
         qty: qty,
@@ -55,6 +87,10 @@ export default function SeatSelectionPage() {
         timing: location.state.timing,
       },
     });
+  }
+
+  if (loading === true) {
+    return <Loading />;
   }
 
   const disabled = qty === 0;
@@ -72,6 +108,7 @@ export default function SeatSelectionPage() {
           addSeats={addSeats}
           removeSeats={removeSeats}
           reset={reset}
+          occupiedSeats={occupiedSeats}
         />
         <SeatsLegend />
         <TicketsTable seatSelection={seatSelection} qty={qty} amount={amount} />
@@ -82,6 +119,9 @@ export default function SeatSelectionPage() {
       <button onClick={handleConfirmedSeats} disabled={disabled}>
         CONFIRM SEAT(S)
       </button>
+      <br />
+      <span>{errorMessage}</span>
+      <br />
     </Container>
   );
 }
