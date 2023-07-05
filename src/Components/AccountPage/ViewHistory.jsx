@@ -18,7 +18,7 @@ export default function ViewHistory({ account, user }) {
         <p>
           <strong>{item?.title}</strong>
         </p>
-        <Link to={`/movies/${item?.title}`}>
+        <Link to={`/movies/${item?.title}`} state={item}>
           <img
             alt="poster"
             className="poster"

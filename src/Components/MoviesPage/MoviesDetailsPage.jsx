@@ -28,7 +28,7 @@ const MoviesDetailsPage = ({ user }) => {
   const [showTheatres, setShowTheatres] = useState(false);
   const navigate = useNavigate();
   // Wes
-  const movieId = state?._id;
+  const movieId = state._id;
   useEffect(() => {
     async function getAccount() {
       setStatus("loading");
