@@ -80,6 +80,7 @@ const MainPage = () => {
                       height: "100%",
                     }}
                     to={`/movies/${encodeURIComponent(movie.title)}`}
+                    state={movie}
                   >
                     <img
                       src={movie.poster}
