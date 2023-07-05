@@ -18,6 +18,7 @@ const movieSchema = new Schema({
   director: { type: String },
   nowShowing: { type: Boolean },
   comments: [commentSchema],
+  genre: { type: String },
 });
 
 module.exports = model("Movie", movieSchema);
