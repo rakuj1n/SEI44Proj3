@@ -41,19 +41,24 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     console.log(allFollowingMovieRecoList)
     const followingsRecommendationsList = allFollowingMovieRecoList?.map((item) => {
+
+        const avgRating = (
+            (item.comments
+                .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
+                .filter(item => (account ? (account?.following.map(item => item._id)):[]).includes(item.userid))
+                .reduce((acc, curr) => acc + curr.rating,0))
+            /
+            (item.comments
+                .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
+                .filter(item => (account ? (account?.following.map(item => item._id)):[]).includes(item.userid))).length
+                ).toFixed(1)
+
         return (
             <div className='movieitem' key={item.id}>
                 <p><strong>{item.title}</strong></p>
                 <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item.poster}/></Link>
                 <p><em>Average following's rating:&nbsp;  
-                    {((item.comments
-                    .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
-                    .filter(item => (account ? (account?.following.map(item => item._id)):[]).includes(item.userid))
-                    .reduce((acc, curr) => acc + curr.rating,0))
-                    /
-                    (item.comments
-                        .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
-                        .filter(item => (account ? (account?.following.map(item => item._id)):[]).includes(item.userid))).length).toFixed(1)} <StarOutlined /></em></p>
+                    <strong>{isNaN(avgRating) ? "Not Rated" : avgRating} {isNaN(avgRating) ? "" : <StarOutlined />}</strong></em></p>
                 <div className="commentsection">
                     {item.comments
                     .map(item => ({"rating":item.rating,"comment":item.comment,"name":item.userId.name,"picture":item.userId.picture,"userid":item.userId._id}))
@@ -62,7 +67,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
                     <div className="commentsectionitem">
                         <div>
                             <img className="profilepic" src={`${item.picture}`}/>
-                            <p style={{margin:"0",marginBottom:"0"}}>{item.rating} <StarOutlined /></p>
+                            <p style={{margin:"0",marginBottom:"0"}}><strong>{item.rating}</strong> <StarOutlined /></p>
                         </div>
                         <p>{item.name}: <em>"{item.comment}"</em></p>
                     </div>)}
