@@ -17,8 +17,6 @@ export default function Seats({
     !active
       ? addSeats(event.currentTarget.value)
       : removeSeats(event.currentTarget.value);
-
-    console.log(event.currentTarget.value);
   }
 
   useEffect(() => {
