@@ -66,7 +66,12 @@ const MainPageStanding = () => {
                     <img
                       src={movie.poster2}
                       alt={movie.title}
-                      style={{ maxWidth: "300px", maxHeight: "300px" }}
+                      style={{
+                        border: "2px solid black",
+                        borderColor: "solid black",
+                        objectFit: "cover",
+                        width: "90%",
+                      }}
                     />
                   </Link>
                 </div>
