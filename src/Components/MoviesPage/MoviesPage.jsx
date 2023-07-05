@@ -45,8 +45,10 @@ const MoviesPage = () => {
 
   const filteredMovies =
     selectedGenre === "All"
-      ? movies
-      : movies.filter((movie) => movie.genre.includes(selectedGenre));
+      ? movies.filter((movie) => movie.nowShowing)
+      : movies.filter(
+          (movie) => movie.genre.includes(selectedGenre) && movie.nowShowing
+        );
 
   const searchResults = filteredMovies.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())

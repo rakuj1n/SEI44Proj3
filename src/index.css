@@ -539,16 +539,19 @@ button[type="submit"] {
   text-align: center;
   width: 115%;
   background-color: darkred;
+  z-index: 99;
 }
 .user-nav-login {
   display: block;
   text-align: center;
   width: 125%;
   background-color: darkred;
+  z-index: 99;
 }
 
 .navbar-container {
   position: absolute;
+  z-index: 99;
 }
 
 /* End Damien CSS */
