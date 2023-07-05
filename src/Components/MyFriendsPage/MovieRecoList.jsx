@@ -10,7 +10,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
         return (
             <div className='movieitem' key={(item.comments.find(item => item.userId == currSelectedFollowing))?.rating}>
                 <p><strong>{item?.title}</strong></p>
-                <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+                <Link to={`/movies/${item?._id}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
                 {(item.comments.find(item => item.userId == currSelectedFollowing)) && 
                 <div className="commentsectionitem">
                     <div>
@@ -56,7 +56,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
         return (
             <div className='movieitem' key={isNaN(avgRating) ? "0" : avgRating}>
                 <p><strong>{item.title}</strong></p>
-                <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item.poster}/></Link>
+                <Link to={`/movies/${item?._id}`}><img alt='poster' className='poster' src={item.poster}/></Link>
                 <p><em>Average following's rating:&nbsp;  
                     <strong>{isNaN(avgRating) ? "Not Rated" : avgRating} {isNaN(avgRating) ? "" : <StarOutlined />}</strong></em></p>
                 <div className="commentsection">

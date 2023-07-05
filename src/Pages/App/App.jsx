@@ -29,6 +29,7 @@ import MainPageStanding from "../../Components/MainPage/MainPageStanding";
 import LogInPage from "../LogInPage/LogInPage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import AccountFollowing from "../../Components/AccountPage/AccountFollowing";
+import EditComment from "../../Components/AccountPage/EditComment";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -69,6 +70,7 @@ export default function App() {
                 element={<AccountFollowing user={user} />}
               />
               <Route path="/users/:userId" element={<Profile user={user} />} />
+              <Route path="/users/:userId/:movieId/editcomment" element={<EditComment user={user} />} />
             </Route>
             <Route
               path="/kinolounge"
