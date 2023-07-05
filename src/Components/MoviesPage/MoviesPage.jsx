@@ -13,9 +13,9 @@ const MoviesPage = () => {
       if (response.ok) {
         const data = await response.json();
         setMovies(data.movies);
-        const uniqueGenres = Array.from(
-          new Set(data.movies.flatMap((movie) => movie.genre))
-        );
+        const genresArray = data.movies.map((movie) => movie.genre);
+        const flattenedGenres = [].concat(...genresArray);
+        const uniqueGenres = Array.from(new Set(flattenedGenres));
         const sortedGenres = uniqueGenres.sort((a, b) => a.localeCompare(b));
         setGenreOptions(["All", ...sortedGenres]);
       } else {
