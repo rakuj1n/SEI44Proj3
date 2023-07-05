@@ -4,35 +4,100 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 
 export default function TicketsTable({ seatSelection, qty, amount }) {
   return (
     <Container maxWidth="ml">
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="Tickets Table">
+      <TableContainer className="tableContainer">
+        <Table aria-label="Tickets Table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">TYPE</TableCell>
-              <TableCell align="right">QUANTITY</TableCell>
-              <TableCell align="right">AMOUNT</TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: "bold",
+                  borderBottomColor: "lightgray",
+                  color: "lightgray",
+                }}
+              >
+                TYPE
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: "bold",
+                  borderBottomColor: "lightgray",
+                  color: "lightgray",
+                }}
+                align="right"
+              >
+                QUANTITY
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: "bold",
+                  borderBottomColor: "lightgray",
+                  color: "lightgray",
+                }}
+                align="right"
+              >
+                AMOUNT
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell align="left">
+              <TableCell
+                sx={{
+                  color: "white",
+                  borderBottomColor: "lightgray",
+                  maxWidth: "200px",
+                }}
+              >
                 Seats: {seatSelection.join(", ")}
                 <br />
-                <span>Adult $10.00</span>
+                <span className="ticketPricing">Adult $10.00</span>
               </TableCell>
-              <TableCell align="right">{qty}</TableCell>
-              <TableCell align="right">${amount}</TableCell>
+              <TableCell
+                sx={{ color: "white", borderBottomColor: "lightgray" }}
+                align="right"
+              >
+                {qty}
+              </TableCell>
+              <TableCell
+                sx={{ color: "white", borderBottomColor: "lightgray" }}
+                align="right"
+              >
+                ${Number(amount).toFixed(2)}
+              </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell align="left">TOTAL</TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right">${amount}</TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: "bold",
+                  borderBottom: "none",
+                  color: "white",
+                }}
+              >
+                TOTAL
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: "bold",
+                  borderBottom: "none",
+                  color: "white",
+                }}
+                align="right"
+              ></TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: "bold",
+                  borderBottom: "none",
+                  color: "white",
+                }}
+                align="right"
+              >
+                ${Number(amount).toFixed(2)}
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>

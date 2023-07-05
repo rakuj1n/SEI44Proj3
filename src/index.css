@@ -28,7 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: var (--tan-4); */
-  background-color: var(--shawBlue);
+  /* background-color: var(--shawBlue); */
+  background-color: rgb(26, 26, 26);
   padding: 2vmin;
   height: 100vh;
 }
@@ -166,11 +167,15 @@ button[type="submit"] {
 
 .container {
   display: grid;
-  grid-template-columns: 400px 7fr;
+  background-color: rgb(26, 26, 26);
+  grid-template-columns: 400px 400px;
   grid-template-rows: auto auto;
+  align-items: center;
   text-align: start;
-  color: gray;
-  margin: 0px 200px 0px 200px;
+  color: lightgray;
+  font-weight: bold;
+  padding: 10px 120px;
+  margin: 60px 0px 10px 00px;
 }
 
 .theatre {
@@ -184,6 +189,8 @@ button[type="submit"] {
 
 .cell {
   background: whitesmoke;
+  color: black;
+  font-weight: normal;
   cursor: pointer;
   border-radius: 4px;
   display: inline-flex;
@@ -197,7 +204,7 @@ button[type="submit"] {
 }
 
 .detailsContainer {
-  background-color: rgb(48, 44, 45);
+  background-color: rgb(26, 26, 26);
   color: white;
   height: 200px;
   display: grid;
@@ -308,6 +315,19 @@ button[type="submit"] {
 .ticketInfo {
   font-weight: bold;
   color: gold;
+}
+
+.tableContainer {
+  background-color: rgb(26, 26, 26);
+  padding: 15px;
+  table-layout: fixed;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticketPricing {
+  padding: 20px;
+  color: lightgray;
 }
 
 /* .seatsLegend {
