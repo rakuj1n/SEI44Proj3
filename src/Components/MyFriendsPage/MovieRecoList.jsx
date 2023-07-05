@@ -8,7 +8,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (
-            <div className='movieitem' key={item?._id}>
+            <div className='movieitem' key={(item.comments.find(item => item.userId == currSelectedFollowing))?.rating}>
                 <p><strong>{item?.title}</strong></p>
                 <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
                 {(item.comments.find(item => item.userId == currSelectedFollowing)) && 
@@ -54,7 +54,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
                 ).toFixed(1)
 
         return (
-            <div className='movieitem' key={item.id}>
+            <div className='movieitem' key={isNaN(avgRating) ? "0" : avgRating}>
                 <p><strong>{item.title}</strong></p>
                 <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item.poster}/></Link>
                 <p><em>Average following's rating:&nbsp;  
@@ -113,11 +113,11 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
 
             {!currSelectedFollowing && <div style={style}
             ref={scrollableRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}
-             className="movielist">{followingsRecommendationsList}</div>}
+             className="movielist">{followingsRecommendationsList?.sort((a,b) => b.key - a.key)}</div>}
 
             {currSelectedFollowing && <div style={style}
             ref={scrollableRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} 
-            className="movielist">{movieRecoList}</div>}
+            className="movielist">{movieRecoList?.sort((a,b) => b.key - a.key)}</div>}
         </div>
     )
 }
