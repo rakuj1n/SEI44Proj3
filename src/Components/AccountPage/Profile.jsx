@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import sendRequest from "../../utilities/send-request";
 import Loading from "../Loading";
 
-export default function Profile() {
+export default function Profile({user}) {
   const [account, setAccount] = useOutletContext();
   const [status, setStatus] = useState("idle");
 
@@ -52,7 +52,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <ViewHistory account={account} />
+      <ViewHistory user={user} account={account} />
     </main>
   );
 }

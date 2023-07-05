@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useRef, useState } from "react"
 import { StarOutlined } from "@ant-design/icons"
 
 
-export default function ViewHistory({account}) {
+export default function ViewHistory({account,user}) {
     console.log("viewhist", account)
+    const {userId} = useParams()
+    console.log(userId)
+    const isUser = user._id == userId
     
     const watchedList = account?.watchHistory.map((item) => {
 
@@ -15,7 +18,7 @@ export default function ViewHistory({account}) {
             <p><strong>{item?.title}</strong></p>
             <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
             <div className="commentsectionitem commentwedit">
-                <Link state={{item, comment:comment1[0]?.comment, rating:comment1[0]?.rating}} className='editcomment' to={`/users/${account?.user._id}/${item?._id}/editcomment`}>Edit Review</Link>
+                {isUser && <Link state={{item, comment:comment1[0]?.comment, rating:comment1[0]?.rating}} className='editcomment' to={`/users/${account?.user._id}/${item?._id}/editcomment`}>Edit Review</Link>}
                 <div>
                     <img className="profilepic" src={`${account?.user.picture}`}/>
                     <p style={{margin:"0",marginBottom:"0"}}>
