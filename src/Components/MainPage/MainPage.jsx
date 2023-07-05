@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { Carousel } from "antd";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -63,28 +64,39 @@ const MainPage = () => {
         </Link>
       </div>
 
-      {/* Movies Carousel */}
       <div className="movies-carousel">
         <p></p>
         {movies.length > 0 ? (
-          <Slider {...carouselSettings}>
+          <Carousel {...carouselSettings}>
             {movies
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
                   <Link
+                    style={{
+                      borderColor: "solid black",
+                      objectFit: "cover",
+                      width: "30%",
+                      height: "100%",
+                    }}
                     to={`/movies/${encodeURIComponent(movie.title)}`}
                     state={movie}
                   >
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "300px", maxHeight: "300px" }}
+                      style={{
+                        border: "2px solid black",
+                        borderColor: "solid black",
+                        objectFit: "cover",
+                        width: "30%",
+                        height: "100%",
+                      }}
                     />
                   </Link>
                 </div>
               ))}
-          </Slider>
+          </Carousel>
         ) : (
           <p>No movies available for the carousel</p>
         )}
@@ -107,7 +119,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid black",
+                        borderColor: "solid black",
+                      }}
                     />
                   </Link>
                 </div>
@@ -126,7 +143,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid red",
+                        borderColor: "solid red",
+                      }}
                     />
                   </Link>
                 </div>
@@ -140,14 +162,19 @@ const MainPage = () => {
         <h2>Promotions</h2>
         <hr></hr>
         {promotions.length > 4 ? (
-          <Slider slidesToShow={4} slidesToScroll={1}>
+          <Slider slidesToShow={6} slidesToScroll={1}>
             {promotions.map((promotion) => (
               <div className="movie-item" key={promotion._id}>
                 <Link to={`/promotions/${encodeURIComponent(promotion.title)}`}>
                   <img
                     src={promotion.image}
                     alt={promotion.title}
-                    style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    style={{
+                      maxWidth: "200px",
+                      maxHeight: "300px",
+                      border: "2px solid white",
+                      borderColor: "solid white",
+                    }}
                   />
                 </Link>
               </div>
@@ -161,7 +188,12 @@ const MainPage = () => {
                   <img
                     src={promotion.image}
                     alt={promotion.title}
-                    style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    style={{
+                      maxWidth: "200px",
+                      maxHeight: "300px",
+                      border: "2px solid white",
+                      borderColor: "solid white",
+                    }}
                   />
                 </Link>
               </div>
@@ -187,7 +219,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid blue",
+                        borderColor: "solid blue",
+                      }}
                     />
                   </Link>
                 </div>
@@ -206,7 +243,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid blue",
+                        borderColor: "solid blue",
+                      }}
                     />
                   </Link>
                 </div>
