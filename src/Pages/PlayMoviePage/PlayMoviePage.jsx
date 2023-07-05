@@ -44,11 +44,6 @@ export default function PlayMoviePage({ user }) {
   const price = 4.99;
   const currency = "S$";
 
-  // const poster = state.movieDetails.poster;
-  // const movieTitle = state.movieDetails.title;
-  // const CAST = state.movieDetails.actor.join(",");
-  // const DIRECTOR = state.movieDetails.director;
-  // const details = state.movieDetails.details;
   const poster = state.item.poster;
   const movieTitle = state.item.title;
   const CAST = state.item.actor.join(",");
@@ -60,11 +55,9 @@ export default function PlayMoviePage({ user }) {
     backgroundSize: "cover",
     // position: "absolute",
     // width: "auto",
-    // height: "auto",
-  };
-  const containerStyle = {
-    // filter: "none",
-    // filter: `blur(8px)`,
+    height: "2000px",
+    // height: "100%",
+    filter: `blur(8px)`,
   };
 
   const handleClick = () => {
@@ -113,23 +106,24 @@ export default function PlayMoviePage({ user }) {
     <>
       {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
-      <div className="PlayRentPageContentContainer" style={backgroundStyle}>
-        {/* <div className="PlayRentPageContentContainer"> */}
-        <div className="PlayRentPageContent">
-          <img width="30%" src={poster} alt="pic" />
-          <h2>{movieTitle}</h2>
+      <div className="backgroundImg-playMovie" style={backgroundStyle}></div>
+      {/* <div id="PlayRentPageContentContainer"> */}
+      {/* <div className="PlayRentPageContentContainer"> */}
+      <div id="PlayRentPageContent">
+        <img width="50%" src={poster} alt="pic" />
+        <h2>{movieTitle}</h2>
 
-          <button onClick={handleBuy_Rent}>
-            {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
-          </button>
-          <div>{details}</div>
-          <div>MAIN CAST &nbsp;{CAST}</div>
-          <div>DIRECTOR &nbsp; {DIRECTOR}</div>
-          <button onClick={handleClick} className="return-button">
-            Cancel
-          </button>
-        </div>
+        <button onClick={handleBuy_Rent}>
+          {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
+        </button>
+        <div>{details}</div>
+        <div>MAIN CAST &nbsp;{CAST}</div>
+        <div>DIRECTOR &nbsp; {DIRECTOR}</div>
+        <button onClick={handleClick} className="return-button">
+          Cancel
+        </button>
       </div>
+      {/* </div> */}
     </>
   );
 }

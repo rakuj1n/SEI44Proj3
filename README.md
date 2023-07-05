@@ -10,17 +10,24 @@ Ever felt like being *social* when buying tickets online? Now you can!
 * Buy tickets straight from our website!
 
 # Screenshot(s)
-
+![wireframe1](./public/Wireframe1.png)
+![wireframe2](./public/Wireframe2.png)
+![modeldraft](./public/DataModelsDraft.png)
 <br/>
 
 # Technologies Used
 HTML, CSS and Javascript
 React, Express, Node & MongoDB
 
-Libraries: MUI,
+Libraries: mui, antd
 
 # Getting Started
 Visit https://sei44proj3app.onrender.com/ to social watch now!
 
-# Next Steps
+# Collaborators
+Many thanks to all members of this project:
+* https://github.com/genotabby
+* https://github.com/damienchoojl 
+* https://github.com/mindytyj
+* https://github.com/rakuj1n
 

@@ -907,6 +907,27 @@ button[type="submit"] {
   cursor: pointer;
 }
 
+.editcontainer {
+  text-align: left;
+  margin-left: 30px;
+  margin-left: 30px;
+  display:flex;
+
+}
+
+.formcontainer {
+  padding:20px;
+}
+
+.formcontainer > * {
+  padding:20px;
+
+}
+
+.formcontainer > button {
+  width:184px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -1028,20 +1049,39 @@ html {
   cursor: pointer;
   color: #ccc;
 }
-.PlayRentPageContentContainer {
-  position: relative;
-  background-size: cover;
-  /* top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; */
+
+#PlayRentPageContent {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  left: 35%;
+  right: 35%;
+  text-align: center;
+}
+/* .friends-watched-container {
+  width: 100%;
+} */
+
+.carouselImg {
+  width: 100%;
 }
 
-.PlayRentPageContentContainer::before {
-  background-image: url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg);
-  /* background: inherit; */
-  filter: blur(8px);
+.ForYouLink {
+  width: 305px !important;
 }
+/* #backgroundImg-playMovie {
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+} */
+
+/* #kinoloungeHomeImg {
+  display: flex;
+  justify-content: right;
+} */
 
 /* end of Wesley css */

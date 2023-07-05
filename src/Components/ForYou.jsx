@@ -12,10 +12,10 @@ export default function ForYou({ moviesWatched }) {
       >
         {moviesWatched?.movies?.map((movie, index) => (
           // {moviesWatched?.map((movie, index) => (
-          <div key={index}>
-            <span key={movie._id}>
-              <FriendsWatchedCard movieDetails={movie} />
-            </span>
+          <div className="ForYouLink" key={index}>
+            {/* <span key={movie._id}> */}
+            <FriendsWatchedCard movieDetails={movie} />
+            {/* </span> */}
           </div>
         ))}
       </Slider>

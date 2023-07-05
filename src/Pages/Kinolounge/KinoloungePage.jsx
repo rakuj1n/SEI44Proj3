@@ -170,9 +170,6 @@ export default function KinoloungePage({ user }) {
     }
   );
 
-  // console.log("friendsIdArr", friendsIdArr);
-  // console.log("friendsNo", friendsNo);
-  // console.log("kino account", account);
   return (
     <>
       <KinoloungeNavBar />
