@@ -184,7 +184,7 @@ export default function KinoloungePage({ user }) {
       <h2 className="you-might-be-interested-banner">
         You might be interested in
       </h2>
-      <ForYou className="test" moviesWatched={movies} />
+      <ForYou moviesWatched={movies} />
     </>
   );
 }

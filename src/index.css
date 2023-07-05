@@ -1025,6 +1025,9 @@ html {
   width: 100%;
 }
 
+.ForYouLink {
+  width: 305px !important;
+}
 /* #backgroundImg-playMovie {
   height: 100px;
   background-position: center;

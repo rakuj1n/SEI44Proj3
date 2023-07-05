@@ -12,7 +12,7 @@ export default function ForYou({ moviesWatched }) {
       >
         {moviesWatched?.movies?.map((movie, index) => (
           // {moviesWatched?.map((movie, index) => (
-          <div className="test" key={index}>
+          <div className="ForYouLink" key={index}>
             {/* <span key={movie._id}> */}
             <FriendsWatchedCard movieDetails={movie} />
             {/* </span> */}
