@@ -27,5 +27,11 @@ router.put(
   ensureLoggedIn,
   usersCtrl.updateMoviesWatched
 );
+router.delete("/:userId/following", ensureLoggedIn, usersCtrl.deleteFollowing);
+router.put(
+  "/:userId/movies-rented",
+  ensureLoggedIn,
+  usersCtrl.updateMoviesRented
+);
 
 module.exports = router;

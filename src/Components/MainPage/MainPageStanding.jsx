@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Navbar from "../Navbar";
 
-const MainPage = () => {
+const MainPageStanding = () => {
   const [movies, setMovies] = useState([]);
   const [promotions, setPromotions] = useState([]);
   const carouselSettings = {
@@ -26,7 +27,7 @@ const MainPage = () => {
       const data = await response.json();
       setMovies(data.movies);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
@@ -39,7 +40,7 @@ const MainPage = () => {
       const data = await response.json();
       setPromotions(data.promotions);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
@@ -50,6 +51,7 @@ const MainPage = () => {
 
   return (
     <div>
+      <Navbar />
       {/* Side Nav Bar */}
       <div className="kinolounge">
         <Link to="/kinolounge" className="kinolounge-link">
@@ -72,10 +74,7 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
-                  <Link
-                    to={`/movies/${encodeURIComponent(movie.title)}`}
-                    state={movie}
-                  >
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -100,10 +99,7 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
-                  <Link
-                    to={`/movies/${encodeURIComponent(movie.title)}`}
-                    state={movie}
-                  >
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -119,10 +115,7 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title} className="movie-item">
-                  <Link
-                    to={`/movies/${encodeURIComponent(movie.title)}`}
-                    state={movie}
-                  >
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -180,10 +173,7 @@ const MainPage = () => {
               .filter((movie) => !movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
-                  <Link
-                    to={`/movies/${encodeURIComponent(movie.title)}`}
-                    state={movie}
-                  >
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -199,10 +189,7 @@ const MainPage = () => {
               .filter((movie) => !movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title} className="movie-item">
-                  <Link
-                    to={`/movies/${encodeURIComponent(movie.title)}`}
-                    state={movie}
-                  >
+                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -218,4 +205,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default MainPageStanding;

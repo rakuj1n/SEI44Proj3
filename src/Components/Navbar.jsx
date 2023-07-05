@@ -1,14 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import * as userService from "../utilities/users-service";
 import React, { useState, useEffect } from "react";
+import * as userService from "../utilities/users-service";
 
 export default function Navbar({ user, setUser }) {
   const pathname = useLocation().pathname;
-  function handleLogOut() {
-    userService.logOut();
-    setUser(null);
-  }
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -19,52 +14,104 @@ export default function Navbar({ user, setUser }) {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleLogOut = () => {
+    userService.logOut();
+    setUser(null);
+  };
+
   return (
     <nav>
       <div className="user-nav">
         <div className="user-dropdown">
           <button className="user-nav-button" onClick={toggleDropdown}>
-            User Options
+            {user && (
+              <img
+                src={user.picture}
+                alt="User Profile"
+                className="profile-picture"
+              />
+            )}
+            User Menu
           </button>
-          {isDropdownOpen && user ? (
-            <div className="dropdown-content">
-              <div className="user-profile">
-                <img
-                  src={user.picture}
-                  alt="User Profile"
-                  className="profile-picture"
-                />
+          <div className="navbar-container">
+            {isDropdownOpen && (
+              <div className="dropdown-box">
+                {!user && pathname === "/" ? (
+                  <button className="user-nav-login">
+                    <Link
+                      style={{ textDecoration: "none", color: "inherit" }}
+                      to="/login"
+                    >
+                      Login
+                    </Link>
+                  </button>
+                ) : (
+                  <>
+                    {user && (
+                      <p style={{ textAlign: "center" }}>Hello, {user.name}</p>
+                    )}
+                    {pathname !== "/mainpage" && (
+                      <button className="user-nav-home">
+                        <Link
+                          style={{ textDecoration: "none", color: "inherit" }}
+                          to="/mainpage"
+                        >
+                          Home
+                        </Link>
+                      </button>
+                    )}
+                    {user &&
+                      pathname !== `/users/${user._id}` &&
+                      pathname !== `/users/${user._id}/settings` && (
+                        <button className="user-nav-myprofile">
+                          <Link
+                            style={{ textDecoration: "none", color: "inherit" }}
+                            to={`/users/${user._id}`}
+                          >
+                            My Profile
+                          </Link>
+                        </button>
+                      )}
+                    {user && pathname !== `/users/${user._id}/friends` && (
+                      <button className="user-nav-myfriends">
+                        <Link
+                          style={{ textDecoration: "none", color: "inherit" }}
+                          to={`/users/${user._id}/friends`}
+                        >
+                          My Friends
+                        </Link>
+                      </button>
+                    )}
+                    {user &&
+                      pathname !== `/users/${user._id}` &&
+                      pathname !== `/users/${user._id}/settings` && (
+                        <button className="user-nav-settings">
+                          <Link
+                            style={{ textDecoration: "none", color: "inherit" }}
+                            to={`/users/${user._id}/settings`}
+                          >
+                            Settings
+                          </Link>
+                        </button>
+                      )}
+                    {user && (
+                      <button
+                        className="user-nav-logout"
+                        onClick={handleLogOut}
+                      >
+                        <Link
+                          style={{ textDecoration: "none", color: "inherit" }}
+                          to="/"
+                        >
+                          Log Out
+                        </Link>
+                      </button>
+                    )}
+                  </>
+                )}
               </div>
-              <p>Hello, {user.name}</p>
-              {pathname !== "/mainpage" && (
-                <button>
-                  <Link to="/mainpage">Home</Link>
-                </button>
-              )}
-              {pathname !== `/users/${user._id}` &&
-                pathname !== `/users/${user._id}/settings` && (
-                  <button>
-                    <Link to={`/users/${user._id}`}>My Profile</Link>
-                  </button>
-                )}
-              {pathname !== `/users/${user._id}/friends` && (
-                <button>
-                  <Link to={`/users/${user._id}/friends`}>My Friends</Link>
-                </button>
-              )}
-              {pathname !== `/users/${user._id}` &&
-                pathname !== `/users/${user._id}/settings` && (
-                  <button>
-                    <Link to={`/users/${user._id}/settings`}>Settings</Link>
-                  </button>
-                )}
-              <button>
-                <Link to="" onClick={handleLogOut}>
-                  Log Out
-                </Link>
-              </button>
-            </div>
-          ) : null}
+            )}
+          </div>
         </div>
       </div>
     </nav>

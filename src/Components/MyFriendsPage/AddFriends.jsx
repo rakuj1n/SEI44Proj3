@@ -44,7 +44,7 @@ export default function AddFriends({account,setTrigger,user}) {
         <Button className='addbutton' style={{scale:'2.5'}} type="ghost" onClick={showDrawer}>
             +
         </Button>
-        <Drawer title="Add people you'd like to follow" placement="right" onClose={onClose} open={open}>
+        <Drawer headerStyle={{color:"white"}} title="Add people you'd like to follow" placement="right" onClose={onClose} open={open}>
             <p>Type a username:</p>
             <form onSubmit={handleAdd}>
                 <label><input name='input' value={input} onChange={handleChange}/></label><br/>

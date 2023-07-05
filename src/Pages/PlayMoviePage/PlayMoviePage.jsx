@@ -11,6 +11,8 @@ export default function PlayMoviePage({ user }) {
   const { state } = useLocation();
   //   const [ownsMovie, setOwnsMovie] = useState(false);
 
+  console.log("passubgStae", state.item);
+
   const userId = user._id;
   const { movieId } = useParams();
 
@@ -32,7 +34,6 @@ export default function PlayMoviePage({ user }) {
   if (status === "success") {
     for (let i = 0; i < account?.rentedMovies.length; i++) {
       ownedArr.push(account?.rentedMovies[i]._id);
-      // console.log("success", account?.rentedMovies[i]._id);
     }
     console.log("owned", ownedArr);
   }
@@ -43,11 +44,16 @@ export default function PlayMoviePage({ user }) {
   const price = 4.99;
   const currency = "S$";
 
-  const poster = state.movieDetails.poster;
-  const movieTitle = state.movieDetails.title;
-  const CAST = state.movieDetails.actor.join(",");
-  const DIRECTOR = state.movieDetails.director;
-  const details = state.movieDetails.details;
+  // const poster = state.movieDetails.poster;
+  // const movieTitle = state.movieDetails.title;
+  // const CAST = state.movieDetails.actor.join(",");
+  // const DIRECTOR = state.movieDetails.director;
+  // const details = state.movieDetails.details;
+  const poster = state.item.poster;
+  const movieTitle = state.item.title;
+  const CAST = state.item.actor.join(",");
+  const DIRECTOR = state.item.director;
+  const details = state.item.details;
 
   const backgroundStyle = {
     backgroundImage: `url(${poster})`,
@@ -69,13 +75,12 @@ export default function PlayMoviePage({ user }) {
   const handleBuy_Rent = async () => {
     console.log("ownsmovie", ownsMovie);
     if (ownsMovie) {
-      console.log("play", state.movieDetails._id);
+      console.log("play", movieId);
 
       try {
         await sendRequest(`/api/users/${user._id}/movies-watched`, "PUT", {
-          movieId: state.movieDetails._id,
+          movieId: movieId,
         });
-        console.log("WOOWOWOW");
       } catch (err) {
         console.log(err);
       }
@@ -93,6 +98,7 @@ export default function PlayMoviePage({ user }) {
           price,
           movieTitle,
           poster,
+          movieId,
         },
       });
     }
@@ -114,7 +120,7 @@ export default function PlayMoviePage({ user }) {
           <h2>{movieTitle}</h2>
 
           <button onClick={handleBuy_Rent}>
-            {ownsMovie ? "Play" : `Rent ${currency}${price}`}
+            {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
           </button>
           <div>{details}</div>
           <div>MAIN CAST &nbsp;{CAST}</div>

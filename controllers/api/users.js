@@ -122,6 +122,7 @@ async function getAllRecommendedForAnAccount(req, res) {
         },
       },
     ]);
+    console.log(array);
     const array2 = await Movie.populate(array, { path: "moviesRecommended" });
     const getAllRecommendedForAnAccount = await User.populate(array2, {
       path: "moviesRecommended.comments.userId",
@@ -165,6 +166,37 @@ async function updateMoviesWatched(req, res) {
     res.status(400).json(err);
   }
 }
+async function updateMoviesRented(req, res) {
+  const userId = req.params.userId;
+  try {
+    const account = await Account.findOne({ user: userId });
+    if (!account) throw new Error("Account not found.");
+    if (account.rentedMovies.includes(req.body.movieId))
+      throw new Error("Already added.");
+    await Account.findOneAndUpdate(
+      { user: userId },
+      { $addToSet: { rentedMovies: req.body.movieId } }
+    );
+    res.status(200).json(account);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+async function deleteFollowing(req, res) {
+  const userId = req.params.userId;
+  console.log(req.body.id);
+  try {
+    const account = await Account.findOne({ user: userId });
+    account.following = account.following.filter(
+      (item) => item.toString() !== req.body.id
+    );
+    await account.save();
+    res.status(200).json(account);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
 
 module.exports = {
   create,
@@ -177,4 +209,6 @@ module.exports = {
   getAllRecommendedForAnAccount,
   updateMoviesRecommended,
   updateMoviesWatched,
+  deleteFollowing,
+  updateMoviesRented,
 };
