@@ -70,7 +70,10 @@ export default function App() {
                 element={<AccountFollowing user={user} />}
               />
               <Route path="/users/:userId" element={<Profile user={user} />} />
-              <Route path="/users/:userId/:movieId/editcomment" element={<EditComment user={user} />} />
+              <Route
+                path="/users/:userId/:movieId/editcomment"
+                element={<EditComment user={user} />}
+              />
             </Route>
             <Route
               path="/kinolounge"
@@ -91,7 +94,7 @@ export default function App() {
               element={<PromotionDetailsPage />}
             />
             <Route
-              path="/movies/:title/seat-selection/:movieId"
+              path="/movies/:title/seat-selection"
               element={<SeatSelectionPage user={user} />}
             />
             <Route
@@ -99,7 +102,7 @@ export default function App() {
               element={<MoviesDetailsPage user={user} />}
             />
             <Route
-              path="/movies/:title/ticket-confirmation/:movieId"
+              path="/movies/:title/ticket-confirmation"
               element={<TicketConfirmationPage user={user} />}
             />
             <Route path="/checkout" element={<CheckoutPage user={user} />} />

@@ -20,12 +20,16 @@ export default function SeatSelectionPage({ user }) {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { title, movieId } = useParams();
+  const { title } = useParams();
 
   useEffect(() => {
+    if (location?.state === null) {
+      return navigate("/mainpage");
+    }
+
     async function retrieveTickets() {
       setLoading(true);
-      const response = await fetch(`/api/tickets/${movieId}`);
+      const response = await fetch(`/api/tickets/${location.state.movieId}`);
       const jsonData = await response.json();
 
       let takenSeats = [];
@@ -78,7 +82,7 @@ export default function SeatSelectionPage({ user }) {
       setErrorMessage("Ticket Purchase Failed. Try Again.");
     }
 
-    navigate(`/movies/${title}/ticket-confirmation/${movieId}`, {
+    navigate(`/movies/${title}/ticket-confirmation`, {
       state: {
         qty: qty,
         movieTitle: location.state.movieTitle,

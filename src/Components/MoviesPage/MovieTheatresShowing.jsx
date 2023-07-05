@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function MovieTheatresShowing({
   movieTitle,
@@ -11,7 +11,7 @@ export default function MovieTheatresShowing({
   const timing = "11:35 AM";
 
   function handleClick() {
-    navigate(`/movies/${title}/seat-selection/${movieId}`, {
+    navigate(`/movies/${title}/seat-selection`, {
       state: {
         movieTitle: movieTitle,
         moviePoster: moviePoster,
