@@ -23,7 +23,7 @@ export default function Seats({
     setActive(false);
   }, [reset]);
 
-  const disabled = occupiedSeats.find((occupied) => occupied === seats);
+  const disabled = occupiedSeats.includes(seats);
 
   return (
     <IconButton
