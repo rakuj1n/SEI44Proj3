@@ -22,6 +22,7 @@ app.use(require("./config/checkToken"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/movies", moviesRouter);
 app.use("/api/promotions", require("./routes/api/promotions"));
+app.use("/api/tickets", require("./routes/api/tickets"));
 //__________
 
 //--catch all
