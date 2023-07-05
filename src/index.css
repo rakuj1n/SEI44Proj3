@@ -570,9 +570,10 @@ button[type="submit"] {
   display: block;
   margin-bottom: 5px;
   text-align: center;
-  width: 115%;
+  width: 80%;
   background-color: darkred;
   z-index: 99;
+  font-size: small;
 }
 .user-nav-login {
   display: block;
@@ -923,21 +924,19 @@ button[type="submit"] {
   text-align: left;
   margin-left: 30px;
   margin-left: 30px;
-  display:flex;
-
+  display: flex;
 }
 
 .formcontainer {
-  padding:20px;
+  padding: 20px;
 }
 
 .formcontainer > * {
-  padding:20px;
-
+  padding: 20px;
 }
 
 .formcontainer > button {
-  width:184px;
+  width: 184px;
 }
 
 ::-webkit-scrollbar {

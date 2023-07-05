@@ -1,6 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import * as userService from "../utilities/users-service";
+import TheatersIcon from "@mui/icons-material/Theaters";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Navbar({ user, setUser }) {
   const pathname = useLocation().pathname;
@@ -48,10 +51,8 @@ export default function Navbar({ user, setUser }) {
             />
           </Link>
           <Link to="/movies" className="movies-button">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRESTZo0HcrNCF65UCh-7DhHLb8WYvl5S02Q&usqp=CAU.png"
-              alt="Home"
-              className="movies_logo"
+            <TheatersIcon
+              sx={{ color: "white" }}
               style={{
                 width: "50px",
                 height: "50px",
@@ -60,10 +61,8 @@ export default function Navbar({ user, setUser }) {
             />
           </Link>
           <Link to="/promotions" className="promotions-button">
-            <img
-              src="https://w7.pngwing.com/pngs/402/607/png-transparent-black-loudspeaker-illustration-computer-icons-promotion-promo-miscellaneous-angle-text-thumbnail.png"
-              alt="Home"
-              className="promotion_logo"
+            <AttachMoneyIcon
+              sx={{ color: "white" }}
               style={{
                 width: "50px",
                 height: "50px",
@@ -83,7 +82,14 @@ export default function Navbar({ user, setUser }) {
                 className="profile-picture"
               />
             )}
-            User Menu
+            <MenuIcon
+              sx={{ color: "white" }}
+              style={{
+                width: "20px",
+                height: "20px",
+                marginRight: "5px",
+              }}
+            />
           </button>
           <div className="navbar-container">
             {isDropdownOpen && (
@@ -100,7 +106,9 @@ export default function Navbar({ user, setUser }) {
                 ) : (
                   <>
                     {user && (
-                      <p style={{ textAlign: "center" }}>Hello, {user.name}</p>
+                      <h6 style={{ textAlign: "center" }}>
+                        Hello, {user.name}
+                      </h6>
                     )}
                     {pathname !== "/mainpage" && (
                       <button className="user-nav-home">
