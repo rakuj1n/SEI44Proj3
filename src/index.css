@@ -887,6 +887,27 @@ button[type="submit"] {
   cursor: pointer;
 }
 
+.editcontainer {
+  text-align: left;
+  margin-left: 30px;
+  margin-left: 30px;
+  display:flex;
+
+}
+
+.formcontainer {
+  padding:20px;
+}
+
+.formcontainer > * {
+  padding:20px;
+
+}
+
+.formcontainer > button {
+  width:184px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
