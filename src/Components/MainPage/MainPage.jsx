@@ -72,7 +72,10 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
-                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                  <Link
+                    to={`/movies/${encodeURIComponent(movie.title)}`}
+                    state={movie}
+                  >
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -97,7 +100,10 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
-                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                  <Link
+                    to={`/movies/${encodeURIComponent(movie.title)}`}
+                    state={movie}
+                  >
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -113,7 +119,10 @@ const MainPage = () => {
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title} className="movie-item">
-                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                  <Link
+                    to={`/movies/${encodeURIComponent(movie.title)}`}
+                    state={movie}
+                  >
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -171,7 +180,10 @@ const MainPage = () => {
               .filter((movie) => !movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title}>
-                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                  <Link
+                    to={`/movies/${encodeURIComponent(movie.title)}`}
+                    state={movie}
+                  >
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -187,7 +199,10 @@ const MainPage = () => {
               .filter((movie) => !movie.nowShowing)
               .map((movie) => (
                 <div key={movie.title} className="movie-item">
-                  <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+                  <Link
+                    to={`/movies/${encodeURIComponent(movie.title)}`}
+                    state={movie}
+                  >
                     <img
                       src={movie.poster}
                       alt={movie.title}

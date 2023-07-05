@@ -120,7 +120,7 @@ export default function PlayMoviePage({ user }) {
           <h2>{movieTitle}</h2>
 
           <button onClick={handleBuy_Rent}>
-            {ownsMovie ? "Play" : `Rent ${currency}${price}`}
+            {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
           </button>
           <div>{details}</div>
           <div>MAIN CAST &nbsp;{CAST}</div>
