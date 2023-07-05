@@ -135,7 +135,9 @@ const MoviesDetailsPage = ({ user }) => {
       <p className="movie-director">
         <strong>Director:</strong> {movie.director}
       </p>
-
+      <p className="movie-genre">
+        <strong>Genre:</strong> {movie.genre.sort().join(", ")}
+      </p>
       <div className="comments">
         <hr></hr>
         <p className="comments-heading">

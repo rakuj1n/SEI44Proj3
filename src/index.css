@@ -398,7 +398,8 @@ button[type="submit"] {
 .movie-director,
 .movie-actor,
 .comments-heading,
-.all-movie-details p {
+.all-movie-details p,
+.movie-genre {
   margin-bottom: 10px;
 }
 
