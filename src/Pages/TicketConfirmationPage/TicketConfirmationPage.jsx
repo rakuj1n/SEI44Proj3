@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MovieDetail from "../../Components/SeatSelectionPage/MovieDetail";
 
 export default function TicketConfirmationPage({ user }) {
@@ -49,6 +49,9 @@ export default function TicketConfirmationPage({ user }) {
         experience at our theatres.
       </p>
       <br />
+      <Link to={"/mainpage"}>
+        <button>Return to Main</button>
+      </Link>
     </div>
   );
 }
