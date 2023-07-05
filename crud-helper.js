@@ -43,7 +43,7 @@ const movieArr = [
         director:'George Lucas',
         nowShowing:false,
         comments:[],
-        genre:'Adventure'
+        genre:['Adventure', 'Action', 'Science Fiction']
     },  
     {
         title:'Transformers: Rise of the Beasts',
@@ -53,7 +53,7 @@ const movieArr = [
         director:'Steven Caple Jr.',
         nowShowing:true,
         comments:[],
-        genre:'Action'
+        genre:['Adventure', 'Action', 'Sci-Fi']
     },
     {
         title:'The Witcher',
@@ -63,7 +63,7 @@ const movieArr = [
         director:'Lauren Schmidt Hissrich',
         nowShowing:false,
         comments:[],
-        genre:'Drama'
+        genre: ['Drama', 'Action', 'Adventure', 'Sci-Fi', 'Fantasy']
     },
     {
         title:'Warrior',
@@ -73,7 +73,7 @@ const movieArr = [
         director:'Jonathan Tropper',
         nowShowing:false,
         comments:[],
-        genre:'Action'
+        genre:['Crime', 'Drama', 'Action', 'Adventure']
     },
     {
       title: "Indiana Jones",
@@ -85,7 +85,7 @@ const movieArr = [
       director: "James Mangold",
       nowShowing: false,
       comments: [],
-      genre: 'Adventure'
+      genre: ['Adventure', 'Action', 'Fantasy']
     },
     {
       title: "The Ghost Station",
@@ -109,7 +109,7 @@ const movieArr = [
         director: "Steven Spielberg",
         nowShowing: false,
         comments: [],
-        genre: 'Adventure'
+        genre: ['Sci-Fi', 'Adventure', 'Action']
       },
       {
         title: "Elemental",
@@ -121,7 +121,7 @@ const movieArr = [
         director: "Peter Sohn",
         nowShowing: true,
         comments: [],
-        genre: 'Animation'
+        genre: ['Animation', 'Comedy', 'Family', 'Fantasy', 'Romance']
       },
       {
         title: "Insidious: The Red Door",
@@ -133,7 +133,7 @@ const movieArr = [
         director: "Peter Sohn",
         nowShowing: true,
         comments: [],
-        genre: 'Horror'
+        genre: ['Horror', 'Mystery', 'Thriller']
       },
       {
         title: "Carl's Date",
@@ -145,7 +145,7 @@ const movieArr = [
         director: "Bob Peterson",
         nowShowing: true,
         comments: [],
-        genre: 'Animation'
+        genre: ['Animation', 'Adventure', 'Family']
       },
       {
         title: "The Godfather",
@@ -157,7 +157,7 @@ const movieArr = [
         director: "Francis Ford Coppola",
         nowShowing: false,
         comments: [],
-        genre: 'Drama'
+        genre: ['Drama', 'Crime']
       },
       {
         title: "The Dark Knight",
@@ -169,7 +169,7 @@ const movieArr = [
         director: "Christopher Nolan",
         nowShowing: false,
         comments: [],
-        genre: 'Action'
+        genre: ['Drama', 'Action', 'Crime', 'Thriller']
       },
       {
         title: "The Lord of the Rings: The Return of the King",
@@ -181,7 +181,7 @@ const movieArr = [
         director: "Peter Jackson",
         nowShowing: false,
         comments: [],
-        genre: 'Adventure'
+        genre: ['Adventure', 'Fantasy', 'Action']
       },
       {
         title: "Fight Club",
@@ -193,7 +193,7 @@ const movieArr = [
         director: "David Fincher",
         nowShowing: false,
         comments: [],
-        genre: 'Drama'
+        genre: ['Drama', 'Thriller', 'Comedy']
       },
       {
         title: "Avengers: Endgame",
@@ -205,7 +205,7 @@ const movieArr = [
         director: "Anthony Russo",
         nowShowing: false,
         comments: [],
-        genre: 'Action'
+        genre: ['Adventure', 'Sci-Fi', 'Action']
       }
 ]
 
