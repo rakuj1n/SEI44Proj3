@@ -8,7 +8,7 @@ export default function ViewHistory({account}) {
         return (
         <div className='movieitem' key={item?._id}>
             <p><strong>{item?.title}</strong></p>
-            <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+            <Link to={`/movies/${item?.title}`}state={item}><img alt='poster' className='poster' src={item?.poster}/></Link>
             <p></p>
             <p></p>
         </div>
