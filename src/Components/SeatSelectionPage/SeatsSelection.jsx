@@ -1,5 +1,7 @@
 import Container from "@mui/material/Container";
 import Seats from "./Seats";
+import { useState, useEffect } from "react";
+import Loading from "../Loading";
 
 export default function SeatsSelection({
   addSeats,
@@ -7,15 +9,28 @@ export default function SeatsSelection({
   reset,
   occupiedSeats,
 }) {
-  const seatings = [
-    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-    ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8"],
-    ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8"],
-    ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"],
-    ["E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8"],
-  ];
+  const [loading, setLoading] = useState(true);
+  const [seatings, setSeatings] = useState([]);
+  const [rowLabels, setRowLabels] = useState([]);
 
-  const rowLabels = ["A", "B", "C", "D", "E"];
+  useEffect(() => {
+    async function getSeatings() {
+      setLoading(true);
+      const response = await fetch(`/api/seats`);
+      const jsonData = await response.json();
+      setSeatings(jsonData);
+
+      const labelRes = await fetch("/api/seats/rowLabels");
+      const labelData = await labelRes.json();
+      setRowLabels(labelData);
+      setLoading(false);
+    }
+    getSeatings();
+  }, []);
+
+  if (loading === true) {
+    return <Loading />;
+  }
 
   return (
     <Container maxWidth="ml">

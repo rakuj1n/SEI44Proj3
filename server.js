@@ -23,6 +23,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/movies", moviesRouter);
 app.use("/api/promotions", require("./routes/api/promotions"));
 app.use("/api/tickets", require("./routes/api/tickets"));
+app.use("/api/seats", require("./routes/api/seats"));
 //__________
 
 //--catch all
