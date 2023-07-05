@@ -74,7 +74,6 @@ export default function App() {
               path="/kinolounge"
               element={<KinoloungePage user={user} />}
             />
-            {/* To add /:movieId */}
             <Route
               path="/kinolounge/:movieId/comments"
               element={<MoviePlayAndCommentPage user={user} />}

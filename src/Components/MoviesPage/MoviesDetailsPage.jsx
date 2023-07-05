@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import MovieTheatresShowing from "./MovieTheatresShowing";
 
 const MoviesDetailsPage = () => {
+  // console.log("user_moviesDetailsPage", user);
   const carouselSettings = {
     dots: true,
     infinite: true,
