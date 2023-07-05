@@ -9,6 +9,7 @@
   --shawRed: rgb(142, 13, 15);
   --shawBorderRed: rgb(179, 17, 18);
   --shawBlue: rgb(37, 37, 63);
+  --shawRedGradient: linear-gradient(to bottom, rgb(131,5,7), rgb(26, 26, 26))
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -29,9 +30,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* background-color: var (--tan-4); */
   /* background-color: var(--shawBlue); */
-  background-color: rgb(26, 26, 26);
+  /* background-color: rgb(26, 26, 26); */
+  background: linear-gradient(to bottom, rgb(131,5,7), rgb(26, 26, 26), rgb(26, 26, 26),rgb(26, 26, 26));
   padding: 2vmin;
-  height: 100vh;
+  height: 100%;
+  /* height: 100vh; */
 }
 
 code {
