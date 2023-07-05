@@ -51,19 +51,6 @@ const MainPage = () => {
 
   return (
     <div>
-      {/* Side Nav Bar */}
-      <div className="kinolounge">
-        <Link to="/kinolounge" className="kinolounge-link">
-          Kinolounge
-        </Link>
-        <Link to="/movies" className="movies-button">
-          Movies
-        </Link>
-        <Link to="/promotions" className="promotions-button">
-          Promotions
-        </Link>
-      </div>
-
       <div className="movies-carousel">
         <p></p>
         {movies.length > 0 ? (
@@ -71,26 +58,19 @@ const MainPage = () => {
             {movies
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
-                <div key={movie.title}>
+                <div key={movie.title} className="image-container">
                   <Link
-                    style={{
-                      borderColor: "solid black",
-                      objectFit: "cover",
-                      width: "30%",
-                      height: "100%",
-                    }}
                     to={`/movies/${encodeURIComponent(movie.title)}`}
                     state={movie}
                   >
                     <img
-                      src={movie.poster}
+                      src={movie.poster2}
                       alt={movie.title}
                       style={{
                         border: "2px solid black",
                         borderColor: "solid black",
                         objectFit: "cover",
-                        width: "30%",
-                        height: "100%",
+                        width: "90%",
                       }}
                     />
                   </Link>
