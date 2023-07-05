@@ -19,6 +19,7 @@ const movieSchema = new Schema({
   nowShowing: { type: Boolean },
   comments: [commentSchema],
   genre: [{ type: String }],
+  poster2: { type: String },
 });
 
 module.exports = model("Movie", movieSchema);

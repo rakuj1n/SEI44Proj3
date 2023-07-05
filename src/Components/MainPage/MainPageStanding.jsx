@@ -52,18 +52,6 @@ const MainPageStanding = () => {
   return (
     <div>
       <Navbar />
-      {/* Side Nav Bar */}
-      <div className="kinolounge">
-        <Link to="/kinolounge" className="kinolounge-link">
-          Kinolounge
-        </Link>
-        <Link to="/movies" className="movies-button">
-          Movies
-        </Link>
-        <Link to="/promotions" className="promotions-button">
-          Promotions
-        </Link>
-      </div>
 
       {/* Movies Carousel */}
       <div className="movies-carousel">
@@ -73,12 +61,17 @@ const MainPageStanding = () => {
             {movies
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
-                <div key={movie.title}>
+                <div key={movie.title} className="image-container">
                   <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                     <img
-                      src={movie.poster}
+                      src={movie.poster2}
                       alt={movie.title}
-                      style={{ maxWidth: "300px", maxHeight: "300px" }}
+                      style={{
+                        border: "2px solid black",
+                        borderColor: "solid black",
+                        objectFit: "cover",
+                        width: "90%",
+                      }}
                     />
                   </Link>
                 </div>

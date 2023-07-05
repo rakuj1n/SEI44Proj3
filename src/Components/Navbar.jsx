@@ -21,6 +21,58 @@ export default function Navbar({ user, setUser }) {
 
   return (
     <nav>
+      <div>
+        <div className="kinolounge">
+          <Link to="/mainpage" className="home-link">
+            <img
+              src="https://www.pngkey.com/png/full/107-1071221_in-may-2011-after-a-seven-month-and.png"
+              alt="Home"
+              className="home_logo"
+              style={{
+                width: "250px",
+                height: "50px",
+                marginRight: "5px",
+              }}
+            />
+          </Link>
+          <Link to="/kinolounge" className="kinolounge-link">
+            <img
+              src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
+              alt="Home"
+              className="kinolounge_logo"
+              style={{
+                width: "200px",
+                height: "50px",
+                marginRight: "5px",
+              }}
+            />
+          </Link>
+          <Link to="/movies" className="movies-button">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRESTZo0HcrNCF65UCh-7DhHLb8WYvl5S02Q&usqp=CAU.png"
+              alt="Home"
+              className="movies_logo"
+              style={{
+                width: "50px",
+                height: "50px",
+                marginRight: "5px",
+              }}
+            />
+          </Link>
+          <Link to="/promotions" className="promotions-button">
+            <img
+              src="https://w7.pngwing.com/pngs/402/607/png-transparent-black-loudspeaker-illustration-computer-icons-promotion-promo-miscellaneous-angle-text-thumbnail.png"
+              alt="Home"
+              className="promotion_logo"
+              style={{
+                width: "50px",
+                height: "50px",
+                marginRight: "5px",
+              }}
+            />
+          </Link>
+        </div>
+      </div>
       <div className="user-nav">
         <div className="user-dropdown">
           <button className="user-nav-button" onClick={toggleDropdown}>
@@ -114,6 +166,7 @@ export default function Navbar({ user, setUser }) {
           </div>
         </div>
       </div>
+      <hr></hr>
     </nav>
   );
 }
