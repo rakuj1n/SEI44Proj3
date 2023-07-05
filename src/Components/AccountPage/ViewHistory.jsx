@@ -17,8 +17,9 @@ export default function ViewHistory({account,user}) {
         <div className='movieitem' key={item?._id}>
             <p><strong>{item?.title}</strong></p>
             <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
+            {isUser && 
             <div className="commentsectionitem commentwedit">
-                {isUser && <Link state={{item, comment:comment1[0]?.comment, rating:comment1[0]?.rating}} className='editcomment' to={`/users/${account?.user._id}/${item?._id}/editcomment`}>Edit Review</Link>}
+                <Link state={{item, comment:comment1[0]?.comment, rating:comment1[0]?.rating}} className='editcomment' to={`/users/${account?.user._id}/${item?._id}/editcomment`}>Edit Review</Link>
                 <div>
                     <img className="profilepic" src={`${account?.user.picture}`}/>
                     <p style={{margin:"0",marginBottom:"0"}}>
@@ -29,6 +30,7 @@ export default function ViewHistory({account,user}) {
                 <p>{account?.user.name}: <em>"{comment1[0]?.comment}"</em></p> : 
                 <p><em>No review yet.</em></p>}
             </div>
+            }   
         </div>
         )
     })
