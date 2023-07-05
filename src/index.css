@@ -331,6 +331,18 @@ button[type="submit"] {
   grid-gap: 20px;
 }
 
+.image-container {
+  width: 622px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .movie-item {
   width: 200px;
   margin: 10px;
