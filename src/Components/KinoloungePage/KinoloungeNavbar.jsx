@@ -16,6 +16,11 @@ export default function KinoloungeNavBar() {
               <Link to="/kinolounge/">Home</Link>
             </li>
             <li>
+              <Link to="/kinolounge/#For-you" />
+              <a href="#For-you">Friend's recommendations</a>
+              {/* </Link> */}
+            </li>
+            <li>
               <Link to="/kinolounge/page/sfs">SFS Picks</Link>
             </li>
             <li>
@@ -30,9 +35,6 @@ export default function KinoloungeNavBar() {
               <Link to="/kinolounge/page/p-ramlee-classic">
                 P Ramlee Classic Films
               </Link>
-            </li>
-            <li>
-              <Link to="/kinolounge">Friend's recommendations</Link>
             </li>
           </ul>
         </div>

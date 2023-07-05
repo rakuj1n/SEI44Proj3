@@ -12,11 +12,11 @@ export default function MoviePlayAndCommentPage({ user }) {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [status, setStatus] = useState('idle')
+  const [status, setStatus] = useState("idle");
   // console.log("passing", state);
   //To push user watched to db
 
-  const movieTitle = state.state?.movieDetails.title;
+  const movieTitle = state.state?.item.title;
   const userProfilePic = user?.picture;
   const username = user?.name;
 
@@ -24,42 +24,41 @@ export default function MoviePlayAndCommentPage({ user }) {
     async function fetchComments() {
       try {
         const res = await sendRequest(
-          `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
+          `/api/movies/comments/${user._id}/${state.state.item._id}`,
           "GET"
-        )
-        setRating(res.rating)
-        setComment(res.comment)
+        );
+        setRating(res.rating);
+        setComment(res.comment);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
-    fetchComments()
-  },[])
+    fetchComments();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setStatus('loading')
+    setStatus("loading");
     if (rating > 2) {
       console.log("Recommended! Rating:", rating);
       //Submit recommended
       try {
         await sendRequest(`/api/users/${user._id}/movies-recommended`, "PUT", {
-          movieId: state.state.movieDetails._id,
+          movieId: state.state.item._id,
         });
       } catch (err) {
         console.log(err);
       }
     }
 
-
     //submit comment to db!
     try {
       await sendRequest(
-        `/api/movies/comments/${user._id}/${state.state.movieDetails._id}`,
+        `/api/movies/comments/${user._id}/${state.state.item._id}`,
         "PUT",
-        { 
+        {
           comment: comment,
-          rating: rating
+          rating: rating,
         }
       );
     } catch (err) {
@@ -67,7 +66,7 @@ export default function MoviePlayAndCommentPage({ user }) {
     }
     console.log("Submit comment", comment);
 
-    setStatus('success')
+    setStatus("success");
     navigate("/kinolounge");
   };
 
@@ -87,7 +86,7 @@ export default function MoviePlayAndCommentPage({ user }) {
       </h2>
       <h2>Now playing: {movieTitle}</h2>
 
-      <iframe
+      {/* <iframe
         width="560"
         height="315"
         src="https://www.youtube.com/embed/C0DPdy98e4c"
@@ -95,7 +94,7 @@ export default function MoviePlayAndCommentPage({ user }) {
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-      ></iframe>
+      ></iframe> */}
       <fieldset className="comment-container">
         <form onSubmit={handleSubmit}>
           <img src={userProfilePic} alt="userpic" />
@@ -135,9 +134,7 @@ export default function MoviePlayAndCommentPage({ user }) {
               );
             })}
           </div>
-          {/* <button>👍</button>
-          <button>👎</button> */}
-          {status === 'loading' ? <Loading /> : <button>Submit</button>}
+          {status === "loading" ? <Loading /> : <button>Submit</button>}
         </form>
       </fieldset>
     </>

@@ -6,6 +6,8 @@ import MovieCard from "../../Components/MovieCard";
 import FriendsWatched from "../../Components/FriendsWatched";
 import sendRequest from "../../utilities/send-request";
 import ForYou from "../../Components/ForYou";
+import { Link } from "react-router-dom";
+import { StarOutlined } from "@ant-design/icons";
 
 export default function KinoloungePage({ user }) {
   const [movies, setMovies] = useState([]);
@@ -64,12 +66,109 @@ export default function KinoloungePage({ user }) {
   }, []);
 
   console.log("ALL FOLLOWIBNG", allFollowingMovieRecoList);
-  // let movieRecommendList = [];
-  // for (let i = 0; i < allFollowingMovieRecoList.length; i++) {
-  //   // console.log(allFollowingMovieRecoList[i]?._id);
-  //   movieRecommendList.push(allFollowingMovieRecoList[i]?._id);
-  // }
-  // console.log("RecommendList", movieRecommendList);
+
+  const followingsRecommendationsList = allFollowingMovieRecoList?.map(
+    (item) => {
+      const avgRating = (
+        item.comments
+          .map((item) => ({
+            rating: item.rating,
+            comment: item.comment,
+            name: item.userId.name,
+            picture: item.userId.picture,
+            userid: item.userId._id,
+          }))
+          .filter((item) =>
+            (account
+              ? account?.following.map((item) => item._id)
+              : []
+            ).includes(item.userid)
+          )
+          .reduce((acc, curr) => acc + curr.rating, 0) /
+        item.comments
+          .map((item) => ({
+            rating: item.rating,
+            comment: item.comment,
+            name: item.userId.name,
+            picture: item.userId.picture,
+            userid: item.userId._id,
+          }))
+          .filter((item) =>
+            (account
+              ? account?.following.map((item) => item._id)
+              : []
+            ).includes(item.userid)
+          ).length
+      ).toFixed(1);
+
+      return (
+        // <>
+        //   <Slider
+        //     slidesToShow={4}
+        //     slidesToScroll={1}
+        //     infinite={item?.length > 4}
+        //   >
+        <div className="movieitem" key={isNaN(avgRating) ? "0" : avgRating}>
+          <p>
+            <strong>{item.title}</strong>
+            {/* {JSON.stringify(item)} */}
+          </p>
+          <Link
+            to={`/kinolounge/${item._id}/`}
+            className="friend-watched-container"
+            state={{ item }}
+          >
+            {/* <Link to={`/movies/${item?.title}`}> */}
+            <img alt="poster" className="poster" src={item.poster} />
+          </Link>
+          <p>
+            <em>
+              Average following's rating:&nbsp;
+              <strong>
+                {isNaN(avgRating) ? "Not Rated" : avgRating}{" "}
+                {isNaN(avgRating) ? "" : <StarOutlined />}
+              </strong>
+            </em>
+          </p>
+          <div className="commentsection">
+            {item.comments
+              .map((item) => ({
+                rating: item.rating,
+                comment: item.comment,
+                name: item.userId.name,
+                picture: item.userId.picture,
+                userid: item.userId._id,
+              }))
+              .filter((item) =>
+                (account
+                  ? account?.following.map((item) => item._id)
+                  : []
+                ).includes(item.userid)
+              )
+              .map((item) => (
+                <div className="commentsectionitem">
+                  <div>
+                    <img
+                      className="profilepic"
+                      src={`${item.picture}`}
+                      alt="profilePics"
+                    />
+                    <p style={{ margin: "0", marginBottom: "0" }}>
+                      <strong>{item.rating}</strong> <StarOutlined />
+                    </p>
+                  </div>
+                  <p>
+                    {item.name}: <em>"{item.comment}"</em>
+                  </p>
+                </div>
+              ))}
+          </div>
+        </div>
+        //   </Slider>
+        // </>
+      );
+    }
+  );
 
   // console.log("friendsIdArr", friendsIdArr);
   // console.log("friendsNo", friendsNo);
@@ -78,25 +177,17 @@ export default function KinoloungePage({ user }) {
     <>
       <KinoloungeNavBar />
       <KinoCarousel />
+      <a id="For-you" />
       <h2 className="friends-watched-banner">Your friends have watched</h2>
-      <FriendsWatched moviesWatched={allFollowingMovieRecoList} />
+      {/* <FriendsWatched moviesWatched={allFollowingMovieRecoList} /> */}
+      <div className="movielist">
+        {followingsRecommendationsList?.sort((a, b) => b.key - a.key)}
+      </div>
 
       <h2 className="you-might-be-interested-banner">
         You might be interested in
       </h2>
       <ForYou moviesWatched={movies} />
-      {/* <Slider slidesToShow={4} slidesToScroll={1}>
-        {movies.movies?.map((movie, index) => (
-          <div key={index}>
-            <span>
-              <MovieCard item={movie} />
-            </span>
-          </div>
-        ))}
-      </Slider> */}
-      {/* {movies.movies?.map((movie) => (
-        <MovieCard item={movie} />
-      ))} */}
     </>
   );
 }
