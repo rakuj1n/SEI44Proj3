@@ -1,16 +1,31 @@
 import { Link } from "react-router-dom"
 import { useRef, useState } from "react"
+import { StarOutlined } from "@ant-design/icons"
 
 
 export default function ViewHistory({account}) {
     console.log("viewhist", account)
+    
     const watchedList = account?.watchHistory.map((item) => {
+
+        const comment1 = item.comments.filter(item => item.userId === account.user._id)
+
         return (
         <div className='movieitem' key={item?._id}>
             <p><strong>{item?.title}</strong></p>
             <Link to={`/movies/${item?.title}`}><img alt='poster' className='poster' src={item?.poster}/></Link>
-            <p></p>
-            <p></p>
+            <div className="commentsectionitem commentwedit">
+                <Link state={{item, comment:comment1[0]?.comment, rating:comment1[0]?.rating}} className='editcomment' to={`/users/${account?.user._id}/${item?._id}/editcomment`}>Edit Review</Link>
+                <div>
+                    <img className="profilepic" src={`${account?.user.picture}`}/>
+                    <p style={{margin:"0",marginBottom:"0"}}>
+                        <strong>{comment1[0]?.rating == 0 ? "" : comment1[0]?.rating}</strong> <StarOutlined />
+                    </p>
+                </div>
+                {comment1[0]?.comment.length > 0 ? 
+                <p>{account?.user.name}: <em>"{comment1[0]?.comment}"</em></p> : 
+                <p><em>No review yet.</em></p>}
+            </div>
         </div>
         )
     })
