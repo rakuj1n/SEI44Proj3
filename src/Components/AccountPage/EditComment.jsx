@@ -56,11 +56,12 @@ export default function EditComment({user}) {
   };
 
     return (
-        <main className="profilecontainer">
-            <div className="profile">
-                <h1>Edit Your Review</h1>
-                <div className="profiledetailsinner">
-                    <img width='30%' src={`${state.item.poster}`} />
+      <main className="profilecontainer">
+          <div className="profile">
+              <h1>Edit Your Review</h1>
+              <div className="editcontainer">
+                  <img width='30%' src={`${state.item.poster}`} />
+                  <div className="formcontainer">
                     <h3>{state?.item.title}</h3>
                     <form onSubmit={handleSubmit}>
                       <p>Comments:</p>
@@ -93,8 +94,9 @@ export default function EditComment({user}) {
                       </div>
                       <button>Submit Review</button>
                     </form>
-                </div>
-            </div>
-        </main>
+                  </div>
+              </div>
+          </div>
+      </main>
     )
 }
