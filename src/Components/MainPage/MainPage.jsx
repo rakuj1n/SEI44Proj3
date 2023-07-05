@@ -76,7 +76,15 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "300px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "300px",
+                        maxHeight: "300px",
+                        border: "2px solid black",
+                        borderColor: "solid black",
+                        objectFit: "cover",
+                        width: "100%",
+                        height: "100%",
+                      }}
                     />
                   </Link>
                 </div>
@@ -101,7 +109,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid black",
+                        borderColor: "solid black",
+                      }}
                     />
                   </Link>
                 </div>
@@ -117,7 +130,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid red",
+                        borderColor: "solid red",
+                      }}
                     />
                   </Link>
                 </div>
@@ -138,7 +156,12 @@ const MainPage = () => {
                   <img
                     src={promotion.image}
                     alt={promotion.title}
-                    style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    style={{
+                      maxWidth: "200px",
+                      maxHeight: "300px",
+                      border: "2px solid white",
+                      borderColor: "solid white",
+                    }}
                   />
                 </Link>
               </div>
@@ -152,7 +175,12 @@ const MainPage = () => {
                   <img
                     src={promotion.image}
                     alt={promotion.title}
-                    style={{ maxWidth: "200px", maxHeight: "300px" }}
+                    style={{
+                      maxWidth: "200px",
+                      maxHeight: "300px",
+                      border: "2px solid white",
+                      borderColor: "solid white",
+                    }}
                   />
                 </Link>
               </div>
@@ -175,7 +203,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid blue",
+                        borderColor: "solid blue",
+                      }}
                     />
                   </Link>
                 </div>
@@ -191,7 +224,12 @@ const MainPage = () => {
                     <img
                       src={movie.poster}
                       alt={movie.title}
-                      style={{ maxWidth: "200px", maxHeight: "300px" }}
+                      style={{
+                        maxWidth: "200px",
+                        maxHeight: "300px",
+                        border: "2px solid blue",
+                        borderColor: "solid blue",
+                      }}
                     />
                   </Link>
                 </div>
