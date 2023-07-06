@@ -161,7 +161,7 @@ const MainPageStanding = () => {
         <h2>KinoLounge</h2>
         <hr></hr>
         {movies.length > 4 ? (
-          <Slider slidesToShow={4} slidesToScroll={1}>
+          <Slider slidesToShow={6} slidesToScroll={1}>
             {movies
               .filter((movie) => !movie.nowShowing)
               .map((movie) => (
