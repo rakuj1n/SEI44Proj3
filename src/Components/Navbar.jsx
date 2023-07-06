@@ -134,7 +134,7 @@ export default function Navbar({ user, setUser, profilePic }) {
                     style={{ textDecoration: "none", color: "inherit" }}
                     to={`/users/${user._id}/friends`}
                   >
-                    <div>My Friends</div>
+                    <div>My Following</div>
                   </Link>
                 )}
                 {pathname !== `/users/${user._id}` &&
