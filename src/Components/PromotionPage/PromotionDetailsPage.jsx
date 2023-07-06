@@ -52,7 +52,16 @@ const PromotionDetailsPage = () => {
         className="promotion-image"
         onClick={() => handleImageClick(promotion.image)}
       />
-      <p className="promotion-detail">{promotion.detail}</p>
+      {/* <p className="promotion-detail">{promotion.detail}</p> */}
+      <p className="promotion-detail">
+        {promotion.detail.split(/(?<=[.?!\n])\s*/).map((sentence, index) => (
+          <React.Fragment key={index}>
+            {sentence.trim()}
+            <br />
+            <br />
+          </React.Fragment>
+        ))}
+      </p>
 
       {enlargedImage && (
         <div className="enlarged-image-modal" onClick={closeModal}>
