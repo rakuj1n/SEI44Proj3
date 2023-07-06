@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Container from "@mui/material/Container";
 import MovieTheatresShowing from "./MovieTheatresShowing";
 import Loading from "../Loading";
 import sendRequest from "../../utilities/send-request";
@@ -122,24 +123,42 @@ const MoviesDetailsPage = ({ user }) => {
   );
 
   return (
-    <div className="movie-details">
-      <h2 className="movie-title">{movie.title}</h2>
-      <img src={movie.poster} alt={movie.title} className="movie-poster" />
-      <div>{buyOrRentButton}</div>
-      <p className="movie-description">
-        <strong>Synopsis:</strong> {movie.details}
-      </p>
-      <p className="movie-actor">
-        <strong>Main Cast:</strong> {movie.actor.join(", ")}
-      </p>
-      <p className="movie-director">
-        <strong>Director:</strong> {movie.director}
-      </p>
-      <p className="movie-genre">
-        <strong>Genre:</strong> {movie.genre.sort().join(", ")}
-      </p>
+    <Container maxWidth="lg">
+      <div className="movie-details">
+        <div className="movieImageContainer">
+          <small>{movie.title}</small>
+          <img src={movie.poster} alt={movie.title} className="movie-poster" />
+        </div>
+        <div className="movieTitleContainer">
+          <h1 className="title">{movie.title}</h1>
+          <div>{buyOrRentButton}</div>
+        </div>
+      </div>
+      <div className="movieDescriptionContainer">
+        <div className="movieDetails">
+          <div className="mainDetails">
+            <h2 className="detailsText">Synopsis</h2>
+            <p>{movie.details}</p>
+          </div>
+          <div className="mainDetails">
+            <h2 className="detailsText">Main Cast</h2>
+            <p>{movie.actor.join(", ")}</p>
+          </div>
+        </div>
+        <div className="movieDetails">
+          <div className="subDetails">
+            <h4 className="detailsText">Director</h4>
+            <p>{movie.director}</p>
+          </div>
+          <div className="subDetails">
+            <h4 className="detailsText">Genre</h4>
+            <p>{movie.genre.sort().join(", ")}</p>
+          </div>
+        </div>
+      </div>
+
       <div className="comments">
-        <hr></hr>
+        <hr />
         <p className="comments-heading">
           <strong>Comments</strong>
         </p>
@@ -163,7 +182,7 @@ const MoviesDetailsPage = ({ user }) => {
           movieId={movie._id}
         />
       )}
-    </div>
+    </Container>
   );
 };
 
