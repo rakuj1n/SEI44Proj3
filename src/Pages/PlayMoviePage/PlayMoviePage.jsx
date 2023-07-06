@@ -11,10 +11,12 @@ export default function PlayMoviePage({ user }) {
   const { state } = useLocation();
   //   const [ownsMovie, setOwnsMovie] = useState(false);
 
-  console.log("passubgStae", state.item);
+  console.log("passubgStae", state?.item);
 
   const userId = user._id;
   const { movieId } = useParams();
+
+  const [movie, setMovie] = useState({})
 
   useEffect(() => {
     async function getAccount() {
@@ -22,6 +24,8 @@ export default function PlayMoviePage({ user }) {
       try {
         const account = await sendRequest(`/api/users/${userId}`, "GET");
         setAccount(account);
+        const movieFetchedDetails = await sendRequest(`/api/movies`,"GET")
+        setMovie(movieFetchedDetails.movies.find(item => item._id === movieId))
       } catch (err) {
         console.log(err);
       }
@@ -40,15 +44,14 @@ export default function PlayMoviePage({ user }) {
   let ownsMovie = ownedArr.includes(movieId);
   console.log(ownsMovie);
 
-  console.log("movieId", movieId);
   const price = 4.99;
   const currency = "S$";
 
-  const poster = state.item.poster;
-  const movieTitle = state.item.title;
-  const CAST = state.item.actor.join(",");
-  const DIRECTOR = state.item.director;
-  const details = state.item.details;
+  const poster = movie.poster;
+  const movieTitle = movie.title;
+  const CAST = movie?.actor?.join(",");
+  const DIRECTOR = movie.director;
+  const details = movie.details;
 
   const backgroundStyle = {
     backgroundImage: `url(${poster})`,

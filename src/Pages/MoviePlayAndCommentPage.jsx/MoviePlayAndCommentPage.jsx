@@ -16,11 +16,13 @@ export default function MoviePlayAndCommentPage({ user }) {
   // console.log("passing", state);
   //To push user watched to db
 
-  const movieTitle = state.state?.item.title;
+  const movieTitle = state?.state?.item.title;
   const userProfilePic = user?.picture;
   const username = user?.name;
 
   useEffect(() => {
+    if (!state) { navigate('/kinolounge') }
+
     async function fetchComments() {
       try {
         const res = await sendRequest(
