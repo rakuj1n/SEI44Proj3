@@ -9,7 +9,6 @@
   --shawRed: rgb(142, 13, 15);
   --shawBorderRed: rgb(179, 17, 18);
   --shawBlue: rgb(37, 37, 63);
-  --shawRedGradient: linear-gradient(to bottom, rgb(131,5,7), rgb(26, 26, 26))
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -30,8 +29,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* background-color: var (--tan-4); */
   /* background-color: var(--shawBlue); */
-  /* background-color: rgb(26, 26, 26); */
-  background: linear-gradient(to bottom, rgb(131,5,7), rgb(26, 26, 26), rgb(26, 26, 26),rgb(26, 26, 26));
+  background-color: rgb(26, 26, 26);
+  /* background: linear-gradient(to bottom, rgb(131,5,7), rgb(26, 26, 26), rgb(26, 26, 26),rgb(26, 26, 26)); */
   padding: 2vmin;
   height: 100%;
   /* height: 100vh; */
@@ -926,21 +925,19 @@ button[type="submit"] {
   text-align: left;
   margin-left: 30px;
   margin-left: 30px;
-  display:flex;
-
+  display: flex;
 }
 
 .formcontainer {
-  padding:20px;
+  padding: 20px;
 }
 
 .formcontainer > * {
-  padding:20px;
-
+  padding: 20px;
 }
 
 .formcontainer > button {
-  width:184px;
+  width: 184px;
 }
 
 ::-webkit-scrollbar {
@@ -1084,15 +1081,9 @@ html {
 .ForYouLink {
   width: 305px !important;
 }
-/* #backgroundImg-playMovie {
-  height: 100px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 20px;
-  text-align: center;
-  transform: translate(-50%, -50%);
-} */
+body#kinoloungePage {
+  background: var(--shawBlue);
+}
 
 /* #kinoloungeHomeImg {
   display: flex;

@@ -14,7 +14,6 @@ export default function ForYou({ moviesWatched }) {
           .map((movie, index) => (
             // {moviesWatched?.map((movie, index) => (
             <div className="ForYouLink" key={index}>
-              {console.log("nowShowing", movie.nowShowing)}
               <FriendsWatchedCard movieDetails={movie} />
             </div>
           ))}

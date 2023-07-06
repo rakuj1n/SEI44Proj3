@@ -170,7 +170,7 @@ export default function KinoloungePage({ user }) {
     });
 
   return (
-    <>
+    <body id="kinoloungePage">
       <KinoloungeNavBar />
       <KinoCarousel />
       <h2 className="friends-watched-banner">Your friends have watched</h2>
@@ -183,6 +183,6 @@ export default function KinoloungePage({ user }) {
         You might be interested in
       </h2>
       <ForYou moviesWatched={movies} />
-    </>
+    </body>
   );
 }
