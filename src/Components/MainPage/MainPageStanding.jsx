@@ -126,7 +126,7 @@ const MainPageStanding = () => {
         <h2>Promotions</h2>
         <hr></hr>
         {promotions.length > 4 ? (
-          <Slider slidesToShow={8} slidesToScroll={1}>
+          <Slider slidesToShow={6} slidesToScroll={1}>
             {promotions.map((promotion) => (
               <div className="movie-item" key={promotion._id}>
                 <Link to={`/promotions/${encodeURIComponent(promotion.title)}`}>
