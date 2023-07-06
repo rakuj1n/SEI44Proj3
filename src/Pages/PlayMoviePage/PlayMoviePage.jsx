@@ -51,9 +51,9 @@ export default function PlayMoviePage({ user }) {
 
   const poster = movie.poster;
   const movieTitle = movie.title;
-  const CAST = movie?.actor?.join(",");
+  const CAST = movie?.actor?.join(", ");
   const DIRECTOR = movie.director;
-  const GENRES = movie?.genre?.join(",");
+  const GENRES = movie?.genre?.join(", ");
   const details = movie.details;
 
   const backgroundStyle = {
