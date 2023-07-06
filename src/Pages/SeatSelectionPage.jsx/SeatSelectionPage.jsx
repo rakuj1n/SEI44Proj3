@@ -52,8 +52,6 @@ export default function SeatSelectionPage({ user }) {
     return;
   }
 
-  console.log(seatSelection);
-
   function removeSeats(removeSeat) {
     const updatedSeatSelection = seatSelection.filter(
       (seat) => seat !== removeSeat
@@ -78,19 +76,19 @@ export default function SeatSelectionPage({ user }) {
         bookingUser: user._id,
         seats: seatSelection,
       });
+
+      navigate(`/movies/${title}/ticket-confirmation`, {
+        state: {
+          qty: qty,
+          movieTitle: location.state.movieTitle,
+          moviePoster: location.state.moviePoster,
+          theatre: location.state.theatre,
+          timing: location.state.timing,
+        },
+      });
     } catch (err) {
       setErrorMessage("Ticket Purchase Failed. Try Again.");
     }
-
-    navigate(`/movies/${title}/ticket-confirmation`, {
-      state: {
-        qty: qty,
-        movieTitle: location.state.movieTitle,
-        moviePoster: location.state.moviePoster,
-        theatre: location.state.theatre,
-        timing: location.state.timing,
-      },
-    });
   }
 
   if (loading === true) {
