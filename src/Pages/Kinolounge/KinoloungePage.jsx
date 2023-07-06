@@ -65,7 +65,7 @@ export default function KinoloungePage({ user }) {
     getAllFollowingMovieRecoList();
   }, []);
 
-  console.log("ALL FOLLOWIBNG", allFollowingMovieRecoList);
+  // console.log("ALL FOLLOWIBNG", allFollowingMovieRecoList);
 
   const followingsRecommendationsList = allFollowingMovieRecoList
     ?.filter((movie) => !movie.nowShowing)
@@ -174,9 +174,22 @@ export default function KinoloungePage({ user }) {
       <KinoloungeNavBar />
       <KinoCarousel />
       <h2 className="friends-watched-banner">Your friends have watched</h2>
-      {/* <FriendsWatched moviesWatched={allFollowingMovieRecoList} /> */}
       <div className="movielist">
-        {followingsRecommendationsList?.sort((a, b) => b.props.rating - a.props.rating)}
+        {!followingsRecommendationsList ? (
+          <>
+            <small>
+              Thank you for using our platform! Currently, we don't have any
+              recommendations to display for you. We recommend following some
+              people who share your interests. This will help generate
+              personalized suggestions for you. Happy exploring!
+            </small>
+            <br />
+          </>
+        ) : (
+          followingsRecommendationsList?.sort(
+            (a, b) => b.props.rating - a.props.rating
+          )
+        )}
       </div>
 
       <h2 className="you-might-be-interested-banner">
