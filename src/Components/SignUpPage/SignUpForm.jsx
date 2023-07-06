@@ -51,12 +51,13 @@ export default function SignUpForm({ setUser }) {
 
   return (
     <div>
-      <div className="form-container">
+      <div className="signUpForm">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Name</label>
           <input
             type="text"
             name="name"
+            className="input"
             value={newUser.name}
             onChange={handleChange}
             required
@@ -65,6 +66,7 @@ export default function SignUpForm({ setUser }) {
           <input
             type="email"
             name="email"
+            className="input"
             value={newUser.email}
             onChange={handleChange}
             required
@@ -73,6 +75,7 @@ export default function SignUpForm({ setUser }) {
           <input
             type="password"
             name="password"
+            className="input"
             value={newUser.password}
             onChange={handleChange}
             required
@@ -81,17 +84,21 @@ export default function SignUpForm({ setUser }) {
           <input
             type="password"
             name="confirm"
+            className="input"
             value={newUser.confirm}
             onChange={handleChange}
             required
           />
-          <span>{pwErrorMessage}</span>
+          <br />
           <button type="submit" disabled={disable}>
             Sign Up
           </button>
         </form>
       </div>
-      <p className="error-message">{newUser.errorMessage}</p>
+      <br />
+      <p className="error-message">
+        {disable ? pwErrorMessage : newUser.errorMessage}
+      </p>
     </div>
   );
 }

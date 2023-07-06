@@ -140,7 +140,8 @@ a.button {
   text-decoration: none;
   text-align: center;
   /* border: 0.1vmin solid var(--tan-2); */
-  border: 0.5vmin solid var(--shawBorderRed);
+  border: 0vmin solid var(--shawBorderRed);
+  border-radius: 4px;
   outline: none;
   cursor: pointer;
 }
@@ -167,6 +168,67 @@ button[type="submit"] {
 }
 
 /* Mindy CSS */
+
+.loginContainer {
+  background:black;
+  background:rgba(0,0,0,0.4);
+  display: grid;
+  grid-template-columns: 500px 500px;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 80px 30px 80px;
+}
+
+.shawImages {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 300px;
+}
+
+.login {
+  opacity: 1.0;
+  color: white;
+  text-align: start;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  color: grey;
+  background-color: rgb(48, 44, 45);
+  display: flex;
+  flex-direction: column;
+}
+
+.signUpDetails {
+  margin-top: 180px;
+  margin-bottom: 40px;
+  color: grey;
+}
+
+.signUpContainer {
+  background:black;
+  background:rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 30px 80px 30px 80px;
+}
+
+.signInDetails {
+  text-align: start;
+  color: grey;
+}
+
+a:link, a:visited {
+  color: white;
+  text-decoration: none;
+}
 
 .container {
   display: grid;

@@ -31,12 +31,13 @@ export default function LogInForm({ setUser }) {
 
   return (
     <div>
-      <div className="form-container">
+      <div className="loginForm">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>
             <input
               type="text"
               name="email"
+              className="input"
               value={userLogin.email}
               placeholder="Email"
               onChange={handleChange}
@@ -47,14 +48,15 @@ export default function LogInForm({ setUser }) {
             <input
               type="password"
               name="password"
+              className="input"
               value={userLogin.password}
               placeholder="Password"
               onChange={handleChange}
               required
             />
           </label>
+          <br />
           <button type="submit">Sign In</button>
-          <input type="checkbox" /> Remember me
         </form>
       </div>
       <p className="error-message">{errorMessage}</p>
