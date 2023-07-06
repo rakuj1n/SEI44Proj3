@@ -1,5 +1,4 @@
-<img src="https://www.nex.com.sg/Image/Thumbnail?filename=yi1ZtjIePrhMWfPK1n6k3QgDZa79otKZdZwRtcBzFUEhuKlXn0LQv2g3KeYxl3p3&width=500&height=500" width="400"> X
-<img src="https://www.citypng.com/public/uploads/preview/-11594687246vzsjesy7bd.png" width="400>
+<img src="https://www.nex.com.sg/Image/Thumbnail?filename=yi1ZtjIePrhMWfPK1n6k3QgDZa79otKZdZwRtcBzFUEhuKlXn0LQv2g3KeYxl3p3&width=500&height=500" width="400"> X <img src="https://www.citypng.com/public/uploads/preview/-11594687246vzsjesy7bd.png" width="400">
 
 # Shaw Theatre Meets Netflix
 
