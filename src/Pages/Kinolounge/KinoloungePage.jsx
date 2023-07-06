@@ -109,7 +109,7 @@ export default function KinoloungePage({ user }) {
         //     slidesToScroll={1}
         //     infinite={item?.length > 4}
         //   >
-        <div className="movieitem" key={isNaN(avgRating) ? "0" : avgRating}>
+        <div className="movieitem" rating={isNaN(avgRating) ? "0" : avgRating}>
           <p>
             <strong>{item.title}</strong>
             {/* {JSON.stringify(item)} */}
@@ -176,7 +176,7 @@ export default function KinoloungePage({ user }) {
       <h2 className="friends-watched-banner">Your friends have watched</h2>
       {/* <FriendsWatched moviesWatched={allFollowingMovieRecoList} /> */}
       <div className="movielist">
-        {followingsRecommendationsList?.sort((a, b) => b.key - a.key)}
+        {followingsRecommendationsList?.sort((a, b) => b.props.rating - a.props.rating)}
       </div>
 
       <h2 className="you-might-be-interested-banner">

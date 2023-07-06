@@ -6,7 +6,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
     
     const movieRecoList = currSelectedFollowingAccount?.moviesRecommended.map((item) => {
         return (
-            <div className='movieitem' key={(item.comments.find(item => item.userId == currSelectedFollowing))?.rating}>
+            <div className='movieitem' rating={(item.comments.find(item => item.userId == currSelectedFollowing))?.rating}>
                 <p><strong>{item?.title}</strong></p>
                 <Link to={`/movies/${item?.title}`} state={item}><img alt='poster' className='poster' src={item?.poster}/></Link>
                 {(item.comments.find(item => item.userId == currSelectedFollowing)) && 
@@ -48,7 +48,7 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
                 .filter(item => (account ? (account?.following.map(item => item._id)):[]).includes(item.userid))).length
                 ).toFixed(1)
         return (
-            <div className='movieitem' key={isNaN(avgRating) ? "0" : avgRating}>
+            <div className='movieitem' rating={isNaN(avgRating) ? "0" : avgRating}>
                 <p><strong>{item.title}</strong></p>
                 <Link to={`/movies/${item?.title}`} state={item}><img alt='poster' className='poster' src={item.poster}/></Link>
                 <p><em>Average following's rating:&nbsp;  
@@ -99,10 +99,10 @@ export default function MovieRecoList({currSelectedFollowingAccount,currSelected
             {!currSelectedFollowing && <h1>Your Following's Recommendations</h1>}
             {!currSelectedFollowing && <div style={style}
             ref={scrollableRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}
-             className="movielist">{followingsRecommendationsList?.sort((a,b) => b.key - a.key)}</div>}
+             className="movielist">{followingsRecommendationsList?.sort((a,b) => b.props.rating - a.props.rating)}</div>}
             {currSelectedFollowing && <div style={style}
             ref={scrollableRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} 
-            className="movielist">{movieRecoList?.sort((a,b) => b.key - a.key)}</div>}
+            className="movielist">{movieRecoList?.sort((a,b) => b.props.rating - a.props.rating)}</div>}
         </div>
     )
 }
