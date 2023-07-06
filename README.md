@@ -1,3 +1,5 @@
+<img src="https://www.nex.com.sg/Image/Thumbnail?filename=yi1ZtjIePrhMWfPK1n6k3QgDZa79otKZdZwRtcBzFUEhuKlXn0LQv2g3KeYxl3p3&width=500&height=500" width="400"> X <img src="https://www.citypng.com/public/uploads/preview/-11594687246vzsjesy7bd.png" width="400>
+
 # Shaw Theatre Meets Netflix
 
 Welcome to our Movies App, where movie-watching transcends the boundaries of mere entertainment. Ever felt like being _social_ when buying tickets online? Now you can! Step into a world where movie enthusiasts come together to explore, engage, and create lasting memories.
@@ -35,7 +37,6 @@ Seamless Ticket Booking: Purchase tickets directly from our website, ensuring a 
 ![wireframe3](./public/Wireframe3.png)
 ![wireframe4](./public/Wireframe4.png)
 ![modeldraft](./public/DataModelsDraft.png)
-<br/>
 
 # Screenshots of App
 
