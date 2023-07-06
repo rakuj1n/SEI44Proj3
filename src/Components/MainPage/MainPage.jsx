@@ -62,6 +62,7 @@ const MainPage = () => {
                   <Link
                     to={`/movies/${encodeURIComponent(movie.title)}`}
                     state={movie}
+                    style={{ pointerEvents: "none" }}
                   >
                     <img
                       src={movie.poster2}
@@ -70,7 +71,7 @@ const MainPage = () => {
                         border: "2px solid black",
                         borderColor: "solid black",
                         objectFit: "cover",
-                        width: "90%",
+                        maxWidth: "90%",
                       }}
                     />
                   </Link>
@@ -91,7 +92,7 @@ const MainPage = () => {
             {movies
               .filter((movie) => movie.nowShowing)
               .map((movie) => (
-                <div key={movie.title}>
+                <div key={movie.title} className="movie-item">
                   <Link
                     to={`/movies/${encodeURIComponent(movie.title)}`}
                     state={movie}
@@ -191,7 +192,7 @@ const MainPage = () => {
             {movies
               .filter((movie) => !movie.nowShowing)
               .map((movie) => (
-                <div key={movie.title}>
+                <div key={movie.title} className="movie-item">
                   <Link
                     to={`/movies/${encodeURIComponent(movie.title)}`}
                     state={movie}

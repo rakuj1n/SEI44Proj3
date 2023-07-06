@@ -65,7 +65,7 @@ export default function KinoloungePage({ user }) {
     getAllFollowingMovieRecoList();
   }, []);
 
-  console.log("ALL FOLLOWIBNG", allFollowingMovieRecoList);
+  // console.log("ALL FOLLOWIBNG", allFollowingMovieRecoList);
 
   const followingsRecommendationsList = allFollowingMovieRecoList
     ?.filter((movie) => !movie.nowShowing)
@@ -109,7 +109,7 @@ export default function KinoloungePage({ user }) {
         //     slidesToScroll={1}
         //     infinite={item?.length > 4}
         //   >
-        <div className="movieitem" key={isNaN(avgRating) ? "0" : avgRating}>
+        <div className="movieitem" rating={isNaN(avgRating) ? "0" : avgRating}>
           <p>
             <strong>{item.title}</strong>
             {/* {JSON.stringify(item)} */}
@@ -186,7 +186,9 @@ export default function KinoloungePage({ user }) {
             <br />
           </>
         ) : (
-          followingsRecommendationsList?.sort((a, b) => b.key - a.key)
+          followingsRecommendationsList?.sort(
+            (a, b) => b.props.rating - a.props.rating
+          )
         )}
       </div>
 
