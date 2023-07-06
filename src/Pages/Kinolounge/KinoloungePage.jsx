@@ -179,12 +179,9 @@ export default function KinoloungePage({ user }) {
           <>
             <small>
               Thank you for using our platform! Currently, we don't have any
-              recommendations to display for you. To generate personalized
-              recommendations, we suggest following some people who share your
-              interests. By doing so, our system will be able to provide you
-              with tailored suggestions that align with your preferences. We
-              hope this helps enhance your experience on our platform. Happy
-              exploring!{" "}
+              recommendations to display for you. We recommend following some
+              people who share your interests. This will help generate
+              personalized suggestions for you. Happy exploring!
             </small>
             <br />
           </>
