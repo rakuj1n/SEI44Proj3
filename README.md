@@ -38,8 +38,6 @@ Seamless Ticket Booking: Purchase tickets directly from our website, ensuring a 
 ![wireframe4](./public/Wireframe4.png)
 ![modeldraft](./public/DataModelsDraft.png)
 
-# Screenshots of App
-
 # Technologies Used
 
 HTML, CSS and Javascript

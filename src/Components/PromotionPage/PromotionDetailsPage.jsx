@@ -54,13 +54,15 @@ const PromotionDetailsPage = () => {
       />
       {/* <p className="promotion-detail">{promotion.detail}</p> */}
       <p className="promotion-detail">
-        {promotion.detail.split(/(?<=[.?!\n])\s*/).map((sentence, index) => (
-          <React.Fragment key={index}>
-            {sentence.trim()}
-            <br />
-            <br />
-          </React.Fragment>
-        ))}
+        {promotion.detail
+          .split(/(?<=[.?!\n])\s+(?!\d+\.\d+)/)
+          .map((sentence, index) => (
+            <React.Fragment key={index}>
+              {sentence.trim()}
+              <br />
+              <br />
+            </React.Fragment>
+          ))}
       </p>
 
       {enlargedImage && (
