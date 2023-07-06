@@ -858,9 +858,9 @@ a:visited {
   color: white;
   margin: 0;
   padding: 0;
-  top: 10%;
+  top: 50%;
   /* right: 10px; */
-  /* transform: translateY(-50%); */
+  transform: translateY(-25%);
 }
 
 .ant-drawer-wrapper-body {
