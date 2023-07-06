@@ -67,8 +67,9 @@ export default function KinoloungePage({ user }) {
 
   console.log("ALL FOLLOWIBNG", allFollowingMovieRecoList);
 
-  const followingsRecommendationsList = allFollowingMovieRecoList?.map(
-    (item) => {
+  const followingsRecommendationsList = allFollowingMovieRecoList
+    ?.filter((movie) => !movie.nowShowing)
+    .map((item) => {
       const avgRating = (
         item.comments
           .map((item) => ({
@@ -118,7 +119,6 @@ export default function KinoloungePage({ user }) {
             className="friend-watched-container"
             state={{ item }}
           >
-            {/* <Link to={`/movies/${item?.title}`}> */}
             <img alt="poster" className="poster" src={item.poster} />
           </Link>
           <p>
@@ -167,14 +167,12 @@ export default function KinoloungePage({ user }) {
         //   </Slider>
         // </>
       );
-    }
-  );
+    });
 
   return (
-    <>
+    <body id="kinoloungePage">
       <KinoloungeNavBar />
       <KinoCarousel />
-      <a id="For-you" />
       <h2 className="friends-watched-banner">Your friends have watched</h2>
       {/* <FriendsWatched moviesWatched={allFollowingMovieRecoList} /> */}
       <div className="movielist">
@@ -185,6 +183,6 @@ export default function KinoloungePage({ user }) {
         You might be interested in
       </h2>
       <ForYou moviesWatched={movies} />
-    </>
+    </body>
   );
 }
