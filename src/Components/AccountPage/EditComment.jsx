@@ -11,7 +11,6 @@ export default function EditComment({user}) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const navigate = useNavigate()
-  console.log(state.item._id)
   
   useEffect(() => {
     setComment(state?.comment)
@@ -54,6 +53,10 @@ export default function EditComment({user}) {
     // setStatus('success')
     navigate(`/users/${user._id}`);
   };
+
+  if (!state) {
+    return (<p>Resource not found. Please go through the appropriate route.</p>)
+  }
 
     return (
       <main className="profilecontainer">
