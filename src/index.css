@@ -401,6 +401,15 @@ a:visited {
   background-color: rgb(26, 26, 26);
 }
 
+.ticketBorderBottom {
+  border-bottom: 1px solid grey;
+}
+
+.ticketMainButton {
+  display: flex;
+  justify-content: center;
+}
+
 .bold {
   font-weight: bold;
 }
