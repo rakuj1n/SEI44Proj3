@@ -2,11 +2,11 @@
 
 # Shaw Theatre Meets Netflix
 
-Welcome to our Movies App, where movie-watching transcends the boundaries of mere entertainment. Ever felt like being _social_ when buying tickets online? Now you can! Step into a world where movie enthusiasts come together to explore, engage, and create lasting memories.
+Welcome to our **Shawflix** Movie App, where movie-watching transcends the boundaries of mere entertainment. Ever felt like being _social_ when buying tickets online? Now you can! Step into a world where movie enthusiasts come together to explore, engage, and create lasting memories.
 
-With our Movies App, you can browse through a wide selection of movies, both showing in cinemas and available for online rental. Discover the latest blockbusters, timeless classics, and hidden gems waiting to be explored. Immerse yourself in the world of cinema, where each movie has a story to tell and an experience to offer.
+With our **Shawflix** Movie App, you can browse through a wide selection of movies, both showing in cinemas and available for online rental. Discover the latest blockbusters, timeless classics, and hidden gems waiting to be explored. Immerse yourself in the world of cinema, where each movie has a story to tell and an experience to offer.
 
-But our Movies App is not just about watching movies; it's about enhancing your movie-going experience. Explore the available promotions and special offers that will make your ticketing experience a pocket-friendly one. Unlock exclusive discounts, deals, and rewards that add value to your cinematic journey.
+But our **Shawflix** Movie App is not just about watching movies; it's about enhancing your movie-going experience. Explore the available promotions and special offers that will make your ticketing experience a pocket-friendly one. Unlock exclusive discounts, deals, and rewards that add value to your cinematic journey.
 
 And that's not all - our premium _Kinolounge_ awaits you, offering a curated collection of movies available for on-demand rental. Dive into a vast library of cinematic masterpieces, where you can indulge in your favorite films anytime, anywhere. Whether you're in the mood for a heartwarming romance, an adrenaline-pumping action flick, or a thought-provoking drama, _Kinolounge_ has it all.
 
@@ -14,7 +14,7 @@ But it doesn't end there. We believe in the power of personal connection and exp
 
 Ready to embark on a movie-watching adventure like no other? Buy your tickets straight from our website, ensuring a seamless and convenient booking process. No more hassle, no more queues - just a few clicks and you're all set to enjoy the silver screen magic.
 
-Welcome to our Movies App, where movies become more than just entertainment. They become a shared experience, a personal journey, and a gateway to new connections. Start exploring now and let the world of cinema unfold before your eyes.
+Welcome to our **Shawflix** Movie App, where movies become more than just entertainment. They become a shared experience, a personal journey, and a gateway to new connections. Start exploring now and let the world of cinema unfold before your eyes.
 
 # Features
 
@@ -49,7 +49,7 @@ Libraries: mui, antd
 
 # Getting Started
 
-Visit https://sei44proj3app.onrender.com/ to start social watching now!
+Visit [**Shawflix**](https://sei44proj3app.onrender.com/) to start social watching now!
 
 Explore Movies: Browse our vast collection of movies, including the latest releases and timeless classics.
 
@@ -63,7 +63,7 @@ Engage and Connect: Leave your footprint by commenting and rating movies. Follow
 
 Easy Ticket Booking: Purchase tickets directly from our website for a hassle-free experience.
 
-Join us at https://sei44proj3app.onrender.com/ and embrace the joy of social movie-watching!
+Join us at [**Shawflix**](https://sei44proj3app.onrender.com/) and embrace the joy of social movie-watching!
 
 # Collaborators
 
