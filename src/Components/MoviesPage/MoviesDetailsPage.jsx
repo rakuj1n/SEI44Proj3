@@ -148,7 +148,7 @@ const MoviesDetailsPage = ({ user }) => {
             {movie.comments.map((comment) => (
               <div key={comment._id}>
                 <p>{comment.comment}</p>
-                <p>By: {comment.userId}</p>
+                <p>By: {comment.userId.name}</p>
               </div>
             ))}
           </Slider>
