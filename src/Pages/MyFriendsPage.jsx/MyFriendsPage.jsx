@@ -88,7 +88,7 @@ export default function MyFriendsPage({user}) {
             {status !== 'loadingfollowing' ? <MovieRecoList account={account} allFollowingMovieRecoList={allFollowingMovieRecoList} currSelectedFollowing={currSelectedFollowing} currSelectedFollowingAccount={currSelectedFollowingAccount}/> : <Loading />}
         </main>
         :
-        <p>404 Page Not Found.</p>
+        <p>Account following page requested is not current logged in user's.</p>
         }
         </>
     )
