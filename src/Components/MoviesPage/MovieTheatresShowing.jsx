@@ -23,13 +23,17 @@ export default function MovieTheatresShowing({
   }
 
   return (
-    <div className="container">
-      <p>Theatre</p>
-      <p>Timing</p>
-      <div>
-        <div className="theatre">{theatre}</div>
+    <div>
+      <div className="container">
+        <div>
+          <p>Theatre</p>
+        </div>
+        <div>
+          <p>Timing</p>
+        </div>
       </div>
-      <div>
+      <div className="containerTheatre">
+        <div className="theatre">{theatre}</div>
         <div className="cell" onClick={handleClick}>
           {timing}
         </div>
