@@ -114,7 +114,7 @@ export default function PlayMoviePage({ user }) {
       <KinoloungeNavBar />
       <div className="backgroundImg-playMovie" style={backgroundStyle}></div>
       <div className="PlayRentPageContent">
-        <img id="PlayRentPagePoster" width="20%" src={poster} alt="pic" />
+        <img id="PlayRentPagePoster" width="50%" src={poster} alt="pic" />
 
         <h2>{movieTitle}</h2>
 
