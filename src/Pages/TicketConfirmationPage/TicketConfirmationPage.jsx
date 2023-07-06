@@ -1,9 +1,17 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MovieDetail from "../../Components/SeatSelectionPage/MovieDetail";
+import { useEffect } from "react";
 
 export default function TicketConfirmationPage({ user }) {
   const location = useLocation();
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    if (location?.state === null) {
+      return navigate("/mainpage");
+    }
+  },[])
+  
   return (
     <div className="ticketConfirmation">
       <h1>Ticket Booking has been Confirmed!</h1>
@@ -14,13 +22,13 @@ export default function TicketConfirmationPage({ user }) {
       <br />
       <h2>Booking Details</h2>
       <MovieDetail
-        movieTitle={location.state.movieTitle}
-        moviePoster={location.state.moviePoster}
-        theatre={location.state.theatre}
-        timing={location.state.timing}
+        movieTitle={location?.state?.movieTitle}
+        moviePoster={location?.state?.moviePoster}
+        theatre={location?.state?.theatre}
+        timing={location?.state?.timing}
       />
       <br />
-      <h2>You have booked ({location.state.qty}) Tickets</h2>
+      <h2>You have booked ({location?.state?.qty}) Tickets</h2>
       <br />
       <hr />
       <br />
