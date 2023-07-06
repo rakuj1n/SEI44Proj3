@@ -135,7 +135,9 @@ const MoviesDetailsPage = ({ user }) => {
       <p className="movie-director">
         <strong>Director:</strong> {movie.director}
       </p>
-
+      <p className="movie-genre">
+        <strong>Genre:</strong> {movie.genre.sort().join(", ")}
+      </p>
       <div className="comments">
         <hr></hr>
         <p className="comments-heading">
@@ -146,7 +148,7 @@ const MoviesDetailsPage = ({ user }) => {
             {movie.comments.map((comment) => (
               <div key={comment._id}>
                 <p>{comment.comment}</p>
-                <p>By: {comment.userId}</p>
+                <p>By: {comment.userId.name}</p>
               </div>
             ))}
           </Slider>
