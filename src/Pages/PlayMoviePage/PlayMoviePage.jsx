@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Container from "@mui/material/Container";
 import KinoloungeNavBar from "../../Components/KinoloungePage/KinoloungeNavbar";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import sendRequest from "../../utilities/send-request";
@@ -61,7 +62,7 @@ export default function PlayMoviePage({ user }) {
     backgroundSize: "cover",
     // position: "absolute",
     // width: "auto",
-    height: "2000px",
+    height: "1500px",
     // height: "100%",
     filter: `blur(8px)`,
   };
@@ -112,24 +113,45 @@ export default function PlayMoviePage({ user }) {
   return (
     <>
       <KinoloungeNavBar />
-      <div className="backgroundImg-playMovie" style={backgroundStyle}></div>
-      <div className="PlayRentPageContent">
-        <img id="PlayRentPagePoster" width="50%" src={poster} alt="pic" />
-
-        <h2>{movieTitle}</h2>
-
-        <button onClick={handleBuy_Rent}>
-          {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
-        </button>
-        <div>{details}</div>
-        <br />
-        <div>GENRE &nbsp; {GENRES}</div>
-        <div>MAIN CAST &nbsp;{CAST}</div>
-        <div>DIRECTOR &nbsp; {DIRECTOR}</div>
-        <button onClick={handleClick} className="return-button">
-          Cancel
-        </button>
-      </div>
+      <Container maxWidth="lg">
+        <div className="backgroundImg-playMovie" style={backgroundStyle}></div>
+        <div className="PlayRentPageContent">
+          <div className="kinoMovieContainer">
+            <div className="kinoImageContainer">
+              <img
+                id="PlayRentPagePoster"
+                src={poster}
+                alt="pic"
+                className="kinoMoviePoster"
+              />
+            </div>
+            <div className="movieTitleContainer">
+              <h1>{movieTitle}</h1>
+              <button onClick={handleBuy_Rent}>
+                {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
+              </button>
+              <h3>{details}</h3>
+              <div className="movieDetails">
+                <div className="mainDetails">
+                  <h4>MAIN CAST</h4>
+                  <h4>{CAST}</h4>
+                </div>
+                <div className="mainDetails">
+                  <h4>DIRECTOR</h4>
+                  <h4>{DIRECTOR}</h4>
+                </div>
+                <div className="mainDetails">
+                  <h4>GENRE</h4>
+                  <h4>{GENRES}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button onClick={handleClick} className="return-button">
+            Cancel
+          </button>
+        </div>
+      </Container>
     </>
   );
 }

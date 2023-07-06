@@ -159,7 +159,6 @@ const MoviesDetailsPage = ({ user }) => {
           </div>
         </div>
       </div>
-
       <div className="comments">
         <p className="comments-heading">
           <strong>Comments</strong>

@@ -487,6 +487,30 @@ a:visited {
   color: grey;
 }
 
+.kinoMovieContainer {
+  display: grid;
+  grid-template-columns: auto 600px;
+  gap: 80px;
+  justify-content: start;
+  padding: 0px 90px;
+}
+
+.kinoImageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.kinoDetailsContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.kinoMoviePoster {
+  width: 300px;
+  height: auto;
+  border: 2px solid grey;
+}
+
 /* End of Mindy CSS */
 
 /* Start Damien CSS */
@@ -1263,10 +1287,7 @@ html {
 
 .PlayRentPageContent {
   position: absolute;
-  top: 60%;
-  /* left: 50%; */
-  left: 35%;
-  right: 35%;
+  top: 30%;
 }
 
 /* #PlayRentPagePoster {
