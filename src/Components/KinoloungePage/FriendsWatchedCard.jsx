@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function FriendsWatchedCard({ movieDetails }) {
   const item = movieDetails;
-  console.log("item_friendsWatchedCard", item);
+  // console.log("item_friendsWatchedCard", item);
   return (
     // <>
     <Link

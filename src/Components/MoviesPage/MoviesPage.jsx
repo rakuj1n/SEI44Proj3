@@ -90,7 +90,10 @@ const MoviesPage = () => {
       <div className="movies-grid">
         {searchResults.map((movie) => (
           <div key={movie.title} className="movie-item">
-            <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+            <Link
+              to={`/movies/${encodeURIComponent(movie.title)}`}
+              state={movie}
+            >
               <img
                 src={movie.poster}
                 alt={movie.title}
@@ -98,7 +101,10 @@ const MoviesPage = () => {
               />
             </Link>
             <div className="all-movie-details">
-              <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+              <Link
+                to={`/movies/${encodeURIComponent(movie.title)}`}
+                state={movie}
+              >
                 <h2 className="movie-title">{movie.title}</h2>
               </Link>
             </div>

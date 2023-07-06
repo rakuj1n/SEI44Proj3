@@ -16,11 +16,11 @@ export default function KinoloungeNavBar() {
             <li>
               <Link to="/kinolounge/">Home</Link>
             </li>
-            <li>
-              {/* <Link to="/kinolounge/#For-you"> */}
-              <a href="/kinolounge/#For-you">For you</a>
-              {/* </Link> */}
-            </li>
+            {/* <li> */}
+            {/* <Link to="/kinolounge/#For-you"> */}
+            {/* <a href="/kinolounge/#For-you">For you</a> */}
+            {/* </Link> */}
+            {/* </li> */}
             <li>
               <Link to="/kinolounge/page/sfs">SFS Picks</Link>
             </li>

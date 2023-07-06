@@ -35,179 +35,216 @@ const userArr = [
 const actor2 = ["Anthony Ramos", "Dominique Fishback", "Peter Cullen"];
 
 const movieArr = [
-    {
-        title: 'Star Wars: Episode IV – A New Hope',
-        actor: ['Mark Hamill','Harrison Ford','Carrie Fisher'], 
-        details:"It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet. Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy....",
-        poster:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg',
-        director:'George Lucas',
-        nowShowing:false,
-        comments:[],
-        genre:['Adventure', 'Action', 'Science Fiction']
-    },  
-    {
-        title:'Transformers: Rise of the Beasts',
-        actor: ['Anthony Ramos','Dominique Fishback','Peter Cullen'],
-        details:'When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.',
-        poster:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gPbM0MK8CP8A174rmUwGsADNYKD.jpg',
-        director:'Steven Caple Jr.',
-        nowShowing:true,
-        comments:[],
-        genre:['Adventure', 'Action', 'Sci-Fi']
-    },
-    {
-        title:'The Witcher',
-        actor: ['Henry Cavill','Anya Chalotra','Freya Allan'],
-        details:'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.',
-        poster:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cZ0d3rtvXPVvuiX22sP79K3Hmjz.jpg',
-        director:'Lauren Schmidt Hissrich',
-        nowShowing:false,
-        comments:[],
-        genre: ['Drama', 'Action', 'Adventure', 'Sci-Fi', 'Fantasy']
-    },
-    {
-        title:'Warrior',
-        actor: ['Andrew Koji','Olivia Cheng','Jason Tobin'],
-        details:'A gritty, action-packed crime drama set during the brutal Tong Wars of San Francisco’s Chinatown in the second half of the 19th century. The series follows Ah Sahm, a martial arts prodigy who immigrates from China to San Francisco under mysterious circumstances, and becomes a hatchet man for one of Chinatown’s most powerful tongs.',
-        poster:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hR9qPFMI6BoR63XK6BBX5Ueghan.jpg',
-        director:'Jonathan Tropper',
-        nowShowing:false,
-        comments:[],
-        genre:['Crime', 'Drama', 'Action', 'Adventure']
-    },
-    {
-      title: "Indiana Jones",
-      actor: ["Philip Kaufman", "George Lucas"],
-      details:
-        "Finding himself in a new era, approaching retirement, Indy wrestles with fitting into a world that seems to have outgrown him. But as the tentacles of an all-too-familiar evil return in the form of an old rival, Indy must don his hat and pick up his whip once more to make sure an ancient and powerful artifact doesn’t fall into the wrong hands.",
-      poster:
-        "https://www.themoviedb.org/t/p/w1280/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
-      director: "James Mangold",
-      nowShowing: false,
-      comments: [],
-      genre: ['Adventure', 'Action', 'Fantasy']
-    },
-    {
-      title: "The Ghost Station",
-      actor: ["Kim Bo-Ra", "Kim Jae-Hyun", "Shin So-yul"],
-      details:
-        "Reporter Na-yeong and her partner investigate a series of mysterious deaths and a perplexing case where her source was allegedly already dead at the time of their interview. Together they end up confronting a terrifying truth.",
-      poster:
-        "https://www.themoviedb.org/t/p/w1280/orL3v5KKRqFhwJYGkrZ3jmKEAgy.jpg",
-      director: "Jeong Yong-ki",
-      nowShowing: true,
-      comments: [],
-      genre: 'Horror'
-    },
-    {
-        title: "Ready Player One",
-        actor: ["Tye Sheridan", "Olivia Cooke", "Ben Mendelsohn"],
-        details:
-          "When the creator of a popular video game system dies, a virtual contest is created to compete for his fortune.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
-        director: "Steven Spielberg",
-        nowShowing: false,
-        comments: [],
-        genre: ['Sci-Fi', 'Adventure', 'Action']
-      },
-      {
-        title: "Elemental",
-        actor: ["Leah Lewis", "Mamoudou Athie", "Ronnie del Carmen"],
-        details:
-          "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8riWcADI1ekEiBguVB9vkilhiQm.jpg",
-        director: "Peter Sohn",
-        nowShowing: true,
-        comments: [],
-        genre: ['Animation', 'Comedy', 'Family', 'Fantasy', 'Romance']
-      },
-      {
-        title: "Insidious: The Red Door",
-        actor: ["Ty Simpkins", "Patrick Wilson", "Rose Byrne"],
-        details:
-          "To put their demons to rest once and for all, Josh Lambert and a college-aged Dalton Lambert must go deeper into The Further than ever before, facing their family's dark past and a host of new and more horrifying terrors that lurk behind the red door.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/azTC5osYiqei1ofw6Z3GmUrxQbi.jpg",
-        director: "Peter Sohn",
-        nowShowing: true,
-        comments: [],
-        genre: ['Horror', 'Mystery', 'Thriller']
-      },
-      {
-        title: "Carl's Date",
-        actor: ["Ed Asner", "Bob Peterson"],
-        details:
-          "Carl Fredricksen reluctantly agrees to go on a date with a lady friend—but admittedly has no idea how dating works these days. Ever the helpful friend, Dug steps in to calm Carl's pre-date jitters and offer some tried-and-true tips for making friends—if you're a dog.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wakoF2UgsEE3fGs5KpuwMWsaNr2.jpg",
-        director: "Bob Peterson",
-        nowShowing: true,
-        comments: [],
-        genre: ['Animation', 'Adventure', 'Family']
-      },
-      {
-        title: "The Godfather",
-        actor: ["Marlon Brando", "Al Pacino","James Caan"],
-        details:
-          "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-        director: "Francis Ford Coppola",
-        nowShowing: false,
-        comments: [],
-        genre: ['Drama', 'Crime']
-      },
-      {
-        title: "The Dark Knight",
-        actor: ["Christian Bale", "Heath Ledger","Michael Caine"],
-        details:
-          "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        director: "Christopher Nolan",
-        nowShowing: false,
-        comments: [],
-        genre: ['Drama', 'Action', 'Crime', 'Thriller']
-      },
-      {
-        title: "The Lord of the Rings: The Return of the King",
-        actor: ["Elijah Wood", "Sean Astin","Ian McKellen"],
-        details:
-          "Aragorn is revealed as the heir to the ancient kings as he, Gandalf and the other members of the broken fellowship struggle to save Gondor from Sauron's forces. Meanwhile, Frodo and Sam take the ring closer to the heart of Mordor, the dark lord's realm.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
-        director: "Peter Jackson",
-        nowShowing: false,
-        comments: [],
-        genre: ['Adventure', 'Fantasy', 'Action']
-      },
-      {
-        title: "Fight Club",
-        actor: ["Edward Norton", "Brad Pitt","Helena Bonham Carter"],
-        details:
-          "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground 'fight clubs' forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
-        director: "David Fincher",
-        nowShowing: false,
-        comments: [],
-        genre: ['Drama', 'Thriller', 'Comedy']
-      },
-      {
-        title: "Avengers: Endgame",
-        actor: ["Robert Downey Jr.", "Chris Evans","Mark Ruffalo"],
-        details:
-          "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
-        poster:
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
-        director: "Anthony Russo",
-        nowShowing: false,
-        comments: [],
-        genre: ['Adventure', 'Sci-Fi', 'Action']
-      }
-]
+  {
+    title: "Star Wars: Episode IV – A New Hope",
+    actor: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+    details:
+      "It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet. Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy....",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+    director: "George Lucas",
+    nowShowing: false,
+    comments: [],
+    genre: ["Adventure", "Action", "Science Fiction"],
+    poster2:
+      "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/BCED452AF9DF94603B00DC7FAFD4269F7360A16D0C9E8590950F3BC27183682D/scale?width=1200&aspectRatio=1.78&format=jpeg",
+  },
+  {
+    title: "Transformers: Rise of the Beasts",
+    actor: ["Anthony Ramos", "Dominique Fishback", "Peter Cullen"],
+    details:
+      "When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gPbM0MK8CP8A174rmUwGsADNYKD.jpg",
+    director: "Steven Caple Jr.",
+    nowShowing: true,
+    comments: [],
+    genre: ["Adventure", "Action", "Sci-Fi"],
+    poster2:
+      "https://www.theouterhaven.net/wp-content/uploads/2023/04/Transformers-Rise-of-the-Beasts.jpg",
+  },
+  {
+    title: "The Witcher",
+    actor: ["Henry Cavill", "Anya Chalotra", "Freya Allan"],
+    details:
+      "Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cZ0d3rtvXPVvuiX22sP79K3Hmjz.jpg",
+    director: "Lauren Schmidt Hissrich",
+    nowShowing: false,
+    comments: [],
+    genre: ["Drama", "Action", "Adventure", "Sci-Fi", "Fantasy"],
+    poster2:
+      "https://www.dexerto.com/cdn-cgi/image/width=3840,quality=75,format=auto/https://editors.dexerto.com/wp-content/uploads/2023/06/28/the-witcher-henry-cavill-3.jpg",
+  },
+  {
+    title: "Warrior",
+    actor: ["Andrew Koji", "Olivia Cheng", "Jason Tobin"],
+    details:
+      "A gritty, action-packed crime drama set during the brutal Tong Wars of San Francisco’s Chinatown in the second half of the 19th century. The series follows Ah Sahm, a martial arts prodigy who immigrates from China to San Francisco under mysterious circumstances, and becomes a hatchet man for one of Chinatown’s most powerful tongs.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hR9qPFMI6BoR63XK6BBX5Ueghan.jpg",
+    director: "Jonathan Tropper",
+    nowShowing: false,
+    comments: [],
+    genre: ["Crime", "Drama", "Action", "Adventure"],
+    poster2: "https://static.cinemax.com/tease-76623903_PRO35_10.jpg",
+  },
+  {
+    title: "Indiana Jones",
+    actor: ["Philip Kaufman", "George Lucas"],
+    details:
+      "Finding himself in a new era, approaching retirement, Indy wrestles with fitting into a world that seems to have outgrown him. But as the tentacles of an all-too-familiar evil return in the form of an old rival, Indy must don his hat and pick up his whip once more to make sure an ancient and powerful artifact doesn’t fall into the wrong hands.",
+    poster:
+      "https://www.themoviedb.org/t/p/w1280/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
+    director: "James Mangold",
+    nowShowing: false,
+    comments: [],
+    genre: ["Adventure", "Action", "Fantasy"],
+    poster2:
+      "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/06/indiana-jones-and-the-dial-of-destiny-harrison-ford-sean-connery-ke-huy-quan.jpg",
+  },
+  {
+    title: "The Ghost Station",
+    actor: ["Kim Bo-Ra", "Kim Jae-Hyun", "Shin So-yul"],
+    details:
+      "Reporter Na-yeong and her partner investigate a series of mysterious deaths and a perplexing case where her source was allegedly already dead at the time of their interview. Together they end up confronting a terrifying truth.",
+    poster:
+      "https://www.themoviedb.org/t/p/w1280/orL3v5KKRqFhwJYGkrZ3jmKEAgy.jpg",
+    director: "Jeong Yong-ki",
+    nowShowing: true,
+    comments: [],
+    genre: "Horror",
+    poster2:
+      "https://asset.kompas.com/crops/MspLyTnYtCseml6WWI6QUY9k5Rg=/0x983:1500x1983/750x500/data/photo/2023/05/16/6462faa43195a.jpg",
+  },
+  {
+    title: "Ready Player One",
+    actor: ["Tye Sheridan", "Olivia Cooke", "Ben Mendelsohn"],
+    details:
+      "When the creator of a popular video game system dies, a virtual contest is created to compete for his fortune.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
+    director: "Steven Spielberg",
+    nowShowing: false,
+    comments: [],
+    genre: ["Sci-Fi", "Adventure", "Action"],
+    poster2:
+      "https://www.re-thinkingthefuture.com/wp-content/uploads/2022/01/A6062-An-Architectural-Review-of-Ready-Player-One.jpg",
+  },
+  {
+    title: "Elemental",
+    actor: ["Leah Lewis", "Mamoudou Athie", "Ronnie del Carmen"],
+    details:
+      "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8riWcADI1ekEiBguVB9vkilhiQm.jpg",
+    director: "Peter Sohn",
+    nowShowing: true,
+    comments: [],
+    genre: ["Animation", "Comedy", "Family", "Fantasy", "Romance"],
+    poster2:
+      "https://whatsondisneyplus.com/wp-content/uploads/2023/02/elemental-1024x576.jpg",
+  },
+  {
+    title: "Insidious: The Red Door",
+    actor: ["Ty Simpkins", "Patrick Wilson", "Rose Byrne"],
+    details:
+      "To put their demons to rest once and for all, Josh Lambert and a college-aged Dalton Lambert must go deeper into The Further than ever before, facing their family's dark past and a host of new and more horrifying terrors that lurk behind the red door.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/azTC5osYiqei1ofw6Z3GmUrxQbi.jpg",
+    director: "Peter Sohn",
+    nowShowing: true,
+    comments: [],
+    genre: ["Horror", "Mystery", "Thriller"],
+    poster2:
+      "https://www.belloflostsouls.net/wp-content/uploads/2023/04/Insidious-The-Red-Door-header.jpg",
+  },
+  {
+    title: "Carl's Date",
+    actor: ["Ed Asner", "Bob Peterson"],
+    details:
+      "Carl Fredricksen reluctantly agrees to go on a date with a lady friend—but admittedly has no idea how dating works these days. Ever the helpful friend, Dug steps in to calm Carl's pre-date jitters and offer some tried-and-true tips for making friends—if you're a dog.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wakoF2UgsEE3fGs5KpuwMWsaNr2.jpg",
+    director: "Bob Peterson",
+    nowShowing: true,
+    comments: [],
+    genre: ["Animation", "Adventure", "Family"],
+    poster2:
+      "https://images.bauerhosting.com/empire/2023/03/carls-date-crop.jpg?format=jpg&quality=80&width=960&height=540&ratio=16-9&resize=aspectfill",
+  },
+  {
+    title: "The Godfather",
+    actor: ["Marlon Brando", "Al Pacino", "James Caan"],
+    details:
+      "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+    director: "Francis Ford Coppola",
+    nowShowing: false,
+    comments: [],
+    genre: ["Drama", "Crime"],
+    poster2:
+      "https://www.koimoi.com/wp-content/new-galleries/2022/01/limited-re-release-to-mark-the-godfather-50th-anniversary-001.jpg",
+  },
+  {
+    title: "The Dark Knight",
+    actor: ["Christian Bale", "Heath Ledger", "Michael Caine"],
+    details:
+      "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    director: "Christopher Nolan",
+    nowShowing: false,
+    comments: [],
+    genre: ["Drama", "Action", "Crime", "Thriller"],
+    poster2:
+      "https://static.displate.com/392x280/displate/2021-12-01/c51b5ac1ae864edb22ab3787c5814504_4fb51d9d6d3c4cf1cfee6cb68caafff7.jpg",
+  },
+  {
+    title: "The Lord of the Rings: The Return of the King",
+    actor: ["Elijah Wood", "Sean Astin", "Ian McKellen"],
+    details:
+      "Aragorn is revealed as the heir to the ancient kings as he, Gandalf and the other members of the broken fellowship struggle to save Gondor from Sauron's forces. Meanwhile, Frodo and Sam take the ring closer to the heart of Mordor, the dark lord's realm.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+    director: "Peter Jackson",
+    nowShowing: false,
+    comments: [],
+    genre: ["Adventure", "Fantasy", "Action"],
+    poster2:
+      "https://www.limitedruns.com/media/cache/fe/4f/fe4f4ab5d122f75f3f2a14b89f838362.jpg",
+  },
+  {
+    title: "Fight Club",
+    actor: ["Edward Norton", "Brad Pitt", "Helena Bonham Carter"],
+    details:
+      "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground 'fight clubs' forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+    director: "David Fincher",
+    nowShowing: false,
+    comments: [],
+    genre: ["Drama", "Thriller", "Comedy"],
+    poster2:
+      "https://www.vintagemovieposters.co.uk/wp-content/uploads/2023/02/IMG_0882-scaled.jpeg",
+  },
+  {
+    title: "Avengers: Endgame",
+    actor: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
+    details:
+      "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+    poster:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    director: "Anthony Russo",
+    nowShowing: false,
+    comments: [],
+    genre: ["Adventure", "Sci-Fi", "Action"],
+    poster2:
+      "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/04/Avengers-3D-1.jpg",
+  },
+];
 
 async function initialSeed() {
   try {
