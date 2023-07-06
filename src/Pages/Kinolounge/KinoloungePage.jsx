@@ -174,9 +174,23 @@ export default function KinoloungePage({ user }) {
       <KinoloungeNavBar />
       <KinoCarousel />
       <h2 className="friends-watched-banner">Your friends have watched</h2>
-      {/* <FriendsWatched moviesWatched={allFollowingMovieRecoList} /> */}
       <div className="movielist">
-        {followingsRecommendationsList?.sort((a, b) => b.key - a.key)}
+        {!followingsRecommendationsList ? (
+          <>
+            <small>
+              Thank you for using our platform! Currently, we don't have any
+              recommendations to display for you. To generate personalized
+              recommendations, we suggest following some people who share your
+              interests. By doing so, our system will be able to provide you
+              with tailored suggestions that align with your preferences. We
+              hope this helps enhance your experience on our platform. Happy
+              exploring!{" "}
+            </small>
+            <br />
+          </>
+        ) : (
+          followingsRecommendationsList?.sort((a, b) => b.key - a.key)
+        )}
       </div>
 
       <h2 className="you-might-be-interested-banner">
