@@ -8,13 +8,15 @@ export default function PlayMoviePage({ user }) {
   const [account, setAccount] = useState(null);
   const [status, setStatus] = useState("idle");
   const navigate = useNavigate();
-  const { state } = useLocation();
+  // const { state } = useLocation();
   //   const [ownsMovie, setOwnsMovie] = useState(false);
 
-  console.log("passubgStae", state.item);
+  // console.log("passubgStae", state?.item);
 
   const userId = user._id;
   const { movieId } = useParams();
+
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
     async function getAccount() {
@@ -22,6 +24,10 @@ export default function PlayMoviePage({ user }) {
       try {
         const account = await sendRequest(`/api/users/${userId}`, "GET");
         setAccount(account);
+        const movieFetchedDetails = await sendRequest(`/api/movies`, "GET");
+        setMovie(
+          movieFetchedDetails.movies.find((item) => item._id === movieId)
+        );
       } catch (err) {
         console.log(err);
       }
@@ -40,15 +46,15 @@ export default function PlayMoviePage({ user }) {
   let ownsMovie = ownedArr.includes(movieId);
   console.log(ownsMovie);
 
-  console.log("movieId", movieId);
   const price = 4.99;
   const currency = "S$";
 
-  const poster = state.item.poster;
-  const movieTitle = state.item.title;
-  const CAST = state.item.actor.join(",");
-  const DIRECTOR = state.item.director;
-  const details = state.item.details;
+  const poster = movie.poster;
+  const movieTitle = movie.title;
+  const CAST = movie?.actor?.join(", ");
+  const DIRECTOR = movie.director;
+  const GENRES = movie?.genre?.join(", ");
+  const details = movie.details;
 
   const backgroundStyle = {
     backgroundImage: `url(${poster})`,
@@ -77,9 +83,10 @@ export default function PlayMoviePage({ user }) {
       } catch (err) {
         console.log(err);
       }
+      const item = movie;
       navigate(`/kinolounge/${movieId}/comments`, {
         state: {
-          state,
+          state: { item },
         },
       });
       //   Then navigate to reviews and commments
@@ -104,26 +111,25 @@ export default function PlayMoviePage({ user }) {
 
   return (
     <>
-      {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
       <div className="backgroundImg-playMovie" style={backgroundStyle}></div>
-      {/* <div id="PlayRentPageContentContainer"> */}
-      {/* <div className="PlayRentPageContentContainer"> */}
-      <div id="PlayRentPageContent">
-        <img width="50%" src={poster} alt="pic" />
+      <div className="PlayRentPageContent">
+        <img id="PlayRentPagePoster" width="50%" src={poster} alt="pic" />
+
         <h2>{movieTitle}</h2>
 
         <button onClick={handleBuy_Rent}>
           {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
         </button>
         <div>{details}</div>
+        <br />
+        <div>GENRE &nbsp; {GENRES}</div>
         <div>MAIN CAST &nbsp;{CAST}</div>
         <div>DIRECTOR &nbsp; {DIRECTOR}</div>
         <button onClick={handleClick} className="return-button">
           Cancel
         </button>
       </div>
-      {/* </div> */}
     </>
   );
 }

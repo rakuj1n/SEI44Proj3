@@ -1252,14 +1252,19 @@ html {
   color: #ccc;
 }
 
-#PlayRentPageContent {
+.PlayRentPageContent {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  /* left: 50%; */
   left: 35%;
   right: 35%;
-  text-align: center;
 }
+
+/* #PlayRentPagePoster {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+} */
 /* .friends-watched-container {
   width: 100%;
 } */

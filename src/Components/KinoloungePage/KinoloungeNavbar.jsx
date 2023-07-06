@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 export default function KinoloungeNavBar() {
   return (
     <>
-      <Link to="/kinolounge">
+      {/* <Link to="/kinolounge">
         <img
           id="kinoloungeHomeImg"
           src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
           alt="logo_homepage"
         />
-      </Link>
+      </Link> */}
       <header className="kinolounge-nav-header">
         <div>
           <ul className="kinolounge-nav-bar">

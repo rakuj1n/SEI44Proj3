@@ -6,7 +6,7 @@ import Loading from "../../Components/Loading";
 // require("dotenv").config();
 // require("./config/database");
 
-export default function MoviePlayAndCommentPage({ user }) {
+export default function MoviePlayAndCommentPage({ user,profilePic }) {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [comment, setComment] = useState("");
@@ -16,11 +16,15 @@ export default function MoviePlayAndCommentPage({ user }) {
   // console.log("passing", state);
   //To push user watched to db
 
-  const movieTitle = state.state?.item.title;
+  const movieTitle = state?.state?.item.title;
   const userProfilePic = user?.picture;
   const username = user?.name;
 
   useEffect(() => {
+    if (!state) {
+      navigate("/kinolounge");
+    }
+
     async function fetchComments() {
       try {
         const res = await sendRequest(
@@ -97,7 +101,7 @@ export default function MoviePlayAndCommentPage({ user }) {
       ></iframe>
       <fieldset className="comment-container">
         <form onSubmit={handleSubmit}>
-          <img src={userProfilePic} alt="userpic" />
+          <img src={profilePic} alt="userpic" />
           <h2>How's the movie, {username}</h2>
           <h3>
             You have watched {movieTitle}. Would you like to share with your
