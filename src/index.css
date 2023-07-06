@@ -168,9 +168,18 @@ button[type="submit"] {
 
 /* Mindy CSS */
 
+.alignmentContainer {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
 .loginContainer {
-  background:black;
-  background:rgba(0,0,0,0.4);
+  background: black;
+  background: rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: 500px 500px;
   align-items: center;
@@ -185,8 +194,12 @@ button[type="submit"] {
   width: 300px;
 }
 
+.shawImagesStyling {
+  border-radius: 4px;
+}
+
 .login {
-  opacity: 1.0;
+  opacity: 1;
   color: white;
   text-align: start;
 }
@@ -210,8 +223,8 @@ button[type="submit"] {
 }
 
 .signUpContainer {
-  background:black;
-  background:rgba(0,0,0,0.4);
+  background: black;
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -224,7 +237,8 @@ button[type="submit"] {
   color: grey;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   color: white;
   text-decoration: none;
 }
@@ -233,13 +247,28 @@ a:link, a:visited {
   display: grid;
   background-color: rgb(26, 26, 26);
   grid-template-columns: 400px 400px;
-  grid-template-rows: auto auto;
   align-items: center;
   text-align: start;
-  color: lightgray;
+  justify-content: start;
+  color: grey;
   font-weight: bold;
-  padding: 10px 120px;
-  margin: 60px 0px 10px 00px;
+  padding: 10px 20px;
+  margin: 10px;
+  margin-top: 40px;
+  border-bottom: 1px solid;
+}
+
+.containerTheatre {
+  display: grid;
+  background-color: rgb(26, 26, 26);
+  grid-template-columns: 400px 400px;
+  align-items: center;
+  text-align: start;
+  justify-content: start;
+  color: grey;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px;
 }
 
 .theatre {
@@ -394,16 +423,60 @@ a:link, a:visited {
   color: lightgray;
 }
 
-/* .seatsLegend {
-  background-color: rgb(48, 44, 45);
-  color: white;
+.movie-details {
+  display: grid;
+  grid-template-columns: auto 600px;
+  gap: 100px;
+  justify-content: start;
+  margin-top: 80px;
+}
+
+.movieImageContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  height: 150px;
-  align-items: center;
-} */
+  flex-direction: column;
+  gap: 20px;
+}
+
+.movieTitleContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  justify-content: center;
+}
+
+.title {
+  margin-bottom: 50px;
+}
+
+.movieDescriptionContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-bottom: 1px solid grey;
+}
+
+.movieDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: start;
+  padding: 20px;
+}
+
+.mainDetails {
+  display: grid;
+  grid-template-columns: 200px 400px;
+  justify-content: start;
+}
+
+.subDetails {
+  display: grid;
+  grid-template-columns: 100px 200px;
+  justify-content: start;
+}
+
+.detailsText {
+  color: grey;
+}
 
 /* End of Mindy CSS */
 
@@ -449,7 +522,6 @@ a:link, a:visited {
   max-width: 200px;
 }
 
-.movie-details,
 .promotion-details {
   flex-grow: 1;
   margin-left: 20px;
@@ -727,27 +799,27 @@ a:link, a:visited {
 
 .profilefollowingitemfollowing {
   display: flex;
-  position:relative;
+  position: relative;
   margin: 15px 10px;
   gap: 15px;
-  width:200px;
+  width: 200px;
   justify-content: flex-start;
   background-color: var(--shawBlue);
   border-radius: 20px;
-  padding:10px;
+  padding: 10px;
   align-items: center;
 }
 
 .deletefollowingbutton {
-  position:absolute;
+  position: absolute;
   top: 10%;
   right: 5%;
-  margin-top:2%;
-  opacity:0.5;
+  margin-top: 2%;
+  opacity: 0.5;
 }
 
 .deletefollowingbutton:hover {
-  opacity:1;
+  opacity: 1;
 }
 
 .followinglinkpic {
