@@ -400,7 +400,8 @@ button[type="submit"] {
 .movie-director,
 .movie-actor,
 .comments-heading,
-.all-movie-details p {
+.all-movie-details p,
+.movie-genre {
   margin-bottom: 10px;
 }
 
@@ -543,17 +544,34 @@ button[type="submit"] {
 
 .user-nav {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
+  /* margin-left: auto; */
+}
+
+.main-nav-bar {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
   margin-left: auto;
 }
 
+.holding {
+  margin-left: auto;
+}
+
+.main-nav-bar > * {
+  margin: 0px 20px;
+}
+
 .user-nav-button {
-  background-color: darkred;
+  background-color: rgb(68, 0, 0);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   position: relative;
+  border-radius: 7px;
+  border: none;
 }
 
 .profile-picture {
@@ -570,23 +588,33 @@ button[type="submit"] {
 .user-nav-settings,
 .user-nav-logout {
   display: block;
-  margin-bottom: 5px;
-  text-align: center;
-  width: 115%;
+  text-align: left;
   background-color: darkred;
   z-index: 99;
+  font-size: small;
+  margin: 20px;
 }
 .user-nav-login {
   display: block;
-  text-align: center;
-  width: 125%;
+  text-align: left;
   background-color: darkred;
   z-index: 99;
+  font-size: small;
+  margin: 20px;
 }
 
 .navbar-container {
   position: absolute;
   z-index: 99;
+  background-color: darkred;
+  top: 42px;
+  width: 140px;
+  right: 6px;
+}
+
+.user-dropdown {
+  position: relative;
+  margin-left: auto;
 }
 
 /* End Damien CSS */
@@ -631,10 +659,38 @@ button[type="submit"] {
   margin: 4px;
 }
 
+.followlist {
+  margin: 25px 0;
+}
+
 .profilefollowingitemfollowing {
   display: flex;
-  margin: 30px;
+  position:relative;
+  margin: 15px 10px;
   gap: 15px;
+  width:200px;
+  justify-content: flex-start;
+  background-color: var(--shawBlue);
+  border-radius: 20px;
+  padding:10px;
+  align-items: center;
+}
+
+.deletefollowingbutton {
+  position:absolute;
+  top: 10%;
+  right: 5%;
+  margin-top:2%;
+  opacity:0.5;
+}
+
+.deletefollowingbutton:hover {
+  opacity:1;
+}
+
+.followinglinkpic {
+  display: flex;
+  align-items: center;
 }
 
 .profilefollowingpic {

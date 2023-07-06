@@ -42,9 +42,9 @@ export default function AccountFollowing({user}) {
     const followingList = account?.following.map((item) => {
         return (
           <div className='profilefollowingitemfollowing'>
-            <Link className='followinglink' style={{ textDecoration:'none', color:'inherit'}} to={`/users/${item._id}`}><img className='profilefollowingpic' alt='' src={`${item.picture}`} /></Link>
+            <Link className='followinglinkpic' style={{ textDecoration:'none', color:'inherit'}} to={`/users/${item._id}`}><img className='profilefollowingpic' alt='' src={`${item.picture}`} /></Link>
             <Link className='followinglink' style={{ textDecoration:'none', color:'inherit'}} to={`/users/${item._id}`}><p>{item.name}</p></Link>
-            {isUser && <CloseOutlined onClick={() => handleDelete(item._id)}/>}
+            {isUser && <CloseOutlined className='deletefollowingbutton' onClick={() => handleDelete(item._id)}/>}
           </div>
         );
       });
@@ -55,7 +55,7 @@ export default function AccountFollowing({user}) {
             <div className="profile">
                 <h1>My Following</h1>
                 <div className="profiledetailsinner">
-                    <p>{followingList}</p>
+                    <p className="followlist">{followingList}</p>
                 </div>
             </div>
         </main>
