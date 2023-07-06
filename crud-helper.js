@@ -355,7 +355,7 @@ async function initialSeed() {
     // movie4.comments.push(comment11)
     // await movie4.save()
   } catch (err) {
-    console.log("error");
+    console.log(err.message);
   }
 }
 

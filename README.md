@@ -47,7 +47,7 @@ Libraries: mui, antd
 
 # Getting Started
 
-Visit [**Shawflix**](https://sei44proj3app.onrender.com/) to start social watching now!
+Visit [**Shawflix**](https://shawflix.onrender.com) to start social watching now!
 
 Explore Movies: Browse our vast collection of movies, including the latest releases and timeless classics.
 
@@ -61,7 +61,7 @@ Engage and Connect: Leave your footprint by commenting and rating movies. Follow
 
 Easy Ticket Booking: Purchase tickets directly from our website for a hassle-free experience.
 
-Join us at [**Shawflix**](https://sei44proj3app.onrender.com/) and embrace the joy of social movie-watching!
+Join us at [**Shawflix**](https://shawflix.onrender.com) and embrace the joy of social movie-watching!
 
 # Collaborators
 

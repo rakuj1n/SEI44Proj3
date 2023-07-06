@@ -64,40 +64,35 @@ export default function ViewHistory({ account, user }) {
   });
 
   //----------------------------
-  const [isDragging, setIsDragging] = useState(false);
-  const [mouseStartX, setMouseStartX] = useState(0);
-  const [scrollStartX, setScrollStartX] = useState(0);
-  const scrollableRef = useRef(null);
-
+  const [isDragging, setIsDragging] = useState(false)
+  const [mouseStartX, setMouseStartX] = useState(0)
+  const [scrollStartX, setScrollStartX] = useState(0)
+  const scrollableRef = useRef(null)
   const handleMouseDown = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-    setMouseStartX(e.pageX);
-    setScrollStartX(scrollableRef.current.scrollLeft);
-  };
-
+      e.preventDefault()
+      setIsDragging(true)
+      setMouseStartX(e.pageX)
+      setScrollStartX(scrollableRef.current.scrollLeft)
+  }
   const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
+      setIsDragging(false)
+  }
   const handleMouseMove = (e) => {
-    if (isDragging) {
-      const mouseMoveX = e.pageX - mouseStartX;
-      scrollableRef.current.scrollLeft = scrollStartX - mouseMoveX;
-    }
-  };
-
+      if (isDragging) {
+      const mouseMoveX = e.pageX - mouseStartX
+      scrollableRef.current.scrollLeft = scrollStartX - mouseMoveX
+      }
+  }
   const style = {
-    cursor: isDragging ? "grab" : "auto",
-  };
-
+      cursor: isDragging ? 'grab' : 'auto'
+  }
   //----------------------------
 
   return (
     <div className="viewhistory">
       <h1>Watch History</h1>
       <div
-        style={style}
+        style={{...style, overflowX: 'auto' }}
         ref={scrollableRef}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}

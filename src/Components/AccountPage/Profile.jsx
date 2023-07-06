@@ -41,7 +41,7 @@ export default function Profile({user}) {
   }
 
   return (
-    <main className="profilecontainer">
+    <main className="profilecontainer test">
       <div className="profile">
         <h1> Profile</h1>
         <div className="profiledetails">

@@ -789,8 +789,9 @@ a:visited {
 /* lakjin css */
 
 .accountpagemaincontainer {
-  display: grid;
-  grid-template-columns: 1fr 7fr;
+  display: flex;
+  /* grid-template-columns: 1fr 7fr; */
+  margin: 0 20px; 
 }
 
 .accountpagemaincontainernosettings {
@@ -878,8 +879,10 @@ a:visited {
   padding: 20px;
 }
 
-.profile {
-  /* border: 1px solid teal; */
+.test {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
 }
 
 .addbuttoncontainer {
@@ -938,8 +941,19 @@ a:visited {
   text-decoration: none;
 }
 
+.profile {
+  display:flex;
+  flex-direction: column;
+}
+
+.accountpageright {
+  display: flex;
+}
+
 .viewhistory {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .viewhistory > h1 {
@@ -948,10 +962,10 @@ a:visited {
 
 .viewhistorymovies {
   display: flex;
-  display: flex;
   overflow-x: auto;
   justify-content: left;
-  align-items: center;
+  align-items: flex-start;
+  width: 80vw;
 }
 
 .followingmaincontainer {
