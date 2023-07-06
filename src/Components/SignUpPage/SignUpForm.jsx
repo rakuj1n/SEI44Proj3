@@ -58,6 +58,7 @@ export default function SignUpForm({ setUser }) {
             type="text"
             name="name"
             className="input"
+            placeholder="Name"
             value={newUser.name}
             onChange={handleChange}
             required
@@ -67,6 +68,7 @@ export default function SignUpForm({ setUser }) {
             type="email"
             name="email"
             className="input"
+            placeholder="Email"
             value={newUser.email}
             onChange={handleChange}
             required
@@ -76,6 +78,7 @@ export default function SignUpForm({ setUser }) {
             type="password"
             name="password"
             className="input"
+            placeholder="Password"
             value={newUser.password}
             onChange={handleChange}
             required
@@ -85,6 +88,7 @@ export default function SignUpForm({ setUser }) {
             type="password"
             name="confirm"
             className="input"
+            placeholder="Confirm Password"
             value={newUser.confirm}
             onChange={handleChange}
             required
