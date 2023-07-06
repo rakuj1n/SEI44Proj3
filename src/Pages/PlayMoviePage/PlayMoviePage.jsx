@@ -127,9 +127,11 @@ export default function PlayMoviePage({ user }) {
             </div>
             <div className="movieTitleContainer">
               <h1>{movieTitle}</h1>
-              <button onClick={handleBuy_Rent}>
-                {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
-              </button>
+              <div>
+                <button onClick={handleBuy_Rent}>
+                  {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
+                </button>
+              </div>
               <h3>{details}</h3>
               <div className="movieDetails">
                 <div className="mainDetails">
