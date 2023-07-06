@@ -21,7 +21,9 @@ export default function MoviePlayAndCommentPage({ user }) {
   const username = user?.name;
 
   useEffect(() => {
-    if (!state) { navigate('/kinolounge') }
+    if (!state) {
+      navigate("/kinolounge");
+    }
 
     async function fetchComments() {
       try {

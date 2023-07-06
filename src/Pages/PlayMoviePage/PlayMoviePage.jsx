@@ -8,15 +8,15 @@ export default function PlayMoviePage({ user }) {
   const [account, setAccount] = useState(null);
   const [status, setStatus] = useState("idle");
   const navigate = useNavigate();
-  const { state } = useLocation();
+  // const { state } = useLocation();
   //   const [ownsMovie, setOwnsMovie] = useState(false);
 
-  console.log("passubgStae", state?.item);
+  // console.log("passubgStae", state?.item);
 
   const userId = user._id;
   const { movieId } = useParams();
 
-  const [movie, setMovie] = useState({})
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
     async function getAccount() {
@@ -24,8 +24,10 @@ export default function PlayMoviePage({ user }) {
       try {
         const account = await sendRequest(`/api/users/${userId}`, "GET");
         setAccount(account);
-        const movieFetchedDetails = await sendRequest(`/api/movies`,"GET")
-        setMovie(movieFetchedDetails.movies.find(item => item._id === movieId))
+        const movieFetchedDetails = await sendRequest(`/api/movies`, "GET");
+        setMovie(
+          movieFetchedDetails.movies.find((item) => item._id === movieId)
+        );
       } catch (err) {
         console.log(err);
       }
@@ -80,9 +82,10 @@ export default function PlayMoviePage({ user }) {
       } catch (err) {
         console.log(err);
       }
+      const item = movie;
       navigate(`/kinolounge/${movieId}/comments`, {
         state: {
-          state,
+          state: { item },
         },
       });
       //   Then navigate to reviews and commments

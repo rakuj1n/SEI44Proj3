@@ -27,8 +27,8 @@ const MoviesDetailsPage = ({ user }) => {
   const [movie, setMovie] = useState(null);
   const [showTheatres, setShowTheatres] = useState(false);
   const navigate = useNavigate();
-  // Wes
-  const movieId = state?._id;
+  // Wes start
+  // const movieId = state?._id;
   useEffect(() => {
     async function getAccount() {
       setStatus("loading");
@@ -43,19 +43,6 @@ const MoviesDetailsPage = ({ user }) => {
     getAccount();
   }, [userId]);
 
-  let ownedArr = [];
-  if (status === "success") {
-    for (let i = 0; i < account?.rentedMovies.length; i++) {
-      ownedArr.push(account?.rentedMovies[i]._id);
-    }
-    console.log("owned", ownedArr);
-  }
-  let ownsMovie = ownedArr.includes(movieId);
-  console.log(ownsMovie);
-
-  const price = 4.99;
-  const currency = "S$";
-  // Wes
   const fetchMovie = async (movieTitle) => {
     try {
       const response = await fetch(
@@ -74,6 +61,22 @@ const MoviesDetailsPage = ({ user }) => {
       console.error(error);
     }
   };
+
+  console.log("movieD", movie);
+
+  let ownedArr = [];
+  if (status === "success") {
+    for (let i = 0; i < account?.rentedMovies.length; i++) {
+      ownedArr.push(account?.rentedMovies[i]._id);
+    }
+    console.log("owned", ownedArr);
+  }
+  let ownsMovie = ownedArr.includes(movie?._id);
+  console.log(ownsMovie);
+
+  const price = 4.99;
+  const currency = "S$";
+  // Wes end
 
   useEffect(() => {
     fetchMovie(title);
@@ -94,15 +97,15 @@ const MoviesDetailsPage = ({ user }) => {
         price,
         movieTitle: movie.title,
         poster: movie.poster,
-        movieId: movieId,
+        movieId: movie._id,
       },
     });
   };
 
   const handlePlay = () => {
-    const stateToPass = { item: state };
+    const stateToPass = { item: movie };
     console.log("play_statetopass", stateToPass);
-    navigate(`/kinolounge/${movieId}/comments`, {
+    navigate(`/kinolounge/${movie._id}/comments`, {
       state: {
         state: stateToPass,
       },
