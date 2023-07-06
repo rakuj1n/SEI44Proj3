@@ -53,6 +53,7 @@ export default function PlayMoviePage({ user }) {
   const movieTitle = movie.title;
   const CAST = movie?.actor?.join(",");
   const DIRECTOR = movie.director;
+  const GENRES = movie?.genre?.join(",");
   const details = movie.details;
 
   const backgroundStyle = {
@@ -123,6 +124,7 @@ export default function PlayMoviePage({ user }) {
           {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
         </button>
         <div>{details}</div>
+        <div>GENRE &nbsp; {GENRES}</div>
         <div>MAIN CAST &nbsp;{CAST}</div>
         <div>DIRECTOR &nbsp; {DIRECTOR}</div>
         <button onClick={handleClick} className="return-button">

@@ -21,8 +21,8 @@ const MoviesDetailsPage = ({ user }) => {
     autoplay: true,
     autoplaySpeed: 5000,
   };
-  const { state } = useLocation();
-  console.log("state__MoviesDetailsPage", state);
+  // const { state } = useLocation();
+  // console.log("state__MoviesDetailsPage", state);
   const { title } = useParams();
   const [movie, setMovie] = useState(null);
   const [showTheatres, setShowTheatres] = useState(false);
