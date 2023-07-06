@@ -6,7 +6,7 @@ With our Movies App, you can browse through a wide selection of movies, both sho
 
 But our Movies App is not just about watching movies; it's about enhancing your movie-going experience. Explore the available promotions and special offers that will make your ticketing experience a pocket-friendly one. Unlock exclusive discounts, deals, and rewards that add value to your cinematic journey.
 
-And that's not all - our premium Kinolounge awaits you, offering a curated collection of movies available for on-demand rental. Dive into a vast library of cinematic masterpieces, where you can indulge in your favorite films anytime, anywhere. Whether you're in the mood for a heartwarming romance, an adrenaline-pumping action flick, or a thought-provoking drama, Kinolounge has it all.
+And that's not all - our premium _Kinolounge_ awaits you, offering a curated collection of movies available for on-demand rental. Dive into a vast library of cinematic masterpieces, where you can indulge in your favorite films anytime, anywhere. Whether you're in the mood for a heartwarming romance, an adrenaline-pumping action flick, or a thought-provoking drama, _Kinolounge_ has it all.
 
 But it doesn't end there. We believe in the power of personal connection and expression. Leave your own personal footprint on the movies you watch by commenting and rating them. Share your thoughts, insights, and emotions, and let your voice be heard. And the best part? Connect with friends on our platform, follow their movie journeys, and discover their ratings and thoughts on your favorite films. It's a social experience that brings people together through the love of movies.
 
