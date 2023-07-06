@@ -178,7 +178,7 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MenuIcon from "@mui/icons-material/Menu";
 
-export default function Navbar({ user, setUser }) {
+export default function Navbar({ user, setUser, profilePic }) {
   const navigate = useNavigate();
   const pathname = useLocation().pathname;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -256,7 +256,7 @@ export default function Navbar({ user, setUser }) {
           <button className="user-nav-button" onClick={toggleDropdown}>
             {user && (
               <img
-                src={user.picture}
+                src={profilePic}
                 alt="User Profile"
                 className="profile-picture"
               />

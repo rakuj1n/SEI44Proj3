@@ -6,7 +6,7 @@ import { Button } from "antd"
 import Loading from "../Loading"
 
 
-export default function Settings({user}) {
+export default function Settings({user,setPicChanged}) {
     const {userId} = useParams()
     const navigate = useNavigate()
     const isUser = user._id == userId
@@ -44,6 +44,7 @@ export default function Settings({user}) {
         setStatus('loading')
         try {
             await sendRequest(`/api/users/${user._id}/pic`,'PUT',picData)
+            setPicChanged(prev => !prev)
             navigate(`/users/${user._id}`)
         } catch (err) {
             console.log(err)

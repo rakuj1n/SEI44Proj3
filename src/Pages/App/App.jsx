@@ -30,12 +30,16 @@ import LogInPage from "../LogInPage/LogInPage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import AccountFollowing from "../../Components/AccountPage/AccountFollowing";
 import EditComment from "../../Components/AccountPage/EditComment";
+import sendRequest from "../../utilities/send-request"
+
 
 export default function App() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const isUserLoggedIn = !!user;
   const isRootPath = window.location.pathname === "/";
+  const [picChanged,setPicChanged] = useState(false)
+  const [profilePic,setProfilePic] = useState('')
 
   useEffect(() => {
     const loggedInUser = getUser();
@@ -46,9 +50,22 @@ export default function App() {
     }
   }, [isRootPath, navigate]);
 
+  useEffect(() => {
+    console.log('picchanged')
+    async function getAccount() {
+      try {
+        const account = await sendRequest(`/api/users/${user._id}`, "GET");
+        setProfilePic(account.user.picture)
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getAccount();
+  },[picChanged,user])
+
   return (
     <main className="App">
-      {isUserLoggedIn && <Navbar user={user} setUser={setUser} />}
+      {isUserLoggedIn && <Navbar user={user} setUser={setUser} profilePic={profilePic} />}
       <Routes>
         <Route path="/" element={<MainPageStanding />} />
         {isUserLoggedIn && (
@@ -63,7 +80,7 @@ export default function App() {
             <Route path="/users/:userId" element={<AccountPage user={user} />}>
               <Route
                 path="/users/:userId/settings"
-                element={<Settings user={user} />}
+                element={<Settings user={user} setPicChanged={setPicChanged} />}
               />
               <Route
                 path="/users/:userId/following"
@@ -81,7 +98,7 @@ export default function App() {
             />
             <Route
               path="/kinolounge/:movieId/comments"
-              element={<MoviePlayAndCommentPage user={user} />}
+              element={<MoviePlayAndCommentPage user={user} profilePic={profilePic} />}
             />
             <Route
               path="/kinolounge/:movieId"
