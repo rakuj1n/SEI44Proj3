@@ -111,19 +111,18 @@ export default function PlayMoviePage({ user }) {
 
   return (
     <>
-      {/* <>play/rent movie page</>; */}
       <KinoloungeNavBar />
       <div className="backgroundImg-playMovie" style={backgroundStyle}></div>
-      {/* <div id="PlayRentPageContentContainer"> */}
-      {/* <div className="PlayRentPageContentContainer"> */}
-      <div id="PlayRentPageContent">
-        <img width="50%" src={poster} alt="pic" />
+      <div className="PlayRentPageContent">
+        <img id="PlayRentPagePoster" width="20%" src={poster} alt="pic" />
+
         <h2>{movieTitle}</h2>
 
         <button onClick={handleBuy_Rent}>
           {ownsMovie ? "Play Movie" : `Rent ${currency}${price}`}
         </button>
         <div>{details}</div>
+        <br />
         <div>GENRE &nbsp; {GENRES}</div>
         <div>MAIN CAST &nbsp;{CAST}</div>
         <div>DIRECTOR &nbsp; {DIRECTOR}</div>
@@ -131,7 +130,6 @@ export default function PlayMoviePage({ user }) {
           Cancel
         </button>
       </div>
-      {/* </div> */}
     </>
   );
 }

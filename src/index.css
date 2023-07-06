@@ -169,8 +169,8 @@ button[type="submit"] {
 /* Mindy CSS */
 
 .loginContainer {
-  background:black;
-  background:rgba(0,0,0,0.4);
+  background: black;
+  background: rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 500px 500px;
   align-items: center;
@@ -186,7 +186,7 @@ button[type="submit"] {
 }
 
 .login {
-  opacity: 1.0;
+  opacity: 1;
   color: white;
   text-align: start;
 }
@@ -210,8 +210,8 @@ button[type="submit"] {
 }
 
 .signUpContainer {
-  background:black;
-  background:rgba(0,0,0,0.4);
+  background: black;
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -224,7 +224,8 @@ button[type="submit"] {
   color: grey;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   color: white;
   text-decoration: none;
 }
@@ -727,27 +728,27 @@ a:link, a:visited {
 
 .profilefollowingitemfollowing {
   display: flex;
-  position:relative;
+  position: relative;
   margin: 15px 10px;
   gap: 15px;
-  width:200px;
+  width: 200px;
   justify-content: flex-start;
   background-color: var(--shawBlue);
   border-radius: 20px;
-  padding:10px;
+  padding: 10px;
   align-items: center;
 }
 
 .deletefollowingbutton {
-  position:absolute;
+  position: absolute;
   top: 10%;
   right: 5%;
-  margin-top:2%;
-  opacity:0.5;
+  margin-top: 2%;
+  opacity: 0.5;
 }
 
 .deletefollowingbutton:hover {
-  opacity:1;
+  opacity: 1;
 }
 
 .followinglinkpic {
@@ -1180,14 +1181,19 @@ html {
   color: #ccc;
 }
 
-#PlayRentPageContent {
+.PlayRentPageContent {
+  position: absolute;
+  top: 60%;
+  /* left: 50%; */
+  /* left: 35%;
+  right: 35%; */
+}
+
+/* #PlayRentPagePoster {
   position: absolute;
   top: 50%;
-  left: 50%;
-  left: 35%;
-  right: 35%;
-  text-align: center;
-}
+  left: 10%;
+} */
 /* .friends-watched-container {
   width: 100%;
 } */
