@@ -24,55 +24,56 @@ export default function Navbar({ user, setUser }) {
 
   return (
     <nav>
-      <div>
-        <div className="kinolounge">
-          <Link to="/mainpage" className="home-link">
-            <img
-              src="https://www.pngkey.com/png/full/107-1071221_in-may-2011-after-a-seven-month-and.png"
-              alt="Home"
-              className="home_logo"
-              style={{
-                width: "250px",
-                height: "50px",
-                marginRight: "5px",
-              }}
-            />
-          </Link>
-          <Link to="/kinolounge" className="kinolounge-link">
-            <img
-              src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
-              alt="Home"
-              className="kinolounge_logo"
-              style={{
-                width: "200px",
-                height: "50px",
-                marginRight: "5px",
-              }}
-            />
-          </Link>
-          <Link to="/movies" className="movies-button">
-            <TheatersIcon
-              sx={{ color: "white" }}
-              style={{
-                width: "50px",
-                height: "50px",
-                marginRight: "5px",
-              }}
-            />
-          </Link>
-          <Link to="/promotions" className="promotions-button">
-            <AttachMoneyIcon
-              sx={{ color: "white" }}
-              style={{
-                width: "50px",
-                height: "50px",
-                marginRight: "5px",
-              }}
-            />
-          </Link>
-        </div>
-      </div>
       <div className="user-nav">
+        <div></div>
+        <div className="holding">
+          <div className="main-nav-bar">
+            <Link to="/mainpage" className="home-link">
+              <img
+                src="https://www.pngkey.com/png/full/107-1071221_in-may-2011-after-a-seven-month-and.png"
+                alt="Home"
+                className="home_logo"
+                style={{
+                  width: "250px",
+                  height: "50px",
+                  marginRight: "5px",
+                }}
+              />
+            </Link>
+            <Link to="/kinolounge" className="kinolounge-link">
+              <img
+                src="https://kinolounge.shaw.sg/images/common/logo_homepage.png"
+                alt="Kinolounge"
+                className="kinolounge_logo"
+                style={{
+                  width: "200px",
+                  height: "50px",
+                  marginRight: "5px",
+                }}
+              />
+            </Link>
+            <Link to="/movies" className="movies-button">
+              <TheatersIcon
+                sx={{ color: "white" }}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  marginRight: "5px",
+                }}
+              />
+            </Link>
+            <Link to="/promotions" className="promotions-button">
+              <AttachMoneyIcon
+                sx={{ color: "white" }}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  marginRight: "5px",
+                }}
+              />
+            </Link>
+          </div>
+        </div>
         <div className="user-dropdown">
           <button className="user-nav-button" onClick={toggleDropdown}>
             {user && (
@@ -95,14 +96,13 @@ export default function Navbar({ user, setUser }) {
             {isDropdownOpen && (
               <div className="dropdown-box">
                 {!user && pathname === "/" ? (
-                  <button className="user-nav-login">
-                    <Link
-                      style={{ textDecoration: "none", color: "inherit" }}
-                      to="/login"
-                    >
-                      Login
-                    </Link>
-                  </button>
+                  <Link
+                    className="user-nav-login"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    to="/login"
+                  >
+                    <div>Login</div>
+                  </Link>
                 ) : (
                   <>
                     {user && (
@@ -111,61 +111,53 @@ export default function Navbar({ user, setUser }) {
                       </h6>
                     )}
                     {pathname !== "/mainpage" && (
-                      <button className="user-nav-home">
-                        <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
-                          to="/mainpage"
-                        >
-                          Home
-                        </Link>
-                      </button>
+                      <Link
+                        className="user-nav-home"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/mainpage"
+                      >
+                        <div>Home</div>
+                      </Link>
                     )}
                     {user &&
                       pathname !== `/users/${user._id}` &&
                       pathname !== `/users/${user._id}/settings` && (
-                        <button className="user-nav-myprofile">
-                          <Link
-                            style={{ textDecoration: "none", color: "inherit" }}
-                            to={`/users/${user._id}`}
-                          >
-                            My Profile
-                          </Link>
-                        </button>
+                        <Link
+                          className="user-nav-myprofile"
+                          style={{ textDecoration: "none", color: "inherit" }}
+                          to={`/users/${user._id}`}
+                        >
+                          <div>My Profile</div>
+                        </Link>
                       )}
                     {user && pathname !== `/users/${user._id}/friends` && (
-                      <button className="user-nav-myfriends">
-                        <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
-                          to={`/users/${user._id}/friends`}
-                        >
-                          My Friends
-                        </Link>
-                      </button>
+                      <Link
+                        className="user-nav-myfriends"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to={`/users/${user._id}/friends`}
+                      >
+                        <div>My Friends</div>
+                      </Link>
                     )}
                     {user &&
                       pathname !== `/users/${user._id}` &&
                       pathname !== `/users/${user._id}/settings` && (
-                        <button className="user-nav-settings">
-                          <Link
-                            style={{ textDecoration: "none", color: "inherit" }}
-                            to={`/users/${user._id}/settings`}
-                          >
-                            Settings
-                          </Link>
-                        </button>
+                        <Link
+                          className="user-nav-settings"
+                          style={{ textDecoration: "none", color: "inherit" }}
+                          to={`/users/${user._id}/settings`}
+                        >
+                          <div>Settings</div>
+                        </Link>
                       )}
                     {user && (
-                      <button
+                      <Link
                         className="user-nav-logout"
-                        onClick={handleLogOut}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to="/"
                       >
-                        <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
-                          to="/"
-                        >
-                          Log Out
-                        </Link>
-                      </button>
+                        <div onClick={handleLogOut}>Log Out</div>
+                      </Link>
                     )}
                   </>
                 )}
